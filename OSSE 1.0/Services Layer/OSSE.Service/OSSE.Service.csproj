@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C12957EA-5559-424F-95BF-2DD8C7FCC2CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OSSE.Service</RootNamespace>
+    <AssemblyName>OSSE.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountMembershipService.cs" />
+    <Compile Include="Core\Providers\CustomIdentity.cs" />
+    <Compile Include="Core\Providers\DbMembershipProvider.cs" />
+    <Compile Include="Core\Providers\DbRolProvider.cs" />
+    <Compile Include="Core\Providers\Security.cs" />
+    <Compile Include="FormsAuthenticationService.cs" />
+    <Compile Include="Interfaces\IFormsAuthenticationService.cs" />
+    <Compile Include="Interfaces\IMembershipService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common Layer\OSSE.Common\OSSE.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>OSSE.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain Layer\OSSE.Domain\OSSE.Domain.csproj">
+      <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
+      <Name>OSSE.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSSE.BusinessLogic\OSSE.BusinessLogic.csproj">
+      <Project>{20f8c763-7c9a-4bf0-8bef-9031b15d2c33}</Project>
+      <Name>OSSE.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
