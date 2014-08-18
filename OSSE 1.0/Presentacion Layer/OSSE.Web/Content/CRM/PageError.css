@@ -1,0 +1,87 @@
+﻿@media (max-width: 900px) {
+  body.http-error {
+    font-size: .75em;
+  }
+  body.http-error .error-message {
+    padding: 0em 1em;
+  }
+}
+
+
+/*Error Pages*/
+.http-error {
+  margin-top: 5em;
+  text-align: center;
+  color: #444;
+}
+.http-error h1 {
+  font-size: 5em;
+  line-height: 1em;
+  text-shadow: 1px 1px 0px #fff;
+  color: #444;
+}
+.http-error p {
+  margin: 0px;
+}
+.http-error .info {
+  font-size: 2em;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+.http-error i {
+  font-size: 3em;
+  line-height: .75em;
+  text-shadow: 1px 1px 0px #fff;
+}
+
+
+.dialog,
+.row .dialog,
+.row-fluid .dialog,
+.row-fluid [class*="span"].dialog:first-child {
+  margin: 0px auto;
+  margin-top: 5em;
+  float: none;
+  width: 300px;
+}
+.dialog input[type="checkbox"],
+.row .dialog input[type="checkbox"],
+.row-fluid .dialog input[type="checkbox"],
+.row-fluid [class*="span"].dialog:first-child input[type="checkbox"] {
+  margin: 0px;
+}
+.dialog .alert,
+.row .dialog .alert,
+.row-fluid .dialog .alert,
+.row-fluid [class*="span"].dialog:first-child .alert {
+  margin-bottom: 1em;
+}
+.dialog form,
+.row .dialog form,
+.row-fluid .dialog form,
+.row-fluid [class*="span"].dialog:first-child form {
+  margin-bottom: 10px;
+}
+.dialog .remember-me,
+.row .dialog .remember-me,
+.row-fluid .dialog .remember-me,
+.row-fluid [class*="span"].dialog:first-child .remember-me {
+  padding: .5em 0em 0em 0em;
+}
+
+a
+{
+    color: #0088cc;
+    text-decoration: none;
+}
+
+    a:hover
+    {
+        color: #005580;
+        text-decoration: none;
+    }
+
+    a:active
+    {
+        outline: 0;
+    }

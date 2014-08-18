@@ -1,0 +1,24 @@
+﻿@{
+    var list = this.ViewData["checkBoxList"] as MultiSelectList;
+    var grupo = this.ViewData["grupo"] as string;
+    var contador = 0;
+    
+    foreach (var item in list)
+    {
+
+        var checkId = ViewData.TemplateInfo.GetFullHtmlFieldId(item.Value);
+        var checkedAttr = item.Selected ? "checked=\"checked\"" : string.Empty;
+        
+            <div style="float:left; width:150px; background-color: #dfeffc;">
+                
+                    <input type="checkbox" id="@checkId" name="@grupo" value="@item.Value" @checkedAttr />
+                    <label style="font-weight:normal;" for="@checkId"> @item.Text</label>
+                
+            </div>
+        if(contador%2!=0)
+        {
+            <div style="clear:both;"></div>
+        }
+        contador++;
+    }
+}

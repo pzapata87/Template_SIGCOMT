@@ -1,0 +1,1122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{157C4C6B-2A6A-4DA1-9718-266102DAEE3F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OSSE.Web</RootNamespace>
+    <AssemblyName>OSSE.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <DontImportPostSharp>True</DontImportPostSharp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=3.1.48.9, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\PostSharp.3.1.48\lib\net20\PostSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Formulario.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Formulario.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Master.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Master.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Usuario.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuario.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoadController.cs" />
+    <Compile Include="Core\Aspects\ControllerAttribute.cs" />
+    <Compile Include="Core\Aspects\TipoAccionControlador.cs" />
+    <Compile Include="Core\FilterAttributes\ActionAttribute.cs" />
+    <Compile Include="Core\BaseController.cs" />
+    <Compile Include="Core\Extensiones\CustomValidationExtensions.cs" />
+    <Compile Include="Core\Extensiones\HtmlHelperExtensions.cs" />
+    <Compile Include="Core\Extensiones\LambdaExtensions.cs" />
+    <Compile Include="Core\Helpers\RawPrinterHelper.cs" />
+    <Compile Include="Core\Helpers\TreeViewHtmlHelper.cs" />
+    <Compile Include="Core\Utils.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\FormularioModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Alertas\Alertas.css" />
+    <Content Include="Content\Alertas\AnimationBell.css" />
+    <Content Include="Content\CRM\account.css" />
+    <Content Include="Content\CRM\AccountTabPanel.css" />
+    <Content Include="Content\CRM\BlockUI.css" />
+    <Content Include="Content\CRM\controls.css" />
+    <Content Include="Content\CRM\css\controls.css" />
+    <Content Include="Content\CRM\css\site.css" />
+    <Content Include="Content\CRM\forms.css" />
+    <Content Include="Content\CRM\images\16_cancel.png" />
+    <Content Include="Content\CRM\images\16_delete.gif" />
+    <Content Include="Content\CRM\images\16_edit.gif" />
+    <Content Include="Content\CRM\images\16_info.gif" />
+    <Content Include="Content\CRM\images\16_list.gif" />
+    <Content Include="Content\CRM\images\16_new.gif" />
+    <Content Include="Content\CRM\images\16_print.gif" />
+    <Content Include="Content\CRM\images\16_save.gif" />
+    <Content Include="Content\CRM\images\16_toExcel.gif" />
+    <Content Include="Content\CRM\images\appmenu_back.gif" />
+    <Content Include="Content\CRM\images\app_titlebar.gif" />
+    <Content Include="Content\CRM\images\app_titlebar_hover.gif" />
+    <Content Include="Content\CRM\images\areaButton.png" />
+    <Content Include="Content\CRM\images\bgheadercolor.png" />
+    <Content Include="Content\CRM\images\bgListaActive.png" />
+    <Content Include="Content\CRM\images\bgListaInactive.png" />
+    <Content Include="Content\CRM\images\btn_rest.gif" />
+    <Content Include="Content\CRM\images\buscar.png" />
+    <Content Include="Content\CRM\images\cancel.png" />
+    <Content Include="Content\CRM\images\control_imgs_1.gif" />
+    <Content Include="Content\CRM\images\editar.png" />
+    <Content Include="Content\CRM\images\escalamiento.png" />
+    <Content Include="Content\CRM\images\favicon.ico" />
+    <Content Include="Content\CRM\images\FondoDocumento.png" />
+    <Content Include="Content\CRM\images\footstatusbar.gif" />
+    <Content Include="Content\CRM\images\form_toolbar_back.gif" />
+    <Content Include="Content\CRM\images\go-lt-off.gif" />
+    <Content Include="Content\CRM\images\go-lt-on.gif" />
+    <Content Include="Content\CRM\images\go-rt-off.gif" />
+    <Content Include="Content\CRM\images\go-rt-on.gif" />
+    <Content Include="Content\CRM\images\gridtoolbar_back.gif" />
+    <Content Include="Content\CRM\images\guardar.png" />
+    <Content Include="Content\CRM\images\headerbg.png" />
+    <Content Include="Content\CRM\images\highlightedAreaButton.png" />
+    <Content Include="Content\CRM\images\icons-hover.png" />
+    <Content Include="Content\CRM\images\icons.png" />
+    <Content Include="Content\CRM\images\ico_lrg_2010.gif" />
+    <Content Include="Content\CRM\images\imprimir.png" />
+    <Content Include="Content\CRM\images\label.png" />
+    <Content Include="Content\CRM\images\limpiar.png" />
+    <Content Include="Content\CRM\images\loading.gif" />
+    <Content Include="Content\CRM\images\nav_header_back.gif" />
+    <Content Include="Content\CRM\images\ordenes32.png" />
+    <Content Include="Content\CRM\images\pagebackground.gif" />
+    <Content Include="Content\CRM\images\pin-dn-off.gif" />
+    <Content Include="Content\CRM\images\pin-dn-on.gif" />
+    <Content Include="Content\CRM\images\pin-up-off.gif" />
+    <Content Include="Content\CRM\images\pin-up-on.gif" />
+    <Content Include="Content\CRM\images\registro.png" />
+    <Content Include="Content\CRM\images\resizable-e.gif" />
+    <Content Include="Content\CRM\images\resizable-n.gif" />
+    <Content Include="Content\CRM\images\resizable-s.gif" />
+    <Content Include="Content\CRM\images\resizable-w.gif" />
+    <Content Include="Content\CRM\images\rowHover.png" />
+    <Content Include="Content\CRM\images\selectedAreaButton.png" />
+    <Content Include="Content\CRM\images\tab_off_back.gif" />
+    <Content Include="Content\CRM\images\titlebar.png" />
+    <Content Include="Content\CRM\images\toggle-collapse-blue.png" />
+    <Content Include="Content\CRM\images\toggle-dn.gif" />
+    <Content Include="Content\CRM\images\toggle-expand-blue.png" />
+    <Content Include="Content\CRM\images\toggle-up.gif" />
+    <Content Include="Content\CRM\images\toolbar_hover.gif" />
+    <Content Include="Content\CRM\images\VistaPrevia.png" />
+    <Content Include="Content\CRM\images\wizard_header.jpg" />
+    <Content Include="Content\CRM\images\wizard_headerback.gif" />
+    <Content Include="Content\CRM\images\workplaceBackground.png" />
+    <Content Include="Content\CRM\notificaciones.css" />
+    <Content Include="Content\CRM\PageError.css" />
+    <Content Include="Content\CRM\reset.css" />
+    <Content Include="Content\CRM\TabPanel.css" />
+    <Content Include="Content\CRM\typography.css" />
+    <Content Include="Content\CRM\Validation.css" />
+    <Content Include="Content\images\account\bg.png" />
+    <Content Include="Content\images\account\block-header-bg.png" />
+    <Content Include="Content\images\account\button-element-bg.png" />
+    <Content Include="Content\images\account\button-element-hover-bg.png" />
+    <Content Include="Content\images\account\chevron-expand-off.png" />
+    <Content Include="Content\images\account\chevron-expand.png" />
+    <Content Include="Content\images\account\chevron-off.png" />
+    <Content Include="Content\images\account\chevron.png" />
+    <Content Include="Content\images\account\content-dark-bg.png" />
+    <Content Include="Content\images\account\Info.png" />
+    <Content Include="Content\images\account\input-bg.png" />
+    <Content Include="Content\images\account\legend-bg.png" />
+    <Content Include="Content\images\account\title-bg.png" />
+    <Content Include="Content\images\account\white20.png" />
+    <Content Include="Content\images\D1E6FC_40x100_textures_10_dots_medium_90.png" />
+    <Content Include="Content\images\dp\btn-arrow-light.gif" />
+    <Content Include="Content\images\dp\cal.gif" />
+    <Content Include="Content\images\dp\glass-bg.gif" />
+    <Content Include="Content\images\dp\hd-sprite.gif" />
+    <Content Include="Content\images\dp\left-btn.gif" />
+    <Content Include="Content\images\dp\right-btn.gif" />
+    <Content Include="Content\images\dp\tool-sprites.gif" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\forms\but_left_blue.gif" />
+    <Content Include="Content\images\forms\but_left_grey.gif" />
+    <Content Include="Content\images\forms\but_right_blue.gif" />
+    <Content Include="Content\images\forms\but_right_grey.gif" />
+    <Content Include="Content\images\forms\calendar-month.png" />
+    <Content Include="Content\images\forms\legend-bg.png" />
+    <Content Include="Content\images\forms\tabs-bg.png" />
+    <Content Include="Content\images\forms\white20.png" />
+    <Content Include="Content\images\go-lt-off.gif" />
+    <Content Include="Content\images\go-lt-on.gif" />
+    <Content Include="Content\images\go-rt-off.gif" />
+    <Content Include="Content\images\go-rt-on.gif" />
+    <Content Include="Content\images\Lenguaje\en.gif" />
+    <Content Include="Content\images\Lenguaje\es.gif" />
+    <Content Include="Content\images\notificaciones\alert-ico.png" />
+    <Content Include="Content\images\notificaciones\error-ico.png" />
+    <Content Include="Content\images\notificaciones\info-ico.png" />
+    <Content Include="Content\images\notificaciones\info-loader.gif" />
+    <Content Include="Content\images\notificaciones\information-ocre.png" />
+    <Content Include="Content\images\notificaciones\message-icons.png" />
+    <Content Include="Content\images\notificaciones\success-ico.png" />
+    <Content Include="Content\images\notificaciones\warning_bt_fechar.gif" />
+    <Content Include="Content\images\notificaciones\warning_icons.gif" />
+    <Content Include="Content\images\pin-dn-off.gif" />
+    <Content Include="Content\images\pin-dn-on.gif" />
+    <Content Include="Content\images\pin-up-off.gif" />
+    <Content Include="Content\images\pin-up-on.gif" />
+    <Content Include="Content\images\resizable-e.gif" />
+    <Content Include="Content\images\resizable-n.gif" />
+    <Content Include="Content\images\resizable-s.gif" />
+    <Content Include="Content\images\resizable-w.gif" />
+    <Content Include="Content\images\TabPanel\scroll-left.gif" />
+    <Content Include="Content\images\TabPanel\scroll-right.gif" />
+    <Content Include="Content\images\TabPanel\tab-bg-active.gif" />
+    <Content Include="Content\images\TabPanel\tab-bg.gif" />
+    <Content Include="Content\images\TabPanel\tab-close.gif" />
+    <Content Include="Content\images\TabPanel\tab-content-bg.gif" />
+    <Content Include="Content\images\toggle-dn.gif" />
+    <Content Include="Content\images\toggle-up.gif" />
+    <Content Include="Content\jqgrid\css\ui.jqgrid.css" />
+    <Content Include="Content\jqgrid\js\Changes.txt" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-cat.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-da.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-de.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-el.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-en.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-es.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-he.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-id.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-is.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-it.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-mne.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-no.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-th.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-ua.js" />
+    <Content Include="Content\jqgrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="Content\jqgrid\js\install.txt" />
+    <Content Include="Content\jqgrid\js\jquery.jqGrid.min.js" />
+    <Content Include="Content\jqgrid\js\jquery.jqGrid.src.js" />
+    <Content Include="Content\Notificaciones\jquery.jgrowl.css" />
+    <Content Include="Content\Sencha\ext-theme-classic-all-debug.css" />
+    <Content Include="Content\Sencha\images\box\corners-blue.gif" />
+    <Content Include="Content\Sencha\images\box\corners.gif" />
+    <Content Include="Content\Sencha\images\box\l-blue.gif" />
+    <Content Include="Content\Sencha\images\box\l.gif" />
+    <Content Include="Content\Sencha\images\box\r-blue.gif" />
+    <Content Include="Content\Sencha\images\box\r.gif" />
+    <Content Include="Content\Sencha\images\box\tb-blue.gif" />
+    <Content Include="Content\Sencha\images\box\tb.gif" />
+    <Content Include="Content\Sencha\images\btn-group\btn-group-default-framed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn-group\btn-group-default-framed-notitle-corners.gif" />
+    <Content Include="Content\Sencha\images\btn-group\btn-group-default-framed-notitle-sides.gif" />
+    <Content Include="Content\Sencha\images\btn-group\btn-group-default-framed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-disabled-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-disabled-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-large-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-disabled-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-disabled-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-medium-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-disabled-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-disabled-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-small-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-large-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-medium-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-focus-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-focus-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-focus-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-focus-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-over-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-over-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-over-sides.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-pressed-bg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-pressed-corners.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-pressed-fbg.gif" />
+    <Content Include="Content\Sencha\images\btn\btn-default-toolbar-small-pressed-sides.gif" />
+    <Content Include="Content\Sencha\images\button\arrow.gif" />
+    <Content Include="Content\Sencha\images\button\btn.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-b-noline.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-b.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-bo.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-light.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-noline.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow-o.gif" />
+    <Content Include="Content\Sencha\images\button\s-arrow.gif" />
+    <Content Include="Content\Sencha\images\datepicker\datepicker-footer-bg.gif" />
+    <Content Include="Content\Sencha\images\datepicker\datepicker-header-bg.gif" />
+    <Content Include="Content\Sencha\images\dd\drop-add.gif" />
+    <Content Include="Content\Sencha\images\dd\drop-no.gif" />
+    <Content Include="Content\Sencha\images\dd\drop-yes.gif" />
+    <Content Include="Content\Sencha\images\editor\tb-sprite.gif" />
+    <Content Include="Content\Sencha\images\form\checkbox.gif" />
+    <Content Include="Content\Sencha\images\form\clear-trigger.gif" />
+    <Content Include="Content\Sencha\images\form\date-trigger.gif" />
+    <Content Include="Content\Sencha\images\form\exclamation.gif" />
+    <Content Include="Content\Sencha\images\form\radio.gif" />
+    <Content Include="Content\Sencha\images\form\search-trigger.gif" />
+    <Content Include="Content\Sencha\images\form\spinner-small.gif" />
+    <Content Include="Content\Sencha\images\form\spinner.gif" />
+    <Content Include="Content\Sencha\images\form\text-bg.gif" />
+    <Content Include="Content\Sencha\images\form\trigger.gif" />
+    <Content Include="Content\Sencha\images\grid-row-editor-buttons\grid-row-editor-buttons-default-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\grid-row-editor-buttons\grid-row-editor-buttons-default-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\grid-row-editor-buttons\grid-row-editor-buttons-default-top-corners.gif" />
+    <Content Include="Content\Sencha\images\grid-row-editor-buttons\grid-row-editor-buttons-default-top-sides.gif" />
+    <Content Include="Content\Sencha\images\grid\cell-special-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\cell-special-selected-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\col-move-bottom.gif" />
+    <Content Include="Content\Sencha\images\grid\col-move-top.gif" />
+    <Content Include="Content\Sencha\images\grid\column-header-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\column-header-over-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\columns.gif" />
+    <Content Include="Content\Sencha\images\grid\dd-insert-arrow-left.gif" />
+    <Content Include="Content\Sencha\images\grid\dd-insert-arrow-left.png" />
+    <Content Include="Content\Sencha\images\grid\dd-insert-arrow-right.gif" />
+    <Content Include="Content\Sencha\images\grid\dd-insert-arrow-right.png" />
+    <Content Include="Content\Sencha\images\grid\dirty.gif" />
+    <Content Include="Content\Sencha\images\grid\drop-no.gif" />
+    <Content Include="Content\Sencha\images\grid\drop-yes.gif" />
+    <Content Include="Content\Sencha\images\grid\footer-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\grid3-hd-btn.gif" />
+    <Content Include="Content\Sencha\images\grid\group-by.gif" />
+    <Content Include="Content\Sencha\images\grid\group-collapse.gif" />
+    <Content Include="Content\Sencha\images\grid\group-expand.gif" />
+    <Content Include="Content\Sencha\images\grid\hmenu-asc.gif" />
+    <Content Include="Content\Sencha\images\grid\hmenu-desc.gif" />
+    <Content Include="Content\Sencha\images\grid\hmenu-lock.gif" />
+    <Content Include="Content\Sencha\images\grid\hmenu-unlock.gif" />
+    <Content Include="Content\Sencha\images\grid\invalid_line.gif" />
+    <Content Include="Content\Sencha\images\grid\loading.gif" />
+    <Content Include="Content\Sencha\images\grid\page-first-disabled.gif" />
+    <Content Include="Content\Sencha\images\grid\page-first.gif" />
+    <Content Include="Content\Sencha\images\grid\page-last-disabled.gif" />
+    <Content Include="Content\Sencha\images\grid\page-last.gif" />
+    <Content Include="Content\Sencha\images\grid\page-next-disabled.gif" />
+    <Content Include="Content\Sencha\images\grid\page-next.gif" />
+    <Content Include="Content\Sencha\images\grid\page-prev-disabled.gif" />
+    <Content Include="Content\Sencha\images\grid\page-prev.gif" />
+    <Content Include="Content\Sencha\images\grid\property-cell-bg.gif" />
+    <Content Include="Content\Sencha\images\grid\refresh-disabled.gif" />
+    <Content Include="Content\Sencha\images\grid\refresh.gif" />
+    <Content Include="Content\Sencha\images\grid\sort_asc.gif" />
+    <Content Include="Content\Sencha\images\grid\sort_desc.gif" />
+    <Content Include="Content\Sencha\images\layout\mini-bottom.gif" />
+    <Content Include="Content\Sencha\images\layout\mini-left.gif" />
+    <Content Include="Content\Sencha\images\layout\mini-right.gif" />
+    <Content Include="Content\Sencha\images\layout\mini-top.gif" />
+    <Content Include="Content\Sencha\images\menu\checked.gif" />
+    <Content Include="Content\Sencha\images\menu\group-checked.gif" />
+    <Content Include="Content\Sencha\images\menu\menu-item-active-bg.gif" />
+    <Content Include="Content\Sencha\images\menu\menu-parent.gif" />
+    <Content Include="Content\Sencha\images\menu\scroll-bottom.gif" />
+    <Content Include="Content\Sencha\images\menu\scroll-top.gif" />
+    <Content Include="Content\Sencha\images\menu\unchecked.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-bottom-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-bottom-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-bottom-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-bottom-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-bottom-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-left-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-left-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-left-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-left-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-right-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-right-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-right-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-right-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-top-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-top-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-top-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-collapsed-top-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-left-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-left-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-left-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-left-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-right-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-right-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-right-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-right-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-top-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-top-corners.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-top-fbg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-framed-top-sides.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-left-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-right-bg.gif" />
+    <Content Include="Content\Sencha\images\panel-header\panel-header-default-top-bg.gif" />
+    <Content Include="Content\Sencha\images\panel\panel-default-framed-corners.gif" />
+    <Content Include="Content\Sencha\images\panel\panel-default-framed-sides.gif" />
+    <Content Include="Content\Sencha\images\progress\progress-default-bg.gif" />
+    <Content Include="Content\Sencha\images\shared\blue-loading.gif" />
+    <Content Include="Content\Sencha\images\shared\glass-bg.gif" />
+    <Content Include="Content\Sencha\images\shared\hd-sprite.gif" />
+    <Content Include="Content\Sencha\images\shared\icon-error.gif" />
+    <Content Include="Content\Sencha\images\shared\icon-info.gif" />
+    <Content Include="Content\Sencha\images\shared\icon-question.gif" />
+    <Content Include="Content\Sencha\images\shared\icon-warning.gif" />
+    <Content Include="Content\Sencha\images\shared\left-btn.gif" />
+    <Content Include="Content\Sencha\images\shared\right-btn.gif" />
+    <Content Include="Content\Sencha\images\shared\warning.gif" />
+    <Content Include="Content\Sencha\images\sizer\e-handle.gif" />
+    <Content Include="Content\Sencha\images\sizer\ne-handle.gif" />
+    <Content Include="Content\Sencha\images\sizer\nw-handle.gif" />
+    <Content Include="Content\Sencha\images\sizer\s-handle.gif" />
+    <Content Include="Content\Sencha\images\sizer\se-handle.gif" />
+    <Content Include="Content\Sencha\images\sizer\sw-handle.gif" />
+    <Content Include="Content\Sencha\images\slider\slider-bg.gif" />
+    <Content Include="Content\Sencha\images\slider\slider-bg.png" />
+    <Content Include="Content\Sencha\images\slider\slider-thumb.gif" />
+    <Content Include="Content\Sencha\images\slider\slider-thumb.png" />
+    <Content Include="Content\Sencha\images\slider\slider-v-bg.gif" />
+    <Content Include="Content\Sencha\images\slider\slider-v-bg.png" />
+    <Content Include="Content\Sencha\images\slider\slider-v-thumb.gif" />
+    <Content Include="Content\Sencha\images\slider\slider-v-thumb.png" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-bottom-left.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-bottom-right.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-left-bottom.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-left-top.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-right-bottom.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-right-top.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-top-left.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\default-scroll-top-right.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\tab-bar-default-bottom-bg.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\tab-bar-default-left-bg.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\tab-bar-default-right-bg.gif" />
+    <Content Include="Content\Sencha\images\tab-bar\tab-bar-default-top-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-active-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-active-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-active-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-active-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-disabled-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-disabled-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-over-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-over-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-over-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-close.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-active-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-active-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-active-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-active-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-disabled-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-disabled-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-disabled-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-disabled-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-over-bg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-over-corners.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-over-fbg.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-over-sides.gif" />
+    <Content Include="Content\Sencha\images\tab\tab-default-top-sides.gif" />
+    <Content Include="Content\Sencha\images\tip\tip-default-corners.gif" />
+    <Content Include="Content\Sencha\images\tip\tip-default-sides.gif" />
+    <Content Include="Content\Sencha\images\tip\tip-form-invalid-corners.gif" />
+    <Content Include="Content\Sencha\images\tip\tip-form-invalid-sides.gif" />
+    <Content Include="Content\Sencha\images\toolbar\more.gif" />
+    <Content Include="Content\Sencha\images\toolbar\scroll-left.gif" />
+    <Content Include="Content\Sencha\images\toolbar\scroll-right.gif" />
+    <Content Include="Content\Sencha\images\toolbar\toolbar-default-bg.gif" />
+    <Content Include="Content\Sencha\images\tools\tool-sprites.gif" />
+    <Content Include="Content\Sencha\images\tree\arrows.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-above.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-add.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-append.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-below.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-between.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-no.gif" />
+    <Content Include="Content\Sencha\images\tree\drop-yes.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-end-minus.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-end-plus.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-end.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-line.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-minus-nl.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-minus.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-plus-nl.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow-plus.gif" />
+    <Content Include="Content\Sencha\images\tree\elbow.gif" />
+    <Content Include="Content\Sencha\images\tree\folder-open.gif" />
+    <Content Include="Content\Sencha\images\tree\folder.gif" />
+    <Content Include="Content\Sencha\images\tree\leaf.gif" />
+    <Content Include="Content\Sencha\images\tree\loading.gif" />
+    <Content Include="Content\Sencha\images\tree\s.gif" />
+    <Content Include="Content\Sencha\images\util\splitter\mini-bottom.gif" />
+    <Content Include="Content\Sencha\images\util\splitter\mini-left.gif" />
+    <Content Include="Content\Sencha\images\util\splitter\mini-right.gif" />
+    <Content Include="Content\Sencha\images\util\splitter\mini-top.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-bottom-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-bottom-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-left-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-left-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-right-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-right-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-top-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-collapsed-top-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-left-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-left-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-right-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-right-sides.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-top-corners.gif" />
+    <Content Include="Content\Sencha\images\window-header\window-header-default-top-sides.gif" />
+    <Content Include="Content\Sencha\images\window\window-default-corners.gif" />
+    <Content Include="Content\Sencha\images\window\window-default-sides.gif" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Templates\ContactoEmail.htm" />
+    <Content Include="Content\Templates\ContactoEmailEN.htm" />
+    <Content Include="Content\Templates\ContactoEmailES.htm" />
+    <Content Include="Content\Templates\ContactoEmailPT.htm" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\cupertino\images\animated-overlay.gif" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\cupertino\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\themes\cupertino\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\themes\jquery.multiselect.css" />
+    <Content Include="Content\themes\jquery.multiselect.filter.css" />
+    <Content Include="Content\themes\new_cupertino\images\animated-overlay.gif" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-bg_highlight-soft_90_eeeeee_1x100.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\themes\new_cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\new_cupertino\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\themes\new_cupertino\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\themes\redmond\images\animated-overlay.gif" />
+    <Content Include="Content\themes\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\themes\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\themes\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\themes\redmond\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\themes\redmond\Log.css" />
+    <Content Include="Content\themes\redmond\ui.daterangepicker.css" />
+    <Content Include="Content\themes\vogue_css\images\animated-overlay.gif" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_diagonals-thick_20_eff5e2_40x40.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_flat_100_abd528_40x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_flat_100_cfe69f_40x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_100_ffffff_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_65_abd528_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_65_bfee62_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_65_e9fcc4_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_gloss-wave_20_daee95_500x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_gloss-wave_20_e1f992_500x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-hard_18_f9b4b4_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-hard_20_c8e562_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_a5cc1b_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_bee054_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_c2e259_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_cefc6a_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_daf281_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_e9fcc4_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_100_FFF_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-bg_inset-soft_18_ff0000_1x100.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_1a7c1b_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_4c6017_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_596a2b_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_7c7c1a_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_ff0000_256x240.png" />
+    <Content Include="Content\themes\vogue_css\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\themes\vogue_css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\themes\vogue_css\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\treeView\apple\bg.jpg" />
+    <Content Include="Content\treeView\apple\d.png" />
+    <Content Include="Content\treeView\apple\style.css" />
+    <Content Include="Content\treeView\apple\throbber.gif" />
+    <Content Include="Content\treeView\classic\d.gif" />
+    <Content Include="Content\treeView\classic\d.png" />
+    <Content Include="Content\treeView\classic\style.css" />
+    <Content Include="Content\treeView\classic\throbber.gif" />
+    <Content Include="Content\treeView\default-rtl\d.gif" />
+    <Content Include="Content\treeView\default-rtl\d.png" />
+    <Content Include="Content\treeView\default-rtl\dots.gif" />
+    <Content Include="Content\treeView\default-rtl\style.css" />
+    <Content Include="Content\treeView\default-rtl\throbber.gif" />
+    <Content Include="Content\treeView\default\d.gif" />
+    <Content Include="Content\treeView\default\d.png" />
+    <Content Include="Content\treeView\default\selectedAreaButton.png" />
+    <Content Include="Content\treeView\default\style.css" />
+    <Content Include="Content\treeView\default\throbber.gif" />
+    <Content Include="Content\treeView\default\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\birthday-personal.png" />
+    <Content Include="Images\birthday.png" />
+    <Content Include="Images\campana.PNG" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\eventAdd.png" />
+    <Content Include="Images\icono-lleno.PNG" />
+    <Content Include="Images\icono-semilleno.PNG" />
+    <Content Include="Images\logo-vogue.png" />
+    <Content Include="Images\settings.png" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\dibu-usuario.PNG" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Scripts\autocomplete.js" />
+    <Content Include="Scripts\CustomValidations\JqueryCustomValidation.js" />
+    <Content Include="Scripts\DialogExtender\customdialogextend.js" />
+    <Content Include="Scripts\DialogExtender\jquery.dialogextend.js" />
+    <Content Include="Scripts\ext-all-debug.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.css" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\jquery.alphanumeric.pack.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.jgrowl.min.js" />
+    <Content Include="Scripts\jquery.jstree.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.min.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.printElement.min.js" />
+    <Content Include="Scripts\jquery.treeview.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.jgrowl.map" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.min.js.map">
+      <DependentUpon>fullcalendar.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js.map">
+      <DependentUpon>jquery-ui-1.10.4.custom.js</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.realTime.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JSLINQ.js" />
+    <Content Include="Scripts\LoaderManager.js" />
+    <Content Include="Scripts\LoadingAnimator\jquery.percentageloader-0.1.css" />
+    <Content Include="Scripts\LoadingAnimator\jquery.percentageloader-0.1.js" />
+    <Content Include="Scripts\Localization\jquery.validate.es.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MomentJs\moment-with-langs.js" />
+    <Content Include="Scripts\Qtip2\estilo-form.css" />
+    <Content Include="Scripts\Qtip2\jquery.qtip.css" />
+    <Content Include="Scripts\Qtip2\jquery.qtip.js" />
+    <Content Include="Scripts\VOGUE.js" />
+    <Content Include="Scripts\tabscrolling\Fader.js" />
+    <Content Include="Scripts\tabscrolling\Math.uuid.js" />
+    <Content Include="Scripts\tabscrolling\TabPanel.js" />
+    <Content Include="Scripts\TimePicker\jquery-ui-timepicker-addon.css" />
+    <Content Include="Scripts\TimePicker\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\ui.datepicker-es.js" />
+    <Content Include="Scripts\ui.datepicker-pt.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangeSuccess.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\LoginPanel.cshtml" />
+    <Content Include="Views\Account\ResetPanel.cshtml" />
+    <Content Include="Views\Load\Index.cshtml" />
+    <Content Include="Views\Load\NotAuthorized.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CheckBoxList.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutCRM.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Scripts\jquery.validate.min.js.map" />
+    <Content Include="Views\Shared\_LayoutFrameContent.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administracion\Controllers\" />
+    <Folder Include="Areas\Administracion\Models\" />
+    <Folder Include="Content\Sencha\images\boundlist\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Administracion\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application Layer\OSSE.Converter\OSSE.Converter.csproj">
+      <Project>{72ef12fa-de5c-4864-bd46-e30f06a3296a}</Project>
+      <Name>OSSE.Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Application Layer\OSSE.DTO\OSSE.DTO.csproj">
+      <Project>{f2dbf062-aa20-4db9-ad01-71ce2a74119d}</Project>
+      <Name>OSSE.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common Layer\OSSE.Common\OSSE.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>OSSE.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common Layer\OSSE.Email\OSSE.Email.csproj">
+      <Project>{3ee524c4-c512-468b-930c-848740897c68}</Project>
+      <Name>OSSE.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain Layer\OSSE.Domain\OSSE.Domain.csproj">
+      <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
+      <Name>OSSE.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Persistence Layer\OSSE.Persistence\OSSE.Persistence.csproj">
+      <Project>{1e63dbb3-65e5-49ff-b733-1a2cf7f4d83c}</Project>
+      <Name>OSSE.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Layer\OSSE.BusinessLogic\OSSE.BusinessLogic.csproj">
+      <Project>{20f8c763-7c9a-4bf0-8bef-9031b15d2c33}</Project>
+      <Name>OSSE.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Layer\OSSE.Service\OSSE.Service.csproj">
+      <Project>{c12957ea-5559-424f-95bf-2dd8c7fcc2cd}</Project>
+      <Name>OSSE.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\OSSE.Aspects\OSSE.Aspects.csproj">
+      <Project>{07c6face-af04-4e42-a202-ca600280ee34}</Project>
+      <Name>OSSE.Aspects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\OSSE.IoC\OSSE.IoC.csproj">
+      <Project>{2b775dd5-1e6c-402c-8596-64499e37fbd0}</Project>
+      <Name>OSSE.IoC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Formulario.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Formulario.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Usuario.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Usuario.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Master.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Master.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6069/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Habilite la restauración del paquete NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

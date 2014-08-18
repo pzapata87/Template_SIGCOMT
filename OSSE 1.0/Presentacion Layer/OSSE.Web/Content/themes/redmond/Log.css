@@ -1,0 +1,55 @@
+﻿/* Interaction Cues
+----------------------------------*/
+.Notificacion-state-success {border: 1px solid #4F8A10; background: #DFF2BF url(images/FondoProcesoExitoso.png) 50% 50% repeat-x; color: #4F8A10; }
+.Notificacion-state-success a { color: #4F8A10; }
+.Notificacion-state-success p { margin:1px 0 4px 0; line-height:1em; font-size:9px;}
+.Notificacion-state-success-text { color: #4F8A10;}
+.Notificacion-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a;}
+.Notificacion-state-error a { color: #cd0a0a; }
+.Notificacion-state-error p { margin:1px 0 4px 0; line-height:1em; font-size:9px;}
+.Notificacion-state-error-text { color: #cd0a0a; }
+.Notificacion-state-cancel {border: 1px solid #1871BB; background: #C1E3F4 url(images/FondoProcesoCancelado.png) 50% 50% repeat-x; color: #1871BB; }
+.Notificacion-state-cancel a { color: #1871BB; }
+.Notificacion-state-cancel p { margin:1px 0 4px 0; line-height:1em; font-size:9px;}
+.Notificacion-state-cancel-text { color: #1871BB; }
+.Notificacion-state-iniciar {border: 1px solid #000000; background: #FFF9D7 url(images/FondoProcesoIniciado.png) 50% 50% repeat-x; color: #000000; }
+.Notificacion-state-iniciar a { color: #000000; }
+.Notificacion-state-iniciar p { margin:1px 0 4px 0; line-height:1em; font-size:9px;}
+.Notificacion-state-iniciar-text { color: #000000; }
+.Notificacion-state-solicitar {border: 1px solid #000000; background: #FFF9D7 url(images/FondoProcesoIniciado.png) 50% 50% repeat-x; color: #000000; }
+.Notificacion-state-solicitar a { color: #000000; }
+.Notificacion-state-solicitar p { margin:1px 0 4px 0;}
+.EventSolicitarToggle p { margin-bottom:0px; }
+.Notificacion-state-solicitar-text { color: #000000; }
+
+/* states and images */
+.Notificacion-state-success .Notificacion-icon, .Notificacion-state-success-text .Notificacion-icon {background-image: url(images/warning_icons.gif); }
+.Notificacion-state-error .Notificacion-icon, .Notificacion-state-error-text .Notificacion-icon {background-image: url(images/warning_icons.gif); }
+.Notificacion-state-cancel .Notificacion-icon, .Notificacion-state-cancel-text .Notificacion-icon {background-image: url(images/warning_icons.gif); }
+.Notificacion-state-iniciar .Notificacion-icon, .Notificacion-state-iniciar-text .Notificacion-icon {background-image: url(images/warning_icons.gif); }
+.Notificacion-state-solicitar .Notificacion-icon, .Notificacion-state-solicitar-text .Notificacion-icon {background-image: url(images/warning_icons.gif); }
+
+
+.Notificacion-icon { width: 22px; height: 21px; background-image: url(images/warning_icons.gif); }
+.Notificacion-icon-successProceso { background-position: 0 -63px; }
+.Notificacion-icon-errorProceso { background-position: 0 -42px; }
+.Notificacion-icon-cancelProceso { background-position: 0 -21px; }
+.Notificacion-icon-iniciarProceso { background-position: 0 0px; }
+.Notificacion-icon-solicitarProceso { background-position: 0 -84px; }
+
+
+.Notificacion-corner-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+a.NotificacionEjecutada { cursor: pointer;}
+.Notificacion-state-error Notificacion-corner-all {cursor: pointer;}
+
+.BotonParametrosPendientes
+{
+    border: 1px solid #c5dbec; 
+    background: #dfeffc url(images/ui-bg_glass_85_dfeffc_1x400.png) 50% 50% repeat-x; 
+    font-weight: bold; 
+    color: #2e6e9e;
+    padding: .4em 1em;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}

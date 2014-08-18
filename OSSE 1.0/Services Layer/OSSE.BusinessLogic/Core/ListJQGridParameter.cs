@@ -43,7 +43,7 @@ namespace OSSE.BusinessLogic.Core
         }
 
         public GridTable Grid { get; set; }
-        public Func<T, dynamic> SelecctionFormat { get; set; }
+        public Func<T, Row> SelecctionFormat { get; set; }
         
         public Func<Expression<Func<T, bool>>, int> CountMethod { get; set; }
         public Func<JQGridParameters<T>, IQueryable<T>> ListMethod { get; set; }

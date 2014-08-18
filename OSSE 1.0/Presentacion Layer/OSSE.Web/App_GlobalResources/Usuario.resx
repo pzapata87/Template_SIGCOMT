@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApellidoRequerido" xml:space="preserve">
+    <value>El campo Apellidos es requerido.</value>
+  </data>
+  <data name="Apellidos" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="ApellidoStringLength" xml:space="preserve">
+    <value>El campo Apellidos sólo permite un max. 50 caracteres.</value>
+  </data>
+  <data name="Bloqueado" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="Debil" xml:space="preserve">
+    <value>Débil</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="EmailCorrecto" xml:space="preserve">
+    <value>El campo Correo no es una dirección de correo electrónico válida.</value>
+  </data>
+  <data name="EmailDuplicado" xml:space="preserve">
+    <value>Correo ya existe. Ingrese otro Correo.</value>
+  </data>
+  <data name="EmailError" xml:space="preserve">
+    <value>Formato de Correo Incorrecto</value>
+  </data>
+  <data name="EmailRequerido" xml:space="preserve">
+    <value>El campo Correo es requerido.</value>
+  </data>
+  <data name="EmailStringLength" xml:space="preserve">
+    <value>El campo Correo sólo permite un max. 50 caracteres.</value>
+  </data>
+  <data name="Estado" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Fuerte" xml:space="preserve">
+    <value>Fuerte</value>
+  </data>
+  <data name="Idioma" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="IdiomalRequerido" xml:space="preserve">
+    <value>El campo Idioma es requerido.</value>
+  </data>
+  <data name="Mediana" xml:space="preserve">
+    <value>Mediana</value>
+  </data>
+  <data name="MuyDebil" xml:space="preserve">
+    <value>Muy Débil</value>
+  </data>
+  <data name="MuyFuerte" xml:space="preserve">
+    <value>Muy Fuerte</value>
+  </data>
+  <data name="NombreRequerido" xml:space="preserve">
+    <value>El campo Nombres es requerido.</value>
+  </data>
+  <data name="NombreRol" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Nombres" xml:space="preserve">
+    <value>Nombres</value>
+  </data>
+  <data name="NombreStringLength" xml:space="preserve">
+    <value>El campo Nombres sólo permite un max. 30 caracteres.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordMinimo6" xml:space="preserve">
+    <value>El campo Password debe ser mínimo de 6 caracteres.</value>
+  </data>
+  <data name="PasswordRequerido" xml:space="preserve">
+    <value>El campo Password es requerido.</value>
+  </data>
+  <data name="Rol" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="TelefonoStringLength50" xml:space="preserve">
+    <value>El campo Teléfono sólo permite un max. 50 caracteres.</value>
+  </data>
+  <data name="TituloBusqueda" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nombre de Usuario</value>
+  </data>
+  <data name="UsernameRequerido" xml:space="preserve">
+    <value>El campo Username es requerido.</value>
+  </data>
+  <data name="UsernameStringLength100" xml:space="preserve">
+    <value>El campo Username sólo permite un max. 100 caracteres.</value>
+  </data>
+  <data name="UsuarioDuplicado" xml:space="preserve">
+    <value>Username ya existe. Ingrese otro Username.</value>
+  </data>
+  <data name="UsuarioNoEliminado" xml:space="preserve">
+    <value>No se puede Eliminar Usuario</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar Password</value>
+  </data>
+  <data name="Coincidencia" xml:space="preserve">
+    <value>La nueva contraseña y la contraseña de confirmación no coinciden.</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmar la nueva contraseña</value>
+  </data>
+  <data name="ConfirmPasswordRequerido" xml:space="preserve">
+    <value>El campo Confirmar la Nueva Contraseña es obligatorio.</value>
+  </data>
+  <data name="ErrorContraseña" xml:space="preserve">
+    <value>La Contraseña actual es incorrecta.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="NewPasswordRequerido" xml:space="preserve">
+    <value>El campo Nueva Contraseña es obligatorio.</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="OldPasswordRequerido" xml:space="preserve">
+    <value>El campo Contraseña Actual es obligatorio.</value>
+  </data>
+  <data name="Panel" xml:space="preserve">
+    <value>Panel Usuario</value>
+  </data>
+  <data name="MensajeConfirmEliminar" xml:space="preserve">
+    <value>Desea eliminar el usuario</value>
+  </data>
+  <data name="TituloPopupEditarUsuario" xml:space="preserve">
+    <value>Editar Usuario</value>
+  </data>
+  <data name="TituloPopupNuevoUsuario" xml:space="preserve">
+    <value>Nuevo Usuario</value>
+  </data>
+  <data name="RolRequerido" xml:space="preserve">
+    <value>El campo Rol es obligatorio.</value>
+  </data>
+  <data name="UsuarioOCorreoDuplicado" xml:space="preserve">
+    <value>El usuario o el correo ya existen.</value>
+  </data>
+</root>

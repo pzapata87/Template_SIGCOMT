@@ -1,0 +1,162 @@
+2014-06-26 01:25:13,065 [7] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:13,518 [7] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:14,155 [27] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:19,119 [7] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:19,723 [41] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:20,006 [7] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:20,390 [38] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:20,703 [42] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:25:47,169 [41] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:26:03,419 [42] ERROR  [(null)] - Controlador:ReporteVenta  Action:GetReporteResumenVentas  Mensaje:The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+2014-06-26 01:26:53,068 [7] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:27:01,776 [37] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:27:32,277 [43] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: The cast to value type 'System.Decimal' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type. Trace:    en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetColumnValueWithErrorHandling[TColumn](Int32 ordinal)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en VOGUE.Business.Logic.ReporteBL`1.EjecutarQuerySql(String query) en d:\Proyectos\VOGUE\Source\Services Layer\VIPAC.Business.Logic\ReporteBL.cs:línea 23
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>z__OriginalMethod(String fechaInicio, String fechaFin) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\ReporteVentaController.cs:línea 195
+   en VOGUE.Web.Areas.Administracion.Controllers.ReporteVentaController.<ReporteResumenVentasData>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 55
+2014-06-26 01:36:22,219 [64] ERROR VOGUE.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: Referencia a objeto no establecida como instancia de un objeto. Trace:    en VOGUE.Converter.VentaConverter.GetDetalleVenta(Venta ventaDomain) en d:\Proyectos\VOGUE\Source\Application Layer\VIPAC.Converter\VentaConverter.cs:línea 222
+   en VOGUE.Web.Areas.Administracion.Controllers.VentaController.<VerDetalleVenta>z__OriginalMethod(Int32 id) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Areas\Administracion\Controllers\VentaController.cs:línea 184
+   en VOGUE.Web.Areas.Administracion.Controllers.VentaController.<VerDetalleVenta>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 34

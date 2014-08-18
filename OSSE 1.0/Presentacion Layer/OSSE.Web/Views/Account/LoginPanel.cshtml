@@ -1,0 +1,106 @@
+﻿@model OSSE.Web.Models.LogOnModel
+
+<div class="msgLogOn">
+    <div class="tips loading">
+        Por favor espere, procesando solicitud...
+    </div>
+    <div class="tips merror">
+    </div>
+</div>
+
+@using (Html.BeginForm("Login", "Account", new { area = "" }, FormMethod.Post, new { id = "frmLogOn" }))
+{
+    @Html.AntiForgeryToken()
+    ViewContext.FormContext.ValidationSummaryId = "valSumModel";
+    @Html.ValidationSummary("Errores Encontrados", new Dictionary<string, object> { { "id", "valSumModel" }, { "class", "merror" } })
+    <div>
+    <table class="tablelayout">
+        <tr>
+            <td style="text-align:right;">
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.UserName, new { placeholder="Usuario" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right;">
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.Password, new { placeholder="Contraseña" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right;">
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.RememberMe)
+                @Html.LabelFor(model => model.RememberMe)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.HiddenFor(model => model.ConexionLocal)
+            </td>
+            <td style="text-align:right; padding-right:55px;">
+                <input type="submit" class="buttonConstellation" id="btnLogOn" value="Iniciar sesión" />
+            </td>
+        </tr>
+   </table>  
+</div>
+}
+
+
+<script type="text/javascript">
+    var resetFrmLogOn = false;
+    $(document).ready(function () {
+        //$.validator.unobtrusive.parse('#frmLogOn');
+        $('#UserName').focus();
+        $(".msgLogOn .tips").css({ "border-top": "none" });
+        $(".msgLogOn .tips").hide();
+        $("#frmLogOn .merror").css({ "border-top": "none", "border-left": "none", "border-right": "none" });
+        
+        //MakeValidationSummaryRealTime("#frmLogOn");
+
+        $('#btnLogOn').click(function (e) {
+            if (resetFrmLogOn)
+                $(".msgLogOn .tips").hide();
+
+            if ($("#frmLogOn").validate().form()) {
+                InicializarMsgLogOn();
+                $.post($("#frmLogOn").attr("action"), $("#frmLogOn").serialize()).done(function(response) {
+                    if (response.Success)
+                        window.location = response.Data;
+                    else {
+                        resetFrmLogOn = true;
+
+                        $(".msgLogOn .loading").slideUp(200, function() {
+                            $(".msgLogOn .merror").html(response.Message);
+                            $(".msgLogOn .merror").slideDown(200).animate({ opacity: 1 }, 300);
+                        });
+                    }
+                }).fail(function() {
+
+                });
+            } else
+                $("#valSumModel").show();
+            e.preventDefault();
+        });
+    });
+
+    function InicializarMsgLogOn() {
+        $("#valSumModel").hide();
+        if ($(".msgLogOn .merror").is(":visible")) {
+            $(".msgLogOn .merror").slideUp(200, function () {
+                $(".msgLogOn .loading").slideDown(200).animate({ opacity: 1 }, 300);
+            });
+        }
+        else
+            $(".msgLogOn .loading").slideDown(200).animate({ opacity: 1 }, 300);
+    }
+</script>
+
+

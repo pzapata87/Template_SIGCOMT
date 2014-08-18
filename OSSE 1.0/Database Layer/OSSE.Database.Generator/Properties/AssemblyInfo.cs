@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambiar estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("OSSE.Database.Generator")]
+[assembly: AssemblyTitle("OSSE.DataBase.Generator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OSSE.Database.Generator")]
+[assembly: AssemblyProduct("OSSE.DataBase.Generator")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

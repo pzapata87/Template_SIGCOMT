@@ -1,0 +1,54 @@
+﻿label
+{
+    clear: both;
+    line-height: 24px;
+    margin-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+    width: 125px;
+}
+
+label.error
+{
+    clear: none;
+    color: Red;
+    padding-left: 5px;
+}
+
+span.error
+{
+    line-height: 24px;
+    clear: none;
+    color: Red;
+    padding-left: 5px;
+}
+
+.error input
+{
+    border: 1px solid red;
+}
+
+.errorlist
+{
+    margin: 0;
+    color: red;
+    margin-bottom: 10px;
+}
+
+#status
+{
+    margin-left: 3px;
+    font-size: 11px;
+}
+
+.availablecss
+{
+    background-color: #CEFFCE;
+    border: 1px solid green;
+}
+
+.notavailablecss
+{
+    background-color: #FFD9D9;
+    border: 1px solid red;
+}

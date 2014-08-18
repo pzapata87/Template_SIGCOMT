@@ -1,0 +1,272 @@
+﻿/* BUSQUEDA SIMPLE
+----------------------------------------------------------*/
+.busqueda ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.busqueda ul li{
+    float:left;   
+    height:20px; 
+    margin:0;
+    padding:0;
+}
+
+.busqueda ul li a{
+    width:21px;
+    height:20px;
+    display:inline-block;
+    margin:0;
+    padding:0;
+    .padding-top:0.05em;
+}
+/* AREA PANEL LISTA ITEMS
+----------------------------------------------------------*/
+h3.titlecrmGrid{
+    color:#15428b;  
+    padding:3px 8px; 
+    font-weight:600;
+}
+.crmGridCbx{
+    padding:2px 0; 
+    display:block; 
+}
+.panellist{
+    margin:0 5px !important;
+}
+.areabusquedasimple{
+    height:39px;
+}
+.busquedasimple{
+    margin:10px 0;    
+}
+.paneltoolbar{
+    height:24px;
+	width:100%;
+    overflow:hidden;
+    background:url(../images/gridtoolbar_back.gif) repeat-x; 
+    border-bottom:1px solid #6893cf;   
+}
+.paneltoolbar ul{
+    padding:0;
+    margin:0;
+    list-style:none;    
+}
+.paneltoolbar ul li{
+    float:left;
+	height:20px;
+	padding:1px 0 2px 0;
+	margin:0 0 0 3px;
+}
+.paneltoolbar ul li a{
+    color: #15428b;
+	padding:1px 3px;
+	height:20px;
+	display:inline-block; 
+	line-height:20px; 
+	.line-height:18px;
+}
+.paneltoolbar ul li a:hover{
+	border: 1px solid #FFB74B;
+	padding:0 2px;
+	background-image: url('../images/app_titlebar_hover.gif');
+	background-repeat: repeat-x;
+}
+.paneltoolbar ul li a img{
+    margin:2px 0 0 1px;
+}
+.paneltoolbar ul li a span{
+	vertical-align:top;
+	display:inline-block;
+	margin-right:2px;
+}
+.crmGrid{
+	border:1px solid #6893cf;
+	background-color:#fff;
+	font-size:11px;
+}
+.crmGrid_Content{
+	height:300px;
+	padding-bottom:1px;
+	overflow:auto;
+}
+/* GRID VIEW
+----------------------------------------------------------*/
+.gridviewMain a{
+    font-weight:bold !important;    
+}
+.gridviewMain{
+    width: 100%; 
+    font-size: 11px; 
+}
+.gridviewMain td{
+    border: 1px solid #a6c9e2;
+}
+.gridviewMain th{
+    padding:3px 5px; 
+    border: 1px solid #a6c9e2; 
+    font-weight:bold;
+}
+.gridheaderBG{   
+    border: #c5dbec 1px solid;
+    color: #2e6e9e;
+    background: url(../images/label.png) #dfeffc repeat-x 50% 50%;
+    line-height:1.5em; 
+}
+.gridheaderBG td{
+    padding:2px 5px !important; 
+}
+.gridrowSelectedBG{
+    background: #fbec88 url(../images/rowHover.png) repeat-x 50% 50%;
+}
+.gridrowSelectedBG td{
+    border:1px solid #fad42e; 
+    padding:2px 5px!important;
+    vertical-align:middle;
+    color:#000;  
+}
+.gridRowStyle{
+   border-left:#a6c9e2 1px solid;
+   border-bottom:#a6c9e2 1px solid;
+   color:#222;
+   vertical-align:baseline;
+   background:url(../images/registro.png) #fcfdfd repeat-x 50% bottom    
+}
+.gridRowStyle td{
+    vertical-align:middle;  
+    padding:2px 5px !important;  
+}
+.gridRowStyle:hover{
+    border: 1px solid #c5dbec; 
+    background: url(../images/label.png) #dfeffc repeat-x 50% 50%;
+    color:#2e6e9e;
+}
+.gridAlternateRowStyle:hover{
+    background: url(../images/label.png) #dfeffc repeat-x 50% 50%;
+}
+.pagination-left{
+    width:80px;
+}
+.pagination-right{
+    float:right;
+    width:80%;
+}
+.jqview{
+    width: 100%;
+    color: #222;
+}
+.jqview-titlebar{
+    color: #fff;
+    background: url(../images/titlebar.png) #5c9ccc repeat-x 50% 50%;
+    border-bottom: #4297d7 1px solid;
+    height: 25px;
+    position: relative;    
+}
+.jqview-title{
+    font-weight: bold;
+    position: absolute;
+    top: 6px;
+    left: 5px;
+}
+.gridpager{
+    border-left: #a6c9e2 1px solid;
+    border-right: #a6c9e2 1px solid;
+    border-bottom: #a6c9e2 1px solid;
+    color: #2e6e9e;
+    background: url(../images/label.png) #dfeffc repeat-x 50% 50%;
+    font-size:10px;
+}
+/*Estilo de la caja de texto*/
+.irapag{
+    font-size:x-small;
+    width:20px;
+}
+/*Estilo de ddl*/
+.LetraNormal{
+ 	color:#000;
+ 	font-size: 8pt;
+}
+/*Botones de navegacion*/
+.gridNavegacion{
+    width:86%;
+    text-align:right;
+}
+.gridComandos
+{
+    float:right;
+    text-align:right;
+    width:86px;
+}
+.cfirst{
+    background:url(../images/icons.png) -80px -160px;
+}    
+.cfirst:hover{
+    background:url(../images/icons-hover.png) -80px -160px;   
+    border:1px solid #5c9ccc;  
+}
+.cprevious{
+    background:url(../images/icons.png) -48px -160px; 
+}
+.cprevious:hover{
+    background:url(../images/icons-hover.png) -48px -160px;
+    border:1px solid #5c9ccc; 
+}     
+.cnext{
+    background:url(../images/icons.png) -32px -160px;
+}
+.cnext:hover{
+    background:url(../images/icons-hover.png) -32px -160px;
+    border:1px solid #5c9ccc; 
+}
+.clast{
+    background:url(../images/icons.png) -64px -160px;
+}       
+.clast:hover{
+    background:url(../images/icons-hover.png) -64px -160px;
+    border:1px solid #5c9ccc; 
+}
+.cactualizar{
+    background:url(../images/icons.png) -64px -80px;
+}
+.cactualizar:hover{
+    background:url(../images/icons-hover.png) -64px -80px;
+    border:1px solid #5c9ccc;  
+}
+.contentComando{
+    width:20px !important;    
+}
+.cselect{
+    background:url(../images/icons.png) -64px -144px;
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer;    
+    display:inline-block;
+}
+.cselect:hover{
+    background:url(../images/icons-hover.png) -64px -144px;
+}   
+.cdelete
+{
+    background:url(../images/icons.png) -96px -128px;
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer;    
+    display:inline-block;
+}
+      
+.cdelete:hover
+{
+    background:url(../images/icons-hover.png) -96px -128px;
+}
+.clast, .cnext, .cprevious, .cfirst, .cactualizar
+{
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer; 
+    border:1px solid #dfeffc;    
+    display:inline-block;
+}

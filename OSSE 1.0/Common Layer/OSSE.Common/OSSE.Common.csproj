@@ -39,6 +39,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comun.cs" />
     <Compile Include="Constantes\MasterConstantes.cs" />
     <Compile Include="Enum\TipoEstado.cs" />
     <Compile Include="Enum\TipoOrden.cs" />
@@ -55,9 +56,11 @@
     <Compile Include="JQGrid\RowGeneric.cs" />
     <Compile Include="JQGrid\Rule.cs" />
     <Compile Include="JsonResponse.cs" />
+    <Compile Include="JsTreeAttribute.cs" />
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="UtilsComun.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

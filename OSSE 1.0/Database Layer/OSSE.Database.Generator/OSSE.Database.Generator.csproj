@@ -6,8 +6,8 @@
     <ProjectGuid>{CD17081E-9E22-45E5-985A-335A79C1233A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OSSE.Database.Generator</RootNamespace>
-    <AssemblyName>OSSE.Database.Generator</AssemblyName>
+    <RootNamespace>OSSE.DataBase.Generator</RootNamespace>
+    <AssemblyName>OSSE.DataBase.Generator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,7 +56,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DatabaseGenerator.cs" />
+    <Compile Include="DataBaseGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common Layer\OSSE.Common\OSSE.Common.csproj">

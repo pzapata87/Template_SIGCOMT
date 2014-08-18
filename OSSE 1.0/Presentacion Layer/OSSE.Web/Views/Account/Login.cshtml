@@ -1,0 +1,62 @@
+﻿@model OSSE.Web.Models.AccountModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="loginContent">
+    <div class="logininfoblock">
+        <div class="block-border border-shadow">
+            <div class="block-content border-round dark-content" style="text-align:center;">
+                <b>VOGUE&reg;</b>
+            </div>
+        </div>
+    </div>
+    <div class="loginblock">
+        <div class="block-border border-shadow">
+            <div class="block-content border-round">
+                <h3 class="h1legend">
+                    Login</h3>
+                <div class="block-header">
+                    VOGUE&reg;
+                </div>
+                @Html.Partial("LoginPanel",Model.LogOn)
+                
+
+                <fieldset class="fieldset-with-legend gray-bg fieldsetCollapsable">
+                    <legend>
+                        <span class="commandfiledset up">Olvidó su Contraseña?</span>
+                    </legend>
+                    <div class="fieldset-content">
+                       @Html.Partial("ResetPanel", Model.Reset)
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".fieldsetCollapsable").css({ "border-top": "0" });
+            $(".fieldsetCollapsable").removeClass("gray-bg");
+            $(".fieldsetCollapsable").children(".fieldset-content").hide();
+            $(".fieldsetCollapsable > legend").css({ "margin-bottom": "20px" });
+            $(".commandfiledset").click(function () {
+                $(".fieldsetCollapsable").toggleClass("gray-bg");
+                $(".fieldsetCollapsable").children(".fieldset-content").toggle("fast");
+                if ($(this).hasClass("up")) {
+                    $(this).removeClass("up");
+                    $(this).addClass("down");
+                    $(".fieldsetCollapsable > legend").css({ "margin-bottom": "0px" });
+                }
+                else {
+                    $(this).addClass("up");
+                    $(this).removeClass("down");
+                    $(".fieldsetCollapsable > legend").css({ "margin-bottom": "20px" });
+                }
+            });
+        });
+    </script>
+</div>

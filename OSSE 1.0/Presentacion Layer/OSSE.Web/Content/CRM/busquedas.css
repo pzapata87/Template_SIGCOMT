@@ -1,0 +1,455 @@
+﻿/* RESET
+----------------------------------------------------------*/
+html, body, h1, h2, h3, h4, h5, h6, address, blockquote, dt, dd, dl, hr, form, input, textarea, label, 
+table, caption, tbody, tfoot, thead, tr, th, td, div, object, iframe, img, fieldset, legend, p
+{
+	margin: 0;
+	padding: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table{
+    border-collapse: separate;
+    border-spacing: 0;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+}
+
+a img{
+    border:none;    
+}
+
+/* DEFAULTS  #6893cf 1px solid
+----------------------------------------------------------*/
+HTML { 
+	SCROLLBAR-ARROW-COLOR: #567db1;
+	SCROLLBAR-FACE-COLOR: #ffffff; 
+	scrollbar-darkshadow-color: #6699cc;
+	scrollbar-base-color:#d6e8ff;
+	SCROLLBAR-HIGHLIGHT-COLOR: #d6e8ff; 
+	SCROLLBAR-SHADOW-COLOR:#d6e8ff; 
+	scrollbar-3dlight-color: #6699cc;
+}
+
+body{
+	font-size: .80em;
+	font-family: "Helvetica Neue", Tahoma, verdana, arial;
+	color: #232323;
+}
+a:link, a:visited{
+    color: #0085cf;
+    text-decoration:none;
+}
+a:hover{
+    color: #168ef4;
+}
+a:active{
+    color: #034af3;
+}
+p{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6{
+    font-size: 1.5em;
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+}
+h1{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+h2{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+h3{
+    font-size: 1.2em;
+}
+h4{
+    font-size: 1.1em;
+}
+h5, h6{
+    font-size: 1em;
+}
+
+/*	MISC
+----------------------------------------------------------*/
+.clear{
+	clear:both;
+	height:0px;
+}
+.invisible{
+    display:none;
+    height:0;
+    width:0;
+}
+.disable{
+	cursor:default !important;
+}
+.formInfo{
+	padding:0 1em;	
+}
+.formInfo dt{
+	float:left;
+	padding:3px 0px;
+	width:10em;
+	float:left;
+	display:inline-block;
+}
+.formInfo dd{
+	padding:3px 0;
+}
+.inputfield{
+	font-size: 8pt !important;
+	font-family: "Helvetica Neue", Tahoma, verdana, arial;
+	width: 100%;
+	line-height:18px;
+	padding:0 4px !important;
+    border: 1px solid #69c !important;
+    color:#000;
+}
+
+/* BUSQUEDA SIMPLE
+----------------------------------------------------------*/
+.busqueda ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.busqueda ul li{
+    float:left;   
+    height:20px; 
+    margin:0;
+    padding:0;
+}
+
+.busqueda ul li a{
+    width:21px;
+    height:20px;
+    display:inline-block;
+    margin:0;
+    padding:0;
+    .padding-top:0.05em;
+}
+
+/*	HTML
+----------------------------------------------------------*/
+body{
+	background-color: #fff !important;
+	background-image: none !important;
+}
+/*	MISC  
+----------------------------------------------------------*/
+.messagecrm{
+	padding:12px 8px 12px 28px;
+}
+.important{
+	background:url('images/16_info.gif') no-repeat 5px center;
+}
+/*	ELEMENTOS DE LAYOUT  
+----------------------------------------------------------*/
+.dialogheaderwrapper{
+	height:40px;
+	background:url('images/wizard_headerback.gif') repeat-x;
+	border-bottom:1px solid #6693cf;
+}
+.dialogheader{
+	height:40px;
+	background:url('images/wizard_header.jpg') no-repeat right top;
+	width:100%;
+}
+.dialogheader h3.titulodialogo{
+	color:#000;
+	padding:10px 8px 8px 8px;
+}
+.dialogmain{
+	background:#fff url('images/nav_header_back.gif') repeat-x 50% top;
+	text-align:justify;
+	padding:10px;
+	overflow:auto;
+	border-bottom:#a7cdf0 1px solid;
+}
+.dialogfooter{
+    position:fixed;
+	bottom:0px;
+    height:40px;
+    width:100%;
+	text-align:right;
+	background-color:#e3efff;
+	border-top:1px solid #fff;
+}
+.footerButton{
+	padding:10px 8px 8px 8px;
+}
+.footerButton input{
+	background:#cee7ff url('images/btn_rest.gif') repeat-x;	
+	text-align:center;
+	border:1px solid #36c; 
+	line-height:18px;	
+	cursor:pointer;
+	height:20px;
+	font-size:11px;
+	width:84px;
+	padding:0 5px;
+	margin-left:3px;
+	color:#232323;
+}
+/* GRID VIEW
+----------------------------------------------------------*/
+
+.gridviewMain a
+{
+    font-weight:bold !important;    
+}
+.gridviewMain
+{
+    width: 100%; 
+    font-size: 11px; 
+    height:400px;
+}
+
+.gridviewMain td
+{
+    border: 1px solid #a6c9e2;
+}
+
+.gridviewMain th
+{
+    padding:2px 5px; 
+    border: 1px solid #a6c9e2; 
+    font-weight:bold;
+}
+
+.gridheaderBG
+{   
+    border: #c5dbec 1px solid;
+    color: #2e6e9e;
+    background: url(images/label.png) #dfeffc repeat-x 50% 50%;
+    line-height:1.5em; 
+}
+
+.gridheaderBG td
+{
+    padding:4px 5px !important; 
+}
+
+.gridrowSelectedBG
+{
+    background: #fbec88 url(images/rowHover.png) repeat-x 50% 50%;
+}
+
+.gridrowSelectedBG td
+{
+    border:1px solid #fad42e;  
+    padding:2px 5px !important; 
+    color:#000;  
+}
+
+.gridRowStyle
+{
+   border-left:#a6c9e2 1px solid;
+   border-bottom:#a6c9e2 1px solid;
+   color:#222;
+   vertical-align:baseline;
+   background:url(images/registro.png) #fcfdfd repeat-x 50% bottom    
+}
+
+.gridRowStyle td
+{
+    vertical-align:middle;  
+    padding:2px 5px !important;  
+}
+
+.gridRowStyle:hover
+{
+    border: 1px solid #c5dbec; 
+    background: url(images/label.png) #dfeffc repeat-x 50% 50%;
+    color:#2e6e9e;
+}
+
+.gridAlternateRowStyle:hover
+{
+    background: url(images/label.png) #dfeffc repeat-x 50% 50%;
+}
+
+.pagination-left
+{
+    width:80px;
+}
+
+.pagination-right
+{
+    float:right;
+    width:80%;
+}
+.jqview
+{
+    width: 100%;
+    color: #222;
+}
+
+.jqview-titlebar
+{
+    color: #fff;
+    background: url(images/titlebar.png) #5c9ccc repeat-x 50% 50%;
+    border-bottom: #4297d7 1px solid;
+    height: 25px;
+    position: relative;    
+}
+
+.jqview-title
+{
+    font-weight: bold;
+    position: absolute;
+    top: 6px;
+    left: 5px;
+}
+
+.gridpager
+{
+    border-left: #a6c9e2 1px solid;
+    border-right: #a6c9e2 1px solid;
+    border-bottom: #a6c9e2 1px solid;
+    color: #2e6e9e;
+    background: url(images/label.png) #dfeffc repeat-x 50% 50%;
+    font-size:10px;
+}
+
+/*Estilo de la caja de texto*/
+.irapag{
+    font-size:x-small;
+    width:20px;
+}
+
+/*Estilo de ddl*/
+
+.LetraNormal
+ {
+ 	color:#000;
+ 	font-size: 8pt;
+}
+
+/*Botones de navegacion*/
+.gridNavegacion
+{
+    width:86%;
+    text-align:right;
+}
+
+.gridComandos
+{
+    float:right;
+    text-align:right;
+    width:86px;
+}
+
+.first
+{
+    background:url(images/icons.png) -80px -160px;
+}
+        
+.first:hover
+{
+    background:url(images/icons-hover.png) -80px -160px;   
+    border:1px solid #5c9ccc;  
+}
+
+.previous
+{
+    background:url(images/icons.png) -48px -160px; 
+}
+
+.previous:hover
+{
+    background:url(images/icons-hover.png) -48px -160px;
+    border:1px solid #5c9ccc; 
+}
+        
+.next
+{
+    background:url(images/icons.png) -32px -160px;
+}
+
+.next:hover
+{
+    background:url(images/icons-hover.png) -32px -160px;
+    border:1px solid #5c9ccc; 
+}
+
+.last
+{
+    background:url(images/icons.png) -64px -160px;
+}
+        
+.last:hover
+{
+    background:url(images/icons-hover.png) -64px -160px;
+    border:1px solid #5c9ccc; 
+}
+
+.actualizar
+{
+    background:url(images/icons.png) -64px -80px;
+}
+
+.actualizar:hover
+{
+    background:url(images/icons-hover.png) -64px -80px;
+    border:1px solid #5c9ccc;  
+}
+
+.contentComando
+{
+    width:3% !important;    
+}
+
+.cselect
+{
+    background:url(images/icons.png) -64px -144px;
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer;    
+    display:inline-block;
+}
+
+.cdeleted
+{
+    background:url(images/16_delete.gif) no-repeat;
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer;    
+    display:inline-block;
+}
+
+.cselect:hover
+{
+    background:url(images/icons-hover.png) -64px -144px;
+}   
+
+.last, .next, .previous, .first, .actualizar
+{
+    width:16px;
+    height:16px;
+    margin:1px 1.5px;  
+    cursor:pointer; 
+    border:1px solid #dfeffc;    
+    display:inline-block;
+}

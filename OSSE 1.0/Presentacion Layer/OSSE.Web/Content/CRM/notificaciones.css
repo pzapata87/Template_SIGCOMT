@@ -1,0 +1,147 @@
+﻿/*   ESTILO DE MENSAJES
+----------------------------------------------------*/
+.mensaje{
+    cursor:pointer;   
+}
+.minfo, .mexito, .malerta, .merror {
+    font:13px "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    border: 1px solid;
+    margin: 0;
+    padding:8px 8px 8px 40px;
+    background-repeat: no-repeat;
+    background-position: 0.7em 5px;
+}
+.mexito {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url(../images/notificaciones/success-ico.png)
+}
+.malerta {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url(../images/notificaciones/alert-ico.png);
+}
+.merror {
+    color: #D8000C;
+    background-color: #fef1ec;
+    background-image: url(../images/notificaciones/error-ico.png);
+}
+.minfo {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url(../images/notificaciones/info-ico.png);
+}
+.merror ul, .errormsg ul{
+    margin:5px 0 0 0px;
+    padding:0;    
+}
+.merror span, .errormsg span{
+    font-weight:bold;
+    font-size:1.1em;    
+}
+/*   MENSAJES CON IMAGEN PARA CERRAR
+----------------------------------------------------*/
+.warningmsg, .infomsg, .errormsg, .exitomsg{
+	min-height:21px;
+	font:13px "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	padding:8px;
+	margin:0 0 10px 0;
+	border:1px solid;
+}
+.warningmsg{
+	border-color:#e6cf3e;
+	background-color:#fff9d7;
+	color:#9F6000;
+}
+.infomsg{
+	border-color:#cdcdcd;
+	background-color:#f2f2f2;
+	color:#666;
+}
+.errormsg{
+	border-color:#cdada5;
+	color: #D8000C;
+    background-color: #fef1ec;
+}
+.exitomsg{
+	border-color:#38ca35;
+	color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.msgleft{
+	display:inline-table;
+	float:left;
+}
+.msgleft .ico{
+	width:33px;
+	height:21px;
+	background: url(../images/notificaciones/message-icons.png) no-repeat;
+}
+.closethis{
+	width:14px;
+	height:14px;
+	display:block;
+	margin-top:3px;
+	background:url(../images/notificaciones/warning_bt_fechar.gif) no-repeat
+}
+.warningmsg .ico{
+    background:url(../images/notificaciones/warning_icons.gif) no-repeat;
+	background-position:0px 0px;
+}
+.warningmsg .closethis{
+	background-position:0px 0px;
+}
+.infomsg .ico{
+    background:url(../images/notificaciones/warning_icons.gif) no-repeat;
+	background-position:0px -21px;
+}
+.infomsg .closethis{
+	background-position:0px -14px;
+}
+.errormsg .ico{
+	background-position:0px -42px;
+}
+.errormsg .closethis{
+	background-position:0px -28px;
+}
+.exitomsg .ico{
+	background-position:0px -64px;
+}
+.exitomsg .closethis{
+	background-position:0px -42px;
+}
+.msgright{
+	display:inline;
+	float:right;
+}
+.msgmain{
+	padding-left:5px;
+	_padding-left:35px;
+	overflow:hidden;
+}
+.msgcontent{
+	padding:3px 20px 0px 5px;
+	_text-indent:0px;
+	text-align:justify;
+}
+/*   helpers
+----------------------------------------------------*/
+.loading{
+   border:1px solid #39c;
+   padding:8px 8px 8px 40px;
+   color:#1e5774;
+   background:#dcebf2 url(../images/notificaciones/info-loader.gif) no-repeat  0.66em 0.91em; 
+}
+.information{
+   border-top:1px solid #d9d9d9; 
+   padding:8px 8px 8px 30px;
+   color:#999;
+   background:#fafafa url(../images/notificaciones/information-ocre.png) no-repeat  0.7em 0.7em; 
+}
+.tips{
+   font:13px "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+   margin-top:0px;
+   border-left:none; 
+   margin-bottom:0px;
+   border-right:none;
+}

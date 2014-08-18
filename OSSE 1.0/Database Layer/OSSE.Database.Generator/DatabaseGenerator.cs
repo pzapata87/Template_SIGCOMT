@@ -6,15 +6,15 @@ using OSSE.Domain;
 using OSSE.Persistence;
 using OSSE.Persistence.EntityFramework;
 
-namespace OSSE.Database.Generator
+namespace OSSE.DataBase.Generator
 {
     [TestClass]
-    public class DatabaseGenerator
+    public class DataBaseGenerator
     {
         [TestMethod]
         public void CreateDataBaseDesarrollo()
         {
-            System.Data.Entity.Database.SetInitializer(new DbContextDropCreateDatabaseAlwaysDesarrollo());
+            Database.SetInitializer(new DbContextDropCreateDatabaseAlwaysDesarrollo());
             PersistenceConfigurator.Configure("OSSE", typeof(Usuario).Assembly, typeof(ConnectionFactory).Assembly);
             var target = new DbContextBase();
             target.Database.Initialize(true);

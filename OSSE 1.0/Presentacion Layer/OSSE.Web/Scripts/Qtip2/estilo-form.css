@@ -1,0 +1,643 @@
+
+.left_content {
+    width: 80px;
+    float: left;
+    /*padding:30px 0 0 20px;*/
+    padding: 10px;
+	border-right:1px solid #dedede;
+}
+
+.right_content {
+    width: 140px;
+    float: left;
+    /*padding:30px 0 0 30px;*/
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.footer_content {
+    width: 100%;
+    float: left;
+    height: 43px;
+	border-top:1px solid #dedede;
+	
+}
+
+
+.btn_perfil {
+    background: none repeat scroll 0 0 #2795EE;
+    border: medium none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 7px 14px;
+}
+
+    .btn_perfil:hover {
+        background: none repeat scroll 0 0 #0088e2;
+        border: medium none;
+        border-radius: 3px;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 7px 14px;
+    }
+
+
+.btns_perfil_usuario {
+  
+   background: none repeat scroll 0 0 #c8e068;
+    border: medium none;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 7px 14px;
+}
+
+    .btns_perfil_usuario:hover {
+        background: none repeat scroll 0 0 #cfe3ae;
+        border: medium none;
+        border-radius: 3px;
+        color: #000;
+        cursor: pointer;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 7px 14px;
+    }
+
+.content_usuario {
+	background:#FFF;
+	width:262px;
+	height:156px;
+	border-radius:4px;
+	border:1px solid #596A2B;
+	
+     
+    }
+
+
+.fila_form {
+    color: #000000;
+    display: block;
+    font-family: Helvetica,Arial,sans-serif;
+    padding: 8px 0;
+    position: relative;
+    vertical-align: middle;
+    /**  margin-top:6px;
+    min-height:30px;*/
+    top: 0px;
+    left: 0px;
+    font-size: 11px;
+
+
+    font-weight: bold;
+}
+
+
+
+/*.......FORMULA .....................................LABEL.............................*/
+
+.span3 {
+    width: 3px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+
+.span10 {
+    width: 10px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span20 {
+    width: 20px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span30 {
+    width: 30px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span40 {
+    width: 40px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span50 {
+    width: 50px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span60 {
+    width: 60px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span70 {
+    width: 70px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span80 {
+    width: 80px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span90 {
+    width: 90px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span95 {
+    width: 95px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span100 {
+    width: 100px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span110 {
+    width: 110px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span120 {
+     width: 140px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span130 {
+    width: 130px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span140 {
+    width: 140px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span150 {
+    width: 150px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span160 {
+    width: 160px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span170 {
+    width: 170px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span180 {
+    width: 180px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span190 {
+    width: 190px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.span200 {
+    width: 200px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+
+/*......FORMULA...........................TEXTBOX.......................................*/
+
+.spant10 {
+    width: 10px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant20 {
+    width: 20px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant30 {
+    width: 30px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant40 {
+    width: 40px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant50 {
+    width: 50px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant60 {
+    width: 60px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant70 {
+    width: 70px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant80 {
+    width: 80px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant90 {
+    width: 90px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant95 {
+    width: 95px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant100 {
+    width: 100px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant110 {
+    width: 110px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant120 {
+    width: 120px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant130 {
+    width: 130px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant140 {
+    width: 140px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant150 {
+    width: 150px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant160 {
+    width: 160px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant170 {
+    width: 170px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant180 {
+    width: 180px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant190 {
+    width: 190px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant200 {
+    width: 200px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant210 {
+    width: 210px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant220 {
+    width: 220px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant230 {
+    width: 230px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant240 {
+    width: 240px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant250 {
+    width: 250px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant260 {
+    width: 260px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant270 {
+    width: 270px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant280 {
+    width: 280px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant290 {
+    width: 290px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+
+.spant300 {
+    width: 300px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant310 {
+    width: 310px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant320 {
+    width: 320px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant330 {
+    width: 330px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant340 {
+    width: 340px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant350 {
+    width: 350px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant360 {
+    width: 360px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant370 {
+    width: 370px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant380 {
+    width: 380px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant390 {
+    width: 390px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant400 {
+    width: 400px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant410 {
+    width: 410px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant420 {
+    width: 420px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant430 {
+    width: 430px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant440 {
+    width: 440px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant450 {
+    width: 450px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant460 {
+    width: 460px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant470 {
+    width: 470px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant480 {
+    width: 480px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant490 {
+    width: 490px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.spant500 {
+    width: 500px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+/*/----------------------------------------------------------------------------------------------------------------------*/
+
+.caja_texto {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    *border-radius: 4px;
+    border: 1px solid #3BB6D7;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    color: #555555;
+    font-size: 12px;
+    height: 20px;
+    /*line-height: 20px;*/
+    padding: 4px 6px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    width: 100%;
+    background: #eeedec;
+    background-color: eeedec\9; /*explore 9 Y 8*/
+    *background: #eeedec; /*explore 7**/
+    background: -moz-linear-gradient(center top, #eeedec 0%, #eeedec 0%, #eeedec 1%, #FFFFFF) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-gradient(linear, left top, left bottom, from(#eeedec), color-stop(0.0, #eeedec), color-stop(0.1, #eeedec), to(#FFFFFF));
+}

@@ -1,0 +1,695 @@
+﻿.inputbox, .selectbox, .areabox{
+    border:1px solid #e6e6e6;
+    padding:1px 4px;
+    color:#555;
+    background-color:#fff;
+    line-height:18px;
+    margin:0px 0.25em 0px 0px;
+    height:19px;
+    width:250px;
+    font-size:1em;
+    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+}.inputbox:focus, .selectbox:focus, .areabox:focus{
+    border:1px solid #ffb74c;
+}
+.selectbox{
+    padding-right:2px;
+    height:23px;
+}
+.areabox{
+    overflow:auto;
+    padding-right:2px;
+    height:50px;
+}
+.buttonblue {
+  background: transparent url('../images/forms/but_right_blue.gif') no-repeat top right;
+  color: #555 !important;
+  display: block;
+  float: left;
+  height: 29px;
+  margin:10px 6px 0 0;
+  padding-right: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}.buttonblue span {
+  background: url('../images/forms/but_left_blue.gif') no-repeat left top;
+  display: block;
+  height: 29px;
+  line-height:29px;
+  padding-left:12px;
+  float:left;
+}.buttonblue:hover {
+  background-position: right bottom;
+  text-decoration:none !important
+}.buttonblue:hover span {
+  background-position: left bottom;
+  color: #1b486a !important;
+}
+.buttongrey {
+  background: transparent url('../images/forms/but_right_grey.gif') no-repeat top right;
+  color: #555 !important;
+  display: block;
+  float: left;
+  height: 30px;
+  margin:10px 6px 0 0;
+  padding-right: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;	
+}.buttongrey span {
+  background: url('../images/forms/but_left_grey.gif') no-repeat left top;
+  display: block;
+  line-height: 30px;
+  padding: 0px 0px 0px 12px;
+  float:left;
+}.buttongrey:hover {
+  background-position: right bottom;
+  text-decoration:none !important
+}.buttongrey:hover span {
+  background-position: left bottom;
+  color: #333 !important;
+}
+/* MISC
+-------------------------------*/
+.headline{
+    padding-left:35px;
+    display:block;
+    background:url(../images/forms/icon_content_small.gif) no-repeat left 3px; 
+    margin:20px auto;
+    height:28px;
+    border-bottom:1px solid #e6e6e6;
+    padding-bottom:5px;
+}
+.headline h1{
+   float:left;
+   font-size:22px;
+}.headline span{
+    float:left;
+    padding-left:8px;
+    display:inline-block;
+    padding-top:8px;
+}
+.datepicker{
+    background:url(../images/forms/calendar-month.png) no-repeat right center;
+    background-position:98% center;
+    width:130px;
+    padding-right:23px;
+}
+table.frmContent{
+   margin:0 auto;
+}table.frmContent td{
+    vertical-align:top;
+    padding:3px 13px 3px 3px;
+}
+p.frmRequired{
+    font-family:10px font-family:"Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    color:#999;
+    padding:10px 0 0 6px;
+}
+.layoutbtns{
+    float:right;
+}
+.etiqueta{
+   padding-left:3px;
+   line-height:20px;
+}
+.width50{
+    width:50px;    
+}
+.width80{
+    width:80px;    
+}
+.picker{
+    position:relative;
+}
+.picker span{
+    background:url("../images/dp/cal.gif") no-repeat;
+    position:absolute;
+    height:16px;
+    width:16px;
+    display:inline-block;
+    cursor:pointer;
+    left:-26px;
+    bottom:-4px;
+    .bottom:3px;
+}
+/* Content form
+-------------------------------*/
+.block-border{
+    border:1px solid #fff;
+    background:url(../images/forms/white20.png) repeat left top;
+    padding:0.83em;    
+}
+.block-content{
+    overflow:auto;
+    border:1px solid #999;
+    padding:1.66em;
+    background-color:#fff;
+}
+/* Content form - tabs
+-------------------------------*/
+.tabwidget {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.tabcontent{
+    min-height:50px; 
+    overflow:auto;
+}
+ul.multi-tabs-navbar 
+{
+    float:left;
+    list-style-type: none;
+    width:100%;
+}
+ul.multi-tabs-navbar li {
+    float: left;
+    height:27px;
+    position: relative; 
+    margin-bottom:-1px; 
+}
+ul.multi-tabs-navbar li > span {
+    display: block;
+    float: left;
+    font-weight: bold;
+    color: #808080;
+    padding: 0 0.7em;
+    line-height:25px;
+    border: 1px solid #b3b3b3;
+    border-bottom:none;
+    cursor:pointer;
+    background: #eee url('../images/forms/tabs-bg.png') repeat-x 50% top;
+    margin-right:5px;
+    -moz-border-radius:0.25em 0.25em 0 0;
+    border-radius:0.25em 0.25em 0 0;
+    -webkit-border-top-left-radius:0.25em;
+    -webkit-border-top-right-radius:0.25em;
+}
+ul.multi-tabs-navbar li span:hover{
+    color:#39c;
+    border: 1px solid #39c;
+    border-bottom:medium none;
+}
+ul.multi-tabs-navbar li.selected > span {
+    background:none;
+    background-color:#fff;
+    padding-bottom:1px;
+}
+ul.multi-tabs-navbar li > span.last {
+    margin-right:0px;
+}
+ul.multi-tabs {
+    clear: both;
+    margin-bottom: 20px;
+    padding:15px;
+    list-style-type: none;
+    border:1px solid #b3b3b3; 
+    -moz-border-radius: 0.25em; 
+    -webkit-border-radius: 0.25em;
+    -moz-box-shadow:0 0 3px rgba(0, 0, 0, 0.2); 
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    -moz-border-radius-topleft:0;
+    -webkit-border-top-left-radius:0;
+    border-top-left-radius:0;
+}
+ul.multi-tabs li {
+    display: block;
+    overflow: hidden;
+}
+/* Content form - fileset
+-------------------------------*/
+.fieldset-with-legend{
+    border:1px solid #d9d9d9;
+}.fieldset-with-legend legend{
+    padding:0.16em 0.5em 0.25em;
+    background:#e7e7e7 url(../images/forms/legend-bg.png) repeat-x 50% top;
+    color:#666;    
+    border:1px solid #fff;
+    margin-left:0.83em;
+    .margin-left:0.4em;
+}.ie .fieldset-with-legend legend{
+    border-color:#ccc;    
+}
+.fieldset-content{ 
+    padding:1.66em;
+    padding-top:1.5em;
+}
+
+/* Estilo para formulario Mhiosys!
+---------------------------------*/
+.MhiosysForm .tablelayout{margin:20px;}
+.MhiosysForm .tablelayout, .MhiosysForm .tablelayoutC{
+    width:auto;    
+}
+.MhiosysForm .tablelayout td, .tablelayoutC td {
+    padding:5px 5px;    
+}
+.MhiosysForm .right 
+{
+    text-align: right;
+}
+
+.MhiosysForm .left {
+    text-align: left;
+}
+
+.MhiosysForm .tablelayout td label{
+    font-size:10px;
+    font-weight:bold;
+    color:#666;    
+}
+.MhiosysForm .tablelayoutC td label{
+    font-size:12px;    
+}
+.MhiosysForm .tablelayoutC td .buttonConstellation
+{
+    float:right;    
+    margin-right:10px;
+}
+
+.MhiosysForm label{
+    font-size:10px;
+    font-weight:bold;
+    color:#666;    
+}
+.MhiosysForm textarea 
+{
+    width: 200px;
+    border: 1px solid #7ba517;
+    padding:0.4em 0.5em;
+    color:#333;
+    line-height:1em;
+    border-radius:0.41em;
+    /*background:url(../images/account/input-bg.png) repeat-x left center;*/ 
+    background-color: #DEDEDE; 
+    background-color : DEDEDE\9; /*explore 9 Y 8*/ 
+    *background: #DEDEDE; /*explore 7**/ 
+    background: -moz-linear-gradient(center top , #DEDEDE 0%, #DEDEDE 0%, #DEDEDE 20%, #FFFFFF) repeat scroll 0 0 rgba(0, 0, 0, 0); 
+    background: -webkit-gradient(linear, left top, left bottom, from(#DEDEDE), color-stop(0.0, #DEDEDE), color-stop(0.20, #DEDEDE), to(#FFFFFF));
+}
+
+.MhiosysForm input[type="text"], .MhiosysForm input[type="password"], .MhiosysForm select  
+{
+    width: 200px;
+    border: 1px solid #7ba517;
+    padding:0.4em 0.5em;
+    color:#333;
+    line-height:1em;
+    border-radius:0.41em;
+    background:url(../images/account/input-bg.png) repeat-x left center;
+}
+
+.MhiosysForm input[type="number"] {
+    border: 1px solid #89bad3;
+    padding:0.4em 0.5em;
+    color:#333;
+    line-height:1em;
+    border-radius:0.41em;
+    background:url(../images/account/input-bg.png) repeat-x left center;
+    width: 40px;
+}
+
+.MhiosysForm .large input[type="text"] , .MhiosysForm .large select
+{
+    width: 515px;
+}
+.MhiosysForm input[type="text"]:focus, .MhiosysForm input[type="password"]:focus, .MhiosysForm select:focus, .MhiosysForm textarea:focus {
+    border-color:#ce6700;    
+}
+.MhiosysForm input[type="text"]:disabled, .MhiosysForm textarea:disabled{
+    background:rgb(235, 235, 228); 
+}
+
+.MhiosysForm select{
+    padding-bottom:0.3em;  
+    padding-top:0.3em;
+    width: 215px;  
+}
+.MhiosysForm .buttonConstellation{
+    display:inline-block;
+    cursor:pointer;
+    border-radius:0.33em;
+    border-shadow:0px 1px 4px rgba(0,0,0,0.4);
+    border-top:1px solid #50a3c8;
+    border-right:1px solid #297cb4;
+    border-bottom:1px solid #083f6f;
+    border-left:1px solid #297cb4;
+    color:#fff;
+    font-weight:bold;
+    font-size:1.15em;
+    line-height:1.42em;
+    padding:0.22em 1em 0.28em;
+    background:url(../images/account/button-element-bg.png) repeat-x left center;     
+}
+.MhiosysForm .buttonConstellation:hover{
+    border-top-color:#1eafdc;
+    border-right-color:#1193d5;
+    border-bottom-color:#035592;
+    border-left-color:#1193d5;
+    background:url(../images/account/button-element-hover-bg.png) repeat-x left center;  
+}
+.MhiosysForm input[type="button"][disabled=disabled], input[type="button"]:disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Estilos para aplicaciones auxiliares de validación
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+    display: none !important;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error{
+    border: 1px solid #ff0000 !important;
+    background-color: #b8d4ff !important;
+}
+
+.validation-summary-errors
+{
+    /*font-weight: bold;*/
+    color: #ff0000;
+}
+
+.validation-summary-errors-toolTip
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.showError-toolTip
+{
+    cursor: pointer;
+    display: none;
+    position: relative;
+    right: 20px;
+    text-align: right;
+    font-weight: bold;
+    color: #D8000C;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+.MhiosysForm fieldset {
+    margin-left:10px !important;
+}
+fieldset.widget{
+    float:left;
+    margin:10px;
+    width:45%;
+    padding-left:5px;
+}
+fieldset.grilla{    
+    width: calc(90% + 30px);    
+}
+
+
+/* Estilo para formulario Mhiosys!
+---------------------------------*/
+.MhiosysForm .tablelayoutI td{
+    padding:0 5px 0 0;    
+}
+
+.MhiosysForm .tablelayoutI td label{
+    font-size:10px;
+    font-weight:bold;
+    color:#666;    
+}
+
+.DivCell{
+    width: 48%;
+    float: left;
+    border: 1px solid #e7e7e7;
+    padding: 5px;
+}
+
+.DivCellDoble{
+    width: 96%;
+    float: left;
+    border: 1px solid #e7e7e7;
+    padding: 5px 10px;
+}
+
+.DivBusquedaProductosMovimiento{
+    width: 450px;
+    max-height: 520px;
+    height: 520px;
+    float: left;
+    border: 1px solid #e7e7e7;
+}
+
+.DivNuevoProductosNotaIngreso{
+    width: 500px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.DivNuevoProductosNotaSalida{
+    width: 500px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.DivNuevoProductosPedido{
+    width: 580px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.DivNuevoProductosDocumento{
+    width: 580px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.DivNuevoProductosGuia{
+    width: 580px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.scroll
+{
+    width: 480px;
+    max-height: 470px;
+    height: 467px;
+    overflow-y: scroll;
+    top: -7px;
+    position : relative;
+}
+
+.scrollPedido
+{
+    width: 560px;
+    max-height: 470px;
+    height: 467px;
+    overflow-y: scroll;
+    top: -7px;
+    position : relative;
+}
+
+.scrollDocumento
+{
+    width: 560px;
+    max-height: 470px;
+    height: 467px;
+    overflow-y: scroll;
+    top: -7px;
+    position : relative;
+}
+
+.scrollGuia
+{
+    width: 560px;
+    max-height: 470px;
+    height: 467px;
+    overflow-y: scroll;
+    top: -7px;
+    position : relative;
+}
+
+.scrollBusqueda
+{
+    width: 430px;
+    max-height: 310px;
+    height: 310px;
+    overflow-y: scroll;
+}
+
+.scrollBusquedaProductoAlmacen
+{
+    width: 430px;
+    max-height: 270px;
+    height: 270px;
+    overflow-y: scroll;
+}
+.scrollProductoNotaCredito
+{
+    width: 520px;
+    max-height: 300px;
+    height: 300px;
+    overflow-y: scroll;
+}
+.scrollContent
+{
+    width: 90%;
+    max-height: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    position : relative;
+}
+
+.scrollPagina
+{
+    width: auto;
+    max-height: 500px;
+    height: 480px;
+    overflow-y: scroll;
+    width:100%;
+}
+
+.scrollPopup {
+    width: auto;
+    max-height: 600px;
+    height: auto;
+    overflow-y: scroll;
+    min-width: 350px;
+}
+
+.fijo {position:fixed !important;
+        margin-top:15px;
+        width:auto;
+         z-index:10 !important} 
+
+.DivBusquedaProducto{
+    width: 380px;
+    max-height: 430px;
+    height: 430px;
+    float: left;
+    border: 1px solid #e7e7e7;
+}
+
+.DivNuevoPrecioProductoDet{
+    width: 500px;
+    float: left;
+    max-height: 480px;
+    height: 480px;
+    border: 1px solid #e7e7e7;    
+}
+.DivDetalleProducto{
+    width: 550px;
+    float: left;
+    max-height: 480px;
+    height: 480px;
+    border: 1px solid #e7e7e7;    
+}
+.DivDetallePago{
+    width: 515px;
+    float: left;
+    max-height: 480px;
+    border: 1px solid #e7e7e7;    
+}
+
+.DivStockProductoAlmacen{
+    width: 750px;
+    float: left;
+    max-height: 530px;
+    height: 530px;
+    border: 1px solid #e7e7e7;    
+}
+
+.scrollStockProductoAlmacen
+{
+    width: 730px;
+    max-height: 730px;
+    height: 480px;
+    overflow-y: scroll;
+}
+.scrollBusquedaStockProductoAlmacen
+{
+    width: 355px;
+    max-height: 480px;
+    height: 480px;
+    overflow-y: scroll;
+}
+.DivBusquedaStockProductoAlmacen{
+    width: 380px;
+    max-height: 480px;
+    height: 480px;
+    float: left;
+    border: 1px solid #e7e7e7;
+}
+
+.DivBusquedaProductoAlmacen{
+    width: 450px;
+    max-height: 520px;
+    height: 520px;
+    float: left;
+    border: 1px solid #e7e7e7;
+}
+
+.DivBusquedaProductosAlmacenMovimiento{
+    width: 450px;
+    max-height: 520px;
+    height: 520px;
+    float: left;
+    border: 1px solid #e7e7e7;
+}
+
+.FooterGrid {
+  color: black !important;
+  font-weight: bold !important;
+  text-align: right !important;
+}
+
+.ui-jqgrid tr.footrow2 td {
+    font-weight: bold; 
+    overflow: hidden; 
+    white-space:nowrap; 
+    height: 21px;
+    padding: 0 2px 0 2px;
+    border-top-width: 1px; 
+    border-top-color: inherit; 
+    border-top-style: solid;
+}
+
+.ui-jqgrid tr.footrow3 td {
+    font-weight: bold; 
+    overflow: hidden; 
+    white-space:nowrap; 
+    height: 21px;
+    padding: 0 2px 0 2px;
+    border-top-width: 1px; 
+    border-top-color: inherit; 
+    border-top-style: solid;
+}
+
+.ui-jqgrid tr.footrow4 td {
+    font-weight: bold; 
+    overflow: hidden; 
+    white-space:nowrap; 
+    height: 21px;
+    padding: 0 2px 0 2px;
+    border-top-width: 1px; 
+    border-top-color: inherit; 
+    border-top-style: solid;
+}
+
