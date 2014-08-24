@@ -6,11 +6,11 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using log4net.Config;
 using OSSE.Common.Constantes;
+using OSSE.Domain;
 using OSSE.IoC.App_Start;
 using OSSE.Persistence;
 using OSSE.Persistence.EntityFramework;
 using OSSE.Web.App_Start;
-using Resources;
 
 namespace OSSE.Web
 {

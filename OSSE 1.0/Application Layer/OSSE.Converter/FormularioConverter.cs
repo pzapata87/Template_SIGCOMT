@@ -16,12 +16,12 @@ namespace OSSE.Converter
                 var idioma = modulo.ItemTablaFormularioList.FirstOrDefault(p => p.ItemTablaId == idiomaId) ??
                              modulo.ItemTablaFormularioList.First();
 
-                cadenaMenu.AppendLine("<li data-idx='" + modulo.Id + "' ><a href='javascript:void(0)' title='" + idioma.Nombre + "' class='nodo'>");
+                cadenaMenu.AppendLine("<li data-idx='" + modulo.Id + "' style='display: block'><a href='javascript:void(0)' title='" + idioma.Nombre + "' class='nodo'>");
                 cadenaMenu.AppendLine("<img src='" + modulo.Direccion + "' alt='' /><span>" + idioma.Nombre + "</span></a>");
                 cadenaMenu.AppendLine("<div style='display: none'>");
 
                 cadenaMenu.AppendFormat("<ul id='{0}' class='{1}'>\r\n", string.Format("MOD{0}", modulo.Id), "menuNavegacion");
-                cadenaMenu.AppendFormat("<li><span style='border-top: 0 !important;'>{0}</span>", idioma.Nombre.ToUpper());
+                cadenaMenu.AppendFormat("<li><span style='border-top: 0 !important'>{0}", idioma.Nombre.ToUpper());
 
                 cadenaMenu.AppendFormat("<ul>\r\n");
 

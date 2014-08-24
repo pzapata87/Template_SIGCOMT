@@ -49,7 +49,7 @@
 
 .btns_perfil_usuario {
   
-   background: none repeat scroll 0 0 #c8e068;
+   background: none repeat scroll 0 0 #b1b3b8;
     border: medium none;
     border-radius: 3px;
     color: #000;
@@ -60,7 +60,7 @@
 }
 
     .btns_perfil_usuario:hover {
-        background: none repeat scroll 0 0 #cfe3ae;
+        background: none repeat scroll 0 0 #c1c2c5;
         border: medium none;
         border-radius: 3px;
         color: #000;
@@ -92,10 +92,8 @@
     min-height:30px;*/
     top: 0px;
     left: 0px;
-    font-size: 11px;
-
-
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 

@@ -123,7 +123,7 @@ namespace OSSE.DataBase.Generator
 
             var moduloMantenimientosGenerales = new Formulario
             {
-                Direccion = "~/Resources/images/settings32.png",
+                Direccion = "Content/crm/images/editar.png",
                 Controlador = string.Empty,
                 Orden = 0,
                 Nivel = 0,
@@ -141,7 +141,7 @@ namespace OSSE.DataBase.Generator
 
             var moduloMantenimientoTest = new Formulario
             {
-                Direccion = "~/Resources/images/settings32.png",
+                Direccion = "Content/crm/images/editar.png",
                 Controlador = string.Empty,
                 Orden = 0,
                 Nivel = 0,

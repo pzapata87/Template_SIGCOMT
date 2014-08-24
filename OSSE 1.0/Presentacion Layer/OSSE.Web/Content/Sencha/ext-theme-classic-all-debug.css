@@ -9420,14 +9420,14 @@ body.x-nbr .x-btn-default-toolbar-large-frameInfo {
 
 /* line 206, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-default {
-  border-color: #a5ce1f;
+  border-color: #99bce8;
   padding: 0;
 }
 
 /* line 212, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-header-default {
   font-size: 11px;
-  border: 1px solid #a5ce1f;
+  border: 1px solid #99bce8;
 }
 
 /* line 232, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
@@ -9452,7 +9452,7 @@ body.x-nbr .x-btn-default-toolbar-large-frameInfo {
 
 /* line 260, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-header-text-container-default {
-  color: #000;
+  color: #04408c;
   font-size: 11px;
   font-weight: bold;
   font-family: tahoma, arial, verdana, sans-serif;
@@ -9464,7 +9464,7 @@ body.x-nbr .x-btn-default-toolbar-large-frameInfo {
 /* line 272, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-body-default {
   background: white;
-  border-color: #a5ce1f;
+  border-color: #99bce8;
   color: black;
   font-size: 12px;
   font-size: normal;
@@ -9474,38 +9474,24 @@ body.x-nbr .x-btn-default-toolbar-large-frameInfo {
 
 /* line 432, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-header-default {
-  /*background-image: none;
+  background-image: none;
   background-color: #cbddf3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dae7f6), color-stop(45%, #cddef3), color-stop(46%, #abc7ec), color-stop(50%, #abc7ec), color-stop(51%, #b8cfee), color-stop(100%, #cbddf3));
   background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: -moz-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: -o-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
-  /*background-image: none;*/
-  background-color: #CFD96F;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #E9FCC4), color-stop(45%, #C7DA85), color-stop(46%, #C7DA85), color-stop(50%, #BDD370), color-stop(51%, #BDD370), color-stop(100%, #C7DA85));
-  background-image: -webkit-linear-gradient(top, #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: -moz-linear-gradient(top,    #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: -o-linear-gradient(top,      #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: linear-gradient(top,         #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
 }
 
 /* line 436, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
 .x-panel-header-default-vertical {
- /* background-image: none;
+  background-image: none;
   background-color: #cbddf3;
   background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #dae7f6), color-stop(45%, #cddef3), color-stop(46%, #abc7ec), color-stop(50%, #abc7ec), color-stop(51%, #b8cfee), color-stop(100%, #cbddf3));
   background-image: -webkit-linear-gradient(right, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: -moz-linear-gradient(right, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: -o-linear-gradient(right, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background-image: linear-gradient(right, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
-  /*background-image: none;*/
-  background-color: #CFD96F;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #E9FCC4), color-stop(45%, #C7DA85), color-stop(46%, #C7DA85), color-stop(50%, #BDD370), color-stop(51%, #BDD370), color-stop(100%, #C7DA85));
-  background-image: -webkit-linear-gradient(top, #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: -moz-linear-gradient(top,    #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: -o-linear-gradient(top,      #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
-  background-image: linear-gradient(top,         #E9FCC4, #C7DA85 45%, #C7DA85 46%, #BDD370 50%, #BDD370 51%, #C7DA85);
 }
 
 /* line 454, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */

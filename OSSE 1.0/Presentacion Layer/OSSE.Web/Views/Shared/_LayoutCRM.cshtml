@@ -13,14 +13,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="@Url.Content("~/Content/images/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
-    @*<link href="@Url.Content("~/Content/CRM/Impresion.css")" rel="stylesheet" type="text/css" />*@
     <link href="@Url.Content("~/Content/CRM/reset.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/Content/CRM/complex.css")" rel="stylesheet" type="text/css" />*@
     <link href="@Url.Content("~/Content/CRM/css/site.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/Content/CRM/pasos-grupo.css")" rel="stylesheet" type="text/css" />*@
-    <link href="@Url.Content("~/Content/themes/vogue_css/jquery-ui-1.10.4.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/redmond/jquery-ui-1.10.4.custom.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/jqgrid/css/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/Scripts/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />*@
     <link href="@Url.Content("~/Scripts/Qtip2/jquery.qtip.css")" rel="stylesheet" type="text/css" />
 
     <script src="@Url.Content("~/Scripts/jquery-2.1.0.min.js")" type="text/javascript"></script>
@@ -34,7 +30,6 @@
     <script src="@Url.Content("~/Scripts/VOGUE.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.custom.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/DialogExtender/jquery.dialogextend.js")" type="text/javascript"></script>
-    @*<script src="@Url.Content("~/Scripts/DialogExtender/customdialogextend.js")" type="text/javascript"></script>*@
     <script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/tabscrolling/Fader.js")" type="text/javascript"></script>
@@ -42,9 +37,7 @@
     <script src="@Url.Content("~/Scripts/tabscrolling/Math.uuid.js")" type="text/javascript"></script>
 
     <link href="@Url.Content("~/Content/CRM/TabPanel.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/Content/CRM/notificaciones.css")" rel="stylesheet" type="text/css" />*@
     <link href="@Url.Content("~/Content/CRM/forms.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/Content/CRM/dp.css")" rel="stylesheet" type="text/css" />*@
 
     <script src="@Url.Content("~/Content/jqgrid/js/jquery.jqGrid.src.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Content/jqgrid/js/i18n/grid.locale-es.js")" type="text/javascript"></script>
@@ -58,10 +51,7 @@
 
     <script src="@Url.Content("~/Scripts/jquery.jstree.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
-
-    @*<link href="@Url.Content("~/Content/PasswordLength/style.css")" rel="stylesheet" type="text/css" />*@
-    @*<script src="@Url.Content("~/Content/PasswordLength/jquery.pwstrength.js")" type="text/javascript"></script>*@
-
+    
     <script src="@Url.Content("~/Scripts/ui.datepicker-es.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/ui.datepicker-pt.js")" type="text/javascript"></script>
 
@@ -81,8 +71,6 @@
     <script src="@Url.Content("~/Scripts/jquery.printElement.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Qtip2/jquery.qtip.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Scripts/Qtip2/estilo-form.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Alertas/Alertas.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Alertas/AnimationBell.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/CustomValidations/JqueryCustomValidation.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/LoadingAnimator/jquery.percentageloader-0.1.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Scripts/LoadingAnimator/jquery.percentageloader-0.1.css")" rel="stylesheet" type="text/css" />
@@ -113,12 +101,12 @@
             <div class="header">
                 <div class="headerSignIn">
                     <div id="usrAccount" style="width: 50px; text-align: center; margin-left: 5px; float: right;">
-                        <img src="~/Images/dibu-usuario.PNG" style="cursor: pointer; width: 43px; height: 53px" alt="usuario" title="@Master.Usuario">
+                        <img src="~/Images/dibu-usuario.PNG" style="cursor: pointer; width: 53px; height: 53px" alt="usuario" title="@Master.Usuario">
                     </div>
                 </div>
                 <div class="headertitle">
                     <h1>
-                        <img src="@Url.Content("~/Images/logo-vogue.png")" alt="logo">
+                        Poner Logo aqui
                     </h1>
                 </div>
             </div>
@@ -441,17 +429,17 @@
             }
         }
 
-        function BuscarTituloActual(index) {
-            var txtTemp;
-            $(".panelitems ul li").each(function () {
-                if ($(this).attr("id") != "liGaleria") {
-                    if ($(this).attr("data-idx") == index) {
-                        txtTemp = $(this).children("a").attr("title");
-                    }
-                }
-            });
-            return txtTemp;
-        }
+        //function BuscarTituloActual(index) {
+        //    var txtTemp;
+        //    $(".panelitems ul li").each(function () {
+        //        if ($(this).attr("id") != "liGaleria") {
+        //            if ($(this).attr("data-idx") == index) {
+        //                txtTemp = $(this).children("a").attr("title");
+        //            }
+        //        }
+        //    });
+        //    return txtTemp;
+        //}
 
         function BuscarContenidoActual(index) {
             var contentTemp = "<div class='panelbody-subitems'>";

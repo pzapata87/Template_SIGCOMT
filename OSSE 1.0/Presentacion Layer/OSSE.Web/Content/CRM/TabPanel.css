@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 
 .tabpanel {
   /*border: solid 1px #8DB2E3;*/
@@ -11,7 +11,7 @@
   line-height: 25px;
   background-color: #E1DFE0;
   background:transparent url(../images/TabPanel/tab-content-bg.gif) repeat-x;
-  border-bottom: 1px solid #a5ce1f;
+  border-bottom: 1px solid #8DB2E3;
   padding-bottom: 3px;
   overflow: hidden;
   white-space: nowrap;
@@ -42,7 +42,7 @@
   margin-top: 2px;
   height: 22px;
   line-height: 22px;
-  border: solid 1px #C7DA85;
+  border: solid 1px #8DB2E3;
   margin-left: 2px;
   background-color: #EFEFEF;
   float: left;
@@ -71,7 +71,7 @@
   *margin-top: 2px;
 }
 .tabpanel_mover li div {
-  color: #000000;
+  color: #23508E;
 }
 
 .tabpanel_mover li .icon_title {
@@ -90,7 +90,7 @@
 
 .tabpanel_mover li.active {
   background: transparent url(../images/TabPanel/tab-bg-active.gif) repeat-x;
-  border-bottom: solid 1px #C7DA85;
+  border-bottom: solid 1px #DEECFD;
   background-color: #DDEEFE;
   font-weight: bold;
 }
@@ -149,32 +149,25 @@
 }
 
 .tabpanel_tab_content .tabpanel_tab_spacer {
-  border-top: 1px solid #a5ce1f;
+  border-top: 1px solid #8DB2E3;
   height: 2px;
   background: #DEECFD;
   font-size: 1px;
   line-height: 1px;
   margin-top: -1px;
-  /*background: none repeat scroll 0 0 #E9FCC4;
-  border-top: 1px solid #BDD370;
-  font-size: 1px;
-  height: 2px;
-  line-height: 1px;
-  margin-top: -1px;*/
 }
 
 .tabpanel_content {
   background-color: #FFF;
   overflow: auto;
-  /*position: relative;*/
-  position:static;
+  position: relative;
 }
 
 .tabpanel_content .html_content {
   width: 100%;
   height: 100%;
   background-color:#FFF;
-  /*position: absolute;*/
+  position: absolute;
   z-index: 0;
   left: 0;
   top: 0;

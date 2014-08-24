@@ -55,7 +55,7 @@ namespace OSSE.IoC.DependencyResolution
                 throw new ArgumentNullException("container");
             }
 
-            this.Container = container;
+            Container = container;
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace OSSE.IoC.DependencyResolution
         /// </summary>
         public void Dispose()
         {
-            this.Container.Dispose();
+            Container.Dispose();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace OSSE.IoC.DependencyResolution
         /// </returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return this.Container.GetAllInstances(serviceType).Cast<object>();
+            return Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         #endregion
@@ -100,7 +100,7 @@ namespace OSSE.IoC.DependencyResolution
         /// </returns>
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            return this.Container.GetAllInstances(serviceType).Cast<object>();
+            return Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         /// <summary>
@@ -121,11 +121,11 @@ namespace OSSE.IoC.DependencyResolution
             if (string.IsNullOrEmpty(key))
             {
                 return serviceType.IsAbstract || serviceType.IsInterface
-                           ? this.Container.TryGetInstance(serviceType)
-                           : this.Container.GetInstance(serviceType);
+                           ? Container.TryGetInstance(serviceType)
+                           : Container.GetInstance(serviceType);
             }
 
-            return this.Container.GetInstance(serviceType, key);
+            return Container.GetInstance(serviceType, key);
         }
 
         #endregion

@@ -17,6 +17,7 @@
 
 
 using System.Data.Entity;
+using System.Web.Security;
 using OSSE.BusinessLogic;
 using OSSE.BusinessLogic.Interfaces;
 using OSSE.Persistence.Core;
@@ -24,6 +25,8 @@ using OSSE.Persistence.EntityFramework;
 using OSSE.Repository;
 using OSSE.Repository.RepositoryContracts;
 using OSSE.Repository.SqlServer;
+using OSSE.Service;
+using OSSE.Service.Interfaces;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
@@ -69,7 +72,7 @@ namespace OSSE.IoC.DependencyResolution
 
             #region Business Logic
 
-            //For(typeof(IFormsAuthenticationService)).Use(typeof(FormsAuthenticationService));
+            For(typeof(IFormsAuthenticationService)).Use(typeof(FormsAuthenticationService));
 
             For<IFormularioBL>().Use<FormularioBL>();
             For<IItemTablaBL>().Use<ItemTablaBL>();
@@ -83,8 +86,8 @@ namespace OSSE.IoC.DependencyResolution
 
             #region Authentication
 
-            //For<IMembershipService>().Use<AccountMembershipService>();
-            //For<MembershipProvider>().Use(Membership.Providers["DbMembershipProvider"]);
+            For<IMembershipService>().Use<AccountMembershipService>();
+            For<MembershipProvider>().Use(Membership.Providers["DbMembershipProvider"]);
 
             #endregion
         }
