@@ -56,11 +56,11 @@ namespace OSSE.Web.Core
                 ViewData[MasterConstantes.UsuarioSesion] = UsuarioActual;
                 //ViewData[MasterConstantes.FechaSistema] = FechaSistema;
                 ViewData[MasterConstantes.UsuarioActual] = UsuarioActual.UserName;
-                ViewData[MasterConstantes.Empresa] = "SALON VOGUE SPA";
+                ViewData[MasterConstantes.Empresa] = "OSSE";
                 ViewData[MasterConstantes.RUC] = "20508473657";
-                ViewData[MasterConstantes.Direccion] = "Av. Felix Dibos 975 Orrantía, Magdalena";
+                ViewData[MasterConstantes.Direccion] = "San Isidro";
                 ViewData[MasterConstantes.Telefono] = " 01 2641251|2641214";
-                ViewData[MasterConstantes.Email] = "vogue@voguespasalon.com";
+                ViewData[MasterConstantes.Email] = "osse@hotmail.com";
                 ViewData[MasterConstantes.IdUsuarioActual] = UsuarioActual.Id;
 
                 ItemTabla idioma = itemTablaBL.Get(p => p.TablaId == (int)TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);

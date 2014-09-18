@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{02ED4F00-F91B-4125-A6AE-F96F01BF8EBA}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OSSE.Web</RootNamespace>
@@ -890,7 +890,7 @@
     <Content Include="Scripts\TimePicker\jquery-ui-timepicker-addon.js" />
     <Content Include="Scripts\ui.datepicker-es.js" />
     <Content Include="Scripts\ui.datepicker-pt.js" />
-    <Content Include="Scripts\VOGUE.js" />
+    <Content Include="Scripts\OSSE.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

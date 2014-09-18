@@ -278,7 +278,7 @@ ul.multi-tabs li {
 .MhiosysForm textarea 
 {
     width: 200px;
-    border: 1px solid #7ba517;
+    border: 1px solid #89bad3;
     padding:0.4em 0.5em;
     color:#333;
     line-height:1em;
@@ -294,7 +294,7 @@ ul.multi-tabs li {
 .MhiosysForm input[type="text"], .MhiosysForm input[type="password"], .MhiosysForm select  
 {
     width: 200px;
-    border: 1px solid #7ba517;
+    border: 1px solid #89bad3;
     padding:0.4em 0.5em;
     color:#333;
     line-height:1em;

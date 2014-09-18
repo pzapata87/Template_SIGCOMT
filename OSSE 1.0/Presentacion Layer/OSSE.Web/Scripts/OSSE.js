@@ -1,4 +1,4 @@
-﻿VOGUE = {
+﻿OSSE = {
     PadLeft: function (value, len, character) {
         len = len - value.length;
         for (var i = 1; i <= len; i++) {
@@ -614,7 +614,7 @@
                 gridComplete: function() {
                     if (grid.getGridParam('records') == 0) {
                         if (opciones.noregistro == true) {
-                            VOGUE.Alert(opciones.alertTitle, opciones.sinRegistro, null);
+                            OSSE.Alert(opciones.alertTitle, opciones.sinRegistro, null);
                         }
                     }
 
@@ -883,11 +883,11 @@
                                     dialogCancelText: dialogDelete.cancelText,
                                     parametroHandlers: rowData
                                 };
-                                VOGUE.confirm(parametrosConfirm);
+                                OSSE.confirm(parametrosConfirm);
                             }
                         }
                     } else {
-                        VOGUE.Alert(opciones.alertTitle, opciones.mensaje, null);
+                        OSSE.Alert(opciones.alertTitle, opciones.mensaje, null);
                     }
                 }
             });
@@ -907,7 +907,7 @@
                         else
                             Editar(rowKey);
                     } else {
-                        VOGUE.Alert(opciones.alertTitle, opciones.mensaje, null);
+                        OSSE.Alert(opciones.alertTitle, opciones.mensaje, null);
                     }
                 }
             });
@@ -1037,7 +1037,7 @@
             parametros: parameters
         };
 
-        VOGUE.Ajax(opciones, function (response) {
+        OSSE.Ajax(opciones, function (response) {
             if (response.Success) {
                 combo.disabled = true;
                 $.each(response.Data, function (index, item) {
@@ -1048,7 +1048,7 @@
                     selected = 0;
                 $('#' + name).val(selected);
             } else {
-                VOGUE.Alert('Alerta', response.Message, null);
+                OSSE.Alert('Alerta', response.Message, null);
             }
         });
     },
