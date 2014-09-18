@@ -18,18 +18,13 @@
 
 using System.Data.Entity;
 using System.Web.Security;
-using OSSE.BusinessLogic;
 using OSSE.BusinessLogic.Interfaces;
-using OSSE.Persistence.Core;
 using OSSE.Persistence.EntityFramework;
 using OSSE.Repository;
-using OSSE.Repository.RepositoryContracts;
 using OSSE.Repository.SqlServer;
 using OSSE.Service;
 using OSSE.Service.Interfaces;
 using StructureMap;
-using StructureMap.Configuration.DSL;
-using StructureMap.Graph;
 using StructureMap.Web;
 
 namespace OSSE.IoC.DependencyResolution
@@ -38,58 +33,25 @@ namespace OSSE.IoC.DependencyResolution
     {
         public static IContainer Initialize()
         {
-            ObjectFactory.Initialize(x => x.Scan(scan =>
+            ObjectFactory.Initialize(x =>
             {
-                scan.TheCallingAssembly();
-                scan.WithDefaultConventions();
-            }));
+                x.Scan(scan =>
+                {
+                    scan.AssemblyContainingType<IUsuarioRepository>();
+                    scan.AssemblyContainingType<UsuarioRepository>();
+                    scan.AssemblyContainingType<IUsuarioBL>();
+                    scan.WithDefaultConventions();
+                });
 
-            ObjectFactory.Initialize(x => x.AddRegistry<ControllerRegistry>());
+                x.For<DbContext>().HybridHttpOrThreadLocalScoped().Use<DbContextBase>();
+
+                x.For(typeof(IFormsAuthenticationService)).Use(typeof(FormsAuthenticationService));
+                x.For<IMembershipService>().Use<AccountMembershipService>();
+                //x.For<MembershipProvider>().Use(Membership.Provider);
+                x.For<MembershipProvider>().Use(Membership.Providers["DbMembershipProvider"]);
+            });
 
             return ObjectFactory.Container;
-        }
-    }
-
-    public class ControllerRegistry : Registry
-    {
-        public ControllerRegistry()
-        {
-            #region Repository
-
-            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<DbContextBase>();
-
-            For(typeof (IRepository<>)).Use(typeof (Repository<>));
-            For(typeof (IRepositoryWithTypedId<,>)).Use(typeof (RepositoryWithTypedId<,>));
-            For<IFormularioRepository>().Use<FormularioRepository>();
-            For<IItemTablaRepository>().Use<ItemTablaRepository>();
-            For<IPermisoRolRepository>().Use<PermisoRolRepository>();
-            For<IUsuarioRepository>().Use<UsuarioRepository>();
-            For<IRolRepository>().Use<RolRepository>();
-            For<ITablaRepository>().Use<TablaRepository>();
-            For<IRepositoryQueryExecutor>().Use<RepositoryQueryExecutor>();
-
-            #endregion
-
-            #region Business Logic
-
-            For(typeof(IFormsAuthenticationService)).Use(typeof(FormsAuthenticationService));
-
-            For<IFormularioBL>().Use<FormularioBL>();
-            For<IItemTablaBL>().Use<ItemTablaBL>();
-            For<IPermisoRolBL>().Use<PermisoRolBL>();
-            For<IRolBL>().Use<RolBL>();
-            For<IUsuarioBL>().Use<UsuarioBL>();
-            For<ITablaBL>().Use<TablaBL>();
-            //For(typeof(IReporteBL<>)).Use(typeof(ReporteBL<>));
-
-            #endregion
-
-            #region Authentication
-
-            For<IMembershipService>().Use<AccountMembershipService>();
-            For<MembershipProvider>().Use(Membership.Providers["DbMembershipProvider"]);
-
-            #endregion
         }
     }
 }

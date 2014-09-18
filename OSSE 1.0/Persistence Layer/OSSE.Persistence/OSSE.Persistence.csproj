@@ -34,23 +34,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit">
-      <HintPath>..\..\..\packages\LINQKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
+      <HintPath>..\..\packages\LINQKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
     </Reference>
-    <Reference Include="PostSharp, Version=3.1.48.9, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+    <Reference Include="PostSharp, Version=3.1.50.9, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\PostSharp.3.1.48\lib\net20\PostSharp.dll</HintPath>
+      <HintPath>..\..\packages\PostSharp.3.1.50\lib\net20\PostSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StructureMap, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StructureMap, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.Net4, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StructureMap.Net4, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.Net4.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -111,10 +114,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <Import Project="..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" />
+  <Import Project="..\..\packages\PostSharp.3.1.50\tools\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.3.1.50\tools\PostSharp.targets')" />
   <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
-    <Error Condition="!Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
-    <Error Condition="Exists('..\..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="!Exists('..\..\packages\PostSharp.3.1.50\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\..\packages\PostSharp.3.1.50\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

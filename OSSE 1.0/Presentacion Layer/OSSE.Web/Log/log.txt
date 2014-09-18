@@ -160,3 +160,45 @@
    en VOGUE.Web.Areas.Administracion.Controllers.VentaController.<VerDetalleVenta>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
    en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
    en VOGUE.Web.Core.Aspects.ControllerAttribute.OnInvoke(MethodInterceptionArgs args) en d:\Proyectos\VOGUE\Source\Presentation Layer\VOGUE.Web\Core\Aspects\ControllerAttribute.cs:línea 34
+2014-09-17 11:23:41,494 [11] ERROR  [(null)] - Mensaje: The underlying provider failed on Open. Trace:    en System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   en System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   en System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   en System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__2[TResult](IEnumerable`1 sequence)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.SingleOrDefault[TSource](IQueryable`1 source)
+   en OSSE.Persistence.Core.RepositoryWithTypedId`2.FindOne(IQuerySpecification`1 specification) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Persistence Layer\OSSE.Persistence\Core\RepositoryWithTypedId.cs:línea 68
+   en OSSE.Persistence.Core.RepositoryWithTypedId`2.FindOne(Expression`1 expression) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Persistence Layer\OSSE.Persistence\Core\RepositoryWithTypedId.cs:línea 73
+   en OSSE.BusinessLogic.UsuarioBL.Get(Expression`1 where) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.BusinessLogic\UsuarioBL.cs:línea 32
+   en OSSE.Service.Core.Providers.DbMembershipProvider.CheckPassword(String username, String password, Boolean updateLastLoginActivityDate, Usuario& user) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\Core\Providers\DbMembershipProvider.cs:línea 457
+   en OSSE.Service.Core.Providers.DbMembershipProvider.ValidateUser(String username, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\Core\Providers\DbMembershipProvider.cs:línea 422
+   en OSSE.Service.AccountMembershipService.ValidateUser(String userName, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\AccountMembershipService.cs:línea 44
+   en OSSE.Web.Controllers.AccountController.Login(LogOnModel model, String returnUrl) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Presentacion Layer\OSSE.Web\Controllers\AccountController.cs:línea 83
+2014-09-17 11:23:47,550 [9] ERROR  [(null)] - Mensaje: The underlying provider failed on Open. Trace:    en System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   en System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   en System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   en System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__2[TResult](IEnumerable`1 sequence)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.SingleOrDefault[TSource](IQueryable`1 source)
+   en OSSE.Persistence.Core.RepositoryWithTypedId`2.FindOne(IQuerySpecification`1 specification) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Persistence Layer\OSSE.Persistence\Core\RepositoryWithTypedId.cs:línea 68
+   en OSSE.Persistence.Core.RepositoryWithTypedId`2.FindOne(Expression`1 expression) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Persistence Layer\OSSE.Persistence\Core\RepositoryWithTypedId.cs:línea 73
+   en OSSE.BusinessLogic.UsuarioBL.Get(Expression`1 where) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.BusinessLogic\UsuarioBL.cs:línea 32
+   en OSSE.Service.Core.Providers.DbMembershipProvider.CheckPassword(String username, String password, Boolean updateLastLoginActivityDate, Usuario& user) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\Core\Providers\DbMembershipProvider.cs:línea 457
+   en OSSE.Service.Core.Providers.DbMembershipProvider.ValidateUser(String username, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\Core\Providers\DbMembershipProvider.cs:línea 422
+   en OSSE.Service.AccountMembershipService.ValidateUser(String userName, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\AccountMembershipService.cs:línea 44
+   en OSSE.Web.Controllers.AccountController.Login(LogOnModel model, String returnUrl) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Presentacion Layer\OSSE.Web\Controllers\AccountController.cs:línea 83
