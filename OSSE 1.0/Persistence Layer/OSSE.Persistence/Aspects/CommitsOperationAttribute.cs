@@ -1,11 +1,14 @@
 ﻿using System;
 using PostSharp.Aspects;
+using StructureMap;
 
 namespace OSSE.Persistence.Aspects
 {
     [Serializable]
     public sealed class CommitsOperationAttribute : MethodInterceptionAspect
     {
+        private readonly IMessageDispatcher _dispatcher;
+
         public CommitsOperationAttribute()
         {
             AspectPriority = 10;
@@ -22,7 +25,8 @@ namespace OSSE.Persistence.Aspects
 
         public override void OnInvoke(MethodInterceptionArgs args)
         {
-            var dispatcher = new MessageDispatcher {RelaseContext = ReleaseContext};
+            var dispatcher = ObjectFactory.GetInstance<IMessageDispatcher>();
+            dispatcher.RelaseContext = ReleaseContext;
 
             if (args.ReturnValue == null)
                 dispatcher.HandleCommand(args.Proceed);

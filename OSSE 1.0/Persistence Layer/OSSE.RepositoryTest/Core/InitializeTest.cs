@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OSSE.Domain;
-using OSSE.IoC.App_Start;
+using OSSE.IoC;
 using OSSE.Persistence;
 using OSSE.Persistence.EntityFramework;
 

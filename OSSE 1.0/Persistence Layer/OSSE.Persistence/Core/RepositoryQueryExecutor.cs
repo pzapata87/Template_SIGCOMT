@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using OSSE.Repository.RepositoryContracts;
-using StructureMap;
 
 namespace OSSE.Persistence.Core
 {
@@ -9,9 +8,9 @@ namespace OSSE.Persistence.Core
     {
         private readonly DbContext _instanceDB;
 
-        public RepositoryQueryExecutor()
+        public RepositoryQueryExecutor(DbContext instanceDbContext)
         {
-            _instanceDB = ObjectFactory.GetInstance<DbContext>();
+            _instanceDB = instanceDbContext;
         }
 
         public IEnumerable<TQ> SqlCommand<TQ>(string sql, params object[] parameters)

@@ -17,18 +17,19 @@
 
 using System.Web.Http;
 using System.Web.Mvc;
-using StructureMap;
+using OSSE.IoC;
 using OSSE.IoC.DependencyResolution;
+using StructureMap;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(OSSE.IoC.App_Start.StructuremapMvc), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 
-namespace OSSE.IoC.App_Start
+namespace OSSE.IoC
 {
     public static class StructuremapMvc
     {
         public static void Start()
         {
-            IContainer container = DependencyResolution.IoC.Initialize();
+            IContainer container = DependencyConfigurator.Initialize();
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
         }

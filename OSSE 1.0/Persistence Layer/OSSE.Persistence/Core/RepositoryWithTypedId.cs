@@ -21,9 +21,9 @@ namespace OSSE.Persistence.Core
         private readonly DbContext _instanceDB;
         public IDbSet<T> Set;
 
-        public RepositoryWithTypedId()
+        public RepositoryWithTypedId(DbContext instanceDbContext)
         {
-            _instanceDB = ObjectFactory.GetInstance<DbContext>();
+            _instanceDB = instanceDbContext;
             Set = _instanceDB.Set<T>();
         }
 

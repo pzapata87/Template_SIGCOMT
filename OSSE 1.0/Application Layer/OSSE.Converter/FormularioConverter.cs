@@ -11,56 +11,88 @@ namespace OSSE.Converter
         {
             var cadenaMenu = new StringBuilder("<ul id='ModulosSIG'>");
 
-            foreach (var modulo in formularioDomain.Where(p => !p.FormularioParentId.HasValue))
+            foreach (var modulo in formularioDomain)
             {
-                var idioma = modulo.ItemTablaFormularioList.FirstOrDefault(p => p.ItemTablaId == idiomaId) ??
-                             modulo.ItemTablaFormularioList.First();
+                if (modulo.FormularioParentId.HasValue) continue;
 
-                cadenaMenu.AppendLine("<li data-idx='" + modulo.Id + "' style='display: block'><a href='javascript:void(0)' title='" + idioma.Nombre + "' class='nodo'>");
-                cadenaMenu.AppendLine("<img src='" + modulo.Direccion + "' alt='' /><span>" + idioma.Nombre + "</span></a>");
-                cadenaMenu.AppendLine("<div style='display: none'>");
-
-                cadenaMenu.AppendFormat("<ul id='{0}' class='{1}'>\r\n", string.Format("MOD{0}", modulo.Id), "menuNavegacion");
-                cadenaMenu.AppendFormat("<li><span style='border-top: 0 !important'>{0}", idioma.Nombre.ToUpper());
-
-                cadenaMenu.AppendFormat("<ul>\r\n");
-
-                GenerateChildren(cadenaMenu, modulo.FormulariosHijosList, idiomaId);
-
-                cadenaMenu.AppendFormat("</ul>\r\n");
-
-                cadenaMenu.AppendLine("</li></ul>");
-                cadenaMenu.AppendLine("</div></li>");
+                var idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList);
+                cadenaMenu.AppendLine(GenerarHtmlContenidoModulo(modulo, idioma.Nombre, idiomaId));
             }
-            cadenaMenu.AppendLine("</ul>");
 
-            return cadenaMenu.ToString();
+            return cadenaMenu.AppendLine("</ul>").ToString();
         }
 
-        private static void GenerateChildren(StringBuilder sb, IEnumerable<Formulario> childrenList, int idiomaId)
+        #region Metodos Privados GenerateTreeView
+
+        private static string GenerarHtmlContenidoModulo(Formulario modulo, string idiomaNombre, int idiomaId)
         {
+            const string patternModulo = @"
+                    <li data-idx='{0}' style='display: block'>
+                        <a href='javascript:void(0)' title='{1}' class='nodo'>
+                            <img src='{2}' alt='' /><span>{1}</span>
+                        </a>
+                        <div style='display: none'>
+                            <ul id='MOD{0}' class='menuNavegacion'>
+                                <li><span style='border-top: 0 !important'>{1}
+                                    <ul>
+                                        {3}
+                                    </ul>
+                                </li>
+                            </ul> 
+                        </div>
+                    </li>";
+
+            return string.Format(patternModulo, modulo.Id, idiomaNombre, modulo.Direccion,
+                GenerateChildren(modulo.FormulariosHijosList, idiomaId));
+        }
+
+        private static ItemTablaFormulario ObtenerIdiomaFormulario(int idiomaId, ICollection<ItemTablaFormulario> itemTablaFormularios)
+        {
+            return itemTablaFormularios.FirstOrDefault(p => p.ItemTablaId == idiomaId) ??
+                   itemTablaFormularios.First();
+        }
+
+        private static string GenerarHtmlHijos(ICollection<Formulario> formulariosHijos, int idiomaId, string idiomaNombre)
+        {
+            const string cadenaHija = @"
+                            <li><span>{0}</span>
+                                <ul>
+                                    {1}
+                                </ul>
+                            </li>";
+
+            return string.Format(cadenaHija, idiomaNombre, GenerateChildren(formulariosHijos, idiomaId));
+        }
+
+        private static string GenerateChildren(IEnumerable<Formulario> childrenList, int idiomaId)
+        {
+            var sb = new StringBuilder();
+
             foreach (var children in childrenList)
             {
-                var idioma = children.ItemTablaFormularioList.FirstOrDefault(p => p.ItemTablaId == idiomaId) ??
-                                children.ItemTablaFormularioList.First();
-
-                if (children.FormulariosHijosList.Any())
-                {
-                    sb.AppendFormat("<li>{0}", string.Format("<span>{0}</span>", idioma.Nombre));
-                    sb.AppendLine("\r\n<ul>");
-
-                    GenerateChildren(sb, children.FormulariosHijosList, idiomaId);
-
-                    sb.AppendLine("</ul></li>");
-                }
-                else
-                {
-                    sb.AppendFormat("<li>{0}</li>",
-                        string.Format(
-                            "<a href='javascript:void(0)' title='{0}' data-url='{1}?id={2}' id='FORM{2}' class='itemMenuClass'>{0}</a>",
-                            idioma.Nombre, children.Direccion, children.Id));
-                }
+                var idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList);
+                sb.AppendLine(ProcesarChildren(idiomaId, children, idioma.Nombre));
             }
+
+            return sb.ToString();
         }
+
+        private static string ProcesarChildren(int idiomaId, Formulario children, string idiomaNombre)
+        {
+            var contenidoHtmlHijo = string.Format(@"
+                        <li>
+                             <a href='javascript:void(0)' title='{0}' data-url='{1}?id={2}' id='FORM{2}' class='itemMenuClass'>{0}</a>
+                        </li>", idiomaNombre, children.Direccion, children.Id);
+
+
+            if (children.FormulariosHijosList.Any())
+            {
+                contenidoHtmlHijo = GenerarHtmlHijos(children.FormulariosHijosList, idiomaId, idiomaNombre);
+            }
+
+            return contenidoHtmlHijo;
+        } 
+
+        #endregion
     }
 }

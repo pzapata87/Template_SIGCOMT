@@ -1,4 +1,5 @@
-﻿using OSSE.Domain;
+﻿using System.Data.Entity;
+using OSSE.Domain;
 using OSSE.Persistence.Core;
 
 namespace OSSE.Repository.SqlServer
@@ -12,6 +13,12 @@ namespace OSSE.Repository.SqlServer
         //        p.Estado == (int)TipoEstado.Activo)
         //        .Distinct().OrderBy(r => r.Orden).ToList();
         //}
+
+        public FormularioRepository(DbContext instanceDbContext)
+            : base(instanceDbContext)
+        {
+            
+        }
 
         public override object[] GetKey(Formulario entity)
         {

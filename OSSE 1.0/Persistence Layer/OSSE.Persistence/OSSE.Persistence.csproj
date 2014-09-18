@@ -84,6 +84,7 @@
     <Compile Include="EntityFramework\Disposable.cs" />
     <Compile Include="EntityFramework\IDatabaseFactory.cs" />
     <Compile Include="EntityFramework\IDbModelBuilder.cs" />
+    <Compile Include="IMessageDispatcher.cs" />
     <Compile Include="MessageDispatcher.cs" />
     <Compile Include="PersistenceConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,35 +1,35 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Data.Entity;
-using StructureMap;
 
 namespace OSSE.Persistence
 {
-    public class MessageDispatcher
+    public class MessageDispatcher : IMessageDispatcher
     {
         public static BlockingCollection<string> QueriesQueue;
         public bool RelaseContext { get; set; }
 
-        public MessageDispatcher()
+        private readonly DbContext _instanceDbContext;
+
+        public MessageDispatcher(DbContext instanceDbContext)
         {
             QueriesQueue = new BlockingCollection<string>(new ConcurrentQueue<string>());
             RelaseContext = true;
+            _instanceDbContext = instanceDbContext;
         }
 
         public void HandleCommand(Action action)
         {
-            var instance = ObjectFactory.GetInstance<DbContext>();
-
             if (RelaseContext)
             {
-                using (instance)
+                using (_instanceDbContext)
                 {
-                    ActionSaveChanges(action, instance);
+                    ActionSaveChanges(action, _instanceDbContext);
                 }
             }
             else
             {
-                ActionSaveChanges(action, instance);
+                ActionSaveChanges(action, _instanceDbContext);
             }
         }
 

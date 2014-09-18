@@ -24,28 +24,12 @@ namespace OSSE.Service
 
         public void SignIn(string userName, bool createPersistentCookie)
         {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("El valor no puede ser NULL ni estar vacío.", "userName");
+            if (String.IsNullOrEmpty(userName)) 
+                throw new ArgumentException("El valor no puede ser NULL ni estar vacío.", "userName");
+            
+            var usuario = _usuarioBL.Get(p => p.UserName == userName) ?? new Usuario { UserName = MasterConstantes.NoUsuario };
 
-            FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
-            var usuario = _usuarioBL.Get(p => p.UserName == userName);
-            string userData = new Guid().ToString();
-
-            if (usuario == null)
-            {
-                usuario = new Usuario { UserName = MasterConstantes.NoUsuario };
-            }
-            else
-            {
-                userData = usuario.Id.ToString();
-            }
-
-            var ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, DateTime.Now.AddMinutes(30), createPersistentCookie, userData);
-            var encTicket = FormsAuthentication.Encrypt(ticket);
-            var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
-
-            HttpContext.Current.Session.Add(MasterConstantes.UsuarioSesion, usuario);
-            HttpContext.Current.Session.Add(MasterConstantes.IdControlador, 0);
-            HttpContext.Current.Response.Cookies.Add(faCookie);
+            GenerarTickectAutenticacion(usuario, createPersistentCookie);
         }
 
         public void SignOut()
@@ -54,6 +38,21 @@ namespace OSSE.Service
             HttpContext.Current.Session.Remove(MasterConstantes.UsuarioSesion);
             HttpContext.Current.Session.Clear();
             FormsAuthentication.SignOut();
+        }
+
+        private void GenerarTickectAutenticacion(Usuario usuario, bool createPersistentCookie)
+        {
+            FormsAuthentication.SetAuthCookie(usuario.UserName, createPersistentCookie);
+
+            var ticket = new FormsAuthenticationTicket(1, usuario.UserName, DateTime.Now, DateTime.Now.AddMinutes(30),
+                createPersistentCookie, usuario.Id.ToString());
+
+            var encTicket = FormsAuthentication.Encrypt(ticket);
+            var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+
+            HttpContext.Current.Session.Add(MasterConstantes.UsuarioSesion, usuario);
+            HttpContext.Current.Session.Add(MasterConstantes.IdControlador, 0);
+            HttpContext.Current.Response.Cookies.Add(faCookie);
         }
     }
 }

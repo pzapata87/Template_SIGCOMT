@@ -19,6 +19,7 @@
 using System.Data.Entity;
 using System.Web.Security;
 using OSSE.BusinessLogic.Interfaces;
+using OSSE.Persistence;
 using OSSE.Persistence.EntityFramework;
 using OSSE.Repository;
 using OSSE.Repository.SqlServer;
@@ -29,7 +30,7 @@ using StructureMap.Web;
 
 namespace OSSE.IoC.DependencyResolution
 {
-    public static class IoC
+    public static class DependencyConfigurator
     {
         public static IContainer Initialize()
         {
@@ -40,6 +41,7 @@ namespace OSSE.IoC.DependencyResolution
                     scan.AssemblyContainingType<IUsuarioRepository>();
                     scan.AssemblyContainingType<UsuarioRepository>();
                     scan.AssemblyContainingType<IUsuarioBL>();
+                    scan.AssemblyContainingType<IMessageDispatcher>();
                     scan.WithDefaultConventions();
                 });
 
