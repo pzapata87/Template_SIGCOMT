@@ -29,7 +29,16 @@ namespace OSSE.Converter
             const string patternModulo = @"
                     <li data-idx='{0}' style='display: block'>
                         <a href='javascript:void(0)' title='{1}' class='nodo'>
-                            <img src='{2}' alt='' /><span>{1}</span>
+                            <svg 
+                                width='24' 
+                                height='24' 
+                                viewBox='0 0 512 512' 
+                                xmlns='http://www.w3.org/2000/svg' 
+                                xmlns:xlink='http://www.w3.org/1999/xlink' 
+                                fill='#FA8525'>
+                                    <path d='{2}'></path>
+                            </svg>
+                            <span>{1}</span>
                         </a>
                         <div style='display: none'>
                             <ul id='MOD{0}' class='menuNavegacion'>

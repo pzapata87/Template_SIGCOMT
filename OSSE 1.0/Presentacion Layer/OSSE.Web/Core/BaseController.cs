@@ -258,7 +258,7 @@ namespace OSSE.Web.Core
         {
             try
             {
-                var modulos = _formularioBL.FindAll(p => p.Estado == (int) TipoEstado.Activo).ToList();
+                var modulos = _formularioBL.Formularios(UsuarioActual);
                 string cadenaMenu = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
 
                 return Json(cadenaMenu);

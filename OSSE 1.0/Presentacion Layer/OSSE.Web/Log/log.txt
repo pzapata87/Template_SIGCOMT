@@ -202,3 +202,9 @@
    en OSSE.Service.Core.Providers.DbMembershipProvider.ValidateUser(String username, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\Core\Providers\DbMembershipProvider.cs:línea 422
    en OSSE.Service.AccountMembershipService.ValidateUser(String userName, String password) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Services Layer\OSSE.Service\AccountMembershipService.cs:línea 44
    en OSSE.Web.Controllers.AccountController.Login(LogOnModel model, String returnUrl) en d:\Proyectos\Template 01\Template_OSSE\OSSE 1.0\Presentacion Layer\OSSE.Web\Controllers\AccountController.cs:línea 83
+2014-09-22 12:42:31,573 [7] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-09-22 12:42:32,922 [5] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-09-22 14:32:33,756 [7] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-09-22 14:32:35,170 [10] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-09-22 16:57:20,374 [19] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-09-22 17:00:40,110 [19] ERROR  [(null)] - Las credenciales especificadas son incorrectas.

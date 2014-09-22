@@ -10,13 +10,12 @@ body{
 /*Header*/
 .headercolor{
 	height: 58px;
-	background:#39497a url('../images/bgheadercolor.png') repeat-x left top;
+    color: #000000;
 }
 .header{
-	background-color:#39497a;
 	height:100%;
 	width:100%;
-	background: url('../images/headerbg.png') no-repeat left top;
+    color: #000000;
 }
 .headertitle{
     padding:12px 15px;
@@ -49,8 +48,7 @@ body{
 /*toolbar*/
 .toolbar{
 	height: 27px;
-	background-image: url('../images/appmenu_back.gif');
-	background-repeat: repeat-x;
+    
 	color: #000;
 	padding-right: 4px;
 	padding-left: 4px;
@@ -170,6 +168,12 @@ ul.menubarleft li a:hover{
 	margin:0 0 0 5px;
 	_height:29px;
 }
+
+.panelitems ul li a svg{
+	margin:5px 0 0 10px;
+	_height:29px;
+}
+
 .panelitems ul li a span{
 	vertical-align:top;
 	display:inline-block;

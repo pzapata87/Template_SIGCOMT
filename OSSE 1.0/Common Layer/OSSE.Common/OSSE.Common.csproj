@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comun.cs" />
+    <Compile Include="Constantes\IconosSvgConstantes.cs" />
     <Compile Include="Constantes\MasterConstantes.cs" />
     <Compile Include="Enum\TipoEstado.cs" />
     <Compile Include="Enum\TipoOrden.cs" />
