@@ -7,7 +7,7 @@ namespace OSSE.Persistence.DatabaseMappings
     {
         public FormularioConfiguration()
         {
-            Property(p => p.Direccion).HasMaxLength(1000);
+            Property(p => p.Direccion).HasMaxLength(4000);
             Property(p => p.Controlador).HasMaxLength(100);
 
             HasOptional(p => p.FormularioParent).WithMany(p => p.FormulariosHijosList).HasForeignKey(p => p.FormularioParentId);

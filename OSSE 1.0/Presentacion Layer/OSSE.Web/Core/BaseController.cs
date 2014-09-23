@@ -258,10 +258,13 @@ namespace OSSE.Web.Core
         {
             try
             {
-                var modulos = _formularioBL.Formularios(UsuarioActual);
-                string cadenaMenu = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
+                if (UsuarioActual == null)
+                    return Json("");
 
-                return Json(cadenaMenu);
+                var modulos = _formularioBL.Formularios(UsuarioActual);
+                var modulosUsuario = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
+
+                return Json(modulosUsuario);
             }
             catch (Exception ex)
             {

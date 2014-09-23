@@ -2,58 +2,27 @@
 using System.Linq;
 using System.Text;
 using OSSE.Domain;
+using OSSE.DTO;
 
 namespace OSSE.Converter
 {
     public class FormularioConverter
     {
-        public static string GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
+        public static List<FormularioDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {
-            var cadenaMenu = new StringBuilder("<ul id='ModulosSIG'>");
-
-            foreach (var modulo in formularioDomain)
-            {
-                if (modulo.FormularioParentId.HasValue) continue;
-
-                var idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList);
-                cadenaMenu.AppendLine(GenerarHtmlContenidoModulo(modulo, idioma.Nombre, idiomaId));
-            }
-
-            return cadenaMenu.AppendLine("</ul>").ToString();
+            return (from modulo in formularioDomain
+                where !modulo.FormularioParentId.HasValue
+                let idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList)
+                select new FormularioDto
+                {
+                    Id = modulo.Id,
+                    Icono = modulo.Direccion,
+                    Nombre = idioma.Nombre,
+                    Operaciones = GenerateChildren(modulo.FormulariosHijosList, idiomaId)
+                }).ToList();
         }
 
         #region Metodos Privados GenerateTreeView
-
-        private static string GenerarHtmlContenidoModulo(Formulario modulo, string idiomaNombre, int idiomaId)
-        {
-            const string patternModulo = @"
-                    <li data-idx='{0}' style='display: block'>
-                        <a href='javascript:void(0)' title='{1}' class='nodo'>
-                            <svg 
-                                width='24' 
-                                height='24' 
-                                viewBox='0 0 512 512' 
-                                xmlns='http://www.w3.org/2000/svg' 
-                                xmlns:xlink='http://www.w3.org/1999/xlink' 
-                                fill='#FA8525'>
-                                    <path d='{2}'></path>
-                            </svg>
-                            <span>{1}</span>
-                        </a>
-                        <div style='display: none'>
-                            <ul id='MOD{0}' class='menuNavegacion'>
-                                <li><span style='border-top: 0 !important'>{1}
-                                    <ul>
-                                        {3}
-                                    </ul>
-                                </li>
-                            </ul> 
-                        </div>
-                    </li>";
-
-            return string.Format(patternModulo, modulo.Id, idiomaNombre, modulo.Direccion,
-                GenerateChildren(modulo.FormulariosHijosList, idiomaId));
-        }
 
         private static ItemTablaFormulario ObtenerIdiomaFormulario(int idiomaId, ICollection<ItemTablaFormulario> itemTablaFormularios)
         {
@@ -61,46 +30,18 @@ namespace OSSE.Converter
                    itemTablaFormularios.First();
         }
 
-        private static string GenerarHtmlHijos(ICollection<Formulario> formulariosHijos, int idiomaId, string idiomaNombre)
+        private static List<OperacionDto> GenerateChildren(IEnumerable<Formulario> childrenList, int idiomaId)
         {
-            const string cadenaHija = @"
-                            <li><span>{0}</span>
-                                <ul>
-                                    {1}
-                                </ul>
-                            </li>";
-
-            return string.Format(cadenaHija, idiomaNombre, GenerateChildren(formulariosHijos, idiomaId));
+            return (from children in childrenList
+                let idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList)
+                select new OperacionDto
+                {
+                    Controlador = children.Controlador,
+                    Nombre = idioma.Nombre,
+                    Id = children.Id,
+                    Operaciones = GenerateChildren(children.FormulariosHijosList, idiomaId)
+                }).ToList();
         }
-
-        private static string GenerateChildren(IEnumerable<Formulario> childrenList, int idiomaId)
-        {
-            var sb = new StringBuilder();
-
-            foreach (var children in childrenList)
-            {
-                var idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList);
-                sb.AppendLine(ProcesarChildren(idiomaId, children, idioma.Nombre));
-            }
-
-            return sb.ToString();
-        }
-
-        private static string ProcesarChildren(int idiomaId, Formulario children, string idiomaNombre)
-        {
-            var contenidoHtmlHijo = string.Format(@"
-                        <li>
-                             <a href='javascript:void(0)' title='{0}' data-url='{1}?id={2}' id='FORM{2}' class='itemMenuClass'>{0}</a>
-                        </li>", idiomaNombre, children.Direccion, children.Id);
-
-
-            if (children.FormulariosHijosList.Any())
-            {
-                contenidoHtmlHijo = GenerarHtmlHijos(children.FormulariosHijosList, idiomaId, idiomaNombre);
-            }
-
-            return contenidoHtmlHijo;
-        } 
 
         #endregion
     }
