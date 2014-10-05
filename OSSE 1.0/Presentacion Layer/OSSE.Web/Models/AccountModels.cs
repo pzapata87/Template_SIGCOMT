@@ -32,12 +32,12 @@ namespace OSSE.Web.Models
     public class LogOnModel
     {
         [Required(ErrorMessage = "El nombre de usuario es requerido.")]
-        [DisplayName("Usuario :")]
+        [DisplayName("Usuario")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "La contraseña es requerida.")]
         [DataType(DataType.Password)]
-        [DisplayName("Contraseña :")]
+        [DisplayName("Contraseña")]
         public string Password { get; set; }
 
         [DisplayName("Recordar mi cuenta?")]

@@ -53,16 +53,22 @@ namespace OSSE.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            var modelo = new AccountModel
+            //var modelo = new AccountModel
+            //{
+            //    LogOn = new LogOnModel
+            //    {
+            //        UserName = "",
+            //        Password = ""
+            //    },
+            //    Reset = new ResetModel()
+            //};
+            var login = new LogOnModel
             {
-                LogOn = new LogOnModel
-                {
-                    UserName = "",
-                    Password = ""
-                },
-                Reset = new ResetModel()
+                UserName = "",
+                Password = ""
             };
-            return View(modelo);
+
+            return View(login);
         }
 
         //
@@ -73,32 +79,34 @@ namespace OSSE.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LogOnModel model, string returnUrl)
         {
-            if (!Request.IsAjaxRequest()) RedirectToAction("Login", "Account", new { area = "" });
+            //if (!Request.IsAjaxRequest()) RedirectToAction("Login", "Account", new { area = "" });
 
-            var jsonResponse = new JsonResponse { Success = false };
+            //var jsonResponse = new JsonResponse { Success = false };
             try
             {
                 if (ModelState.IsValid)
                 {
                         if (MembershipService.ValidateUser(model.UserName, model.Password))
                         {
-                            jsonResponse.Success = true;
-                            jsonResponse.Data = Utils.AbsoluteWebRoot + "Load";
+                            //jsonResponse.Success = true;
+                            //jsonResponse.Data = Utils.AbsoluteWebRoot + "Load";
                             FormsService.SignIn(model.UserName, true);
                             FormulariosEnSession();
+
+                            return RedirectToAction("Index", "Load");
                         }
-                        else
-                        {
-                            jsonResponse.Message = "Las credenciales especificadas son incorrectas.";
-                            Logger.Error(jsonResponse.Message);
-                        }
+                        //else
+                        //{
+                        //    jsonResponse.Message = "Las credenciales especificadas son incorrectas.";
+                        //    Logger.Error(jsonResponse.Message);
+                        //}
                 }
-                else
-                {
-                    jsonResponse.Message = "Las credenciales especificadas son incorrectas.";
-                    Logger.Error(jsonResponse.Message);
-                }
-                return Json(jsonResponse, JsonRequestBehavior.AllowGet);
+                //else
+                //{
+                //    jsonResponse.Message = "Las credenciales especificadas son incorrectas.";
+                //    Logger.Error(jsonResponse.Message);
+                //}
+                return View(model);
             }
             catch (Exception ex)
             {
