@@ -143,47 +143,31 @@ namespace OSSE.DataBase.Generator
 
             #region Mantenedores Mantenimientos Generales
 
-            var grupoVistasModuloSeguridad = new Formulario
+            var grupoVistasModuloSeguridad = new List<Formulario>
             {
-                Direccion = string.Empty,
-                Controlador = string.Empty,
-                Orden = 0,
-                Nivel = 1,
-                FormularioParent = moduloSeguridad,
-                Estado = 1,
-                PermisoRolList = new List<PermisoRol>
+                new Formulario
                 {
-                    new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo}
-                },
-                ItemTablaFormularioList = new List<ItemTablaFormulario>
-                {
-                    new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = (int) TipoEstado.Activo, Nombre = "Mantenedores"}
-                },
-                FormulariosHijosList = new List<Formulario>
-                {
-                    new Formulario
+                    Direccion = "Administracion/Usuario/Index",
+                    Controlador = "usuarioList",
+                    FormularioParent = moduloSeguridad,
+                    Orden = 1,
+                    Nivel = 1,
+                    Estado = (int) TipoEstado.Activo,
+                    PermisoRolList = new List<PermisoRol>
                     {
-                        Direccion = "Administracion/Usuario/Index",
-                        Controlador = "usuarioList",
-                        Orden = 1,
-                        Nivel = 2,
-                        Estado = (int) TipoEstado.Activo,
-                        PermisoRolList = new List<PermisoRol>
-                        {
-                            new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                            new PermisoRol {TipoPermiso = 2, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                            new PermisoRol {TipoPermiso = 3, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                            new PermisoRol {TipoPermiso = 4, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo}
-                        },
-                        ItemTablaFormularioList = new List<ItemTablaFormulario>
-                        {
-                            new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = (int) TipoEstado.Activo, Nombre = "Usuario"}
-                        }
+                        new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
+                        new PermisoRol {TipoPermiso = 2, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
+                        new PermisoRol {TipoPermiso = 3, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
+                        new PermisoRol {TipoPermiso = 4, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo}
+                    },
+                    ItemTablaFormularioList = new List<ItemTablaFormulario>
+                    {
+                        new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = (int) TipoEstado.Activo, Nombre = "Usuario"}
                     }
                 }
             };
-
-            context.Set<Formulario>().Add(grupoVistasModuloSeguridad);
+         
+            context.Set<Formulario>().AddRange(grupoVistasModuloSeguridad);
 
             #endregion
 

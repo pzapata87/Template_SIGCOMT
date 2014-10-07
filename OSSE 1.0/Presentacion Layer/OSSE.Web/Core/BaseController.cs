@@ -17,6 +17,7 @@ using OSSE.Common.JQGrid;
 using OSSE.Converter;
 using OSSE.Domain;
 using OSSE.Domain.Core;
+using OSSE.DTO;
 using OSSE.Web.Models;
 
 namespace OSSE.Web.Core
@@ -253,24 +254,42 @@ namespace OSSE.Web.Core
 
         #region GenerarTreeView
 
-        [HttpPost]
-        public virtual JsonResult ListarTreView()
+        //[HttpPost]
+        //public virtual JsonResult ListarTreView()
+        //{
+        //    try
+        //    {
+        //        if (UsuarioActual == null)
+        //            return Json("");
+
+        //        var modulos = _formularioBL.Formularios(UsuarioActual);
+        //        var modulosUsuario = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
+
+        //        return Json(modulosUsuario);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
+        //        return MensajeError();
+        //    }
+        //}
+
+        public virtual List<FormularioDto> ObtenerFormulariosUsuario()
         {
             try
             {
                 if (UsuarioActual == null)
-                    return Json("");
+                    return null;
 
                 var modulos = _formularioBL.Formularios(UsuarioActual);
-                var modulosUsuario = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
-
-                return Json(modulosUsuario);
+                return FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
             }
             catch (Exception ex)
             {
                 Logger.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
-                return MensajeError();
             }
+
+            return null;
         }
 
         #endregion
