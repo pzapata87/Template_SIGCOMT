@@ -15,12 +15,9 @@
 
         <div class="mb30"></div>
 
-        @using (Html.BeginForm("Login", "Account", new { area = "" }, FormMethod.Post, new { id = "frmLogOn" }))
+        @using (Html.BeginForm("Login", "Account", new { area = "" }, FormMethod.Post, new { id = "frmLogin" }))
         {
             @Html.AntiForgeryToken()
-            ViewContext.FormContext.ValidationSummaryId = "valSumModel";
-            @Html.ValidationSummary("", new Dictionary<string, object> { { "id", "valSumModel" }, { "class", "errorForm" } })
-            
 
             <div class="input-group mb15">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
