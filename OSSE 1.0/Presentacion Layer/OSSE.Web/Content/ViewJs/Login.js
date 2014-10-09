@@ -1,7 +1,8 @@
 ﻿jQuery(document).ready(function () {
-    $('#frmLogin').on('submit', function () {
+   $('#frmLogin').on('submit', function (e) {
+
         if (!$(this).valid()) {
-            return false;
+            e.preventDefault();
         }
        
         return true;

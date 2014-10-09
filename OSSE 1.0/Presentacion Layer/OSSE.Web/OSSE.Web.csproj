@@ -181,7 +181,9 @@
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />
+    <Content Include="Content\js\jquery.custom.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\modernizr.min.js" />
     <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\retina.min.js" />
