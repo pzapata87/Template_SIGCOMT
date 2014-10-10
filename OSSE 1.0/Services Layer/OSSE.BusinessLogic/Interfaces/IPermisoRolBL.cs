@@ -6,7 +6,7 @@ using OSSE.Domain;
 
 namespace OSSE.BusinessLogic.Interfaces
 {
-    public interface IPermisoRolBL : IJQGridPaging<PermisoRol>
+    public interface IPermisoRolBL : IPaging<PermisoRol>
     {
         PermisoRol GetById(long id);
         PermisoRol Get(Expression<Func<PermisoRol, bool>> where);

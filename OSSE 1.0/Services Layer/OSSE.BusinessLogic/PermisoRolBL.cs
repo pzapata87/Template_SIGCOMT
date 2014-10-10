@@ -50,7 +50,7 @@ namespace OSSE.BusinessLogic
             return _permisoUsuarioRepository.Count(where);
         }
         
-        public IQueryable<PermisoRol> GetAll(JQGridParameters<PermisoRol> parameters)
+        public IQueryable<PermisoRol> GetAll(FilterParameters<PermisoRol> parameters)
         {
             return _permisoUsuarioRepository.FindAllPaging(parameters);
         }

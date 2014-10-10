@@ -6,7 +6,7 @@ using OSSE.Domain;
 
 namespace OSSE.BusinessLogic.Interfaces
 {
-    public interface IFormularioBL : IJQGridPaging<Formulario>
+    public interface IFormularioBL : IPaging<Formulario>
     {
         Formulario GetById(int id);
         IList<Formulario> FindAll(Expression<Func<Formulario, bool>> where);

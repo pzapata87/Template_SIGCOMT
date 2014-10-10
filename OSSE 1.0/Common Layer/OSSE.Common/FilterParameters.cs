@@ -4,7 +4,7 @@ using OSSE.Common.Enum;
 
 namespace OSSE.Common
 {
-    public class JQGridParameters<T> where T : class
+    public class FilterParameters<T> where T : class
     {
         public string ColumnOrder { get; set; }
         public TipoOrden OrderType { get; set; }

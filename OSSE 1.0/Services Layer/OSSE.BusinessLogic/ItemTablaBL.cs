@@ -41,7 +41,7 @@ namespace OSSE.BusinessLogic
             throw new NotImplementedException();
         }
         
-        public IQueryable<ItemTabla> GetAll(JQGridParameters<ItemTabla> parameters)
+        public IQueryable<ItemTabla> GetAll(FilterParameters<ItemTabla> parameters)
         {
             return _itemTablaRepository.FindAllPaging(parameters);
         }

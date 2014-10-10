@@ -12,8 +12,8 @@ using OSSE.BusinessLogic.Core;
 using OSSE.BusinessLogic.Interfaces;
 using OSSE.Common;
 using OSSE.Common.Constantes;
+using OSSE.Common.DataTable;
 using OSSE.Common.Enum;
-using OSSE.Common.JQGrid;
 using OSSE.Converter;
 using OSSE.Domain;
 using OSSE.Domain.Core;
@@ -108,78 +108,112 @@ namespace OSSE.Web.Core
 
         #region Paginacion
 
-        protected GenericDouble<JQgrid, T> Listar<T>(Func<Expression<Func<T, bool>>, int> countMethod,
-            Func<JQGridParameters<T>, IQueryable<T>> listMethod, JQGridParameters<T> parameters) where T : class
-        {
-            var jqgrid = new JQgrid();
-            IList<T> list;
+        //protected GenericDouble<JQgrid, T> Listar<T>(Func<Expression<Func<T, bool>>, int> countMethod,
+        //    Func<FilterParameters<T>, IQueryable<T>> listMethod, FilterParameters<T> parameters) where T : class
+        //{
+        //    IList<T> list;
 
+        //    try
+        //    {
+        //        int totalPages = 0;
+
+        //        var count = countMethod(parameters.WhereFilter);
+
+        //        if (count > 0 && parameters.AmountRows > 0)
+        //        {
+        //            if (count % parameters.AmountRows > 0)
+        //            {
+        //                totalPages = count / parameters.AmountRows + 1;
+        //            }
+        //            else
+        //            {
+        //                totalPages = count / parameters.AmountRows;
+        //            }
+
+        //            totalPages = totalPages == 0 ? 1 : totalPages;
+        //        }
+
+        //        parameters.CurrentPage = parameters.CurrentPage > totalPages ? totalPages : parameters.CurrentPage;
+
+        //        parameters.Start = parameters.AmountRows * parameters.CurrentPage - parameters.AmountRows;
+        //        if (parameters.Start < 0)
+        //        {
+        //            parameters.Start = 0;
+        //        }
+
+        //        jqgrid.Total = totalPages;
+        //        jqgrid.Page = parameters.CurrentPage;
+        //        jqgrid.Records = count;
+        //        jqgrid.Start = parameters.Start;
+
+        //        list = listMethod(parameters).ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return new GenericDouble<JQgrid, T>(jqgrid, list);
+        //}
+
+        protected JsonResult ListarJQGrid<T, TResult>(ListParameter<T, TResult> configuracionListado)
+            where T : EntityBase where TResult : class
+        {
             try
             {
+                GridTable grid = configuracionListado.Grid;
+
+                var where =
+                    UtilsComun.ConvertToLambda<T>(grid.columns, grid.search)
+                        .And(configuracionListado.FiltrosAdicionales ?? (q => true));
+
+                var ordenamiento = grid.order.First();
+                var parametroFiltro = new FilterParameters<T>
+                {
+                    ColumnOrder = grid.columns[ordenamiento.column].data,
+                    CurrentPage = (grid.start/grid.length) + 1,
+                    OrderType =
+                        ordenamiento.dir != null
+                            ? (TipoOrden)Enum.Parse(typeof(TipoOrden), ordenamiento.dir, true)
+                            : TipoOrden.Asc,
+                    WhereFilter = where,
+                    AmountRows = grid.length
+                };
+
+                var count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
                 int totalPages = 0;
 
-                var count = countMethod(parameters.WhereFilter);
-
-                if (count > 0 && parameters.AmountRows > 0)
+                if (count > 0 && parametroFiltro.AmountRows > 0)
                 {
-                    if (count % parameters.AmountRows > 0)
+                    if (count%parametroFiltro.AmountRows > 0)
                     {
-                        totalPages = count / parameters.AmountRows + 1;
+                        totalPages = count/parametroFiltro.AmountRows + 1;
                     }
                     else
                     {
-                        totalPages = count / parameters.AmountRows;
+                        totalPages = count/parametroFiltro.AmountRows;
                     }
 
                     totalPages = totalPages == 0 ? 1 : totalPages;
                 }
 
-                parameters.CurrentPage = parameters.CurrentPage > totalPages ? totalPages : parameters.CurrentPage;
+                parametroFiltro.CurrentPage = parametroFiltro.CurrentPage > totalPages
+                    ? totalPages
+                    : parametroFiltro.CurrentPage;
+                parametroFiltro.Start = grid.start;
 
-                parameters.Start = parameters.AmountRows * parameters.CurrentPage - parameters.AmountRows;
-                if (parameters.Start < 0)
+                var respuestaList =
+                    configuracionListado.ListMethod(parametroFiltro)
+                        .ToList()
+                        .Select(configuracionListado.SelecctionFormat).ToList();
+
+                var responseData = new DataTableResponse<TResult>
                 {
-                    parameters.Start = 0;
-                }
-
-                jqgrid.Total = totalPages;
-                jqgrid.Page = parameters.CurrentPage;
-                jqgrid.Records = count;
-                jqgrid.Start = parameters.Start;
-
-                list = listMethod(parameters).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return new GenericDouble<JQgrid, T>(jqgrid, list);
-        }
-
-        protected JsonResult ListarJQGrid<T>(ListJQGridParameter<T> parameter) where T : EntityBase
-        {
-            try
-            {
-                GridTable grid = parameter.Grid;
-
-                grid.Page = (grid.Page == 0) ? 1 : grid.Page;
-                grid.Rows = (grid.Rows == 0) ? 100 : grid.Rows;
-
-                var where = UtilsComun.ConvertToLambda<T>(grid.Filters).And(parameter.FiltrosAdicionales ?? (q => true));
-
-                var parameters = new JQGridParameters<T>
-                {
-                    ColumnOrder = grid.Sidx,
-                    CurrentPage = grid.Page,
-                    OrderType = (TipoOrden)Enum.Parse(typeof(TipoOrden), grid.Sord, true),
-                    WhereFilter = where,
-                    AmountRows = grid.Rows
+                    data = respuestaList,
+                    recordsFiltered = respuestaList.Count(),
+                    recordsTotal = count
                 };
 
-                GenericDouble<JQgrid, T> generic = Listar(parameter.CountMethod, parameter.ListMethod, parameters);
-                generic.Value.Rows = generic.List.Select(parameter.SelecctionFormat).ToArray();
-
-                return Json(generic.Value);
+                return Json(responseData);
             }
             catch (Exception ex)
             {

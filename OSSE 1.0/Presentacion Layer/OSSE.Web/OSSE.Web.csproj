@@ -172,6 +172,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\jquery-ui-1.10.3.css" />
+    <Content Include="Content\css\jquery.dataTables.css" />
     <Content Include="Content\css\pace.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\toggles.css" />
@@ -182,6 +183,7 @@
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />
     <Content Include="Content\js\jquery.custom.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\modernizr.min.js" />
@@ -191,6 +193,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\js\OSSE.js" />
     <Content Include="images\logo-primary.png" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

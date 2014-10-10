@@ -55,7 +55,7 @@ namespace OSSE.BusinessLogic
             return _formularioRepository.Count(where);
         }
 
-        public IQueryable<Formulario> GetAll(JQGridParameters<Formulario> parameters)
+        public IQueryable<Formulario> GetAll(FilterParameters<Formulario> parameters)
         {
             return _formularioRepository.FindAllPaging(parameters);
         }

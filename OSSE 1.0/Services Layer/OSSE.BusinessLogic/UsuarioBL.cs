@@ -104,7 +104,7 @@ namespace OSSE.BusinessLogic
         }
 
         [TryCatch(ExceptionTypeExpected = typeof(Exception), RethrowException = true)]
-        public IQueryable<Usuario> GetAll(JQGridParameters<Usuario> parameters)
+        public IQueryable<Usuario> GetAll(FilterParameters<Usuario> parameters)
         {
             return _usuarioRepository.FindAllPaging(parameters);
         }

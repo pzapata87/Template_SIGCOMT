@@ -7,7 +7,7 @@ using OSSE.Domain;
 
 namespace OSSE.BusinessLogic.Interfaces
 {
-    public interface IUsuarioBL : IJQGridPaging<Usuario>
+    public interface IUsuarioBL : IPaging<Usuario>
     {
         Usuario Get(Expression<Func<Usuario, bool>> where);
         void Add(Usuario entity);

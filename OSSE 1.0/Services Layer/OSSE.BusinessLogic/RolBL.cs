@@ -26,7 +26,7 @@ namespace OSSE.BusinessLogic
         }
 
         [TryCatch(ExceptionTypeExpected = typeof(Exception), RethrowException = true)]
-        public IQueryable<Rol> GetAll(JQGridParameters<Rol> parameters)
+        public IQueryable<Rol> GetAll(FilterParameters<Rol> parameters)
         {
             return _rolRepository.FindAllPaging(parameters);
         }

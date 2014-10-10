@@ -208,3 +208,6 @@
 2014-09-22 14:32:35,170 [10] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
 2014-09-22 16:57:20,374 [19] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
 2014-09-22 17:00:40,110 [19] ERROR  [(null)] - Las credenciales especificadas son incorrectas.
+2014-10-10 11:25:53,594 [36] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:Las siguientes secciones se han definido, pero no se han presentado para la página de diseño "~/Views/Shared/_LayoutPage1.cshtml": "ScriptContent".
+2014-10-10 11:26:18,958 [6] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:Las siguientes secciones se han definido, pero no se han presentado para la página de diseño "~/Views/Shared/_LayoutPage1.cshtml": "ScriptContent".
+2014-10-10 14:53:29,640 [6] ERROR  [(null)] - Controlador:Load  Action:Listar  Mensaje:Se detectó una referencia circular al serializar un objeto de tipo 'System.Data.Entity.DynamicProxies.Formulario_160F45F98BCC62D75D970C13F914F53184ED8A67388D3C0E66B28E697C929F63'.

@@ -42,8 +42,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\IJQGridPaging.cs" />
-    <Compile Include="Core\ListJQGridParameter.cs" />
+    <Compile Include="Core\IPaging.cs" />
+    <Compile Include="Core\ListParameter.cs" />
     <Compile Include="FormularioBL.cs" />
     <Compile Include="Interfaces\IFormularioBL.cs" />
     <Compile Include="Interfaces\IItemTablaBL.cs" />

@@ -6,7 +6,7 @@ using OSSE.Domain;
 
 namespace OSSE.BusinessLogic.Interfaces
 {
-    public interface IItemTablaBL : IJQGridPaging<ItemTabla>
+    public interface IItemTablaBL : IPaging<ItemTabla>
     {
         ItemTabla Get(Expression<Func<ItemTabla, bool>> where);
         IList<ItemTabla> FindAll(Expression<Func<ItemTabla, bool>> where);

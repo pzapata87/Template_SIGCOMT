@@ -5,9 +5,9 @@ using OSSE.Common;
 
 namespace OSSE.BusinessLogic.Core
 {
-    public interface IJQGridPaging<T> where T : class
+    public interface IPaging<T> where T : class
     {
         int Count(Expression<Func<T, bool>> @where);
-        IQueryable<T> GetAll(JQGridParameters<T> parameters);
+        IQueryable<T> GetAll(FilterParameters<T> parameters);
     }
 }

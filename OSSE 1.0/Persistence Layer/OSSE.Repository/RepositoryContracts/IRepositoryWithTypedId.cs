@@ -32,6 +32,6 @@ namespace OSSE.Repository.RepositoryContracts
 
         int Count(Expression<Func<T, bool>> expression);
 
-        IQueryable<T> FindAllPaging(JQGridParameters<T> parameters);
+        IQueryable<T> FindAllPaging(FilterParameters<T> parameters);
     }
 }

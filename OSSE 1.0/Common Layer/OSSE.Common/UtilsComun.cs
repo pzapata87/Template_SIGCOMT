@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
+using OSSE.Common.DataTable;
 using OSSE.Common.JQGrid;
 
 namespace OSSE.Common
@@ -68,7 +70,7 @@ namespace OSSE.Common
             {
                 return Expression.Lambda<Func<T, bool?>>(expr, arg);
             }
-            if (type == typeof (int?))
+            if (type == typeof(int?))
                 return Expression.Lambda<Func<T, int?>>(expr, arg);
 
             throw new Exception("Se debe agregar el tipo " + type.Name + " al metodo LambdaPropertyOrderBy de la clase UtilsComun");
@@ -194,6 +196,54 @@ namespace OSSE.Common
             return expresionsLambdaSet ?? PredicateBuilder.True<T>();
         }
 
+        public static Expression<Func<T, bool>> ConvertToLambda<T>(List<ColumnModel> columnModels,
+            SearchColumn searchColumn) where T : class
+        {
+            if (columnModels == null || searchColumn == null)
+                return PredicateBuilder.True<T>();
+
+            Filter parametros = ConvertToFilter(columnModels, searchColumn);
+
+            Expression<Func<T, bool>> expresionsLambdaSet = MergeRules<T>(parametros);
+
+            return expresionsLambdaSet ?? PredicateBuilder.True<T>();
+        }
+
+        private static Filter ConvertToFilter(List<ColumnModel> columnModels, SearchColumn searchColumn)
+        {
+            Filter filtro;
+            if (!string.IsNullOrEmpty(searchColumn.value))
+            {
+                filtro = new Filter
+                {
+                    GroupOp = "or",
+                    Rules = columnModels.Where(p=>p.searchable).Select(p=> new Rule
+                    {
+                        Data = searchColumn.value,
+                        Field = p.data,
+                        Op = "cn"
+                    }).ToList()
+                };
+            }
+            else
+            {
+                filtro = new Filter
+                {
+                    GroupOp = "and",
+                    Rules =
+                        columnModels.Where(p => !string.IsNullOrEmpty(p.search.value) && p.searchable)
+                            .Select(p => new Rule
+                            {
+                                Data = p.search.value,
+                                Field = p.data,
+                                Op = "cn"
+                            }).ToList()
+                };
+            }
+
+            return filtro;
+        }
+
         private static Expression<Func<T, bool>> MergeRules<T>(Filter parametro) where T : class
         {
             Expression<Func<T, bool>> expresionsLambdaSet = null;
@@ -232,7 +282,7 @@ namespace OSSE.Common
 
                     bool isValid;
 
-                    if (property.PropertyType == typeof (DateTime))
+                    if (property.PropertyType == typeof(DateTime))
                     {
                         DateTime fechaCasteada;
                         isValid = DateTime.TryParse(item.Data, out fechaCasteada);

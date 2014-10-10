@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Core\EntityDto.cs" />
     <Compile Include="FormularioDto.cs" />
+    <Compile Include="ItemTablaDto.cs" />
     <Compile Include="OperacionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioDto.cs" />

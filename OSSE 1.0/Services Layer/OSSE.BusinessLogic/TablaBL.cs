@@ -39,7 +39,7 @@ namespace OSSE.BusinessLogic
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tabla> GetAll(JQGridParameters<Tabla> parameters)
+        public IQueryable<Tabla> GetAll(FilterParameters<Tabla> parameters)
         {
             return _tablaRepository.FindAll();
         }

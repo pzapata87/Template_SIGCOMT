@@ -83,7 +83,7 @@ namespace OSSE.Persistence.Core
             return Set.AsExpandable().Where(expression).Count();
         }
 
-        public IQueryable<T> FindAllPaging(JQGridParameters<T> parameters)
+        public IQueryable<T> FindAllPaging(FilterParameters<T> parameters)
         {
             var listaAPaginar = GetListContext().Where(parameters.WhereFilter);
             var orderBy = Helper.LambdaPropertyOrderBy<T>(parameters.ColumnOrder);
