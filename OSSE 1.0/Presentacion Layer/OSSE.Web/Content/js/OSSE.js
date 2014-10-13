@@ -1,12 +1,12 @@
 ﻿OSSE = {
-    PadLeft: function (value, len, character) {
+    PadLeft: function(value, len, character) {
         len = len - value.length;
         for (var i = 1; i <= len; i++) {
             value = character + value;
         }
         return value;
     },
-    ValidarByRegExp: function (evt, reg) {
+    ValidarByRegExp: function(evt, reg) {
         evt = evt || window.event;
         var code = evt.which || evt.keyCode;
         var texto = String.fromCharCode(code);
@@ -16,7 +16,7 @@
         }
         return reg.test(cadena);
     },
-    Ajax: function (opciones, successCallback, failureCallback, errorCallback) {
+    Ajax: function(opciones, successCallback, failureCallback, errorCallback) {
 
         if (opciones.url == null)
             opciones.url = "";
@@ -43,23 +43,23 @@
             dataType: opciones.datatype,
             async: opciones.async,
             data: opciones.datatype == "json" ? JSON.stringify(opciones.parametros) : opciones.parametros,
-            success: function (response) {
+            success: function(response) {
                 if (successCallback != null && typeof (successCallback) == "function")
                     successCallback(response);
             },
-            failure: function (msg) {
+            failure: function(msg) {
                 alert(msg);
                 if (failureCallback != null && typeof (failureCallback) == "function")
                     failureCallback(msg);
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 alert(error);
                 if (errorCallback != null && typeof (errorCallback) == "function")
                     errorCallback(xhr);
             }
         });
     },
-    Ajax3: function (url, parameters, async) {
+    Ajax3: function(url, parameters, async) {
         var rsp;
         $.ajax({
             type: "POST",
@@ -69,16 +69,16 @@
             dataType: "json",
             async: async,
             data: JSON.stringify(parameters),
-            success: function (response) {
+            success: function(response) {
                 rsp = response;
             },
-            failure: function () {
+            failure: function() {
                 rsp = -1;
             }
         });
         return rsp;
     },
-    CustomRange: function (input) {
+    CustomRange: function(input) {
         var fechaInicio = "FechaInicio";
         var fechaFin = "FechaFin";
         var min = new Date(2008, 11 - 1, 1), //Set this to your absolute minimum date
@@ -94,12 +94,10 @@
                 if (dateMin < min) {
                     dateMin = min;
                 }
-            }
-            else {
+            } else {
                 dateMax = new Date(3008, 11 - 1, 1); //Set this to your absolute maximum date
             }
-        }
-        else if (input.id === fechaFin) {
+        } else if (input.id === fechaFin) {
             dateMax = new Date(3008, 11 - 1, 1); //Set this to your absolute maximum date
             if ($("#" + fechaInicio).datepicker("getDate") != null) {
                 dateMin = $("#" + fechaInicio).datepicker("getDate");
@@ -115,14 +113,14 @@
             maxDate: dateMax
         };
     },
-    CrearTooltipError: function (opciones) {
+    CrearTooltipError: function(opciones) {
 
         if (opciones.SelectorErrores == null)
             opciones.SelectorErrores = "#valSumModel";
 
         $(opciones.formulario).qtip({
             content: {
-                text: function () {
+                text: function() {
                     return $(opciones.SelectorErrores).html();
                 }
             },
@@ -137,13 +135,13 @@
             show: false,
             hide: {
                 event: 'unfocus',
-                effect: function () {
+                effect: function() {
                     $(this).slideUp();
                 }
             }
         });
     },
-    CreateDialogs: function (arrayDialog) {
+    CreateDialogs: function(arrayDialog) {
 
         for (var i = 0; i < arrayDialog.length; i++) {
             if (arrayDialog[i].resizable == null)
@@ -157,15 +155,14 @@
                 title: arrayDialog[i].title,
                 modal: true,
                 appendTo: arrayDialog[i].contenedor,
-                close: function () {
+                close: function() {
                     var name = $(this).attr('id');
-                    $.each(arrayDialog, function (index, v) {
+                    $.each(arrayDialog, function(index, v) {
                         if (v.name == name) {
                             if (v.closePopUp != null && typeof (v.closePopUp) == "function") {
                                 v.closePopUp(name);
                                 //return false;
-                            }
-                            else {
+                            } else {
                                 $(this).dialog("close");
                             }
                         }
@@ -174,7 +171,7 @@
             });
         }
     },
-    EditDialogs: function (arrayDialog) {
+    EditDialogs: function(arrayDialog) {
 
         for (var i = 0; i < arrayDialog.length; i++) {
             $("#" + arrayDialog[i].name).dialog('option', 'title', arrayDialog[i].title);
@@ -182,7 +179,7 @@
             $("#" + arrayDialog[i].name).dialog('option', 'width', arrayDialog[i].width);
         }
     },
-    CreateDialogPopUpForm: function (opciones) {
+    CreateDialogPopUpForm: function(opciones) {
         var guardarButtonConfig, cancelarButtonConfig;
         var myButtons = [];
 
@@ -203,7 +200,7 @@
             guardarButtonConfig = {
                 text: opciones.buttonsConfig.guardarText,
                 icons: { primary: opciones.buttonsConfig.guardarIcon != null ? opciones.buttonsConfig.guardarIcon : "ui-icon ui-icon-disk" },
-                click: function () {
+                click: function() {
                     var functionOk = window[opciones.buttonsConfig.GuardarHandlerFunction];
                     if (opciones.frameOptions != null) {
                         functionOk = iframe.get(0).contentWindow[opciones.buttonsConfig.GuardarHandlerFunction];
@@ -245,15 +242,15 @@
             width: opciones.width,
             minHeight: opciones.minHeight != null ? opciones.minHeight : 75,
             appendTo: opciones.container,
-            open: function () {
+            open: function() {
                 if (opciones.frameOptions == null) {
                     var stopHandler = IniciarAnimacion($(this).parent());
-                    $(this).load(opciones.url, function () {
+                    $(this).load(opciones.url, function() {
                         stopHandler();
                     });
                 }
             },
-            beforeClose: function (event, ui) {
+            beforeClose: function(event, ui) {
                 if (opciones.beforeClosePopUp != null && typeof (opciones.beforeClosePopUp) == 'function') {
                     opciones.beforeClosePopUp(dialogForm);
                 }
@@ -270,7 +267,7 @@
                 }
             }
         });
-       
+
         dialogForm.dialog('option', 'buttons', myButtons);
         dialogForm.parent().draggable({
             containment: opciones.dragContainer == null ? '.tabpanel_content' : opciones.dragContainer
@@ -288,7 +285,7 @@
 
         return dialogForm;
     },
-    CreateDialogsConfirm: function (arrayDialog) {
+    CreateDialogsConfirm: function(arrayDialog) {
         for (var i = 0; i < arrayDialog.length; i++) {
             $("#" + arrayDialog[i].name).dialog({
                 autoOpen: false,
@@ -298,44 +295,46 @@
                 title: arrayDialog[i].title,
                 modal: true,
                 appendTo: arrayDialog[i].contenedor,
-                buttons: [{
-                    text: arrayDialog[i].titleBtn1,
-                    click: function () {
-                        var name = $(this).attr('id');
-                        $.each(arrayDialog, function (index, v) {
-                            if (v.name == name) {
-                                var fun = window[v.strFun];
-                                fun();
-                                return;
-                            }
-                        });
+                buttons: [
+                    {
+                        text: arrayDialog[i].titleBtn1,
+                        click: function() {
+                            var name = $(this).attr('id');
+                            $.each(arrayDialog, function(index, v) {
+                                if (v.name == name) {
+                                    var fun = window[v.strFun];
+                                    fun();
+                                    return;
+                                }
+                            });
+                        }
+                    }, {
+                        text: arrayDialog[i].titleBtn2,
+                        click: function() {
+                            $(this).dialog("close");
+                        }
                     }
-                }, {
-                    text: arrayDialog[i].titleBtn2,
-                    click: function () {
-                        $(this).dialog("close");
-                    }
-                }]
+                ]
             });
         }
     },
-    ObtenerFormulario: function (url, parameters, contenedorInformacion) {
+    ObtenerFormulario: function(url, parameters, contenedorInformacion) {
         $.ajax({
             url: url,
             data: parameters,
             cache: false,
             dataType: 'html',
-            success: function (result) {
+            success: function(result) {
                 $('#' + contenedorInformacion).show();
                 $('#' + contenedorInformacion).html(result);
             },
-            error: function (request) {
+            error: function(request) {
                 $('#' + contenedorInformacion).hide();
                 alert(request.responseText);
             }
         });
     },
-    Grilla: function (opciones) {
+    Grilla: function(opciones) {
         $.jgrid.nav = true;
 
         var grid = jQuery('#' + opciones.grilla);
@@ -698,8 +697,7 @@
                     });
                 }
             });
-        }
-        else if (opciones.gridLocal) {
+        } else if (opciones.gridLocal) {
             //opciones.pivotGrid
             var settingsGrid = {
                 colNames: opciones.colsNames,
@@ -863,7 +861,7 @@
                 title: opciones.eliminarCaption,
                 buttonicon: 'ui-icon-trash',
                 position: 'first',
-                onClickButton: function () {
+                onClickButton: function() {
                     if (rowKey != null) {
                         var dialogDelete = opciones.dialogDelete;
                         if (dialogDelete != null) {
@@ -900,7 +898,7 @@
                 title: opciones.editarCaption,
                 buttonicon: opciones.editarButtonIcon == null ? 'ui-icon-pencil' : opciones.editarButtonIcon,
                 position: 'first',
-                onClickButton: function () {
+                onClickButton: function() {
                     if (rowKey != null) {
                         if (opciones.EditarCommand != null && typeof (opciones.EditarCommand) == "function")
                             opciones.EditarCommand(rowKey);
@@ -920,7 +918,7 @@
                 title: opciones.nuevoCaption,
                 buttonicon: 'ui-icon-plus',
                 position: 'first',
-                onClickButton: function () {
+                onClickButton: function() {
                     if (opciones.NuevoCommand != null && typeof (opciones.NuevoCommand) == "function")
                         opciones.NuevoCommand(rowKey);
                     else
@@ -930,14 +928,14 @@
         }
 
         if (opciones.customButtons) {
-            $.each(opciones.customButtons, function (index, botonNuevo) {
+            $.each(opciones.customButtons, function(index, botonNuevo) {
                 grid.navButtonAdd('#' + opciones.pager, {
                     id: botonNuevo.Id != null ? botonNuevo.Id : '',
                     caption: botonNuevo.Caption,
                     title: botonNuevo.Title,
                     buttonicon: botonNuevo.ButtonIcon ? botonNuevo.ButtonIcon : 'ui-icon-plus',
                     position: botonNuevo.Position ? botonNuevo.Position : 'first',
-                    onClickButton: function () {
+                    onClickButton: function() {
                         if (botonNuevo.ClickFunction != null && typeof (botonNuevo.ClickFunction) == "function")
                             botonNuevo.ClickFunction(rowKey);
                     }
@@ -947,13 +945,13 @@
 
         //grid.jqGrid('gridResize', { minWidth: 450, minHeight: 150 });
     },
-    LoadDropDownList: function (name, url, parameters, selected, isValIndex, async) {
+    LoadDropDownList: function(name, url, parameters, selected, isValIndex, async) {
         var combo = document.getElementById(name);
         combo.options.length = 0;
         combo.options[0] = new Option("");
         combo.selectedIndex = 0;
 
-        $('#' + name).ajaxError(function () {
+        $('#' + name).ajaxError(function() {
             combo.options[0] = new Option("Error al cargar.");
         });
         $.ajax({
@@ -963,8 +961,8 @@
             dataType: "json",
             async: async,
             data: JSON.stringify(parameters),
-            success: function (items) {
-                $.each(items, function (index, item) {
+            success: function(items) {
+                $.each(items, function(index, item) {
                     combo.options[index] = new Option(item.Nombre, item.IdComun);
                 });
                 if (selected == undefined) selected = 0;
@@ -977,10 +975,10 @@
             }
         });
     },
-    LoadDropDownListMulti: function (name, url, parameters, selected, async) {
+    LoadDropDownListMulti: function(name, url, parameters, selected, async) {
         var combo = document.getElementById(name);
 
-        $('#' + name).ajaxError(function () {
+        $('#' + name).ajaxError(function() {
             combo.options[0] = new Option("Error al cargar.");
         });
         $.ajax({
@@ -990,9 +988,9 @@
             dataType: "json",
             async: async,
             data: JSON.stringify(parameters),
-            success: function (items) {
+            success: function(items) {
                 var list = items;
-                $.each(list, function (index, item) {
+                $.each(list, function(index, item) {
                     combo.options[index] = new Option(item.Nombre, item.IdComun);
                 });
                 if (selected == undefined) selected = 0;
@@ -1000,7 +998,7 @@
             }
         });
     },
-    LoadDropDownListSinFormato: function (name, url, parameters, selected, async) {
+    LoadDropDownListSinFormato: function(name, url, parameters, selected, async) {
         var combo = document.getElementById(name);
         combo.options.length = 0;
         combo.options[0] = new Option("");
@@ -1016,9 +1014,9 @@
             dataType: "json",
             async: async,
             data: JSON.stringify(parameters),
-            success: function (items) {
+            success: function(items) {
                 var list = items;
-                $.each(list, function (index, item) {
+                $.each(list, function(index, item) {
                     combo.options[index] = new Option(item.Nombre, item.IdComun);
                 });
                 if (selected == undefined) selected = 0;
@@ -1026,7 +1024,7 @@
             }
         });
     },
-    LoadDropDownListItems: function (name, url, parameters, selected) {
+    LoadDropDownListItems: function(name, url, parameters, selected) {
         var combo = document.getElementById(name);
         combo.options.length = 0;
         combo.options[0] = new Option("");
@@ -1037,10 +1035,10 @@
             parametros: parameters
         };
 
-        OSSE.Ajax(opciones, function (response) {
+        OSSE.Ajax(opciones, function(response) {
             if (response.Success) {
                 combo.disabled = true;
-                $.each(response.Data, function (index, item) {
+                $.each(response.Data, function(index, item) {
                     combo.options[index] = new Option(item.Nombre, item.IdComun);
                 });
                 combo.disabled = false;
@@ -1052,7 +1050,7 @@
             }
         });
     },
-    confirm: function (opciones) {
+    confirm: function(opciones) {
 
         var esperaRespuesta = new $.Deferred();
 
@@ -1066,39 +1064,41 @@
             appendTo: opciones.container,
             title: opciones.dialogTitle || 'Confirmación',
             minHeight: 75,
-            buttons: [{
-                text: opciones.dialogOkText,
-                click: function () {
-                    if (typeof (opciones.OkHandlerFunction) == 'function') {
-                        $(this).dialog("destroy");
-                        var respuestaHandler;
-                        
-                        $.when(opciones.OkHandlerFunction(opciones.parametroHandlers)).then(function () {
-                            respuestaHandler = esperaRespuesta.resolve();
-                        }, function () {
-                            respuestaHandler = esperaRespuesta.reject();
-                        });
+            buttons: [
+                {
+                    text: opciones.dialogOkText,
+                    click: function() {
+                        if (typeof (opciones.OkHandlerFunction) == 'function') {
+                            $(this).dialog("destroy");
+                            var respuestaHandler;
 
-                        return respuestaHandler;
-                    } else {
-                        alert("Debe definir un handler para la accion OK");
-                    }
-                    
-                    return esperaRespuesta.reject();
-                }
-            }, {
-                text: opciones.dialogCancelText,
-                click: function () {
-                    if (typeof (opciones.CancelHandlerFunction) == 'function') {
-                        $(this).dialog("destroy").remove();
-                        opciones.CancelHandlerFunction(opciones.parametroHandlers);
-                    } else {
-                        $(this).dialog("destroy").remove();
-                    }
+                            $.when(opciones.OkHandlerFunction(opciones.parametroHandlers)).then(function() {
+                                respuestaHandler = esperaRespuesta.resolve();
+                            }, function() {
+                                respuestaHandler = esperaRespuesta.reject();
+                            });
 
-                    return esperaRespuesta.reject();
+                            return respuestaHandler;
+                        } else {
+                            alert("Debe definir un handler para la accion OK");
+                        }
+
+                        return esperaRespuesta.reject();
+                    }
+                }, {
+                    text: opciones.dialogCancelText,
+                    click: function() {
+                        if (typeof (opciones.CancelHandlerFunction) == 'function') {
+                            $(this).dialog("destroy").remove();
+                            opciones.CancelHandlerFunction(opciones.parametroHandlers);
+                        } else {
+                            $(this).dialog("destroy").remove();
+                        }
+
+                        return esperaRespuesta.reject();
+                    }
                 }
-            }]
+            ]
         });
 
         dialog.parent().draggable({
@@ -1113,7 +1113,7 @@
 
         return esperaRespuesta.promise();
     },
-    Alert: function (dialogTitle, dialogText, okFunc) {
+    Alert: function(dialogTitle, dialogText, okFunc) {
         $('<div style="padding: 10px; min-width: 250px; word-wrap: break-word;">' + dialogText + '</div>').dialog({
             draggable: true,
             modal: true,
@@ -1123,16 +1123,18 @@
             title: dialogTitle || 'Alert',
             minHeight: 75,
             buttons: {
-                OK: function () {
+                OK: function() {
                     if (okFunc != null) {
-                        if (typeof (okFunc) == 'function') { setTimeout(okFunc, 50); }
+                        if (typeof (okFunc) == 'function') {
+                            setTimeout(okFunc, 50);
+                        }
                     }
                     $(this).dialog('destroy');
                 }
             }
         });
     },
-    msgConfirm: function (rpt, message, funcionout, title) {
+    msgConfirm: function(rpt, message, funcionout, title) {
         $.jGrowl.defaults.closerTemplate = "<div>[ Cerrar todo ]</div>";
 
         var theme;
@@ -1149,19 +1151,19 @@
         }
 
         $.jGrowl(message,
-            {
-                themeState: theme,
-                life: 7000,
-                closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
-                header: title
-            });
+        {
+            themeState: theme,
+            life: 7000,
+            closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
+            header: title
+        });
     },
-    AlertNotificacion: function (rpt, title, message, funcionout) {
+    AlertNotificacion: function(rpt, title, message, funcionout) {
         var theme = "default";
 
         if (title == null)
             title = 'Notificación';
-        
+
         if (rpt)
             funcionout();
         else
@@ -1169,14 +1171,14 @@
 
         $.jGrowl.defaults.closerTemplate = "<div>[ Cerrar todo ]</div>";
         $.jGrowl(message,
-            {
-                themeState: theme,
-                life: 7000,
-                closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
-                header: title
-            });
+        {
+            themeState: theme,
+            life: 7000,
+            closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
+            header: title
+        });
     },
-    msgConfirmPopup: function (frmId, rpt, message, funcionout, title) {
+    msgConfirmPopup: function(frmId, rpt, message, funcionout, title) {
         if (frmId != null) {
             // Se agregó esta linea por que no se eliminaba los errores despues del Post, setea los estilos originales.
             $("#" + frmId + " .merror").removeClass().addClass("validation-summary-valid merror");
@@ -1199,14 +1201,14 @@
         }
 
         $.jGrowl(message,
-            {
-                themeState: theme,
-                life: 7000,
-                closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
-                header: title
-            });
+        {
+            themeState: theme,
+            life: 7000,
+            closeTemplate: '<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>',
+            header: title
+        });
     },
-    LimpiarTilde: function (text) {
+    LimpiarTilde: function(text) {
         text = text.replace("&#225;", 'á');
         text = text.replace("&#233;", 'é');
         text = text.replace("&#237;", 'í');
@@ -1223,11 +1225,11 @@
         return text;
     },
     //Funcion utilizada para actualizar la seleccion de filas de una grilla
-    UpdateIdsOfSelectedRows: function (id, idsOfSelectedRows) {
+    UpdateIdsOfSelectedRows: function(id, idsOfSelectedRows) {
         var index = $.inArray(id, idsOfSelectedRows);
         if (index >= 0) {
             var removeMe = -1;
-            $.each(idsOfSelectedRows, function (i, v) {
+            $.each(idsOfSelectedRows, function(i, v) {
                 if (v == id) {
                     removeMe = i;
                 }
@@ -1242,19 +1244,19 @@
         }
     },
     ConfigAutoComplete: function(parameters) {
-        $(parameters.TextField).focusout(function () {
+        $(parameters.TextField).focusout(function() {
             if ($(parameters.ValueField).val() == 0) {
                 $(parameters.TextField).val("");
             }
         });
 
-        $(parameters.TextField).bind('paste', function (e) {
-            setTimeout(function () {
+        $(parameters.TextField).bind('paste', function(e) {
+            setTimeout(function() {
                 $(parameters.TextField).trigger('autocomplete');
             }, 0);
         });
-        
-        $(parameters.TextField).change(function (e) {
+
+        $(parameters.TextField).change(function(e) {
             var txt = $(this).val();
             if (txt.trim() == "") {
                 $(parameters.ValueField).val("0");
@@ -1267,7 +1269,7 @@
                     url: parameters.Url,
                     dataType: "json",
                     data: parameters.Data != null ? parameters.Data : { term: request.term },
-                    success: function (jsonResponse) {
+                    success: function(jsonResponse) {
                         response($.map(jsonResponse.Data, parameters.MapResponse));
                     }
                 });
@@ -1275,12 +1277,12 @@
             minLength: parameters.MinLength == null ? 2 : parameters.MinLength,
             messages: {
                 noResults: "",
-                results: function (resultsCount) { }
+                results: function(resultsCount) {}
             },
             select: function(event, ui) {
                 $(parameters.ValueField).val(ui.item.id);
 
-                if (parameters.SelectCallback != null && typeof(parameters.SelectCallback) == "function" )
+                if (parameters.SelectCallback != null && typeof(parameters.SelectCallback) == "function")
                     parameters.SelectCallback(ui.item);
             },
             response: function(event, ui) {

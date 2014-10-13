@@ -2,7 +2,7 @@
 
 namespace OSSE.Common.DataTable
 {
-    public class DataTableResponse<T> where T: class 
+    public class DataTableResponse<T> where T : class
     {
         public List<T> data { get; set; }
         public int draw { get; set; }

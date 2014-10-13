@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.Entity;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -16,7 +17,7 @@ namespace OSSE.Web
 {
     // Nota: para obtener instrucciones sobre cómo habilitar el modo clásico de IIS6 o IIS7, 
     // visite http://go.microsoft.com/?LinkId=9394801
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -24,7 +25,7 @@ namespace OSSE.Web
             Database.SetInitializer(new ContextInitializer());
             Database.SetInitializer<DbContextBase>(null);
 
-            PersistenceConfigurator.Configure("DefaultConnection", typeof(Usuario).Assembly, typeof(ConnectionFactory).Assembly);
+            PersistenceConfigurator.Configure("DefaultConnection", typeof (Usuario).Assembly, typeof (ConnectionFactory).Assembly);
             StructuremapMvc.Start();
 
 

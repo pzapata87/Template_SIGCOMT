@@ -15,7 +15,7 @@ namespace OSSE.RepositoryTest.Core
         {
             Database.SetInitializer(new ContextInitializer());
             Database.SetInitializer<DbContextBase>(null);
-            PersistenceConfigurator.Configure("OSSE", typeof(Usuario).Assembly, typeof(ConnectionFactory).Assembly);
+            PersistenceConfigurator.Configure("OSSE", typeof (Usuario).Assembly, typeof (ConnectionFactory).Assembly);
 
             StructuremapMvc.Start();
 

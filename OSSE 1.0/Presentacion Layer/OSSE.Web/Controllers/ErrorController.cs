@@ -7,9 +7,10 @@ namespace OSSE.Web.Controllers
     public class ErrorController : BaseController
     {
         public ErrorController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL) :
-            base(formularioBL, permisoRolBL,itemTablaBL)
-        { 
+            base(formularioBL, permisoRolBL, itemTablaBL)
+        {
         }
+
         //
         // GET: /Error/
         public ActionResult Index()

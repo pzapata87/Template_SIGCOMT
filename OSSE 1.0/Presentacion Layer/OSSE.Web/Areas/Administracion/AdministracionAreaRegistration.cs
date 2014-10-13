@@ -6,10 +6,7 @@ namespace OSSE.Web.Areas.Administracion
     {
         public override string AreaName
         {
-            get
-            {
-                return "Administracion";
-            }
+            get { return "Administracion"; }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
@@ -17,9 +14,8 @@ namespace OSSE.Web.Areas.Administracion
             context.MapRoute(
                 "Administracion_default",
                 "Administracion/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
-
+                new {action = "Index", id = UrlParameter.Optional}
+                );
         }
     }
 }

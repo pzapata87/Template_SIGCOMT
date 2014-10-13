@@ -16,7 +16,7 @@ namespace OSSE.Domain
         public virtual ICollection<PermisoRol> PermisoRolList { get; set; }
         public virtual ICollection<Formulario> FormulariosHijosList { get; set; }
         public virtual ICollection<ItemTablaFormulario> ItemTablaFormularioList { get; set; }
-        
+
         public virtual ICollection<Formulario> ListaFormularios { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using OSSE.Repository.Specifications;
 
 namespace OSSE.Repository.RepositoryContracts
 {
-   public interface IRepositoryWithTypedId<T, in TId> where T : class
+    public interface IRepositoryWithTypedId<T, in TId> where T : class
     {
         Expression<Func<T, bool>> Filter { get; set; }
 

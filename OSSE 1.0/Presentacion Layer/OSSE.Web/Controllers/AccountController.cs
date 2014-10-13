@@ -7,6 +7,7 @@ using System.Web.Security;
 using OSSE.BusinessLogic.Interfaces;
 using OSSE.Common.Constantes;
 using OSSE.Common.Enum;
+using OSSE.Domain;
 using OSSE.DTO;
 using OSSE.Web.Core;
 
@@ -16,13 +17,14 @@ namespace OSSE.Web.Controllers
     public class AccountController : BaseController
     {
         #region Propiedades
-     
-        private readonly IUsuarioBL _usuarioBL;
+
         private readonly IFormularioBL _formularioBL;
+        private readonly IUsuarioBL _usuarioBL;
 
         #endregion
 
         #region Constructor
+
         public AccountController()
         {
         }
@@ -32,6 +34,7 @@ namespace OSSE.Web.Controllers
             _usuarioBL = usuarioBL;
             _formularioBL = formularioBL;
         }
+
         #endregion
 
         #region Métodos Públicos
@@ -57,7 +60,7 @@ namespace OSSE.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var usuarioLogueado = _usuarioBL.ValidateUser(model.UserName, model.Password);
+                    Usuario usuarioLogueado = _usuarioBL.ValidateUser(model.UserName, model.Password);
                     if (usuarioLogueado != null)
                     {
                         GenerarTickectAutenticacion(usuarioLogueado, true);
@@ -89,21 +92,21 @@ namespace OSSE.Web.Controllers
 
         public void FormulariosEnSession()
         {
-            var formulariosEnSession = (List<Domain.Formulario>)System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
+            var formulariosEnSession = (List<Formulario>) System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
             if (formulariosEnSession != null) System.Web.HttpContext.Current.Session.Remove(MasterConstantes.Formularios);
 
-            var nuevosFormularios = _formularioBL.FindAll(p => p.Estado == (int)TipoEstado.Activo).ToList();
+            List<Formulario> nuevosFormularios = _formularioBL.FindAll(p => p.Estado == (int) TipoEstado.Activo).ToList();
             System.Web.HttpContext.Current.Session.Add(MasterConstantes.Formularios, nuevosFormularios);
         }
 
-        private void GenerarTickectAutenticacion(Domain.Usuario usuario, bool createPersistentCookie)
+        private void GenerarTickectAutenticacion(Usuario usuario, bool createPersistentCookie)
         {
             FormsAuthentication.SetAuthCookie(usuario.UserName, createPersistentCookie);
 
             var ticket = new FormsAuthenticationTicket(1, usuario.UserName, DateTime.Now, DateTime.Now.AddMinutes(30),
                 createPersistentCookie, usuario.Id.ToString());
 
-            var encTicket = FormsAuthentication.Encrypt(ticket);
+            string encTicket = FormsAuthentication.Encrypt(ticket);
             var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
 
             System.Web.HttpContext.Current.Session.Add(MasterConstantes.UsuarioSesion, usuario);

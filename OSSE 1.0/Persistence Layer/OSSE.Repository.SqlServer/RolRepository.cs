@@ -9,12 +9,11 @@ namespace OSSE.Repository.SqlServer
         public RolRepository(DbContext instanceDbContext)
             : base(instanceDbContext)
         {
-            
         }
 
         public override object[] GetKey(Rol entity)
         {
-            return new object[] 
+            return new object[]
             {
                 entity.Id
             };

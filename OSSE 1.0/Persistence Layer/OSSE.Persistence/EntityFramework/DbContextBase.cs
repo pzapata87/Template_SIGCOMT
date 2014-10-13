@@ -16,7 +16,7 @@ namespace OSSE.Persistence.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var schema = ConfigurationManager.AppSettings["SchemaDB"] ?? "dbo";
+            string schema = ConfigurationManager.AppSettings["SchemaDB"] ?? "dbo";
             modelBuilder.HasDefaultSchema(schema);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             new AutoMapper().Apply(new DbModelBuilderWrapper(modelBuilder));
@@ -31,14 +31,14 @@ namespace OSSE.Persistence.EntityFramework
             catch (DbEntityValidationException dbEx)
             {
                 string msg = dbEx.EntityValidationErrors.Aggregate(
-                    dbEx.Message, (current1, validationErrors) => 
+                    dbEx.Message, (current1, validationErrors) =>
                         validationErrors.ValidationErrors.Aggregate(
-                        current1, (current, validationError) => 
-                            current + (" " + 
-                            string.Format("Class: {0}, Property: {1}, Error: {2}", 
-                            validationErrors.Entry.Entity.GetType().FullName, 
-                            validationError.PropertyName, 
-                            validationError.ErrorMessage))));
+                            current1, (current, validationError) =>
+                                current + (" " +
+                                           string.Format("Class: {0}, Property: {1}, Error: {2}",
+                                               validationErrors.Entry.Entity.GetType().FullName,
+                                               validationError.PropertyName,
+                                               validationError.ErrorMessage))));
 
                 throw new Exception(msg);
             }

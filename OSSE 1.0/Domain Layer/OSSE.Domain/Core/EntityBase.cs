@@ -1,5 +1,4 @@
-﻿
-namespace OSSE.Domain.Core
+﻿namespace OSSE.Domain.Core
 {
     public class EntityBase
     {

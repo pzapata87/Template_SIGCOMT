@@ -17,12 +17,11 @@ namespace OSSE.Repository.SqlServer
         public FormularioRepository(DbContext instanceDbContext)
             : base(instanceDbContext)
         {
-            
         }
 
         public override object[] GetKey(Formulario entity)
         {
-            return new object[] 
+            return new object[]
             {
                 entity.Id
             };

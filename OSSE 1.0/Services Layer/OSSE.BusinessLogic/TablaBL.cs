@@ -9,7 +9,7 @@ using OSSE.Repository;
 
 namespace OSSE.BusinessLogic
 {
-    [TryCatch(ExceptionTypeExpected = typeof(Exception), RethrowException = true)]
+    [TryCatch(ExceptionTypeExpected = typeof (Exception), RethrowException = true)]
     public class TablaBL : ITablaBL
     {
         private readonly ITablaRepository _tablaRepository;
@@ -34,11 +34,6 @@ namespace OSSE.BusinessLogic
             return _tablaRepository.Count(where);
         }
 
-        public int Count(Expression<Func<Tabla, bool>> where, Expression<Func<Tabla, object>> group)
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<Tabla> GetAll(FilterParameters<Tabla> parameters)
         {
             return _tablaRepository.FindAll();
@@ -47,6 +42,11 @@ namespace OSSE.BusinessLogic
         public Tabla GetById(long id)
         {
             return _tablaRepository.FindOne(p => p.Id == id);
+        }
+
+        public int Count(Expression<Func<Tabla, bool>> where, Expression<Func<Tabla, object>> group)
+        {
+            throw new NotImplementedException();
         }
     }
 }

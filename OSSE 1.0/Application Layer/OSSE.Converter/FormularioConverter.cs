@@ -3,6 +3,7 @@ using System.Linq;
 using OSSE.Common.Enum;
 using OSSE.Domain;
 using OSSE.DTO;
+using System;
 
 namespace OSSE.Converter
 {
@@ -28,16 +29,39 @@ namespace OSSE.Converter
 
             foreach (PermisoRol permiso in permisos)
             {
-                if (permiso.TipoPermiso == (int)TipoPermiso.Mostrar) permisoFormulario.Mostrar = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Crear) permisoFormulario.Crear = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Modificar) permisoFormulario.Modificar = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Eliminar) permisoFormulario.Eliminar = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Imprimir) permisoFormulario.Imprimir = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Mover) permisoFormulario.Mover = true;
-                if (permiso.TipoPermiso == (int)TipoPermiso.Reportar) permisoFormulario.Reportar = true;
+                var tipoPermiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso.TipoPermiso.ToString());
+                AsignarPermisoAPropiedad(permisoFormulario, tipoPermiso);
             }
 
             return permisoFormulario;
+        }
+
+        private static void AsignarPermisoAPropiedad(PermisoFormularioDto permisoFormularioDto, TipoPermiso permiso)
+        {
+            switch (permiso)
+            {
+                case TipoPermiso.Mostrar:
+                    permisoFormularioDto.Mostrar = true;
+                    break;
+                case TipoPermiso.Crear:
+                    permisoFormularioDto.Crear = true;
+                    break;
+                case TipoPermiso.Modificar:
+                    permisoFormularioDto.Modificar = true;
+                    break;
+                case TipoPermiso.Eliminar:
+                    permisoFormularioDto.Eliminar = true;
+                    break;
+                case TipoPermiso.Imprimir:
+                    permisoFormularioDto.Imprimir = true;
+                    break;
+                case TipoPermiso.Mover:
+                    permisoFormularioDto.Mover = true;
+                    break;
+                case TipoPermiso.Reportar:
+                    permisoFormularioDto.Reportar = true;
+                    break;
+            }
         }
 
         #region Metodos Privados GenerateTreeView

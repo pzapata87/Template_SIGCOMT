@@ -20,8 +20,9 @@ using System.Web.Mvc;
 using OSSE.IoC;
 using OSSE.IoC.DependencyResolution;
 using StructureMap;
+using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
+[assembly: PreApplicationStartMethod(typeof (StructuremapMvc), "Start")]
 
 namespace OSSE.IoC
 {

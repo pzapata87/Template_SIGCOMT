@@ -4,12 +4,11 @@ using OSSE.Persistence.Core;
 
 namespace OSSE.Repository.SqlServer
 {
-    public class PermisoRolRepository: RepositoryWithTypedId<PermisoRol, int>, IPermisoRolRepository
+    public class PermisoRolRepository : RepositoryWithTypedId<PermisoRol, int>, IPermisoRolRepository
     {
         public PermisoRolRepository(DbContext instanceDbContext)
             : base(instanceDbContext)
         {
-            
         }
     }
 }
