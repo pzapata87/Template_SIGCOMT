@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Threading;
 using System.Web.Mvc;
@@ -108,53 +107,6 @@ namespace OSSE.Web.Core
 
         #region Paginacion
 
-        //protected GenericDouble<JQgrid, T> Listar<T>(Func<Expression<Func<T, bool>>, int> countMethod,
-        //    Func<FilterParameters<T>, IQueryable<T>> listMethod, FilterParameters<T> parameters) where T : class
-        //{
-        //    IList<T> list;
-
-        //    try
-        //    {
-        //        int totalPages = 0;
-
-        //        var count = countMethod(parameters.WhereFilter);
-
-        //        if (count > 0 && parameters.AmountRows > 0)
-        //        {
-        //            if (count % parameters.AmountRows > 0)
-        //            {
-        //                totalPages = count / parameters.AmountRows + 1;
-        //            }
-        //            else
-        //            {
-        //                totalPages = count / parameters.AmountRows;
-        //            }
-
-        //            totalPages = totalPages == 0 ? 1 : totalPages;
-        //        }
-
-        //        parameters.CurrentPage = parameters.CurrentPage > totalPages ? totalPages : parameters.CurrentPage;
-
-        //        parameters.Start = parameters.AmountRows * parameters.CurrentPage - parameters.AmountRows;
-        //        if (parameters.Start < 0)
-        //        {
-        //            parameters.Start = 0;
-        //        }
-
-        //        jqgrid.Total = totalPages;
-        //        jqgrid.Page = parameters.CurrentPage;
-        //        jqgrid.Records = count;
-        //        jqgrid.Start = parameters.Start;
-
-        //        list = listMethod(parameters).ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return new GenericDouble<JQgrid, T>(jqgrid, list);
-        //}
-
         protected JsonResult ListarJQGrid<T, TResult>(ListParameter<T, TResult> configuracionListado)
             where T : EntityBase where TResult : class
         {
@@ -163,20 +115,20 @@ namespace OSSE.Web.Core
                 GridTable grid = configuracionListado.Grid;
 
                 var where =
-                    UtilsComun.ConvertToLambda<T>(grid.columns, grid.search)
+                    UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search)
                         .And(configuracionListado.FiltrosAdicionales ?? (q => true));
 
-                var ordenamiento = grid.order.First();
+                var ordenamiento = grid.Order.First();
                 var parametroFiltro = new FilterParameters<T>
                 {
-                    ColumnOrder = grid.columns[ordenamiento.column].data,
-                    CurrentPage = (grid.start/grid.length) + 1,
+                    ColumnOrder = grid.Columns[ordenamiento.Column].Data,
+                    CurrentPage = (grid.Start/grid.Length) + 1,
                     OrderType =
-                        ordenamiento.dir != null
-                            ? (TipoOrden)Enum.Parse(typeof(TipoOrden), ordenamiento.dir, true)
+                        ordenamiento.Dir != null
+                            ? (TipoOrden)Enum.Parse(typeof(TipoOrden), ordenamiento.Dir, true)
                             : TipoOrden.Asc,
                     WhereFilter = where,
-                    AmountRows = grid.length
+                    AmountRows = grid.Length
                 };
 
                 var count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
@@ -199,7 +151,7 @@ namespace OSSE.Web.Core
                 parametroFiltro.CurrentPage = parametroFiltro.CurrentPage > totalPages
                     ? totalPages
                     : parametroFiltro.CurrentPage;
-                parametroFiltro.Start = grid.start;
+                parametroFiltro.Start = grid.Start;
 
                 var respuestaList =
                     configuracionListado.ListMethod(parametroFiltro)

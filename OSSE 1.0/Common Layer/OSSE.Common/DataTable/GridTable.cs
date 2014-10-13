@@ -4,11 +4,11 @@ namespace OSSE.Common.DataTable
 {
     public class GridTable
     {
-        public int draw { get; set; }
-        public List<ColumnModel> columns { get; set; }
-        public List<OrderColumn> order { get; set; }
-        public int start { get; set; }
-        public int length { get; set; }
-        public SearchColumn search { get; set; }
+        public int Draw { get; set; }
+        public List<ColumnModel> Columns { get; set; }
+        public List<OrderColumn> Order { get; set; }
+        public int Start { get; set; }
+        public int Length { get; set; }
+        public SearchColumn Search { get; set; }
     }
 }

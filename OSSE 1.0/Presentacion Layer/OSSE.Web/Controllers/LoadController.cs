@@ -15,7 +15,8 @@ namespace OSSE.Web.Controllers
     [Authorize]
     public class LoadController : BaseController
     {
-        private IItemTablaBL _itemTablaBL;
+        private readonly IItemTablaBL _itemTablaBL;
+
         public LoadController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL) :
             base(formularioBL, permisoRolBL, itemTablaBL)
         {

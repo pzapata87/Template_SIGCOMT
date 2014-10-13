@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OSSE.Common.JQGrid
+namespace OSSE.Common
 {
     public class Filter
     {
