@@ -158,8 +158,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\FormularioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +204,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Load\Index.cshtml" />
-    <Content Include="Views\Load\NotAuthorized.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutCRM.cshtml" />
-    <Content Include="Views\Shared\_LayoutFrameContent.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\CheckBoxList.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -218,6 +213,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administracion\Controllers\" />
     <Folder Include="Areas\Administracion\Models\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

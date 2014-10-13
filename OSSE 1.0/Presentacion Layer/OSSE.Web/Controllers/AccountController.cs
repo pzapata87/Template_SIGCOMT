@@ -7,8 +7,8 @@ using System.Web.Security;
 using OSSE.BusinessLogic.Interfaces;
 using OSSE.Common.Constantes;
 using OSSE.Common.Enum;
+using OSSE.DTO;
 using OSSE.Web.Core;
-using OSSE.Web.Models;
 
 namespace OSSE.Web.Controllers
 {
@@ -39,7 +39,7 @@ namespace OSSE.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            var login = new LogOnModel
+            var login = new LogInDto
             {
                 UserName = "",
                 Password = ""
@@ -51,7 +51,7 @@ namespace OSSE.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LogOnModel model, string returnUrl)
+        public ActionResult Login(LogInDto model, string returnUrl)
         {
             try
             {

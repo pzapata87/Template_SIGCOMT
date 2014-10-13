@@ -17,7 +17,6 @@ using OSSE.Converter;
 using OSSE.Domain;
 using OSSE.Domain.Core;
 using OSSE.DTO;
-using OSSE.Web.Models;
 
 namespace OSSE.Web.Core
 {
@@ -200,8 +199,8 @@ namespace OSSE.Web.Core
 
                 IEnumerable<PermisoRol> permisos = aux.Distinct();
 
-                var model = new FormularioModel(formulario, permisos);
-                return PartialView(view, model);
+                var permisosFormulario = FormularioConverter.ObtenerPermisosFormulario(formulario, permisos);
+                return PartialView(view, permisosFormulario);
             }
             catch
             {

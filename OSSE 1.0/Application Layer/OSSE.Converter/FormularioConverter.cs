@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using OSSE.Common.Enum;
 using OSSE.Domain;
 using OSSE.DTO;
 
@@ -20,6 +20,24 @@ namespace OSSE.Converter
                     Nombre = idioma.Nombre,
                     Operaciones = GenerateChildren(modulo.FormulariosHijosList, idiomaId)
                 }).ToList();
+        }
+
+        public static PermisoFormularioDto ObtenerPermisosFormulario(Formulario formulario, IEnumerable<PermisoRol> permisos)
+        {
+            var permisoFormulario = new PermisoFormularioDto();
+
+            foreach (PermisoRol permiso in permisos)
+            {
+                if (permiso.TipoPermiso == (int)TipoPermiso.Mostrar) permisoFormulario.Mostrar = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Crear) permisoFormulario.Crear = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Modificar) permisoFormulario.Modificar = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Eliminar) permisoFormulario.Eliminar = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Imprimir) permisoFormulario.Imprimir = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Mover) permisoFormulario.Mover = true;
+                if (permiso.TipoPermiso == (int)TipoPermiso.Reportar) permisoFormulario.Reportar = true;
+            }
+
+            return permisoFormulario;
         }
 
         #region Metodos Privados GenerateTreeView
