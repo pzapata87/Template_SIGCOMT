@@ -54,6 +54,7 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
             jQuery('#basicTable').dataTable({
+                //"dom": '<"top"ilfp<"clear">>rt<"bottom left"l<"clear">>',
                 "responsive": true,
                 "processing": true,
                 "serverSide": true,
@@ -69,22 +70,17 @@
                 "columns": [
                     {
                         "data": function (oObj) {
-                            debugger;
                             var btnActualizar = '<a href="javascript:;" data-toggle="tooltip" title="Modificar" class="btn-success btn-xs actualizarReg"><i class="fa fa-edit"></i></a>';
                             var btnEliminar = '<a href="javascript:;" data-toggle="tooltip" title="Eliminar" class="btn-danger btn-xs eliminarReg"><i class="fa fa-times"></i></a>';
                             return btnActualizar + '&nbsp;' + btnEliminar;
-                        }
+                        },
+                        "orderable": false
                     },
                     { "data": "Nombre", "name": "Tabla.Nombre" },
                     { "data": "Descripcion", "name": "Descripcion" },
                     { "data": "Valor", "name": "Valor" }
                 ]
             }).fnFilterOnReturn();
-
-            $('li.disabled a').on('click', function (e) {
-                alert('vbav');
-                e.preventDefault();
-            });
         });
     </script>
 }
