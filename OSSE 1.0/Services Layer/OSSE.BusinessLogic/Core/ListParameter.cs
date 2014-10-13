@@ -3,7 +3,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using OSSE.Common;
 using OSSE.Common.Enum;
-using OSSE.Common.JQGrid;
 using OSSE.Domain.Core;
 using GridTable = OSSE.Common.DataTable.GridTable;
 

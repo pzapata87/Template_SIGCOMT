@@ -8,7 +8,6 @@ using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
 using OSSE.Common.DataTable;
-using OSSE.Common.JQGrid;
 
 namespace OSSE.Common
 {
@@ -209,18 +208,18 @@ namespace OSSE.Common
             return expresionsLambdaSet ?? PredicateBuilder.True<T>();
         }
 
-        private static Filter ConvertToFilter(List<ColumnModel> columnModels, SearchColumn searchColumn)
+        private static Filter ConvertToFilter(IEnumerable<ColumnModel> columnModels, SearchColumn searchColumn)
         {
             Filter filtro;
-            if (!string.IsNullOrEmpty(searchColumn.value))
+            if (!string.IsNullOrEmpty(searchColumn.Value))
             {
                 filtro = new Filter
                 {
                     GroupOp = "or",
-                    Rules = columnModels.Where(p=>p.searchable).Select(p=> new Rule
+                    Rules = columnModels.Where(p=>p.Searchable).Select(p=> new Rule
                     {
-                        Data = searchColumn.value,
-                        Field = p.data,
+                        Data = searchColumn.Value,
+                        Field = p.Data,
                         Op = "cn"
                     }).ToList()
                 };
@@ -231,11 +230,11 @@ namespace OSSE.Common
                 {
                     GroupOp = "and",
                     Rules =
-                        columnModels.Where(p => !string.IsNullOrEmpty(p.search.value) && p.searchable)
+                        columnModels.Where(p => !string.IsNullOrEmpty(p.Search.Value) && p.Searchable)
                             .Select(p => new Rule
                             {
-                                Data = p.search.value,
-                                Field = p.data,
+                                Data = p.Search.Value,
+                                Field = p.Data,
                                 Op = "cn"
                             }).ToList()
                 };
@@ -250,7 +249,7 @@ namespace OSSE.Common
 
             Expression comparison = null;
 
-            foreach (Rule item in parametro.Rules)
+            foreach (var item in parametro.Rules)
             {
                 var arg = Expression.Parameter(typeof(T), "p");
                 PropertyInfo property;

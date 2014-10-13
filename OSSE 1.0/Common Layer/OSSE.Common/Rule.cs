@@ -1,5 +1,4 @@
-﻿
-namespace OSSE.Common.JQGrid
+﻿namespace OSSE.Common
 {
     public class Rule
     {

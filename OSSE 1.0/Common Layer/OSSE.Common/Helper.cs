@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
-using OSSE.Common.JQGrid;
 
 namespace OSSE.Common
 {

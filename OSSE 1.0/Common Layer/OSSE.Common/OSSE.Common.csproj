@@ -54,21 +54,13 @@
     <Compile Include="Enum\TipoPermiso.cs" />
     <Compile Include="Enum\TipoTabla.cs" />
     <Compile Include="FilterParameters.cs" />
-    <Compile Include="JQGrid\Filter.cs" />
-    <Compile Include="JQGrid\GenericDouble.cs" />
-    <Compile Include="JQGrid\GridTable.cs" />
-    <Compile Include="JQGrid\JQgrid.cs" />
-    <Compile Include="JQGrid\JQgridGeneric.cs" />
-    <Compile Include="JQGrid\ResponseData.cs" />
-    <Compile Include="JQGrid\Row.cs" />
-    <Compile Include="JQGrid\RowGeneric.cs" />
-    <Compile Include="JQGrid\Rule.cs" />
+    <Compile Include="Filter.cs" />
     <Compile Include="JsonResponse.cs" />
-    <Compile Include="JsTreeAttribute.cs" />
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Security.cs" />
+    <Compile Include="Rule.cs" />
     <Compile Include="UtilsComun.cs" />
   </ItemGroup>
   <ItemGroup>
