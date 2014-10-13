@@ -43,10 +43,10 @@ namespace OSSE.Web.Core.Aspects
 
                     break;
                 }
-                
+
                 case TipoAccionControlador.Post:
                 {
-                    var controller = (BaseController)args.Instance;
+                    var controller = (BaseController) args.Instance;
 
                     if (controller.ModelState.IsValid)
                     {
@@ -58,7 +58,7 @@ namespace OSSE.Web.Core.Aspects
                         {
                             Log.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
 
-                            var jsonResponse = new JsonResponse { Success = false, Message = ex.Message };
+                            var jsonResponse = new JsonResponse {Success = false, Message = ex.Message};
                             args.ReturnValue = controller.Json(jsonResponse, JsonRequestBehavior.AllowGet);
                         }
                         catch (Exception ex)
@@ -73,7 +73,7 @@ namespace OSSE.Web.Core.Aspects
                     {
                         string message = string.Join("; ",
                             controller.ModelState.Values.SelectMany(p => p.Errors).Select(p => p.ErrorMessage));
-                        var jsonResponse = new JsonResponse { Success = false, Message = message};
+                        var jsonResponse = new JsonResponse {Success = false, Message = message};
                         args.ReturnValue = controller.Json(jsonResponse, JsonRequestBehavior.AllowGet);
                     }
 
@@ -81,7 +81,7 @@ namespace OSSE.Web.Core.Aspects
                 }
                 case TipoAccionControlador.Listado:
                 {
-                    var controller = (BaseController)args.Instance;
+                    var controller = (BaseController) args.Instance;
 
                     try
                     {
@@ -92,7 +92,8 @@ namespace OSSE.Web.Core.Aspects
                         Log.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
 
                         controller.Response.StatusCode = 404;
-                        args.ReturnValue = controller.Json(new JsonResponse { Message = "Ocurrio un error al cargar..." }, JsonRequestBehavior.AllowGet);
+                        args.ReturnValue = controller.Json(new JsonResponse {Message = "Ocurrio un error al cargar..."},
+                            JsonRequestBehavior.AllowGet);
                     }
 
                     break;

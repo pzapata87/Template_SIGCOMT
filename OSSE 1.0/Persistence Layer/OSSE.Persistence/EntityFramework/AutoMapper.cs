@@ -21,21 +21,21 @@ namespace OSSE.Persistence.EntityFramework
                 MapEntitiesByDefaultConventions(modelBuilder);
             }
         }
-        
+
         private void MapEntitiesByDefaultConventions(IDbModelBuilder modelBuilder)
         {
-            var list =
+            List<Type> list =
                 (from type in
                     PersistenceConfigurator.EntititesAssembly.GetExportedTypes()
                         .Where(p => p.Namespace != "OSSE.Domain.Core" && p.Namespace != "OSSE.Domain.Reporte")
-                 where (type.BaseType != null &&
-                         (type.BaseType.IsGenericType &&
-                          (type.BaseType.GetGenericTypeDefinition() == typeof(Entity<>) ||
-                           type.BaseType.GetGenericTypeDefinition() == typeof(EntityWithTypedId<>) ||
-                           type.BaseType.GetGenericTypeDefinition() == typeof(EntityExtension<>) ||
-                           type.BaseType.GetGenericTypeDefinition() == typeof(EntityBase))))
+                    where (type.BaseType != null &&
+                           (type.BaseType.IsGenericType &&
+                            (type.BaseType.GetGenericTypeDefinition() == typeof (Entity<>) ||
+                             type.BaseType.GetGenericTypeDefinition() == typeof (EntityWithTypedId<>) ||
+                             type.BaseType.GetGenericTypeDefinition() == typeof (EntityExtension<>) ||
+                             type.BaseType.GetGenericTypeDefinition() == typeof (EntityBase))))
                     select type).ToList<Type>();
-            foreach (var type in list)
+            foreach (Type type in list)
             {
                 if (!_alreadyMappedEntities.Contains(type))
                 {
@@ -46,16 +46,18 @@ namespace OSSE.Persistence.EntityFramework
 
         private void MapEntitiesFromMappingConfigurations(IDbModelBuilder modelBuilder)
         {
-            var list =
+            List<Type> list =
                 (from type in
                     PersistenceConfigurator.MappingsAssembly.GetTypes()
                         .Where(p => p.Namespace != "OSSE.Domain.Core" && p.Namespace != "OSSE.Domain.Reporte")
-                    where type.BaseType != null && (type.BaseType.IsGenericType && (type.BaseType.GetGenericTypeDefinition() == typeof (EntityTypeConfiguration<>)))
+                    where
+                        type.BaseType != null &&
+                        (type.BaseType.IsGenericType && (type.BaseType.GetGenericTypeDefinition() == typeof (EntityTypeConfiguration<>)))
                     select type).ToList<Type>();
-            foreach (var type in list)
+            foreach (Type type in list)
             {
                 modelBuilder.AddConfiguration(type);
-                var baseType = type.BaseType;
+                Type baseType = type.BaseType;
                 _alreadyMappedEntities.Add(baseType.GetGenericArguments()[0]);
             }
         }

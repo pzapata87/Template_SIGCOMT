@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Threading;
 using System.Web.Mvc;
@@ -27,8 +28,8 @@ namespace OSSE.Web.Core
 
         protected static readonly ILog Logger = LogManager.GetLogger(string.Empty);
         private readonly IFormularioBL _formularioBL;
-        private readonly IPermisoRolBL _permisoRolBL;
         private readonly IItemTablaBL _itemTablaBL;
+        private readonly IPermisoRolBL _permisoRolBL;
 
         #endregion
 
@@ -48,7 +49,7 @@ namespace OSSE.Web.Core
             {
                 if (UsuarioActual.UserName == MasterConstantes.NoUsuario)
                 {
-                    RedirectToAction("LogOff", "Account", new { area = "" });
+                    RedirectToAction("LogOff", "Account", new {area = ""});
                     return;
                 }
 
@@ -61,7 +62,7 @@ namespace OSSE.Web.Core
                 ViewData[MasterConstantes.Email] = "osse@hotmail.com";
                 ViewData[MasterConstantes.IdUsuarioActual] = UsuarioActual.Id;
 
-                ItemTabla idioma = itemTablaBL.Get(p => p.TablaId == (int)TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
+                ItemTabla idioma = itemTablaBL.Get(p => p.TablaId == (int) TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
 
                 if (idioma != null)
                 {
@@ -73,11 +74,11 @@ namespace OSSE.Web.Core
                 ViewData[MasterConstantes.Idioma] = Idioma;
             }
 
-            var formulariosEnSession = (List<Formulario>)System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
-            if (formulariosEnSession != null) 
+            var formulariosEnSession = (List<Formulario>) System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
+            if (formulariosEnSession != null)
                 System.Web.HttpContext.Current.Session.Remove(MasterConstantes.Formularios);
 
-            var nuevosFormularios = formularioBL.FindAll(p => p.Estado == (int)TipoEstado.Activo).ToList();
+            List<Formulario> nuevosFormularios = formularioBL.FindAll(p => p.Estado == (int) TipoEstado.Activo).ToList();
             System.Web.HttpContext.Current.Session.Add(MasterConstantes.Formularios, nuevosFormularios);
         }
 
@@ -87,13 +88,13 @@ namespace OSSE.Web.Core
 
         protected Usuario UsuarioActual
         {
-            get { return (Usuario)System.Web.HttpContext.Current.Session[MasterConstantes.UsuarioSesion]; }
+            get { return (Usuario) System.Web.HttpContext.Current.Session[MasterConstantes.UsuarioSesion]; }
             set { System.Web.HttpContext.Current.Session.Add(MasterConstantes.UsuarioSesion, value); }
         }
 
         public int IdControlador
         {
-            get { return (int)System.Web.HttpContext.Current.Session[MasterConstantes.IdControlador]; }
+            get { return (int) System.Web.HttpContext.Current.Session[MasterConstantes.IdControlador]; }
             set { System.Web.HttpContext.Current.Session.Add(MasterConstantes.IdControlador, value); }
         }
 
@@ -104,7 +105,7 @@ namespace OSSE.Web.Core
         #region Métodos
 
         #region Paginacion
-       
+
         protected JsonResult ListarJQGrid<T, TResult>(ListParameter<T, TResult> configuracionListado)
             where T : EntityBase where TResult : class
         {
@@ -112,24 +113,24 @@ namespace OSSE.Web.Core
             {
                 GridTable grid = configuracionListado.Grid;
 
-                var where =
+                Expression<Func<T, bool>> where =
                     UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search)
                         .And(configuracionListado.FiltrosAdicionales ?? (q => true));
 
-                var ordenamiento = grid.Order.First();
+                OrderColumn ordenamiento = grid.Order.First();
                 var parametroFiltro = new FilterParameters<T>
                 {
                     ColumnOrder = grid.Columns[ordenamiento.Column].Data,
                     CurrentPage = (grid.Start/grid.Length) + 1,
                     OrderType =
                         ordenamiento.Dir != null
-                            ? (TipoOrden)Enum.Parse(typeof(TipoOrden), ordenamiento.Dir, true)
+                            ? (TipoOrden) Enum.Parse(typeof (TipoOrden), ordenamiento.Dir, true)
                             : TipoOrden.Asc,
                     WhereFilter = where,
                     AmountRows = grid.Length
                 };
-               
-                var count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
+
+                int count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
                 int totalPages = 0;
 
                 if (count > 0 && parametroFiltro.AmountRows > 0)
@@ -151,7 +152,7 @@ namespace OSSE.Web.Core
                     : parametroFiltro.CurrentPage;
                 parametroFiltro.Start = grid.Start;
 
-                var respuestaList =
+                List<TResult> respuestaList =
                     configuracionListado.ListMethod(parametroFiltro)
                         .ToList()
                         .Select(configuracionListado.SelecctionFormat).ToList();
@@ -190,8 +191,8 @@ namespace OSSE.Web.Core
                 Formulario formulario = _formularioBL.GetById(idFormulario);
                 var aux = new List<PermisoRol>();
 
-                var roles = UsuarioActual.RolUsuarioList.ToList();
-                foreach (var rol in roles)
+                List<RolUsuario> roles = UsuarioActual.RolUsuarioList.ToList();
+                foreach (RolUsuario rol in roles)
                 {
                     RolUsuario rolUsuarioActual = rol;
                     aux.AddRange(_permisoRolBL.GetAll(p => p.RolId == rolUsuarioActual.RolId && p.FormularioId == idFormulario));
@@ -199,7 +200,7 @@ namespace OSSE.Web.Core
 
                 IEnumerable<PermisoRol> permisos = aux.Distinct();
 
-                var permisosFormulario = FormularioConverter.ObtenerPermisosFormulario(formulario, permisos);
+                PermisoFormularioDto permisosFormulario = FormularioConverter.ObtenerPermisosFormulario(formulario, permisos);
                 return PartialView(view, permisosFormulario);
             }
             catch
@@ -214,19 +215,20 @@ namespace OSSE.Web.Core
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            Response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
-            var controllerName = filterContext.RouteData.Values["controller"];
-            var actionName = filterContext.RouteData.Values["action"];
+            object controllerName = filterContext.RouteData.Values["controller"];
+            object actionName = filterContext.RouteData.Values["action"];
 
-            Logger.Error(string.Format("Controlador:{0}  Action:{1}  Mensaje:{2}", controllerName, actionName, UtilsComun.GetExceptionMessage(filterContext.Exception)));
+            Logger.Error(string.Format("Controlador:{0}  Action:{1}  Mensaje:{2}", controllerName, actionName,
+                UtilsComun.GetExceptionMessage(filterContext.Exception)));
             filterContext.Result = View("Error");
         }
 
         protected JsonResult MensajeError(string mensaje = "Ocurrio un error al cargar...")
         {
             Response.StatusCode = 404;
-            return Json(new JsonResponse { Message = mensaje }, JsonRequestBehavior.AllowGet);
+            return Json(new JsonResponse {Message = mensaje}, JsonRequestBehavior.AllowGet);
         }
 
         protected void LogError(Exception exception)
@@ -245,7 +247,7 @@ namespace OSSE.Web.Core
                 if (UsuarioActual == null)
                     return null;
 
-                var modulos = _formularioBL.Formularios(UsuarioActual);
+                List<Formulario> modulos = _formularioBL.Formularios(UsuarioActual);
                 return FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
             }
             catch (Exception ex)
@@ -261,7 +263,7 @@ namespace OSSE.Web.Core
         #region Listado ItemTabla
 
         /// <summary>
-        /// Obtiene un listado de ItemTabla dado el idTipoTabla
+        ///     Obtiene un listado de ItemTabla dado el idTipoTabla
         /// </summary>
         /// <returns></returns>
         public List<ItemTabla> ItemTablaList(int idTipoTabla)
@@ -271,7 +273,7 @@ namespace OSSE.Web.Core
 
         #endregion
 
-        public new RedirectToRouteResult RedirectToAction(string action, string controller) 
+        public new RedirectToRouteResult RedirectToAction(string action, string controller)
         {
             return base.RedirectToAction(action, controller);
         }
@@ -284,7 +286,7 @@ namespace OSSE.Web.Core
         #region Reportes
 
         /// <summary>
-        /// Renderiza un reporte con sus datos
+        ///     Renderiza un reporte con sus datos
         /// </summary>
         /// <param name="report">Nombre del reporte</param>
         /// <param name="ds">Conjunto de Datos</param>
@@ -294,7 +296,7 @@ namespace OSSE.Web.Core
         public void RenderReport(string report, string ds, object data, string formato, ReportParameter[] parametros = null)
         {
             string reportPath = Server.MapPath(string.Format("~/Reports/{0}.rdlc", report));
-            var localReport = new LocalReport { ReportPath = reportPath };
+            var localReport = new LocalReport {ReportPath = reportPath};
             var reportDataSource = new ReportDataSource(ds, data);
 
             localReport.DataSources.Add(reportDataSource);
@@ -328,13 +330,13 @@ namespace OSSE.Web.Core
             string[] streams;
 
             byte[] renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding,
-                                                      out fileNameExtension, out streams, out warnings);
+                out fileNameExtension, out streams, out warnings);
 
             Response.Clear();
             Response.ContentType = mimeType;
             Response.AddHeader("content-disposition",
-                                                   string.Format("attachment; filename={0}.{1}",
-                                                                 UtilsComun.GetReporteName(report), fileNameExtension));
+                string.Format("attachment; filename={0}.{1}",
+                    UtilsComun.GetReporteName(report), fileNameExtension));
             Response.BinaryWrite(renderedBytes);
             Response.End();
         }

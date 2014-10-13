@@ -13,9 +13,9 @@ namespace OSSE.Common
         #region Encriptar
 
         /// <summary>
-        /// Método para encriptar un texto plano usando el algoritmo (Rijndael).
-        /// Este es el mas simple posible, muchos de los datos necesarios los
-        /// definimos como constantes.
+        ///     Método para encriptar un texto plano usando el algoritmo (Rijndael).
+        ///     Este es el mas simple posible, muchos de los datos necesarios los
+        ///     definimos como constantes.
         /// </summary>
         /// <param name="textoQueEncriptaremos">texto a encriptar</param>
         /// <returns>Texto encriptado</returns>
@@ -27,21 +27,21 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Método para encriptar un texto plano usando el algoritmo (Rijndael)
+        ///     Método para encriptar un texto plano usando el algoritmo (Rijndael)
         /// </summary>
         /// <returns>Texto encriptado</returns>
         public static string Encriptar(string textoQueEncriptaremos,
-          string passBase, string saltValue, string hashAlgorithm,
-          int passwordIterations, string initVector, int keySize)
+            string passBase, string saltValue, string hashAlgorithm,
+            int passwordIterations, string initVector, int keySize)
         {
             byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
             byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(textoQueEncriptaremos);
 
             var password = new PasswordDeriveBytes(passBase, saltValueBytes, hashAlgorithm, passwordIterations);
-        
-            byte[] keyBytes = password.GetBytes(keySize / 8);
-            var symmetricKey = new RijndaelManaged { Mode = CipherMode.CBC };
+
+            byte[] keyBytes = password.GetBytes(keySize/8);
+            var symmetricKey = new RijndaelManaged {Mode = CipherMode.CBC};
             ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
 
             var memoryStream = new MemoryStream();
@@ -63,7 +63,7 @@ namespace OSSE.Common
         #region Desencriptar
 
         /// <summary>
-        /// Método para desencriptar un texto encriptado.
+        ///     Método para desencriptar un texto encriptado.
         /// </summary>
         /// <returns>Texto desencriptado</returns>
         public static string Desencriptar(string textoEncriptado)
@@ -74,20 +74,20 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Método para desencriptar un texto encriptado (Rijndael)
+        ///     Método para desencriptar un texto encriptado (Rijndael)
         /// </summary>
         /// <returns>Texto desencriptado</returns>
         public static string Desencriptar(string textoEncriptado, string passBase,
-          string saltValue, string hashAlgorithm, int passwordIterations,
-          string initVector, int keySize)
+            string saltValue, string hashAlgorithm, int passwordIterations,
+            string initVector, int keySize)
         {
             byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
             byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);
             byte[] cipherTextBytes = Convert.FromBase64String(textoEncriptado);
             var password = new PasswordDeriveBytes(passBase, saltValueBytes, hashAlgorithm, passwordIterations);
 
-            byte[] keyBytes = password.GetBytes(keySize / 8);
-            var symmetricKey = new RijndaelManaged { Mode = CipherMode.CBC };
+            byte[] keyBytes = password.GetBytes(keySize/8);
+            var symmetricKey = new RijndaelManaged {Mode = CipherMode.CBC};
 
             ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
 
@@ -113,9 +113,9 @@ namespace OSSE.Common
                 return _sHashAlgorithm;
             }
 
-            var hashAlgorithmType = ConfigurationManager.AppSettings["HashAlgorithmType"];
+            string hashAlgorithmType = ConfigurationManager.AppSettings["HashAlgorithmType"];
 
-            var algorithm = HashAlgorithm.Create(hashAlgorithmType);
+            HashAlgorithm algorithm = HashAlgorithm.Create(hashAlgorithmType);
             if (algorithm == null)
             {
                 throw new ConfigurationErrorsException("Invalid_hash_algorithm_type");

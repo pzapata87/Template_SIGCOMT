@@ -22,7 +22,6 @@ namespace OSSE.RepositoryTest
 
             #region Assert
 
-
             #endregion
         }
     }

@@ -9,25 +9,25 @@ namespace OSSE.DataBase.Generator
 {
     public class DbContextDropCreateDatabaseAlwaysDesarrollo : DropCreateDatabaseAlways<DbContextBase>
     {
-        private Rol _rolAdmin;
         private ItemTabla _idiomaEspañol;
+        private Rol _rolAdmin;
 
         protected override void Seed(DbContextBase context)
         {
-            var idiomas = AgregarRegistrosTabla(context);
-            var roles = AgregarRegistrosRol(context);
+            List<ItemTabla> idiomas = AgregarRegistrosTabla(context);
+            List<Rol> roles = AgregarRegistrosRol(context);
 
             _rolAdmin = roles[0];
             _idiomaEspañol = idiomas[0];
-      
+
             AgregarRegistrosUsuario(context);
             AgregarRegistrosModulo(context);
         }
 
         private List<ItemTabla> AgregarRegistrosTabla(DbContext context)
         {
-            var idiomaEspañol = new ItemTabla { Nombre = "es-PE", Descripcion = "Español", Estado = (int)TipoEstado.Activo, Valor = "1" };
-            var idiomas = new List<ItemTabla> { idiomaEspañol };
+            var idiomaEspañol = new ItemTabla {Nombre = "es-PE", Descripcion = "Español", Estado = (int) TipoEstado.Activo, Valor = "1"};
+            var idiomas = new List<ItemTabla> {idiomaEspañol};
 
             var listaTablas = new List<Tabla>
             {
@@ -36,7 +36,7 @@ namespace OSSE.DataBase.Generator
                     Id = (int) TipoTabla.Idioma,
                     Nombre = "Idioma",
                     Descripcion = string.Empty,
-                    Estado = (int)TipoEstado.Activo,
+                    Estado = (int) TipoEstado.Activo,
                     ItemTabla = idiomas
                 },
                 new Tabla
@@ -44,11 +44,11 @@ namespace OSSE.DataBase.Generator
                     Id = (int) TipoTabla.TipoEstado,
                     Nombre = "Estado",
                     Descripcion = string.Empty,
-                    Estado = (int)TipoEstado.Activo,
+                    Estado = (int) TipoEstado.Activo,
                     ItemTabla = new List<ItemTabla>
                     {
-                        new ItemTabla {Nombre = "Inactivo", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "0"},
-                        new ItemTabla {Nombre = "Activo", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "1"}
+                        new ItemTabla {Nombre = "Inactivo", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "0"},
+                        new ItemTabla {Nombre = "Activo", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "1"}
                     }
                 },
                 new Tabla
@@ -56,16 +56,16 @@ namespace OSSE.DataBase.Generator
                     Id = (int) TipoTabla.TipoPermiso,
                     Nombre = "Permiso",
                     Descripcion = string.Empty,
-                    Estado = (int)TipoEstado.Activo,
+                    Estado = (int) TipoEstado.Activo,
                     ItemTabla = new List<ItemTabla>
                     {
-                        new ItemTabla {Nombre = "Mostrar", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "1"},
-                        new ItemTabla {Nombre = "Crear", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "2"},
-                        new ItemTabla {Nombre = "Modificar", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "3"},
-                        new ItemTabla {Nombre = "Eliminar", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "4"},
-                        new ItemTabla {Nombre = "Imprimir", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "5"},
-                        new ItemTabla {Nombre = "Mover", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "6"},
-                        new ItemTabla {Nombre = "Reportar", Descripcion = string.Empty, Estado = (int)TipoEstado.Activo, Valor = "7"}
+                        new ItemTabla {Nombre = "Mostrar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "1"},
+                        new ItemTabla {Nombre = "Crear", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "2"},
+                        new ItemTabla {Nombre = "Modificar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "3"},
+                        new ItemTabla {Nombre = "Eliminar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "4"},
+                        new ItemTabla {Nombre = "Imprimir", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "5"},
+                        new ItemTabla {Nombre = "Mover", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "6"},
+                        new ItemTabla {Nombre = "Reportar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "7"}
                     }
                 }
             };
@@ -78,7 +78,7 @@ namespace OSSE.DataBase.Generator
         {
             var roles = new List<Rol>
             {
-                new Rol {Nombre = "Administrador", Estado = (int)TipoEstado.Activo}
+                new Rol {Nombre = "Administrador", Estado = (int) TipoEstado.Activo}
             };
 
             context.Set<Rol>().AddRange(roles);
@@ -92,7 +92,7 @@ namespace OSSE.DataBase.Generator
                 UserName = "Admin",
                 Password = "x1z4IYAEC3Q2LZzLIC5f5g==",
                 Email = "admin@sigcomt.com",
-                Estado = (int)TipoEstado.Activo,
+                Estado = (int) TipoEstado.Activo,
                 IdiomaId = int.Parse(_idiomaEspañol.Valor),
                 RolUsuarioList = new[]
                 {
@@ -116,7 +116,7 @@ namespace OSSE.DataBase.Generator
                 Orden = 0,
                 Nivel = 0,
                 FormularioParentId = null,
-                Estado = (int)TipoEstado.Activo,
+                Estado = (int) TipoEstado.Activo,
                 PermisoRolList = new List<PermisoRol>
                 {
                     new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
@@ -131,7 +131,7 @@ namespace OSSE.DataBase.Generator
                     }
                 }
             };
-           
+
 
             context.Set<Formulario>().Add(moduloSeguridad);
 
@@ -166,7 +166,7 @@ namespace OSSE.DataBase.Generator
                     }
                 }
             };
-         
+
             context.Set<Formulario>().AddRange(grupoVistasModuloSeguridad);
 
             #endregion

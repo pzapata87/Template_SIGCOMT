@@ -7,7 +7,6 @@ using OSSE.Common;
 using OSSE.Common.Enum;
 using OSSE.Repository.RepositoryContracts;
 using OSSE.Repository.Specifications;
-using StructureMap;
 
 namespace OSSE.Persistence.Core
 {
@@ -75,7 +74,7 @@ namespace OSSE.Persistence.Core
 
         public T FindOne(TId id)
         {
-            return Set.Find(new object[] { id });
+            return Set.Find(new object[] {id});
         }
 
         public int Count(Expression<Func<T, bool>> expression)
@@ -85,8 +84,8 @@ namespace OSSE.Persistence.Core
 
         public IQueryable<T> FindAllPaging(FilterParameters<T> parameters)
         {
-            var listaAPaginar = GetListContext().Where(parameters.WhereFilter);
-            var orderBy = Helper.LambdaPropertyOrderBy<T>(parameters.ColumnOrder);
+            IQueryable<T> listaAPaginar = GetListContext().Where(parameters.WhereFilter);
+            dynamic orderBy = Helper.LambdaPropertyOrderBy<T>(parameters.ColumnOrder);
 
             listaAPaginar = (parameters.OrderType == TipoOrden.Asc)
                 ? Queryable.OrderBy(listaAPaginar, orderBy)
@@ -94,7 +93,7 @@ namespace OSSE.Persistence.Core
 
             return listaAPaginar.Skip(parameters.Start).Take(parameters.AmountRows);
         }
-     
+
         private IQueryable<T> GetListContext()
         {
             return Filter == null ? Set : Set.Where(Filter);

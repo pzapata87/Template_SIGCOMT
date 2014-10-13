@@ -7,7 +7,6 @@ namespace OSSE.Persistence
     public class MessageDispatcher : IMessageDispatcher
     {
         public static BlockingCollection<string> QueriesQueue;
-        public bool RelaseContext { get; set; }
 
         private readonly DbContext _instanceDbContext;
 
@@ -17,6 +16,8 @@ namespace OSSE.Persistence
             RelaseContext = true;
             _instanceDbContext = instanceDbContext;
         }
+
+        public bool RelaseContext { get; set; }
 
         public void HandleCommand(Action action)
         {

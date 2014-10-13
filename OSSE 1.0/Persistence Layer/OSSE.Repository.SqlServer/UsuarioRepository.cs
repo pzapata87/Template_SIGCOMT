@@ -9,7 +9,6 @@ namespace OSSE.Repository.SqlServer
         public UsuarioRepository(DbContext instanceDbContext)
             : base(instanceDbContext)
         {
-            
         }
     }
 }

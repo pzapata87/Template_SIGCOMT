@@ -11,7 +11,7 @@ using OSSE.Repository;
 
 namespace OSSE.BusinessLogic
 {
-    [TryCatch(ExceptionTypeExpected = typeof(Exception), RethrowException = true)]
+    [TryCatch(ExceptionTypeExpected = typeof (Exception), RethrowException = true)]
     public class FormularioBL : IFormularioBL
     {
         private readonly IFormularioRepository _formularioRepository;
@@ -22,7 +22,7 @@ namespace OSSE.BusinessLogic
             _formularioRepository = formularioRepository;
             _permisoRolRepository = permisoRolRepository;
         }
-        
+
         public List<Formulario> Formularios(Usuario usuario)
         {
             var formularios = new List<Formulario>();
@@ -31,7 +31,7 @@ namespace OSSE.BusinessLogic
                 const int estadoActivo = (int) TipoEstado.Activo;
                 const int permisoMostrar = (int) TipoPermiso.Mostrar;
 
-                var listaRolesUsuario = usuario.RolUsuarioList.Where(p => p.Estado == estadoActivo).Select(p => p.RolId);
+                IEnumerable<int> listaRolesUsuario = usuario.RolUsuarioList.Where(p => p.Estado == estadoActivo).Select(p => p.RolId);
 
                 formularios = _permisoRolRepository.FindAll(p => listaRolesUsuario.Any(q => q == p.RolId)
                                                                  && p.TipoPermiso == permisoMostrar).Select(p => p.Formulario).ToList();
@@ -39,17 +39,17 @@ namespace OSSE.BusinessLogic
 
             return formularios.ToList();
         }
-        
+
         public Formulario GetById(int id)
         {
             return _formularioRepository.FindOne(id);
         }
-        
+
         public IList<Formulario> FindAll(Expression<Func<Formulario, bool>> where)
         {
             return _formularioRepository.FindAll(where).ToList();
         }
-        
+
         public int Count(Expression<Func<Formulario, bool>> where)
         {
             return _formularioRepository.Count(where);

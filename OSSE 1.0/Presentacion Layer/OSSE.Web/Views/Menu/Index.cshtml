@@ -1,25 +1,26 @@
-﻿@model List<OSSE.DTO.FormularioDto>
+﻿@using OSSE.DTO
+@model List<OSSE.DTO.FormularioDto>
 
 <h5 class="leftpanel-title">Navigation</h5>
 <ul class="nav nav-pills nav-stacked">
     
     @if (Model != null)
     {
-         foreach (var formulario in Model)
-         {
-             if (formulario.Operaciones.Count > 0)
-             {
-                 <li class="parent">
-                     <a href=""><i class="fa fa-suitcase"></i> <span>@formulario.Nombre</span></a>
-                     <ul class="children">
-                         @foreach (var operacion in formulario.Operaciones)
-                         {
-                             <li><a href="@operacion.Controlador">@operacion.Nombre</a></li>
-                         }
-                     </ul>
-                 </li>
-             }
-         }
+        foreach (FormularioDto formulario in Model)
+        {
+            if (formulario.Operaciones.Count > 0)
+            {
+                <li class="parent">
+                    <a href=""><i class="fa fa-suitcase"></i> <span>@formulario.Nombre</span></a>
+                    <ul class="children">
+                        @foreach (OperacionDto operacion in formulario.Operaciones)
+                        {
+                            <li><a href="@operacion.Controlador">@operacion.Nombre</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
     }
 
     @*<li><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
@@ -73,5 +74,4 @@
             <li><a href="signin.html">Sign In</a></li>
             <li><a href="signup.html">Sign Up</a></li>
         </ul>
-    </li>*@
-</ul>
+    </li>*@</ul>

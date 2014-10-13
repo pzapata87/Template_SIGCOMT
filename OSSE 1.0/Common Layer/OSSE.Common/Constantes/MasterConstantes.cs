@@ -17,7 +17,7 @@
         public const string Idioma = "Idioma";
         public const string Formularios = "Formularios";
         public const string IdControlador = "IdControlador";
-        
+
         public const string FechaSistema = "FechaSistema";
         public const string NoUsuario = "NoUsuario";
 

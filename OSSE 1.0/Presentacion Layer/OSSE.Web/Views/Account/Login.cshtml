@@ -15,23 +15,23 @@
 
         <div class="mb30"></div>
 
-        @using (Html.BeginForm("Login", "Account", new { area = "" }, FormMethod.Post, new { id = "frmLogin" }))
+        @using (Html.BeginForm("Login", "Account", new {area = ""}, FormMethod.Post, new {id = "frmLogin"}))
         {
             @Html.AntiForgeryToken()
 
             <div class="input-group mb15">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Usuario", @class = "form-control" })
+                @Html.TextBoxFor(model => model.UserName, new {@placeholder = "Usuario", @class = "form-control"})
             </div>
             <div class="input-group mb15">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                @Html.PasswordFor(model => model.Password, new { @placeholder = "Contraseña", @class = "form-control" })
+                @Html.PasswordFor(model => model.Password, new {@placeholder = "Contraseña", @class = "form-control"})
             </div>
 
             <div class="clearfix">
                 <div class="pull-left">
                     <div class="ckbox ckbox-primary mt10">
-                        @Html.CheckBoxFor(model => model.RememberMe, new { @id = "rememberMe", @value = 1 })
+                        @Html.CheckBoxFor(model => model.RememberMe, new {@id = "rememberMe", @value = 1})
                         <label for="rememberMe">Recordar contraseña</label>
                     </div>
                 </div>

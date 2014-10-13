@@ -7,9 +7,9 @@ using OSSE.Domain;
 namespace OSSE.BusinessLogic.Interfaces
 {
     public interface ITablaBL : IPaging<Tabla>
-   {
-       Tabla Get(Expression<Func<Tabla, bool>> where);
-       IQueryable<Tabla> FindAll(Expression<Func<Tabla, bool>> where);
-       Tabla GetById(long id);
+    {
+        Tabla Get(Expression<Func<Tabla, bool>> where);
+        IQueryable<Tabla> FindAll(Expression<Func<Tabla, bool>> where);
+        Tabla GetById(long id);
     }
 }

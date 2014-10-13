@@ -19,51 +19,51 @@ namespace OSSE.Common
         /// <returns>Una expresion del tipo dynamic</returns>
         public static dynamic LambdaPropertyOrderBy<T>(string propiedad) where T : class
         {
-            var listaPropiedades = propiedad.Split('.');
-            var type = typeof(T);
-            var arg = Expression.Parameter(type, "x");
+            string[] listaPropiedades = propiedad.Split('.');
+            Type type = typeof (T);
+            ParameterExpression arg = Expression.Parameter(type, "x");
             Expression expr = arg;
 
-            foreach (var prop in listaPropiedades)
+            foreach (string prop in listaPropiedades)
             {
-                var propertyInfo = type.GetProperty(prop);
+                PropertyInfo propertyInfo = type.GetProperty(prop);
                 expr = Expression.MakeMemberAccess(expr, propertyInfo);
                 type = propertyInfo.PropertyType;
             }
 
-            if (type == typeof(string))
+            if (type == typeof (string))
             {
                 return Expression.Lambda<Func<T, string>>(expr, arg);
             }
-            if (type == typeof(int))
+            if (type == typeof (int))
             {
                 return Expression.Lambda<Func<T, int>>(expr, arg);
             }
-            if (type == typeof(decimal))
+            if (type == typeof (decimal))
             {
                 return Expression.Lambda<Func<T, decimal>>(expr, arg);
             }
-            if (type == typeof(double))
+            if (type == typeof (double))
             {
                 return Expression.Lambda<Func<T, double>>(expr, arg);
             }
-            if (type == typeof(DateTime))
+            if (type == typeof (DateTime))
             {
                 return Expression.Lambda<Func<T, DateTime>>(expr, arg);
             }
-            if (type == typeof(DateTime?))
+            if (type == typeof (DateTime?))
             {
                 return Expression.Lambda<Func<T, DateTime?>>(expr, arg);
             }
-            if (type == typeof(float))
+            if (type == typeof (float))
             {
                 return Expression.Lambda<Func<T, float>>(expr, arg);
             }
-            if (type == typeof(bool))
+            if (type == typeof (bool))
             {
                 return Expression.Lambda<Func<T, bool>>(expr, arg);
             }
-            if (type == typeof(bool?))
+            if (type == typeof (bool?))
             {
                 return Expression.Lambda<Func<T, bool?>>(expr, arg);
             }
@@ -75,10 +75,10 @@ namespace OSSE.Common
 
         public static Expression GetMemberAccessLambda<T>(ParameterExpression arg, string itemField) where T : class
         {
-            var listaPropiedades = itemField.Split('.');
+            string[] listaPropiedades = itemField.Split('.');
             Expression expression = arg;
 
-            var tipoActual = typeof(T);
+            Type tipoActual = typeof (T);
 
             foreach (string propiedad in listaPropiedades)
             {
@@ -91,30 +91,33 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Permite obtener una expresion lambda
+        ///     Permite obtener una expresion lambda
         /// </summary>
         /// <typeparam name="T">Clase de la cual se avalua las propiedades usadas para el filtro</typeparam>
         /// <typeparam name="TQ">Clase que contiene el valor de las propiedades para el filtro</typeparam>
         /// <param name="data">Representa el valor de las propiedades para el filtro</param>
-        /// <param name="filterRules">Representa la lista de Field-Value, donde "Field" es el nombre de la propiedad de T, y "Value" es el nombre de la propiedad de TQ</param>
+        /// <param name="filterRules">
+        ///     Representa la lista de Field-Value, donde "Field" es el nombre de la propiedad de T, y
+        ///     "Value" es el nombre de la propiedad de TQ
+        /// </param>
         /// <returns></returns>
         public static Expression<Func<T, bool>> ConvertToLambda<T, TQ>(TQ data, Rule[] filterRules)
             where T : class
         {
             Expression<Func<T, bool>> expresionsLambdaSet = null;
 
-            foreach (var item in filterRules)
+            foreach (Rule item in filterRules)
             {
                 PropertyInfo propertyKey = null;
-                var tipoActual = typeof(T);
+                Type tipoActual = typeof (T);
 
                 if (item.Field.Contains("."))
                 {
                     #region Seccion para obtener la ultima propiedad de la composicion
 
-                    var properties = item.Field.Split('.');
+                    string[] properties = item.Field.Split('.');
 
-                    foreach (var propiedad in properties)
+                    foreach (string propiedad in properties)
                     {
                         propertyKey = tipoActual.GetProperty(propiedad);
                         tipoActual = propertyKey.PropertyType;
@@ -124,7 +127,7 @@ namespace OSSE.Common
                 }
                 else
                 {
-                    propertyKey = typeof(T).GetProperty(item.Field);
+                    propertyKey = typeof (T).GetProperty(item.Field);
                 }
 
                 PropertyInfo propertyValue;
@@ -134,11 +137,11 @@ namespace OSSE.Common
                 {
                     #region Seccion para obtener la ultima propiedad de la composicion
 
-                    tipoActual = typeof(TQ);
-                    var properties = item.Data.Split('.');
+                    tipoActual = typeof (TQ);
+                    string[] properties = item.Data.Split('.');
                     object valueTemp = data;
 
-                    foreach (var propiedad in properties)
+                    foreach (string propiedad in properties)
                     {
                         propertyValue = tipoActual.GetProperty(propiedad);
                         tipoActual = propertyValue.PropertyType;
@@ -150,20 +153,20 @@ namespace OSSE.Common
                 }
                 else
                 {
-                    propertyValue = typeof(TQ).GetProperty(item.Data);
+                    propertyValue = typeof (TQ).GetProperty(item.Data);
                     value = propertyValue.GetValue(data);
                 }
 
                 if (propertyKey != null)
                 {
-                    var valorEvaluar = value == null
-                        ? (Expression)Expression.Constant(null)
+                    Expression valorEvaluar = value == null
+                        ? (Expression) Expression.Constant(null)
                         : Expression.Convert(Expression.Constant(Convert.ChangeType(value,
                             Nullable.GetUnderlyingType(propertyKey.PropertyType) ?? propertyKey.PropertyType)),
                             propertyKey.PropertyType);
 
-                    var arg = Expression.Parameter(typeof(T), "p");
-                    var comparison = Expression.Equal(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
+                    ParameterExpression arg = Expression.Parameter(typeof (T), "p");
+                    BinaryExpression comparison = Expression.Equal(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
 
                     expresionsLambdaSet = expresionsLambdaSet != null
                         ? expresionsLambdaSet.And(Expression.Lambda<Func<T, bool>>(comparison, arg))
@@ -201,18 +204,18 @@ namespace OSSE.Common
 
             foreach (Rule item in parametro.Rules)
             {
-                var arg = Expression.Parameter(typeof(T), "p");
+                ParameterExpression arg = Expression.Parameter(typeof (T), "p");
                 PropertyInfo property;
 
                 if (item.Field.Contains("."))
                 {
                     #region Seccion para obtener la ultima propiedad de la composicion
 
-                    var properties = item.Field.Split('.');
-                    var tipoActual = typeof(T);
+                    string[] properties = item.Field.Split('.');
+                    Type tipoActual = typeof (T);
                     PropertyInfo propertyInfo = null;
 
-                    foreach (var propiedad in properties)
+                    foreach (string propiedad in properties)
                     {
                         propertyInfo = tipoActual.GetProperty(propiedad);
                         tipoActual = propertyInfo.PropertyType;
@@ -223,11 +226,12 @@ namespace OSSE.Common
                     #endregion
                 }
                 else
-                    property = typeof(T).GetProperty(item.Field);
+                    property = typeof (T).GetProperty(item.Field);
 
                 if (property != null)
                 {
-                    TypeConverter converter = TypeDescriptor.GetConverter(Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
+                    TypeConverter converter =
+                        TypeDescriptor.GetConverter(Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
 
                     bool isValid;
 
@@ -244,18 +248,18 @@ namespace OSSE.Common
                     if (!isValid)
                         continue;
 
-                    var valorEvaluar = item.Data == null
-                        ? (Expression)Expression.Constant(item.Data)
+                    Expression valorEvaluar = item.Data == null
+                        ? (Expression) Expression.Constant(item.Data)
                         : Expression.Convert(Expression.Constant(Convert.ChangeType(item.Data,
                             Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType)),
                             property.PropertyType);
 
                     switch (item.Op)
                     {
-                        #region Lista de Expresiones Comparativas
+                            #region Lista de Expresiones Comparativas
 
                         case "bw":
-                            MethodInfo miBeginWith = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
+                            MethodInfo miBeginWith = typeof (string).GetMethod("StartsWith", new[] {typeof (string)});
                             comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miBeginWith, valorEvaluar);
                             break;
                         case "gt":
@@ -273,17 +277,17 @@ namespace OSSE.Common
                             comparison = Expression.NotEqual(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
                             break;
                         case "ew":
-                            MethodInfo miEndsWith = typeof(string).GetMethod("EndsWith", new[] { typeof(string) });
+                            MethodInfo miEndsWith = typeof (string).GetMethod("EndsWith", new[] {typeof (string)});
                             comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miEndsWith, valorEvaluar);
                             break;
                         case "cn":
-                            MethodInfo miContains = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+                            MethodInfo miContains = typeof (string).GetMethod("Contains", new[] {typeof (string)});
                             comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miContains, valorEvaluar);
                             break;
                         case "fe":
                             break;
 
-                        #endregion
+                            #endregion
                     }
                 }
 
@@ -312,9 +316,9 @@ namespace OSSE.Common
 
             #region Manejo de Expresiones hijas de esta expresion
 
-            foreach (var parametroHijo in parametro.Groups)
+            foreach (Filter parametroHijo in parametro.Groups)
             {
-                var expressionHijo = MergeRules<T>(parametroHijo);
+                Expression<Func<T, bool>> expressionHijo = MergeRules<T>(parametroHijo);
                 if (expressionHijo == null) continue;
 
                 if (expresionsLambdaSet == null)
@@ -344,9 +348,32 @@ namespace OSSE.Common
         {
             if (ex.InnerException == null)
                 return ex.Message;
-            var errorMessage = string.Format("{0}\n{1}", ex.Message, GetExceptionMessage(ex.InnerException));
+            string errorMessage = string.Format("{0}\n{1}", ex.Message, GetExceptionMessage(ex.InnerException));
 
             return errorMessage;
+        }
+
+        public static string GetEnumDescription(System.Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            var attributes =
+                (DescriptionAttribute[]) fi.GetCustomAttributes(typeof (DescriptionAttribute), false);
+
+            if (attributes.Length > 0)
+                return attributes[0].Description;
+            return value.ToString();
+        }
+
+        /// <summary>
+        ///     Pone nombre al reporte basado en fecha actual
+        /// </summary>
+        /// <param name="name">Nombre del reporte</param>
+        /// <returns></returns>
+        public static string GetReporteName(string name)
+        {
+            return string.Format("{0}_{1}{2}{3}{4}{5}{6}", name, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour,
+                DateTime.Now.Minute, DateTime.Now.Second);
         }
 
         #region Ip y HostName Local
@@ -355,7 +382,7 @@ namespace OSSE.Common
         {
             get
             {
-                var lastOrDefault =
+                IPAddress lastOrDefault =
                     Dns.GetHostAddresses(Dns.GetHostName())
                         .LastOrDefault(p => p.AddressFamily == AddressFamily.InterNetwork);
 
@@ -373,7 +400,7 @@ namespace OSSE.Common
         #region Métodos adicionales y de extensión para fechas
 
         /// <summary>
-        /// Convierte una fecha en una cadena con formato: dd/mm/yyyy.
+        ///     Convierte una fecha en una cadena con formato: dd/mm/yyyy.
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns>dd/mm/yyyy</returns>
@@ -383,7 +410,7 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Extrae la hora de una fecha en formato: hh:mm.
+        ///     Extrae la hora de una fecha en formato: hh:mm.
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns>hh:mm</returns>
@@ -393,8 +420,8 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Convierte una fecha en una cadena con formato: dd/mm/yyyy hh:mm:ss(includeSeconds = true), dd/mm/yyyy hh:mm
-        /// (includeSeconds = false).
+        ///     Convierte una fecha en una cadena con formato: dd/mm/yyyy hh:mm:ss(includeSeconds = true), dd/mm/yyyy hh:mm
+        ///     (includeSeconds = false).
         /// </summary>
         /// <param name="dateTime"></param>
         /// <param name="includeSeconds"></param>
@@ -407,7 +434,7 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Retorna la fecha con la última hora del dia: dd/mm/yy 23:59:59.
+        ///     Retorna la fecha con la última hora del dia: dd/mm/yy 23:59:59.
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns></returns>
@@ -417,7 +444,7 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Retorna la fecha con la hora inicial del dia: dd/mm/yy 0:0:0.
+        ///     Retorna la fecha con la hora inicial del dia: dd/mm/yy 0:0:0.
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns></returns>
@@ -427,7 +454,7 @@ namespace OSSE.Common
         }
 
         /// <summary>
-        /// Retorna la fecha equivalente en base al timezone origen hacia el timezone local
+        ///     Retorna la fecha equivalente en base al timezone origen hacia el timezone local
         /// </summary>
         /// <param name="dateAnotherTimeZone">fecha en otro timezone distinto al local</param>
         /// <param name="timeZoneSourceId">Id del timezone en el que viene la fecha</param>
@@ -441,27 +468,5 @@ namespace OSSE.Common
         }
 
         #endregion Métodos adicionales y de extensión para fechas
-
-        public static string GetEnumDescription(System.Enum value)
-        {
-            FieldInfo fi = value.GetType().GetField(value.ToString());
-
-            var attributes =
-                (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-            if (attributes.Length > 0)
-                return attributes[0].Description;
-            return value.ToString();
-        }
-
-        /// <summary>
-        /// Pone nombre al reporte basado en fecha actual
-        /// </summary>
-        /// <param name="name">Nombre del reporte</param>
-        /// <returns></returns>
-        public static string GetReporteName(string name)
-        {
-            return string.Format("{0}_{1}{2}{3}{4}{5}{6}", name, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-        }
     }
 }

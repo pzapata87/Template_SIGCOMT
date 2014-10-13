@@ -1,83 +1,81 @@
 ﻿@using OSSE.Common.Constantes
-@using Resources
-
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <title>OSSE - @ViewBag.Title</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <title>OSSE - @ViewBag.Title</title>
 
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-    <link href="@Url.Content("~/Content/css/style.default.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/css/style.default.css")" rel="stylesheet" type="text/css" />
 
-</head>
-<body>
-    <header>
-        <div class="headerwrapper">
-            <div class="header-left">
-                <a href="@Url.Action("Index", "Load")" class="logo">
-                    <img src="~/images/logo.png" alt="" />
-                </a>
-                <div class="pull-right">
-                    <a href="" class="menu-collapse">
-                        <i class="fa fa-bars"></i>
+    </head>
+    <body>
+        <header>
+            <div class="headerwrapper">
+                <div class="header-left">
+                    <a href="@Url.Action("Index", "Load")" class="logo">
+                        <img src="~/images/logo.png" alt="" />
                     </a>
-                </div>
-            </div><!-- header-left -->
-            <div class="header-right">
-                <div class="pull-right">
+                    <div class="pull-right">
+                        <a href="" class="menu-collapse">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </div><!-- header-left -->
+                <div class="header-right">
+                    <div class="pull-right">
                   
-                </div>
-            </div>
-        </div>
-    </header>
-    <section>
-        <div class="mainwrapper">
-            <div class="leftpanel">
-                <div class="media profile-left">
-                    <a class="pull-left profile-thumb" href="#">
-                        <img class="img-circle" src="images/photos/profile.png" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">@ViewData[MasterConstantes.UsuarioActual]</h4>
-                        <small class="text-muted">Beach Lover</small>
                     </div>
                 </div>
+            </div>
+        </header>
+        <section>
+            <div class="mainwrapper">
+                <div class="leftpanel">
+                    <div class="media profile-left">
+                        <a class="pull-left profile-thumb" href="#">
+                            <img class="img-circle" src="images/photos/profile.png" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@ViewData[MasterConstantes.UsuarioActual]</h4>
+                            <small class="text-muted">Beach Lover</small>
+                        </div>
+                    </div>
                 
-                @Html.Action("Index", "Menu")
+                    @Html.Action("Index", "Menu")
 
-            </div>
-            <div class="mainpanel">
-                <div class="pageheader">
-                    <div class="media">
-                        @RenderSection("pageheader", required: false)
+                </div>
+                <div class="mainpanel">
+                    <div class="pageheader">
+                        <div class="media">
+                            @RenderSection("pageheader", false)
+                        </div>
+                    </div>
+
+                    <div class="contentpanel">
+                        @RenderBody()
                     </div>
                 </div>
-
-                <div class="contentpanel">
-                    @RenderBody()
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="@Url.Content("~/Content/js/jquery-1.11.1.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/jquery-migrate-1.2.1.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/modernizr.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/pace.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/retina.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/jquery.cookies.js")"></script>
-    <script src="@Url.Content("~/Content/js/custom.js")"></script>
-    <script src="@Url.Content("~/Content/js/jquery.validate.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery-1.11.1.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery-migrate-1.2.1.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/modernizr.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/pace.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/retina.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.cookies.js")"></script>
+        <script src="@Url.Content("~/Content/js/custom.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.validate.min.js")"></script>
 
-    @RenderSection("ScriptContent", false)
+        @RenderSection("ScriptContent", false)
 
-</body>
+    </body>
 
 </html>

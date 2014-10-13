@@ -7,7 +7,6 @@ namespace OSSE.Persistence.Core
     {
         public Repository(DbContext instanceDbContext) : base(instanceDbContext)
         {
-
         }
     }
 }
