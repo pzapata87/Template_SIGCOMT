@@ -171,11 +171,14 @@
     <Content Include="Content\css\jquery-ui-1.10.3.css" />
     <Content Include="Content\css\jquery.dataTables.css" />
     <Content Include="Content\css\pace.css" />
+    <Content Include="Content\css\style.datatables.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\toggles.css" />
     <Content Include="Content\css\weather-icons.min.css" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\custom.js" />
+    <Content Include="Content\js\dataTables.bootstrap.js" />
+    <None Include="Content\js\dataTables.es.json" />
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />

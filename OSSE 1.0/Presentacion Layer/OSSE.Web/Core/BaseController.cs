@@ -116,20 +116,22 @@ namespace OSSE.Web.Core
                     UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search)
                         .And(configuracionListado.FiltrosAdicionales ?? (q => true));
 
+                var count = configuracionListado.CountMethod(where);
+
                 var ordenamiento = grid.Order.First();
+                var currentPage = (grid.Start/grid.Length);
                 var parametroFiltro = new FilterParameters<T>
                 {
                     ColumnOrder = grid.Columns[ordenamiento.Column].Data,
-                    CurrentPage = (grid.Start/grid.Length) + 1,
+                    CurrentPage = (currentPage >= 0 ? currentPage : 0) + 1,
                     OrderType =
                         ordenamiento.Dir != null
-                            ? (TipoOrden)Enum.Parse(typeof(TipoOrden), ordenamiento.Dir, true)
+                            ? (TipoOrden) Enum.Parse(typeof (TipoOrden), ordenamiento.Dir, true)
                             : TipoOrden.Asc,
                     WhereFilter = where,
-                    AmountRows = grid.Length
+                    AmountRows = grid.Length > 0 ? grid.Length : count
                 };
-               
-                var count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
+
                 int totalPages = 0;
 
                 if (count > 0 && parametroFiltro.AmountRows > 0)
@@ -159,7 +161,7 @@ namespace OSSE.Web.Core
                 var responseData = new DataTableResponse<TResult>
                 {
                     data = respuestaList,
-                    recordsFiltered = respuestaList.Count,
+                    recordsFiltered = count,
                     recordsTotal = count
                 };
 
