@@ -114,5 +114,25 @@ namespace OSSE.BusinessLogic
         {
             return _usuarioRepository.FindAll(where);
         }
+
+        [TryCatch(ExceptionTypeExpected = typeof(Exception), RethrowException = true)]
+        public Usuario ValidateUser(string username, string password)
+        {
+            var user = Get(p => p.UserName == username && p.Estado == (int)TipoEstado.Activo);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            if (user.UserName == null)
+            {
+                return null;
+            }
+
+            var enc = Security.Encriptar(password);
+
+            return enc == user.Password ? user : null;
+        }
     }
 }

@@ -17,14 +17,11 @@
 
 
 using System.Data.Entity;
-using System.Web.Security;
 using OSSE.BusinessLogic.Interfaces;
 using OSSE.Persistence;
 using OSSE.Persistence.EntityFramework;
 using OSSE.Repository;
 using OSSE.Repository.SqlServer;
-using OSSE.Service;
-using OSSE.Service.Interfaces;
 using StructureMap;
 using StructureMap.Web;
 
@@ -46,11 +43,6 @@ namespace OSSE.IoC.DependencyResolution
                 });
 
                 x.For<DbContext>().HybridHttpOrThreadLocalScoped().Use<DbContextBase>();
-
-                x.For(typeof(IFormsAuthenticationService)).Use(typeof(FormsAuthenticationService));
-                x.For<IMembershipService>().Use<AccountMembershipService>();
-                //x.For<MembershipProvider>().Use(Membership.Provider);
-                x.For<MembershipProvider>().Use(Membership.Providers["DbMembershipProvider"]);
             });
 
             return ObjectFactory.Container;

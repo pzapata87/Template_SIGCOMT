@@ -55,7 +55,6 @@ namespace OSSE.Web.Core
                 }
 
                 ViewData[MasterConstantes.UsuarioSesion] = UsuarioActual;
-                //ViewData[MasterConstantes.FechaSistema] = FechaSistema;
                 ViewData[MasterConstantes.UsuarioActual] = UsuarioActual.UserName;
                 ViewData[MasterConstantes.Empresa] = "OSSE";
                 ViewData[MasterConstantes.RUC] = "20508473657";
@@ -107,54 +106,7 @@ namespace OSSE.Web.Core
         #region Métodos
 
         #region Paginacion
-
-        //protected GenericDouble<JQgrid, T> Listar<T>(Func<Expression<Func<T, bool>>, int> countMethod,
-        //    Func<FilterParameters<T>, IQueryable<T>> listMethod, FilterParameters<T> parameters) where T : class
-        //{
-        //    IList<T> list;
-
-        //    try
-        //    {
-        //        int totalPages = 0;
-
-        //        var count = countMethod(parameters.WhereFilter);
-
-        //        if (count > 0 && parameters.AmountRows > 0)
-        //        {
-        //            if (count % parameters.AmountRows > 0)
-        //            {
-        //                totalPages = count / parameters.AmountRows + 1;
-        //            }
-        //            else
-        //            {
-        //                totalPages = count / parameters.AmountRows;
-        //            }
-
-        //            totalPages = totalPages == 0 ? 1 : totalPages;
-        //        }
-
-        //        parameters.CurrentPage = parameters.CurrentPage > totalPages ? totalPages : parameters.CurrentPage;
-
-        //        parameters.Start = parameters.AmountRows * parameters.CurrentPage - parameters.AmountRows;
-        //        if (parameters.Start < 0)
-        //        {
-        //            parameters.Start = 0;
-        //        }
-
-        //        jqgrid.Total = totalPages;
-        //        jqgrid.Page = parameters.CurrentPage;
-        //        jqgrid.Records = count;
-        //        jqgrid.Start = parameters.Start;
-
-        //        list = listMethod(parameters).ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return new GenericDouble<JQgrid, T>(jqgrid, list);
-        //}
-
+       
         protected JsonResult ListarJQGrid<T, TResult>(ListParameter<T, TResult> configuracionListado)
             where T : EntityBase where TResult : class
         {
@@ -178,7 +130,7 @@ namespace OSSE.Web.Core
                     WhereFilter = where,
                     AmountRows = grid.length
                 };
-
+               
                 var count = configuracionListado.CountMethod(parametroFiltro.WhereFilter);
                 int totalPages = 0;
 
@@ -209,7 +161,7 @@ namespace OSSE.Web.Core
                 var responseData = new DataTableResponse<TResult>
                 {
                     data = respuestaList,
-                    recordsFiltered = respuestaList.Count(),
+                    recordsFiltered = respuestaList.Count,
                     recordsTotal = count
                 };
 
@@ -287,26 +239,6 @@ namespace OSSE.Web.Core
         #endregion Control Error
 
         #region GenerarTreeView
-
-        //[HttpPost]
-        //public virtual JsonResult ListarTreView()
-        //{
-        //    try
-        //    {
-        //        if (UsuarioActual == null)
-        //            return Json("");
-
-        //        var modulos = _formularioBL.Formularios(UsuarioActual);
-        //        var modulosUsuario = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
-
-        //        return Json(modulosUsuario);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
-        //        return MensajeError();
-        //    }
-        //}
 
         public virtual List<FormularioDto> ObtenerFormulariosUsuario()
         {

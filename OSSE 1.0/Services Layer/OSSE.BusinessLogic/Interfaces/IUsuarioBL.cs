@@ -16,5 +16,6 @@ namespace OSSE.BusinessLogic.Interfaces
         Usuario GetById(int id);
         void Update(Usuario entity, IList<int> listaRoleSelected);
         IQueryable<Usuario> FindAll(Expression<Func<Usuario, bool>> where);
+        Usuario ValidateUser(string username, string password);
     }
 }

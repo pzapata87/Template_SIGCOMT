@@ -107,10 +107,6 @@
       <Project>{20f8c763-7c9a-4bf0-8bef-9031b15d2c33}</Project>
       <Name>OSSE.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Services Layer\OSSE.Service\OSSE.Service.csproj">
-      <Project>{c12957ea-5559-424f-95bf-2dd8c7fcc2cd}</Project>
-      <Name>OSSE.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
