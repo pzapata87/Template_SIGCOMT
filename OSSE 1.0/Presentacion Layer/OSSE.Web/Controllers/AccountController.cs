@@ -58,19 +58,16 @@ namespace OSSE.Web.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    Usuario usuarioLogueado = _usuarioBL.ValidateUser(model.UserName, model.Password);
-                    if (usuarioLogueado != null)
-                    {
-                        GenerarTickectAutenticacion(usuarioLogueado, true);
-                        FormulariosEnSession();
+                if (!ModelState.IsValid) return View(model);
 
-                        return RedirectToAction("Index", "Load");
-                    }
-                }
+                Usuario usuarioLogueado = _usuarioBL.ValidateUser(model.UserName, model.Password);
 
-                return View(model);
+                if (usuarioLogueado == null) return View(model);
+
+                GenerarTickectAutenticacion(usuarioLogueado, true);
+                FormulariosEnSession();
+
+                return RedirectToAction("Index", "Load");
             }
             catch (Exception ex)
             {

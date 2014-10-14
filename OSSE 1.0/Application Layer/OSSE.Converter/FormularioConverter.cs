@@ -78,7 +78,7 @@ namespace OSSE.Converter
                 let idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList)
                 select new OperacionDto
                 {
-                    Controlador = children.Controlador,
+                    Controlador = children.Direccion,
                     Nombre = idioma.Nombre,
                     Id = children.Id,
                     Operaciones = GenerateChildren(children.FormulariosHijosList, idiomaId)

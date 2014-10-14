@@ -144,8 +144,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
+    <Compile Include="Areas\Administracion\Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoadController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -178,7 +178,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\dataTables.bootstrap.js" />
-    <None Include="Content\js\languages\dataTables.es.json" />
+    <Content Include="Areas\Administracion\Views\Usuario\Index.cshtml" />
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />
@@ -190,6 +190,7 @@
     <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\retina.min.js" />
     <Content Include="Content\ViewJs\Login.js" />
+    <Content Include="Content\ViewJs\UsuarioIndex.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\utilsCommon.js" />
     <Content Include="images\logo-primary.png" />
@@ -213,7 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administracion\Controllers\" />
     <Folder Include="Areas\Administracion\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
