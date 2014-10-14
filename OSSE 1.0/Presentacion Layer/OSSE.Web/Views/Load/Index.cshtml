@@ -1,5 +1,5 @@
 ﻿@using OSSE.Common.Constantes
-@using Resources
+
 @{
     ViewBag.Title = "Panel";
     Layout = "~/Views/Shared/_LayoutCRM.cshtml";
@@ -8,9 +8,7 @@
 @section StyleContent
 {
     <link href="@Url.Content("~/Content/css/style.datatables.css")" rel="stylesheet" type="text/css" />
-    @*<link href="//cdn.datatables.net/tabletools/2.2.3/css/dataTables.tableTools.css" rel="stylesheet">*@
     <link href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" rel="stylesheet">
-    @*<link href="@Url.Content("~/Content/css/jquery.dataTables.css")" rel="stylesheet" type="text/css" />*@
 }
 
 @section pageheader
@@ -22,8 +20,6 @@
         <h4>Blank Page</h4>
     </div>
 }
-
-<h1>Test</h1>
 
 <table id="basicTable" class="table table-striped table-bordered responsive">
     <thead class="">
@@ -40,47 +36,38 @@
     </thead>
 </table>
 
-@section ScriptContent
+ @section ScriptContent
 {
     <script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>
-    @*<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>*@
-    @*<script src="//cdn.datatables.net/tabletools/2.2.3/js/dataTables.tableTools.min.js"></script>*@
-    @*<script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>*@
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
     <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
     <script src="//cdn.datatables.net/plug-ins/725b2a2115b/api/fnFilterOnReturn.js"></script>
 
+     <script type="text/javascript">
 
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#basicTable').dataTable({
-                //"dom": '<"top"ilfp<"clear">>rt<"bottom left"l<"clear">>',
-                "responsive": true,
-                "processing": true,
-                "serverSide": true,
-                "language": {
-                    "url": "@Url.Content(string.Format("~/Content/js/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
-                },
-                "order": [[1, "desc"]],
-                "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "@Master.Todos"]],
-                "ajax": {
-                    "url": '@Url.Action("Listar", "Load", new {area = ""})',
-                    "type": "POST"
-                },
-                "columns": [
-                    {
-                        "data": function (oObj) {
-                            var btnActualizar = '<a href="javascript:;" data-toggle="tooltip" title="Modificar" class="btn-success btn-xs actualizarReg"><i class="fa fa-edit"></i></a>';
-                            var btnEliminar = '<a href="javascript:;" data-toggle="tooltip" title="Eliminar" class="btn-danger btn-xs eliminarReg"><i class="fa fa-times"></i></a>';
-                            return btnActualizar + '&nbsp;' + btnEliminar;
-                        },
-                        "orderable": false
-                    },
-                    { "data": "Nombre", "name": "Tabla.Nombre" },
-                    { "data": "Descripcion", "name": "Descripcion" },
-                    { "data": "Valor", "name": "Valor" }
-                ]
-            }).fnFilterOnReturn();
-        });
-    </script>
+         jQuery(document).ready(function() {
+
+             var opciones = {
+                 grilla: '#basicTable',
+                 languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
+                 url: '@Url.Action("Listar", "Load", new {area = ""})',
+                 columns: [
+                     {
+                         "data": function(oObj) {
+                             var btnActualizar = '<a href="javascript:;" data-toggle="tooltip" title="Modificar" class="btn-success btn-xs actualizarReg"><i class="fa fa-edit"></i></a>';
+                             var btnEliminar = '<a href="javascript:;" data-toggle="tooltip" title="Eliminar" class="btn-danger btn-xs eliminarReg"><i class="fa fa-times"></i></a>';
+                             return btnActualizar + '&nbsp;' + btnEliminar;
+                         },
+                         "orderable": false,
+                         "searchable": false
+                     },
+                     { "data": "Nombre", "name": "Tabla.Nombre" },
+                     { "data": "Descripcion", "name": "Descripcion" },
+                     { "data": "Valor", "name": "Valor" }
+                 ]
+             };
+
+             Utils.Grilla(opciones);
+         });
+     </script>
 }

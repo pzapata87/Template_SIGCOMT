@@ -13,7 +13,17 @@
 
         <link href="@Url.Content("~/Content/css/style.default.css")" rel="stylesheet" type="text/css" />
     
-    @RenderSection("StyleContent", false)
+        @RenderSection("StyleContent", false)
+
+        <style type="text/css">
+            div.dataTables_wrapper div.left {
+                float: left;
+            }
+
+            div.dataTables_wrapper div.right {
+                float: right;
+            }
+        </style>
 
     </head>
     <body>
@@ -69,13 +79,14 @@
         <script src="@Url.Content("~/Content/js/jquery-1.11.1.min.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery-migrate-1.2.1.min.js")"></script>
         <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
-    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
-    <script src=" @Url.Content("~/Content/js/modernizr.min.js") "></script>
+        @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
+        <script src=" @Url.Content("~/Content/js/modernizr.min.js") "></script>
         <script src="@Url.Content("~/Content/js/pace.min.js")"></script>
         <script src="@Url.Content("~/Content/js/retina.min.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery.cookies.js")"></script>
         <script src="@Url.Content("~/Content/js/custom.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery.validate.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/utilsCommon.js")"></script>
 
         @RenderSection("ScriptContent", false)
 

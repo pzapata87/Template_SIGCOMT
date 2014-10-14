@@ -178,7 +178,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\dataTables.bootstrap.js" />
-    <None Include="Content\js\dataTables.es.json" />
+    <None Include="Content\js\languages\dataTables.es.json" />
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />
@@ -191,7 +191,7 @@
     <Content Include="Content\js\retina.min.js" />
     <Content Include="Content\ViewJs\Login.js" />
     <Content Include="Global.asax" />
-    <Content Include="Content\js\OSSE.js" />
+    <Content Include="Content\js\utilsCommon.js" />
     <Content Include="images\logo-primary.png" />
     <Content Include="images\sort_asc.png" />
     <Content Include="images\sort_both.png" />
