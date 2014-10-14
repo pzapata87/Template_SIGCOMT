@@ -1,6 +1,6 @@
-﻿using OSSE.Domain.Core;
+﻿using SIGCOMT.Domain.Core;
 
-namespace OSSE.Domain
+namespace SIGCOMT.Domain
 {
     public class ItemTablaFormulario : Entity<int>
     {

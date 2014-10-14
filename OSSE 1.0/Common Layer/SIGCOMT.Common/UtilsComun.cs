@@ -7,9 +7,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
-using OSSE.Common.DataTable;
+using SIGCOMT.Common.DataTable;
 
-namespace OSSE.Common
+namespace SIGCOMT.Common
 {
     public static class UtilsComun
     {

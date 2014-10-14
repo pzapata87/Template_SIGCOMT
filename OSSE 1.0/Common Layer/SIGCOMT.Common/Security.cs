@@ -4,7 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace OSSE.Common
+namespace SIGCOMT.Common
 {
     public class Security
     {

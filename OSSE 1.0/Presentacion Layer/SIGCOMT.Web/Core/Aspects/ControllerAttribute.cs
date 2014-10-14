@@ -4,11 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using log4net;
-using OSSE.Common;
 using PostSharp.Aspects;
-using Resources;
+using SIGCOMT.Common;
+using SIGCOMT.Web.App_GlobalResources;
 
-namespace OSSE.Web.Core.Aspects
+namespace SIGCOMT.Web.Core.Aspects
 {
     [Serializable]
     public class ControllerAttribute : MethodInterceptionAspect

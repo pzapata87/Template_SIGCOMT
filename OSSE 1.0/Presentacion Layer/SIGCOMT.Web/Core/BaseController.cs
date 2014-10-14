@@ -8,18 +8,18 @@ using System.Threading;
 using System.Web.Mvc;
 using log4net;
 using Microsoft.Reporting.WebForms;
-using OSSE.BusinessLogic.Core;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Common;
-using OSSE.Common.Constantes;
-using OSSE.Common.DataTable;
-using OSSE.Common.Enum;
-using OSSE.Converter;
-using OSSE.Domain;
-using OSSE.Domain.Core;
-using OSSE.DTO;
+using SIGCOMT.BusinessLogic.Core;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Common.DataTable;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Converter;
+using SIGCOMT.Domain;
+using SIGCOMT.Domain.Core;
+using SIGCOMT.DTO;
 
-namespace OSSE.Web.Core
+namespace SIGCOMT.Web.Core
 {
     [HandleError]
     public class BaseController : Controller

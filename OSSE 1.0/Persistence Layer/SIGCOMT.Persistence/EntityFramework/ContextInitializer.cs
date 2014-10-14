@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace OSSE.Persistence.EntityFramework
+namespace SIGCOMT.Persistence.EntityFramework
 {
     public class ContextInitializer : DropCreateDatabaseAlways<DbContextBase>
     {

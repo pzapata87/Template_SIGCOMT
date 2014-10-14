@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
-using OSSE.BusinessLogic.Core;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Common.DataTable;
-using OSSE.Domain;
-using OSSE.DTO;
-using OSSE.Web.Core;
+using SIGCOMT.BusinessLogic.Core;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common.DataTable;
+using SIGCOMT.Domain;
+using SIGCOMT.DTO;
+using SIGCOMT.Web.Core;
 
-namespace OSSE.Web.Controllers
+namespace SIGCOMT.Web.Controllers
 {
     [Authorize]
     public class LoadController : BaseController

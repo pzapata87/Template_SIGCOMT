@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.Common;
+using SIGCOMT.Common;
 
-namespace OSSE.BusinessLogic.Core
+namespace SIGCOMT.BusinessLogic.Core
 {
     public interface IPaging<T> where T : class
     {

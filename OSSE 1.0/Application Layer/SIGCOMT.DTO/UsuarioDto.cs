@@ -1,6 +1,6 @@
-﻿using OSSE.DTO.Core;
+﻿using SIGCOMT.DTO.Core;
 
-namespace OSSE.DTO
+namespace SIGCOMT.DTO
 {
     public class UsuarioDto : EntityDto<int>
     {

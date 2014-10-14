@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSSE.Common.Enum
+namespace SIGCOMT.Common.Enum
 {
     [Serializable]
     public enum TipoPermiso

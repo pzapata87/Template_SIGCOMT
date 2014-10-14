@@ -17,15 +17,15 @@
 
 
 using System.Data.Entity;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Persistence;
-using OSSE.Persistence.EntityFramework;
-using OSSE.Repository;
-using OSSE.Repository.SqlServer;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Persistence;
+using SIGCOMT.Persistence.EntityFramework;
+using SIGCOMT.Repository;
+using SIGCOMT.Repository.SqlServer;
 using StructureMap;
 using StructureMap.Web;
 
-namespace OSSE.IoC.DependencyResolution
+namespace SIGCOMT.IoC.DependencyResolution
 {
     public static class DependencyConfigurator
     {

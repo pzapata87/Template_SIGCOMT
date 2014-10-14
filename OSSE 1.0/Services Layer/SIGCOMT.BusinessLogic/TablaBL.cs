@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.Aspects;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Common;
-using OSSE.Domain;
-using OSSE.Repository;
+using SIGCOMT.Aspects;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common;
+using SIGCOMT.Domain;
+using SIGCOMT.Repository;
 
-namespace OSSE.BusinessLogic
+namespace SIGCOMT.BusinessLogic
 {
     [TryCatch(ExceptionTypeExpected = typeof (Exception), RethrowException = true)]
     public class TablaBL : ITablaBL

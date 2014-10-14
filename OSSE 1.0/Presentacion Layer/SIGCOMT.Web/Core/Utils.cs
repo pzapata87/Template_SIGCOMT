@@ -4,11 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using OSSE.Common;
-using OSSE.Common.Constantes;
-using Resources;
+using SIGCOMT.Common;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Web.App_GlobalResources;
 
-namespace OSSE.Web.Core
+namespace SIGCOMT.Web.Core
 {
     public static class Utils
     {

@@ -1,4 +1,4 @@
-﻿namespace OSSE.Email.Models
+﻿namespace SIGCOMT.Email.Models
 {
     public class UsuarioModel
     {

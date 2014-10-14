@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.Common;
-using OSSE.Repository.Specifications;
+using SIGCOMT.Common;
+using SIGCOMT.Repository.Specifications;
 
-namespace OSSE.Repository.RepositoryContracts
+namespace SIGCOMT.Repository.RepositoryContracts
 {
     public interface IRepositoryWithTypedId<T, in TId> where T : class
     {

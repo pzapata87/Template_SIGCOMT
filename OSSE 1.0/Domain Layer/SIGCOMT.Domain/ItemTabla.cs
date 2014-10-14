@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OSSE.Domain.Core;
+using SIGCOMT.Domain.Core;
 
-namespace OSSE.Domain
+namespace SIGCOMT.Domain
 {
     public class ItemTabla : Entity<int>
     {

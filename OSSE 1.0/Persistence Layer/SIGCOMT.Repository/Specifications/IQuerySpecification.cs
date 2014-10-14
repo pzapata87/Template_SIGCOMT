@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace OSSE.Repository.Specifications
+namespace SIGCOMT.Repository.Specifications
 {
     public interface IQuerySpecification<T>
     {

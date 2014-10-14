@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace OSSE.Web.App_Start
+namespace SIGCOMT.Web
 {
     public class RouteConfig
     {

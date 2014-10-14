@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace OSSE.Web.App_Start
+namespace SIGCOMT.Web
 {
     public class FilterConfig
     {

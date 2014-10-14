@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OSSE.Repository;
+using SIGCOMT.Repository;
 using StructureMap;
 
-namespace OSSE.RepositoryTest
+namespace SIGCOMT.RepositoryTest
 {
     [TestClass]
     public class FormularioRepository

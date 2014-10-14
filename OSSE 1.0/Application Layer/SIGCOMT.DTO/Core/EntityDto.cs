@@ -1,4 +1,4 @@
-﻿namespace OSSE.DTO.Core
+﻿namespace SIGCOMT.DTO.Core
 {
     public class EntityDto<TId>
     {

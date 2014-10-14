@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
-using OSSE.Domain;
-using OSSE.Persistence.Core;
+using SIGCOMT.Domain;
+using SIGCOMT.Persistence.Core;
 
-namespace OSSE.Repository.SqlServer
+namespace SIGCOMT.Repository.SqlServer
 {
     public class PermisoRolRepository : RepositoryWithTypedId<PermisoRol, int>, IPermisoRolRepository
     {

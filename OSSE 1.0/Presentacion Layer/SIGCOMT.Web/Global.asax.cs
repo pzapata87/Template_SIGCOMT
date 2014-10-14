@@ -6,14 +6,13 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using log4net.Config;
-using OSSE.Common.Constantes;
-using OSSE.Domain;
-using OSSE.IoC;
-using OSSE.Persistence;
-using OSSE.Persistence.EntityFramework;
-using OSSE.Web.App_Start;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Domain;
+using SIGCOMT.IoC;
+using SIGCOMT.Persistence;
+using SIGCOMT.Persistence.EntityFramework;
 
-namespace OSSE.Web
+namespace SIGCOMT.Web
 {
     // Nota: para obtener instrucciones sobre cómo habilitar el modo clásico de IIS6 o IIS7, 
     // visite http://go.microsoft.com/?LinkId=9394801

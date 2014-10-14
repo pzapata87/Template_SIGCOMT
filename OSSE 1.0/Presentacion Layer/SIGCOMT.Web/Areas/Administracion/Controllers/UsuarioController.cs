@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Web.Core;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Web.Core;
 
-namespace OSSE.Web.Areas.Administracion.Controllers
+namespace SIGCOMT.Web.Areas.Administracion.Controllers
 {
     public class UsuarioController : BaseController
     {

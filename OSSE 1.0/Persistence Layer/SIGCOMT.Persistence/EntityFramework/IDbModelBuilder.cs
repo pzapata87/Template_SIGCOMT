@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSSE.Persistence.EntityFramework
+namespace SIGCOMT.Persistence.EntityFramework
 {
     public interface IDbModelBuilder
     {

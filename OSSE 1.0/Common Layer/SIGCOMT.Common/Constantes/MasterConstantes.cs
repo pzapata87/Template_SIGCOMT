@@ -1,4 +1,4 @@
-﻿namespace OSSE.Common.Constantes
+﻿namespace SIGCOMT.Common.Constantes
 {
     public static class MasterConstantes
     {

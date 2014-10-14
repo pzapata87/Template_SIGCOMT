@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OSSE.Common
+namespace SIGCOMT.Common
 {
     public class Filter
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OSSE.Common.DataTable
+namespace SIGCOMT.Common.DataTable
 {
     public class DataTableResponse<T> where T : class
     {

@@ -1,11 +1,11 @@
 ﻿using System.Data.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OSSE.Domain;
-using OSSE.IoC;
-using OSSE.Persistence;
-using OSSE.Persistence.EntityFramework;
+using SIGCOMT.Domain;
+using SIGCOMT.IoC;
+using SIGCOMT.Persistence;
+using SIGCOMT.Persistence.EntityFramework;
 
-namespace OSSE.RepositoryTest.Core
+namespace SIGCOMT.RepositoryTest.Core
 {
     [TestClass]
     public class InitializeTest

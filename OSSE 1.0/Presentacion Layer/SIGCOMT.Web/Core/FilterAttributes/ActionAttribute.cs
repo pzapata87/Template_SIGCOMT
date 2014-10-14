@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using OSSE.Common.Constantes;
-using OSSE.Domain;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Domain;
 
-namespace OSSE.Web.Core.FilterAttributes
+namespace SIGCOMT.Web.Core.FilterAttributes
 {
     public class ActionAttribute : ActionFilterAttribute
     {

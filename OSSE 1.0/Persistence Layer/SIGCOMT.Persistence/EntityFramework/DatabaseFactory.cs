@@ -1,4 +1,4 @@
-﻿namespace OSSE.Persistence.EntityFramework
+﻿namespace SIGCOMT.Persistence.EntityFramework
 {
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {

@@ -17,14 +17,14 @@
 
 using System.Web.Http;
 using System.Web.Mvc;
-using OSSE.IoC;
-using OSSE.IoC.DependencyResolution;
+using SIGCOMT.IoC;
+using SIGCOMT.IoC.DependencyResolution;
 using StructureMap;
 using WebActivator;
 
 [assembly: PreApplicationStartMethod(typeof (StructuremapMvc), "Start")]
 
-namespace OSSE.IoC
+namespace SIGCOMT.IoC
 {
     public static class StructuremapMvc
     {

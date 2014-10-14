@@ -2,7 +2,7 @@
 using PostSharp.Aspects;
 using StructureMap;
 
-namespace OSSE.Persistence.Aspects
+namespace SIGCOMT.Persistence.Aspects
 {
     [Serializable]
     public sealed class CommitsOperationAttribute : MethodInterceptionAspect

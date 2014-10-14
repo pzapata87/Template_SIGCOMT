@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using OSSE.Common.Enum;
-using OSSE.Domain;
-using OSSE.DTO;
-using System;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Domain;
+using SIGCOMT.DTO;
 
-namespace OSSE.Converter
+namespace SIGCOMT.Converter
 {
     public class FormularioConverter
     {

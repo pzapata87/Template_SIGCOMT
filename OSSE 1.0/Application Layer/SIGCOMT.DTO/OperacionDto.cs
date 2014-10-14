@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OSSE.DTO.Core;
+using SIGCOMT.DTO.Core;
 
-namespace OSSE.DTO
+namespace SIGCOMT.DTO
 {
     public class OperacionDto : EntityDto<int>
     {

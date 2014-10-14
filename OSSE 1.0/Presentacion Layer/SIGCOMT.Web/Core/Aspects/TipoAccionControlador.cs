@@ -1,4 +1,4 @@
-﻿namespace OSSE.Web.Core.Aspects
+﻿namespace SIGCOMT.Web.Core.Aspects
 {
     public enum TipoAccionControlador
     {

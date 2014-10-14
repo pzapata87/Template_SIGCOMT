@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace OSSE.Web.App_Start
+namespace SIGCOMT.Web
 {
     public static class WebApiConfig
     {

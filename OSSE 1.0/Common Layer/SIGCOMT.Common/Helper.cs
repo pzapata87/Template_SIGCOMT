@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace OSSE.Common
+namespace SIGCOMT.Common
 {
     public static class Helper
     {

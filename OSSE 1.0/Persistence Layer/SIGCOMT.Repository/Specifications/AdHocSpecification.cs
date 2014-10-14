@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace OSSE.Repository.Specifications
+namespace SIGCOMT.Repository.Specifications
 {
     public class AdHocSpecification<T> : QuerySpecification<T>
     {

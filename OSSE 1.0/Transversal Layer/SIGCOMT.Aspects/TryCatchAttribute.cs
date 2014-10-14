@@ -3,7 +3,7 @@ using System.Reflection;
 using log4net;
 using PostSharp.Aspects;
 
-namespace OSSE.Aspects
+namespace SIGCOMT.Aspects
 {
     [Serializable]
     public sealed class TryCatchAttribute : OnMethodBoundaryAspect

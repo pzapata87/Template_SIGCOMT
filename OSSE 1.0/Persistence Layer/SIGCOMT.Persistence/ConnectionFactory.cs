@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
 
-namespace OSSE.Persistence
+namespace SIGCOMT.Persistence
 {
     public class ConnectionFactory
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OSSE.Repository.RepositoryContracts
+namespace SIGCOMT.Repository.RepositoryContracts
 {
     public interface IRepositoryQueryExecutor
     {

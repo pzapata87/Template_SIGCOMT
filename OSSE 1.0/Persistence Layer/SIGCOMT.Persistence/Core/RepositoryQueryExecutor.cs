@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using OSSE.Repository.RepositoryContracts;
+using SIGCOMT.Repository.RepositoryContracts;
 
-namespace OSSE.Persistence.Core
+namespace SIGCOMT.Persistence.Core
 {
     public class RepositoryQueryExecutor : IRepositoryQueryExecutor
     {

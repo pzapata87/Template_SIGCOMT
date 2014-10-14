@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using OSSE.Common.Constantes;
-using OSSE.Common.Enum;
-using OSSE.Domain;
-using OSSE.Persistence.EntityFramework;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Domain;
+using SIGCOMT.Persistence.EntityFramework;
 
-namespace OSSE.DataBase.Generator
+namespace SIGCOMT.DataBase.Generator
 {
     public class DbContextDropCreateDatabaseAlwaysDesarrollo : DropCreateDatabaseAlways<DbContextBase>
     {

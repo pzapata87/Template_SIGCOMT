@@ -1,6 +1,6 @@
 using System;
 
-namespace OSSE.Persistence
+namespace SIGCOMT.Persistence
 {
     public interface IMessageDispatcher
     {

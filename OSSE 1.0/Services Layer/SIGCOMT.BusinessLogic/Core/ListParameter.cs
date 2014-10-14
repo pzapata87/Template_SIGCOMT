@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.Common;
-using OSSE.Common.DataTable;
-using OSSE.Common.Enum;
-using OSSE.Domain.Core;
+using SIGCOMT.Common;
+using SIGCOMT.Common.DataTable;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Domain.Core;
 
-namespace OSSE.BusinessLogic.Core
+namespace SIGCOMT.BusinessLogic.Core
 {
     public class ListParameter<T, TResult>
         where T : EntityBase

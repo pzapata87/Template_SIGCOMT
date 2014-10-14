@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net.Mail;
 using RazorEngine;
 
-namespace OSSE.Email
+namespace SIGCOMT.Email
 {
     public class Email
     {

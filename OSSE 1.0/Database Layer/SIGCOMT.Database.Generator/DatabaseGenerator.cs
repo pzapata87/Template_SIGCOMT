@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OSSE.Domain;
-using OSSE.Persistence;
-using OSSE.Persistence.EntityFramework;
+using SIGCOMT.Domain;
+using SIGCOMT.Persistence;
+using SIGCOMT.Persistence.EntityFramework;
 
-namespace OSSE.DataBase.Generator
+namespace SIGCOMT.DataBase.Generator
 {
     [TestClass]
     public class DataBaseGenerator

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace OSSE.Web.Areas.Administracion
+namespace SIGCOMT.Web.Areas.Administracion
 {
     public class AdministracionAreaRegistration : AreaRegistration
     {

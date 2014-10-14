@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace OSSE.Persistence
+namespace SIGCOMT.Persistence
 {
     public class PersistenceConfigurator
     {

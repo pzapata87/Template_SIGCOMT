@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Data.Entity;
 
-namespace OSSE.Persistence
+namespace SIGCOMT.Persistence
 {
     public class MessageDispatcher : IMessageDispatcher
     {

@@ -1,7 +1,7 @@
-﻿using OSSE.Domain;
-using OSSE.Repository.RepositoryContracts;
+﻿using SIGCOMT.Domain;
+using SIGCOMT.Repository.RepositoryContracts;
 
-namespace OSSE.Repository
+namespace SIGCOMT.Repository
 {
     public interface IFormularioRepository : IRepositoryWithTypedId<Formulario, int>
     {

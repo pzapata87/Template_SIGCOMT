@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSSE.Domain.Core
+namespace SIGCOMT.Domain.Core
 {
     public class EntityExtension<TId> : Entity<TId>
     {

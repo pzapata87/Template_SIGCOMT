@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace OSSE.DTO
+namespace SIGCOMT.DTO
 {
     public class LogInDto
     {

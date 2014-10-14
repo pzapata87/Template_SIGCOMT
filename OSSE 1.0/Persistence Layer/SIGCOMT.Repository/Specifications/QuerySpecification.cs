@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace OSSE.Repository.Specifications
+namespace SIGCOMT.Repository.Specifications
 {
     public abstract class QuerySpecification<T> : IQuerySpecification<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using OSSE.Domain;
+using SIGCOMT.Domain;
 
-namespace OSSE.Persistence.DatabaseMappings
+namespace SIGCOMT.Persistence.DatabaseMappings
 {
     public class FormularioConfiguration : EntityTypeConfiguration<Formulario>
     {

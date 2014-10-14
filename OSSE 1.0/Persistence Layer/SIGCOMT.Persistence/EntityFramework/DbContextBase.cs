@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace OSSE.Persistence.EntityFramework
+namespace SIGCOMT.Persistence.EntityFramework
 {
     public class DbContextBase : DbContext
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using OSSE.Common.Enum;
+using SIGCOMT.Common.Enum;
 
-namespace OSSE.Common
+namespace SIGCOMT.Common
 {
     public class FilterParameters<T> where T : class
     {

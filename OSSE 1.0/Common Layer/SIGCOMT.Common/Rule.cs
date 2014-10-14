@@ -1,4 +1,4 @@
-﻿namespace OSSE.Common
+﻿namespace SIGCOMT.Common
 {
     public class Rule
     {

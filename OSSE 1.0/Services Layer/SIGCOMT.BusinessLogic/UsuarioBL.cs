@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.Aspects;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Common;
-using OSSE.Common.Enum;
-using OSSE.Domain;
-using OSSE.Persistence.Aspects;
-using OSSE.Repository;
+using SIGCOMT.Aspects;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Domain;
+using SIGCOMT.Persistence.Aspects;
+using SIGCOMT.Repository;
 
-namespace OSSE.BusinessLogic
+namespace SIGCOMT.BusinessLogic
 {
     public class UsuarioBL : IUsuarioBL
     {

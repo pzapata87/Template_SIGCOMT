@@ -1,7 +1,7 @@
-﻿using OSSE.Domain;
-using OSSE.DTO;
+﻿using SIGCOMT.Domain;
+using SIGCOMT.DTO;
 
-namespace OSSE.Converter
+namespace SIGCOMT.Converter
 {
     public class UsuarioConverter
     {

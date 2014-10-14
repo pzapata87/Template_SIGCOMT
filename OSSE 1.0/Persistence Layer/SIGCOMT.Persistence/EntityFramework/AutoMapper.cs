@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
-using OSSE.Domain.Core;
+using SIGCOMT.Domain.Core;
 
-namespace OSSE.Persistence.EntityFramework
+namespace SIGCOMT.Persistence.EntityFramework
 {
     public class AutoMapper
     {

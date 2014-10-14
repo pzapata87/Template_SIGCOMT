@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.DTO;
-using OSSE.Web.Core;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.DTO;
+using SIGCOMT.Web.Core;
 
-namespace OSSE.Web.Controllers
+namespace SIGCOMT.Web.Controllers
 {
     public class MenuController : BaseController
     {

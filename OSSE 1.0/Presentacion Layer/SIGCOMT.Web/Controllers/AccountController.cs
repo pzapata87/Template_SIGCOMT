@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using OSSE.BusinessLogic.Interfaces;
-using OSSE.Common.Constantes;
-using OSSE.Common.Enum;
-using OSSE.Domain;
-using OSSE.DTO;
-using OSSE.Web.Core;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common.Constantes;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Domain;
+using SIGCOMT.DTO;
+using SIGCOMT.Web.Core;
 
-namespace OSSE.Web.Controllers
+namespace SIGCOMT.Web.Controllers
 {
     [Authorize]
     public class AccountController : BaseController

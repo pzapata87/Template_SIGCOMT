@@ -1,4 +1,4 @@
-﻿namespace OSSE.DTO
+﻿namespace SIGCOMT.DTO
 {
     public class PermisoFormularioDto
     {

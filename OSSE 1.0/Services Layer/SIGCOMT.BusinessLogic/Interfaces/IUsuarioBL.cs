@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using OSSE.BusinessLogic.Core;
-using OSSE.Domain;
+using SIGCOMT.BusinessLogic.Core;
+using SIGCOMT.Domain;
 
-namespace OSSE.BusinessLogic.Interfaces
+namespace SIGCOMT.BusinessLogic.Interfaces
 {
     public interface IUsuarioBL : IPaging<Usuario>
     {

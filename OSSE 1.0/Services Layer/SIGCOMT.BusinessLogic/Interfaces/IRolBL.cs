@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using OSSE.Domain;
+using SIGCOMT.Domain;
 
-namespace OSSE.BusinessLogic.Interfaces
+namespace SIGCOMT.BusinessLogic.Interfaces
 {
     public interface IRolBL
     {

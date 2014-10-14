@@ -3,12 +3,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using LinqKit;
-using OSSE.Common;
-using OSSE.Common.Enum;
-using OSSE.Repository.RepositoryContracts;
-using OSSE.Repository.Specifications;
+using SIGCOMT.Common;
+using SIGCOMT.Common.Enum;
+using SIGCOMT.Repository.RepositoryContracts;
+using SIGCOMT.Repository.Specifications;
 
-namespace OSSE.Persistence.Core
+namespace SIGCOMT.Persistence.Core
 {
     /// <summary>
     ///     Clase Generica para utilizarse como repositorio de Datos
