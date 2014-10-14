@@ -1,7 +1,7 @@
 ﻿Utils = {
     Grilla: function (opciones) {
         if (opciones.dom == null)
-            opciones.dom = '<"left"f><"right"l>rtip';
+            opciones.dom = '<"left"f><"right"l>trip';
         
         if (opciones.responsive == null)
             opciones.responsive = true;
