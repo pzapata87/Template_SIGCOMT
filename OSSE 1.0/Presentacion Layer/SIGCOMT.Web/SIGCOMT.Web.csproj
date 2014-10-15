@@ -138,11 +138,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_GlobalResources\Usuario.designer.cs">
-      <DependentUpon>Usuario.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -170,6 +165,7 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\jquery-ui-1.10.3.css" />
     <Content Include="Content\css\jquery.dataTables.css" />
+    <Content Include="Content\css\jquery.gritter.css" />
     <Content Include="Content\css\pace.css" />
     <Content Include="Content\css\style.datatables.css" />
     <Content Include="Content\css\style.default.css" />
@@ -184,12 +180,14 @@
     <Content Include="Content\js\jquery.cookies.js" />
     <Content Include="Content\js\jquery.custom.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jquery.gritter.min.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\modernizr.min.js" />
     <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\retina.min.js" />
     <Content Include="Content\ViewJs\Login.js" />
+    <Content Include="Content\ViewJs\UsuarioEdit.js" />
     <Content Include="Content\ViewJs\UsuarioIndex.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\utilsCommon.js" />
@@ -224,12 +222,6 @@
     <Content Include="App_GlobalResources\Master.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Master.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Usuario.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Usuario.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +276,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\languages\dataTables.es.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Administracion\Views\Usuario\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

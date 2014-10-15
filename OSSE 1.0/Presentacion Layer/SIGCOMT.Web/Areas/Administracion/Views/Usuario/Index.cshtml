@@ -47,7 +47,7 @@
 
     <script type="text/javascript">
 
-        jQuery(document).ready(function () {
+        jQuery(document).ready(function() {
 
             var opciones = {
                 grilla: '#grillaUsuarioList',
@@ -63,16 +63,26 @@
                         "orderable": false,
                         "searchable": false
                     },
-                    { "data": "Username", "name": "Username" },
+                    { "data": "UserName", "name": "UserName" },
                     { "data": "Email", "name": "Email" },
                     { "data": "Nombre", "name": "Nombre" },
                     { "data": "Apellido", "name": "Apellido" },
                     { "data": "Telefono", "name": "Telefono" },
                     { "data": "Idioma", "name": "Idioma" }
-                ]
+                ],
+                crud: {
+                    actualizar: {
+                        urlActualizar: '@Url.Action("Edit", "Usuario", new { area = "Administracion"})/',
+                        getKey: function(rowData) {
+                            return rowData["Id"];
+                        }
+                    }
+                }
             };
 
             Utils.Grilla(opciones);
         });
+
+
     </script>
 }

@@ -12,6 +12,7 @@
         <meta name="author" content="" />
 
         <link href="@Url.Content("~/Content/css/style.default.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/css/jquery.gritter.css")" rel="stylesheet" type="text/css" />
     
         @RenderSection("StyleContent", false)
 
@@ -38,7 +39,7 @@
                             <i class="fa fa-bars"></i>
                         </a>
                     </div>
-                </div><!-- header-left -->
+                </div>
                 <div class="header-right">
                     <div class="pull-right">
                   
@@ -79,13 +80,15 @@
         <script src="@Url.Content("~/Content/js/jquery-1.11.1.min.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery-migrate-1.2.1.min.js")"></script>
         <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
-        @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
-        <script src=" @Url.Content("~/Content/js/modernizr.min.js") "></script>
+        <script src="@Url.Content("~/Content/js/modernizr.min.js")"></script>
         <script src="@Url.Content("~/Content/js/pace.min.js")"></script>
         <script src="@Url.Content("~/Content/js/retina.min.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery.cookies.js")"></script>
         <script src="@Url.Content("~/Content/js/custom.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery.validate.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.validate.unobtrusive.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.custom.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.gritter.min.js")"></script>
         <script src="@Url.Content("~/Content/js/utilsCommon.js")"></script>
 
         @RenderSection("ScriptContent", false)

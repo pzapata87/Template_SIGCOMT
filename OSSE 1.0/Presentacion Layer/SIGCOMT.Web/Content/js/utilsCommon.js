@@ -1,8 +1,12 @@
 ﻿Utils = {
     Grilla: function (opciones) {
+
         if (opciones.dom == null)
             opciones.dom = '<"left"f><"right"l>trip';
-        
+
+        if (opciones.actualizarClass == null)
+            opciones.actualizarClass = "a.actualizarReg";
+
         if (opciones.responsive == null)
             opciones.responsive = true;
         
@@ -38,5 +42,46 @@
                 grilla.fnFilterOnReturn();
             }
         });
-    }
+
+        $('body').on('click', opciones.actualizarClass, function () {
+            var that = this;
+
+            eventoActualizar({
+                grilla: grilla,
+                button: that,
+                urlActualizar: opciones.crud.actualizar.urlActualizar
+            });
+        });
+
+        function eventoActualizar(opcionesButton) {
+            var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
+            var aData = opcionesButton.grilla.fnGetData(aPos[0]);
+            var rowId = opciones.crud.actualizar.getKey(aData);
+
+            window.location.href = opcionesButton.urlActualizar + rowId;
+        }
+    },
+
+    GetForm: function (form) {
+        var that = $(form);
+        var url = that.attr('action');
+        var type = that.attr('method');
+        var data = {};
+
+        that.find('[name]').each(function (index, value) {
+            var innerthat = $(this);
+            var name = innerthat.attr('name');
+            var datavalue = innerthat.val();
+
+            data[name] = datavalue;
+        });
+
+        var obj = {
+            url: url,
+            type: type,
+            data: data
+        };
+
+        return obj;
+    },
 }

@@ -1,4 +1,5 @@
-﻿using SIGCOMT.Domain;
+﻿using SIGCOMT.Common;
+using SIGCOMT.Domain;
 using SIGCOMT.DTO;
 
 namespace SIGCOMT.Converter
@@ -14,8 +15,19 @@ namespace SIGCOMT.Converter
                 Nombre = usuarioDomain.Nombre,
                 Apellido = usuarioDomain.Apellido,
                 Email = usuarioDomain.Email,
+                Password = Security.Desencriptar(usuarioDomain.Password),
+                Telefono = usuarioDomain.Telefono,
                 Estado = usuarioDomain.Estado
             };
+        }
+
+        public static void DtoToDomain(Usuario usuarioDomain, UsuarioDto usuarioDto)
+        {
+            usuarioDomain.Apellido = usuarioDto.Apellido;
+            usuarioDomain.Nombre = usuarioDto.Nombre;
+            usuarioDomain.Password = Security.Encriptar(usuarioDto.Password);
+            usuarioDomain.Telefono = usuarioDto.Telefono;
+            usuarioDomain.Email = usuarioDto.Email;
         }
     }
 }

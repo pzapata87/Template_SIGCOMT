@@ -117,151 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApellidoRequerido" xml:space="preserve">
-    <value>El campo Apellidos es requerido.</value>
-  </data>
-  <data name="Apellidos" xml:space="preserve">
-    <value>Apellidos</value>
-  </data>
-  <data name="ApellidoStringLength" xml:space="preserve">
-    <value>El campo Apellidos sólo permite un max. 50 caracteres.</value>
-  </data>
-  <data name="Bloqueado" xml:space="preserve">
-    <value>Bloqueado</value>
-  </data>
-  <data name="Debil" xml:space="preserve">
-    <value>Débil</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Correo</value>
-  </data>
-  <data name="EmailCorrecto" xml:space="preserve">
-    <value>El campo Correo no es una dirección de correo electrónico válida.</value>
-  </data>
-  <data name="EmailDuplicado" xml:space="preserve">
-    <value>Correo ya existe. Ingrese otro Correo.</value>
-  </data>
-  <data name="EmailError" xml:space="preserve">
-    <value>Formato de Correo Incorrecto</value>
+  <data name="EmailFormato" xml:space="preserve">
+    <value>El email debe ser válido.</value>
   </data>
   <data name="EmailRequerido" xml:space="preserve">
-    <value>El campo Correo es requerido.</value>
+    <value>El email es requerido.</value>
   </data>
-  <data name="EmailStringLength" xml:space="preserve">
-    <value>El campo Correo sólo permite un max. 50 caracteres.</value>
-  </data>
-  <data name="Estado" xml:space="preserve">
-    <value>Estado</value>
-  </data>
-  <data name="Fuerte" xml:space="preserve">
-    <value>Fuerte</value>
-  </data>
-  <data name="Idioma" xml:space="preserve">
-    <value>Idioma</value>
-  </data>
-  <data name="IdiomalRequerido" xml:space="preserve">
-    <value>El campo Idioma es requerido.</value>
-  </data>
-  <data name="Mediana" xml:space="preserve">
-    <value>Mediana</value>
-  </data>
-  <data name="MuyDebil" xml:space="preserve">
-    <value>Muy Débil</value>
-  </data>
-  <data name="MuyFuerte" xml:space="preserve">
-    <value>Muy Fuerte</value>
-  </data>
-  <data name="NombreRequerido" xml:space="preserve">
-    <value>El campo Nombres es requerido.</value>
-  </data>
-  <data name="NombreRol" xml:space="preserve">
-    <value>Rol</value>
-  </data>
-  <data name="Nombres" xml:space="preserve">
-    <value>Nombres</value>
-  </data>
-  <data name="NombreStringLength" xml:space="preserve">
-    <value>El campo Nombres sólo permite un max. 30 caracteres.</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="PasswordMinimo6" xml:space="preserve">
-    <value>El campo Password debe ser mínimo de 6 caracteres.</value>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>La contraseña debe tener 4 caracteres como mínimo.</value>
   </data>
   <data name="PasswordRequerido" xml:space="preserve">
-    <value>El campo Password es requerido.</value>
+    <value>La contraseña es requerida.</value>
   </data>
-  <data name="Rol" xml:space="preserve">
-    <value>Rol</value>
-  </data>
-  <data name="Telefono" xml:space="preserve">
-    <value>Teléfono</value>
-  </data>
-  <data name="TelefonoStringLength50" xml:space="preserve">
-    <value>El campo Teléfono sólo permite un max. 50 caracteres.</value>
-  </data>
-  <data name="TituloBusqueda" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
-  <data name="Username" xml:space="preserve">
-    <value>Nombre de Usuario</value>
+  <data name="UsernameLength" xml:space="preserve">
+    <value>El nombre de usuario debe tener 6 caracteres como mínimo.</value>
   </data>
   <data name="UsernameRequerido" xml:space="preserve">
-    <value>El campo Username es requerido.</value>
-  </data>
-  <data name="UsernameStringLength100" xml:space="preserve">
-    <value>El campo Username sólo permite un max. 100 caracteres.</value>
-  </data>
-  <data name="UsuarioDuplicado" xml:space="preserve">
-    <value>Username ya existe. Ingrese otro Username.</value>
-  </data>
-  <data name="UsuarioNoEliminado" xml:space="preserve">
-    <value>No se puede Eliminar Usuario</value>
-  </data>
-  <data name="ChangePassword" xml:space="preserve">
-    <value>Cambiar Password</value>
-  </data>
-  <data name="Coincidencia" xml:space="preserve">
-    <value>La nueva contraseña y la contraseña de confirmación no coinciden.</value>
-  </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirmar la nueva contraseña</value>
-  </data>
-  <data name="ConfirmPasswordRequerido" xml:space="preserve">
-    <value>El campo Confirmar la Nueva Contraseña es obligatorio.</value>
-  </data>
-  <data name="ErrorContraseña" xml:space="preserve">
-    <value>La Contraseña actual es incorrecta.</value>
-  </data>
-  <data name="NewPassword" xml:space="preserve">
-    <value>Nueva contraseña</value>
-  </data>
-  <data name="NewPasswordRequerido" xml:space="preserve">
-    <value>El campo Nueva Contraseña es obligatorio.</value>
-  </data>
-  <data name="OldPassword" xml:space="preserve">
-    <value>Contraseña actual</value>
-  </data>
-  <data name="OldPasswordRequerido" xml:space="preserve">
-    <value>El campo Contraseña Actual es obligatorio.</value>
-  </data>
-  <data name="Panel" xml:space="preserve">
-    <value>Panel Usuario</value>
-  </data>
-  <data name="MensajeConfirmEliminar" xml:space="preserve">
-    <value>Desea eliminar el usuario</value>
-  </data>
-  <data name="TituloPopupEditarUsuario" xml:space="preserve">
-    <value>Editar Usuario</value>
-  </data>
-  <data name="TituloPopupNuevoUsuario" xml:space="preserve">
-    <value>Nuevo Usuario</value>
-  </data>
-  <data name="RolRequerido" xml:space="preserve">
-    <value>El campo Rol es obligatorio.</value>
-  </data>
-  <data name="UsuarioOCorreoDuplicado" xml:space="preserve">
-    <value>El usuario o el correo ya existen.</value>
+    <value>El nombre de usuario es requerido.</value>
   </data>
 </root>

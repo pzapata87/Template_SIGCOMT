@@ -1,0 +1,82 @@
+﻿@model SIGCOMT.DTO.UsuarioDto
+
+@{
+    ViewBag.Title = "Usuario Edit";
+    Layout = "~/Views/Shared/_LayoutCRM.cshtml";
+}
+
+@section pageheader
+{
+    <div class="pageicon pull-left">
+        <i class="fa fa-home"></i>
+    </div>
+    <div class="media-body">
+        <h4>Editar Usuario</h4>
+    </div>
+}
+
+@using (Html.BeginForm(ViewData["Accion"].ToString(), "Usuario", new { area = "Administracion" }, 
+    FormMethod.Post, new { id = "frmUsuario", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(p => p.Id)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Formulario de información del usuario</h4>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(p => p.UserName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(p => p.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.UserName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Password, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.PasswordFor(p => p.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Email, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Nombre, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Apellido, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(p => p.Apellido, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Telefono, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(p => p.Telefono, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <div class="col-sm-offset-2">
+                <button class="btn btn-primary mr5 edicion">Guardar</button>
+                <button type="reset" class="btn btn-default edicion">Limpiar</button>
+                <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">Regresar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@section ScriptContent
+{
+    <script src="@Url.Content("~/Content/ViewJs/UsuarioEdit.js")"></script>
+}
