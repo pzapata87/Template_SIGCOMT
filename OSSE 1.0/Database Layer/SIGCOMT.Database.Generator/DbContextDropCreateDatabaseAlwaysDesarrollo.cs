@@ -147,7 +147,7 @@ namespace SIGCOMT.DataBase.Generator
             {
                 new Formulario
                 {
-                    Direccion = "Administracion/Usuario/Index",
+                    Direccion = "~/Administracion/Usuario/Index",
                     Controlador = "usuarioList",
                     FormularioParent = moduloSeguridad,
                     Orden = 1,

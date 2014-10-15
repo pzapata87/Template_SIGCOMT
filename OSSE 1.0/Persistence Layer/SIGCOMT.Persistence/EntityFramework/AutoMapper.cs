@@ -27,7 +27,7 @@ namespace SIGCOMT.Persistence.EntityFramework
             List<Type> list =
                 (from type in
                     PersistenceConfigurator.EntititesAssembly.GetExportedTypes()
-                        .Where(p => p.Namespace != "OSSE.Domain.Core" && p.Namespace != "OSSE.Domain.Reporte")
+                        .Where(p => p.Namespace != "SIGCOMT.Domain.Core" && p.Namespace != "SIGCOMT.Domain.Reporte")
                     where (type.BaseType != null &&
                            (type.BaseType.IsGenericType &&
                             (type.BaseType.GetGenericTypeDefinition() == typeof (Entity<>) ||
@@ -49,7 +49,7 @@ namespace SIGCOMT.Persistence.EntityFramework
             List<Type> list =
                 (from type in
                     PersistenceConfigurator.MappingsAssembly.GetTypes()
-                        .Where(p => p.Namespace != "OSSE.Domain.Core" && p.Namespace != "OSSE.Domain.Reporte")
+                        .Where(p => p.Namespace != "SIGCOMT.Domain.Core" && p.Namespace != "SIGCOMT.Domain.Reporte")
                     where
                         type.BaseType != null &&
                         (type.BaseType.IsGenericType && (type.BaseType.GetGenericTypeDefinition() == typeof (EntityTypeConfiguration<>)))
