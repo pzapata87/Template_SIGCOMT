@@ -13,7 +13,7 @@ namespace SIGCOMT.DataBase.Generator
         public void CreateDataBaseDesarrollo()
         {
             Database.SetInitializer(new DbContextDropCreateDatabaseAlwaysDesarrollo());
-            PersistenceConfigurator.Configure("OSSE", typeof (Usuario).Assembly, typeof (ConnectionFactory).Assembly);
+            PersistenceConfigurator.Configure("SIGCOMT", typeof (Usuario).Assembly, typeof (ConnectionFactory).Assembly);
             var target = new DbContextBase();
             target.Database.Initialize(true);
         }

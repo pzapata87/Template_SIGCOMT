@@ -56,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.RepositoryTest", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Web", "Presentacion Layer\SIGCOMT.Web\SIGCOMT.Web.csproj", "{02ED4F00-F91B-4125-A6AE-F96F01BF8EBA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{73063AD8-515D-4236-BD75-2ECCB698E1AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
