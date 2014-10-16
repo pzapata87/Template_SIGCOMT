@@ -1,4 +1,11 @@
-﻿Utils = {
+﻿var $msgModal = $('#commonConfirmModal').modal({
+    backdrop: true,
+    show: false,
+    keyboard: false
+});
+
+
+Utils = {
     Grilla: function (opciones) {
 
         if (opciones.dom == null)
@@ -62,10 +69,26 @@
         }
     },
 
+    ShowMessage: function (header, body, btnSubmitText, callback) {
+        $msgModal
+            .find('.modal-content .alert > h4').text(header).end()
+            .find('.modal-content .alert > p').text(body).end()
+            .find('.callback-btn').html(btnSubmitText).end()
+            .find('.callback-btn')
+            .off("click.callback-btn")
+            .on("click.callback-btn", function(ev) {
+                callback($msgModal);
+                $msgModal.modal('hide');
+            });
+        
+        $msgModal.modal('show');
+    },
+
     GetForm: function (form) {
         var that = $(form);
         var url = that.attr('action');
         var type = that.attr('method');
+        var listUrl = that.attr('datalistUrl');
         var data = {};
 
         that.find('[name]').each(function (index, value) {
@@ -79,9 +102,34 @@
         var obj = {
             url: url,
             type: type,
-            data: data
+            data: data,
+            listUrl: listUrl
         };
 
         return obj;
     },
+
+    NotificationMessage: function (parametros) {
+
+        var notificationType = '';
+        switch (parametros.tipo) {
+        case 1:
+            notificationType = 'growl-success';
+            break;
+        case 2:
+            notificationType = 'growl-danger';
+            break;
+        case 3:
+            notificationType = 'growl-warning';
+            break;
+        }
+
+        jQuery.gritter.add({
+            title: parametros.title,
+            text: parametros.message,
+            class_name: notificationType,
+            sticky: false,
+            time: ''
+        });
+    }
 }

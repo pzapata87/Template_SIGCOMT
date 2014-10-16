@@ -1,47 +1,41 @@
 ﻿jQuery(document).ready(function() {
     $('#frmUsuario').on('submit', function (e) {
+        var that = this;
 
         if (!$(this).valid()) {
             e.preventDefault();
             return;
         }
 
-        var form = Utils.GetForm(this);
+        Utils.ShowMessage("Usuario", "Desea realizar la operacion?", "Si", function(modal) {
+            var form = Utils.GetForm(that);
 
-        $.ajax({
-            url: form.url,
-            type: form.type,
-            data: form.data,
-            success: function (response) {
-                if (response.Success == true) {
-                    jQuery.gritter.add({
-                        title: 'USUARIO',
-                        text: response.Message,
-                        class_name: 'growl-success',
-                        //image: 'images/screen.png',
-                        sticky: false,
-                        time: ''
+            $.ajax({
+                url: form.url,
+                type: form.type,
+                data: form.data,
+                success: function (response) {
+                    Utils.NotificationMessage({
+                        tipo: response.Success ? 1 : 2,
+                        title: 'Usuario',
+                        message: response.Message
                     });
 
-                    //setTimeout(function() {
-                    //    window.location = "";
-                    //}, 3000);
-
-                } else {
-                    jQuery.gritter.add({
-                        title: 'USUARIO',
-                        text: response.Message,
-                        class_name: 'growl-danger',
-                        //image: 'images/screen.png',
-                        sticky: false,
-                        time: ''
+                    if (response.Success == true) {
+                        setTimeout(function() {
+                            window.location = form.listUrl;
+                        }, 2000);
+                    } 
+                },
+                error: function (x, xh, xhr) {
+                    Utils.NotificationMessage({
+                        tipo: 2,
+                        title: 'Usuario',
+                        message: x.responseText
                     });
+                    console.error(xh);
                 }
-            },
-            error: function (x, xh, xhr) {
-                $('#loading').modal("hide");
-                console.error(xh);
-            }
+            });
         });
 
         e.preventDefault();

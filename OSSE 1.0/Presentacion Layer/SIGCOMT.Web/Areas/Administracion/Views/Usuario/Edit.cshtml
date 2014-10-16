@@ -16,7 +16,7 @@
 }
 
 @using (Html.BeginForm(ViewData["Accion"].ToString(), "Usuario", new { area = "Administracion" }, 
-    FormMethod.Post, new { id = "frmUsuario", @class = "form-horizontal" }))
+    FormMethod.Post, new { id = "frmUsuario", @class = "form-horizontal", @datalistUrl = Url.Action("Index", "Usuario", new { area = "Administracion"}) }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(p => p.Id)
@@ -68,8 +68,8 @@
 
         <div class="panel-footer">
             <div class="col-sm-offset-2">
-                <button class="btn btn-primary mr5 edicion">Guardar</button>
-                <button type="reset" class="btn btn-default edicion">Limpiar</button>
+                <button class="btn btn-primary mr5">Guardar</button>
+                <button type="reset" class="btn btn-default">Limpiar</button>
                 <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">Regresar</a>
             </div>
         </div>

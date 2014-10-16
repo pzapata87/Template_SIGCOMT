@@ -76,6 +76,21 @@
                 </div>
             </div>
         </section>
+        
+        <div class="modal fade" id="commonConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="alert alert-info fade in nomargin">
+                        <h4>TITLE</h4>
+                        <p>MESSAGE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info callback-btn">BUTTONCALBACK</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="@Url.Content("~/Content/js/jquery-1.11.1.min.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery-migrate-1.2.1.min.js")"></script>
@@ -90,7 +105,7 @@
         <script src="@Url.Content("~/Content/js/jquery.custom.js")"></script>
         <script src="@Url.Content("~/Content/js/jquery.gritter.min.js")"></script>
         <script src="@Url.Content("~/Content/js/utilsCommon.js")"></script>
-
+        
         @RenderSection("ScriptContent", false)
 
     </body>

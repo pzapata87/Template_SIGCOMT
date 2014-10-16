@@ -74,7 +74,7 @@
                     actualizar: {
                         urlActualizar: '@Url.Action("Edit", "Usuario", new { area = "Administracion"})/',
                         getKey: function(rowData) {
-                            return rowData["Id"];
+                            return rowData.Id;
                         }
                     }
                 }

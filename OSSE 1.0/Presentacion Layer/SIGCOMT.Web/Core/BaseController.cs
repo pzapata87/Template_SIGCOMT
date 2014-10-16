@@ -69,9 +69,9 @@ namespace SIGCOMT.Web.Core
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(idioma.Nombre);
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(idioma.Nombre);
                     Idioma = Thread.CurrentThread.CurrentUICulture.ToString().Split('-')[0];
-                }
 
-                ViewData[MasterConstantes.Idioma] = Idioma;
+                    ViewData[MasterConstantes.Idioma] = Idioma;
+                }
             }
 
             var formulariosEnSession = (List<Formulario>) System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
