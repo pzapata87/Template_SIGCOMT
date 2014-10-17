@@ -50,7 +50,7 @@ namespace SIGCOMT.Web
 
             GlobalParameters.Idiomas = new Dictionary<int, string>();
 
-            listaIdiomasDomain.ForEach(p => GlobalParameters.Idiomas.Add(int.Parse(p.Valor), p.Nombre));
+            listaIdiomasDomain.ForEach(p => GlobalParameters.Idiomas.Add(int.Parse(p.Valor), p.Descripcion));
         }
 
         protected void Session_Start(object sender, EventArgs e)

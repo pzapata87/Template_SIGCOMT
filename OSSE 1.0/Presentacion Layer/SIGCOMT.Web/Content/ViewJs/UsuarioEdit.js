@@ -1,4 +1,7 @@
-﻿jQuery(document).ready(function() {
+﻿jQuery(document).ready(function () {
+
+    jQuery("#IdiomaId").select2({ minimumResultsForSearch: 10 });
+
     $('#frmUsuario').on('submit', function (e) {
         var that = this;
 

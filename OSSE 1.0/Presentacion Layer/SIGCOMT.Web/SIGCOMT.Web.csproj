@@ -167,6 +167,7 @@
     <Content Include="Content\css\jquery.dataTables.css" />
     <Content Include="Content\css\jquery.gritter.css" />
     <Content Include="Content\css\pace.css" />
+    <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\style.datatables.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\toggles.css" />
@@ -186,6 +187,7 @@
     <Content Include="Content\js\modernizr.min.js" />
     <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\retina.min.js" />
+    <Content Include="Content\js\select2.min.js" />
     <Content Include="Content\ViewJs\Login.js" />
     <Content Include="Content\ViewJs\UsuarioEdit.js" />
     <Content Include="Content\ViewJs\UsuarioIndex.js" />

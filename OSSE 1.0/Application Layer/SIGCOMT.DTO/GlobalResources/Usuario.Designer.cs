@@ -79,6 +79,15 @@ namespace SIGCOMT.DTO.GlobalResources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El idioma es requerido..
+        /// </summary>
+        internal static string IdiomaRequerido {
+            get {
+                return ResourceManager.GetString("IdiomaRequerido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La contraseña debe tener 4 caracteres como mínimo..
         /// </summary>
         internal static string PasswordLength {

@@ -1,8 +1,14 @@
-﻿@model SIGCOMT.DTO.UsuarioDto
+﻿@using SIGCOMT.Cache
+@model SIGCOMT.DTO.UsuarioDto
 
 @{
     ViewBag.Title = "Usuario Edit";
     Layout = "~/Views/Shared/_LayoutCRM.cshtml";
+}
+
+@section StyleContent
+{
+    <link href="@Url.Content("~/Content/css/select2.css")" rel="stylesheet" type="text/css" />
 }
 
 @section pageheader
@@ -64,12 +70,17 @@
                     @Html.TextBoxFor(p => p.Telefono, new { @class = "form-control" })
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Idioma, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(p => p.IdiomaId, new SelectList(GlobalParameters.Idiomas, "Key", "Value", Model.IdiomaId), new { @class = "width100p" })
+                </div>
+            </div>
         </div>
 
         <div class="panel-footer">
             <div class="col-sm-offset-2">
                 <button class="btn btn-primary mr5">Guardar</button>
-                <button type="reset" class="btn btn-default">Limpiar</button>
                 <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">Regresar</a>
             </div>
         </div>
@@ -78,5 +89,6 @@
 
 @section ScriptContent
 {
+    <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
     <script src="@Url.Content("~/Content/ViewJs/UsuarioEdit.js")"></script>
 }

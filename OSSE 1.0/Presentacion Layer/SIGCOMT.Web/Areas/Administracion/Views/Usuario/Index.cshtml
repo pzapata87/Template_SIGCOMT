@@ -9,6 +9,7 @@
 {
     <link href="@Url.Content("~/Content/css/style.datatables.css")" rel="stylesheet" type="text/css" />
     <link href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/select2.css")" rel="stylesheet" type="text/css" />
 }
 
 @section pageheader
@@ -45,6 +46,7 @@
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
     <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
     <script src="//cdn.datatables.net/plug-ins/725b2a2115b/api/fnFilterOnReturn.js"></script>
+    <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
 
@@ -81,10 +83,18 @@
                     ]
                 },
                 crud: {
+                    getKey: function(rowData) {
+                        return rowData.Id;
+                    },
                     actualizar: {
-                        urlActualizar: '@Url.Action("Edit", "Usuario", new {area = "Administracion"})/',
-                        getKey: function(rowData) {
-                            return rowData.Id;
+                        urlActualizar: '@Url.Action("Edit", "Usuario", new {area = "Administracion"})'
+                    },
+                    eliminar: {
+                        urlEliminar: '@Url.Action("Eliminar", "Usuario", new { area = "Administracion"})',
+                        alertEliminar: {
+                            title: 'Usuario',
+                            message: 'Desea eliminar el usuario?',
+                            textButtonCommand: 'Si'
                         }
                     }
                 }

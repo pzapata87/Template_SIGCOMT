@@ -110,7 +110,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
                 }
             }
 
-            return Json(response);
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Crear()
@@ -162,7 +162,19 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
                 }
             }
 
-            return Json(response);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Eliminar(int id)
+        {
+            var usuarioDomain = _usuarioBL.GetById(id);
+            usuarioDomain.Estado = (int)TipoEstado.Inactivo;
+
+            _usuarioBL.Update(usuarioDomain);
+
+            var jsonResponse = new JsonResponse { Success = true, Message = "Se eliminó satisfactoriamente el usuario" };
+            return Json(jsonResponse, JsonRequestBehavior.AllowGet);
         }
     }
 }

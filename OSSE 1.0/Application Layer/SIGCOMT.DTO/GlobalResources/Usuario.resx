@@ -123,6 +123,9 @@
   <data name="EmailRequerido" xml:space="preserve">
     <value>El email es requerido.</value>
   </data>
+  <data name="IdiomaRequerido" xml:space="preserve">
+    <value>El idioma es requerido.</value>
+  </data>
   <data name="PasswordLength" xml:space="preserve">
     <value>La contraseña debe tener 4 caracteres como mínimo.</value>
   </data>

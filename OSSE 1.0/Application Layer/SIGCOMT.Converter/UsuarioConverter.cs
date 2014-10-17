@@ -16,6 +16,7 @@ namespace SIGCOMT.Converter
                 Apellido = usuarioDomain.Apellido,
                 Email = usuarioDomain.Email,
                 Password = Security.Desencriptar(usuarioDomain.Password),
+                IdiomaId = usuarioDomain.IdiomaId,
                 Telefono = usuarioDomain.Telefono,
                 Estado = usuarioDomain.Estado
             };
@@ -29,6 +30,7 @@ namespace SIGCOMT.Converter
             usuarioDomain.Telefono = usuarioDto.Telefono;
             usuarioDomain.Email = usuarioDto.Email;
             usuarioDomain.UserName = usuarioDto.UserName;
+            usuarioDomain.IdiomaId = usuarioDto.IdiomaId;
         }
     }
 }

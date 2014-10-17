@@ -1,4 +1,4 @@
-﻿var $msgModal = $('#commonConfirmModal').modal({
+﻿var $msgModal = jQuery('#commonConfirmModal').modal({
     backdrop: true,
     show: false,
     keyboard: false
@@ -13,6 +13,9 @@ Utils = {
 
         if (opciones.actualizarClass == null)
             opciones.actualizarClass = "a.actualizarReg";
+
+        if (opciones.eliminarClass == null)
+            opciones.eliminarClass = "a.eliminarReg";
 
         if (opciones.responsive == null)
             opciones.responsive = true;
@@ -51,7 +54,7 @@ Utils = {
             }
         });
 
-        $('body').on('click', opciones.actualizarClass, function () {
+        jQuery('body').on('click', opciones.actualizarClass, function () {
             var that = this;
 
             eventoActualizar({
@@ -61,12 +64,66 @@ Utils = {
             });
         });
 
+        jQuery('body').on('click', opciones.eliminarClass, function () {
+            var that = this;
+
+            eventoEliminar({
+                grilla: grilla,
+                button: that,
+                alertEliminar: {
+                    title: opciones.crud.eliminar.alertEliminar.title,
+                    message: opciones.crud.eliminar.alertEliminar.message,
+                    textButtonCommand: opciones.crud.eliminar.alertEliminar.textButtonCommand
+                },
+                urlEliminar: opciones.crud.eliminar.urlEliminar
+            });
+        });
+
         function eventoActualizar(opcionesButton) {
             var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
             var aData = opcionesButton.grilla.fnGetData(aPos[0]);
-            var rowId = opciones.crud.actualizar.getKey(aData);
+            var rowId = opciones.crud.getKey(aData);
 
-            window.location.href = opcionesButton.urlActualizar + rowId;
+            window.location.href = opcionesButton.urlActualizar + '/' +  rowId;
+        }
+
+        function eventoEliminar(opcionesButton) {
+            var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
+            var aData = opcionesButton.grilla.fnGetData(aPos[0]);
+            var rowId = opciones.crud.getKey(aData);
+
+            Utils.ShowMessage(opcionesButton.alertEliminar.title,
+                opcionesButton.alertEliminar.message,
+                opcionesButton.alertEliminar.textButtonCommand,
+                function(evt) {
+                    $.ajax({
+                        type: 'POST',
+                        url: opcionesButton.urlEliminar + '/' + rowId,
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        async: false,
+                        cache: false,
+                        success: function(response) {
+                            Utils.NotificationMessage({
+                                tipo: response.Success ? 1 : 2,
+                                title: opcionesButton.alertEliminar.title,
+                                message: response.Message
+                            });
+
+                            opcionesButton.grilla.fnClearTable(0);
+                            opcionesButton.grilla.fnDraw();
+                        },
+                        error: function (data, error) {
+                            Utils.NotificationMessage({
+                                tipo: 2,
+                                title: opcionesButton.alertEliminar.title,
+                                message: data.responseText
+                            });
+
+                            console.error(error);
+                        }
+                    });
+                });
         }
     },
 
@@ -86,14 +143,14 @@ Utils = {
     },
 
     GetForm: function (form) {
-        var that = $(form);
+        var that = jQuery(form);
         var url = that.attr('action');
         var type = that.attr('method');
         var listUrl = that.attr('datalistUrl');
         var data = {};
 
         that.find('[name]').each(function (index, value) {
-            var innerthat = $(this);
+            var innerthat = jQuery(this);
             var name = innerthat.attr('name');
             var datavalue = innerthat.val();
 

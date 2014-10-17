@@ -18,6 +18,9 @@ namespace SIGCOMT.DTO
         //[EmailAddress(ErrorMessageResourceName = "EmailFormato", ErrorMessageResourceType = typeof(Usuario))]
         public string Email { get; set; }
 
+        [Required(ErrorMessageResourceName = "IdiomaRequerido", ErrorMessageResourceType = typeof(Usuario))]
+        public int IdiomaId { get; set; }
+
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Telefono { get; set; }
