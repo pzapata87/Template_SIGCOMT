@@ -223,10 +223,11 @@ namespace SIGCOMT.Common
             var valoresColumna = homologaciones.FirstOrDefault(p => p.Columna == columna.Name);
             if (valoresColumna == null) return nuevaRule;
 
+            nuevaRule.Op = valoresColumna.Operador;
+
             var valorHomologacion = valoresColumna.Valores.FirstOrDefault(p => p.ValorReal.Contains(valorBusqueda));
             if (valorHomologacion == null) return nuevaRule;
 
-            nuevaRule.Op = valoresColumna.Operador;
             nuevaRule.Data = valorHomologacion.ValorHomologado;
 
             return nuevaRule;

@@ -32,7 +32,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
 
             GlobalParameters.Idiomas.ToList().ForEach(p => listaIdiomas.Add(new ValorHomologacion
             {
-                ValorHomologado = p.Key.ToString(),
+                ValorHomologado = Convert.ToString(p.Key),
                 ValorReal = p.Value
             }));
 
