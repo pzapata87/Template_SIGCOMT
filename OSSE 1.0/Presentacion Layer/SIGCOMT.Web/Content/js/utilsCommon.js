@@ -30,7 +30,7 @@ Utils = {
             opciones.order = [[1, "desc"]];
         
         if (opciones.lengthMenu == null)
-            opciones.lengthMenu = [[5, 25, 50, -1], [5, 25, 50, "Todos"]];
+            opciones.lengthMenu = [[10, 25, 50, -1], [10, 25, 50, opciones.textAll]];
 
         var grilla = jQuery(opciones.grilla).dataTable({
             "dom": opciones.dom,

@@ -62,7 +62,7 @@ namespace SIGCOMT.Web.Core
                 ViewData[MasterConstantes.Email] = "osse@hotmail.com";
                 ViewData[MasterConstantes.IdUsuarioActual] = UsuarioActual.Id;
 
-                ItemTabla idioma = itemTablaBL.Get(p => p.TablaId == (int) TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
+                ItemTabla idioma =  itemTablaBL.Get(p => p.TablaId == (int) TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
 
                 if (idioma != null)
                 {
@@ -123,7 +123,7 @@ namespace SIGCOMT.Web.Core
                 var currentPage = (grid.Start/grid.Length);
                 var parametroFiltro = new FilterParameters<T>
                 {
-                    ColumnOrder = grid.Columns[ordenamiento.Column].Data,
+                    ColumnOrder = grid.Columns[ordenamiento.Column].Name,
                     CurrentPage = (currentPage >= 0 ? currentPage : 0) + 1,
                     OrderType =
                         ordenamiento.Dir != null
@@ -275,9 +275,9 @@ namespace SIGCOMT.Web.Core
 
         #endregion
 
-        public new RedirectToRouteResult RedirectToAction(string action, string controller)
+        public new RedirectToRouteResult RedirectToAction(string action, string controller, object routeValues)
         {
-            return base.RedirectToAction(action, controller);
+            return base.RedirectToAction(action, controller, routeValues);
         }
 
         public new JsonResult Json(object data, JsonRequestBehavior behavior)

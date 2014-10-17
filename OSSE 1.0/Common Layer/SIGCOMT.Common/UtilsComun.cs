@@ -225,7 +225,8 @@ namespace SIGCOMT.Common
 
             nuevaRule.Op = valoresColumna.Operador;
 
-            var valorHomologacion = valoresColumna.Valores.FirstOrDefault(p => p.ValorReal.Contains(valorBusqueda));
+            var valorHomologacion =
+                valoresColumna.Valores.FirstOrDefault(p => p.ValorReal.ToLower().Contains(valorBusqueda.ToLower()));
             if (valorHomologacion == null) return nuevaRule;
 
             nuevaRule.Data = valorHomologacion.ValorHomologado;

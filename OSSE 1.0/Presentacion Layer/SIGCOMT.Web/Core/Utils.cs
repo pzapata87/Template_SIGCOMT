@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Resources;
 using SIGCOMT.Common;
 using SIGCOMT.Common.Constantes;
-using SIGCOMT.Web.App_GlobalResources;
 
 namespace SIGCOMT.Web.Core
 {

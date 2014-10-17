@@ -133,10 +133,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\Master.designer.cs">
-      <DependentUpon>Master.resx</DependentUpon>
+    <Compile Include="App_GlobalResources\Master.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\UsuarioController.cs" />
@@ -145,6 +145,9 @@
     <Compile Include="Controllers\LoadController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Core\Aspects\ControllerAttribute.cs" />
+    <Compile Include="Core\Aspects\GetControllerMethod.cs" />
+    <Compile Include="Core\Aspects\IControllerMethod.cs" />
+    <Compile Include="Core\Aspects\PostControllerMethod.cs" />
     <Compile Include="Core\Aspects\TipoAccionControlador.cs" />
     <Compile Include="Core\BaseController.cs" />
     <Compile Include="Core\FilterAttributes\ActionAttribute.cs" />
@@ -209,7 +212,6 @@
     <Content Include="Views\Load\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutCRM.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -219,12 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Master.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Master.designer.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application Layer\SIGCOMT.Converter\SIGCOMT.Converter.csproj">
@@ -285,6 +281,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Administracion\Views\Usuario\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Master.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Master.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

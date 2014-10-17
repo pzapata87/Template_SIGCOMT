@@ -12,6 +12,7 @@ using SIGCOMT.Converter;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
 using SIGCOMT.Web.Core;
+using SIGCOMT.Web.Core.Aspects;
 
 namespace SIGCOMT.Web.Areas.Administracion.Controllers
 {
@@ -62,6 +63,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             });
         }
 
+        [Controller(TipoVerbo = TipoAccionControlador.Get)]
         public ActionResult Edit(int id)
         {
             ViewBag.Accion = "Edit";
@@ -70,49 +72,37 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             return View(usuarioActual);
         }
 
+        [Controller(TipoVerbo = TipoAccionControlador.Post)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult Edit(UsuarioDto usuarioDto)
         {
             var response = new JsonResponse {Success = false};
 
-            if (!ModelState.IsValid)
+            var entityTemp =
+                        _usuarioBL.Get(
+                            p => p.UserName == usuarioDto.UserName && p.Id != usuarioDto.Id && p.Estado == (int)TipoEstado.Activo);
+
+            if (entityTemp == null)
             {
-                response.Message = "Favor ingrese los campos requeridos.";
+                var usuarioDomain = _usuarioBL.GetById(usuarioDto.Id);
+                UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
+
+                _usuarioBL.Update(usuarioDomain);
+
+                response.Message = "Se actualizó el usuario correctamente";
+                response.Success = true;
             }
             else
             {
-                try
-                {
-                    var entityTemp =
-                        _usuarioBL.Get(
-                            p => p.UserName == usuarioDto.UserName && p.Id != usuarioDto.Id && p.Estado == (int) TipoEstado.Activo);
-
-                    if (entityTemp == null)
-                    {
-                        var usuarioDomain = _usuarioBL.GetById(usuarioDto.Id);
-                        UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
-
-                        _usuarioBL.Update(usuarioDomain);
-
-                        response.Message = "Se actualizó el usuario correctamente";
-                        response.Success = true;
-                    }
-                    else
-                    {
-                        response.Message = "Ya existe el nombre de usuario";
-                        response.Success = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    response.Message = ex.Message;
-                }
+                response.Message = "Ya existe el nombre de usuario";
+                response.Success = false;
             }
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        [Controller(TipoVerbo = TipoAccionControlador.Get)]
         public ActionResult Crear()
         {
             ViewBag.Accion = "Crear";
@@ -121,50 +111,37 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             return View("Edit", usuarioDto);
         }
 
+        [Controller(TipoVerbo = TipoAccionControlador.Post)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult Crear(UsuarioDto usuarioDto)
         {
             var response = new JsonResponse { Success = false };
 
-            if (!ModelState.IsValid)
-            {
-                response.Message = "Favor ingrese los campos requeridos.";
-            }
-            else
-            {
-                try
-                {
-                    var entityTemp =
+            var entityTemp =
                         _usuarioBL.Get(
                             p => p.UserName == usuarioDto.UserName && p.Estado == (int)TipoEstado.Activo);
 
-                    if (entityTemp == null)
-                    {
-                        var usuarioDomain = new Usuario {Estado = (int) TipoEstado.Activo};
+            if (entityTemp == null)
+            {
+                var usuarioDomain = new Usuario { Estado = (int)TipoEstado.Activo };
 
-                        UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
+                UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
 
-                        _usuarioBL.Add(usuarioDomain);
+                _usuarioBL.Add(usuarioDomain);
 
-                        response.Message = "Se registró el usuario correctamente";
-                        response.Success = true;
-                    }
-                    else
-                    {
-                        response.Message = "Ya existe el nombre de usuario";
-                        response.Success = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    response.Message = ex.Message;
-                }
+                response.Message = "Se registró el usuario correctamente";
+                response.Success = true;
             }
-
+            else
+            {
+                response.Message = "Ya existe el nombre de usuario";
+                response.Success = false;
+            }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        [Controller(TipoVerbo = TipoAccionControlador.Post)]
         [HttpPost]
         public JsonResult Eliminar(int id)
         {
