@@ -139,6 +139,7 @@
       <DependentUpon>Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
+    <Compile Include="Areas\Administracion\Controllers\FormularioController.cs" />
     <Compile Include="Areas\Administracion\Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -217,6 +218,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administracion\Models\" />
+    <Folder Include="Areas\Administracion\Views\Formulario\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
