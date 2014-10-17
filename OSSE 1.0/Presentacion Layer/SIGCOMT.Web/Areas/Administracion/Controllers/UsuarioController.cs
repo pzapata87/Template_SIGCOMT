@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using SIGCOMT.BusinessLogic.Core;
 using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Cache;
 using SIGCOMT.Common;
 using SIGCOMT.Common.DataTable;
 using SIGCOMT.Common.Enum;
@@ -25,7 +28,17 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var listaIdiomas = new List<ValorHomologacion>();
+
+            GlobalParameters.Idiomas.ToList().ForEach(p => listaIdiomas.Add(new ValorHomologacion
+            {
+                ValorHomologado = p.Key.ToString(),
+                ValorReal = p.Value
+            }));
+
+            var parametrosListado = new Dictionary<string, List<ValorHomologacion>> {{"IdiomaId", listaIdiomas}};
+
+            return View(parametrosListado);
         }
 
         [HttpPost]
@@ -43,7 +56,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
                     Nombre = p.Nombre,
                     Apellido = p.Apellido,
                     Telefono = p.Telefono,
-                    Idioma = p.IdiomaId.ToString(),
+                    Idioma = GlobalParameters.Idiomas[p.IdiomaId],
                     Estado = p.Estado
                 }
             });
@@ -81,10 +94,67 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
                         UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
 
                         _usuarioBL.Update(usuarioDomain);
-                    }
 
-                    response.Message = "Se actualizó el usuario correctamente";
-                    response.Success = true;
+                        response.Message = "Se actualizó el usuario correctamente";
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Message = "Ya existe el nombre de usuario";
+                        response.Success = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Message = ex.Message;
+                }
+            }
+
+            return Json(response);
+        }
+
+        public ActionResult Crear()
+        {
+            ViewBag.Accion = "Crear";
+            var usuarioDto = new UsuarioDto();
+
+            return View("Edit", usuarioDto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult Crear(UsuarioDto usuarioDto)
+        {
+            var response = new JsonResponse { Success = false };
+
+            if (!ModelState.IsValid)
+            {
+                response.Message = "Favor ingrese los campos requeridos.";
+            }
+            else
+            {
+                try
+                {
+                    var entityTemp =
+                        _usuarioBL.Get(
+                            p => p.UserName == usuarioDto.UserName && p.Estado == (int)TipoEstado.Activo);
+
+                    if (entityTemp == null)
+                    {
+                        var usuarioDomain = new Usuario {Estado = (int) TipoEstado.Activo};
+
+                        UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
+
+                        _usuarioBL.Add(usuarioDomain);
+
+                        response.Message = "Se registró el usuario correctamente";
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Message = "Ya existe el nombre de usuario";
+                        response.Success = false;
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -41,7 +41,8 @@ Utils = {
             "lengthMenu": opciones.lengthMenu,
             "ajax": {
                 "url": opciones.url,
-                "type": "POST"
+                "type": "POST",
+                "data": opciones.dataAjax
             },
             "columns": opciones.columns,
             "fnInitComplete": function() {

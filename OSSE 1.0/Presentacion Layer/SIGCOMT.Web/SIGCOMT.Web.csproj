@@ -257,6 +257,10 @@
       <Project>{07c6face-af04-4e42-a202-ca600280ee34}</Project>
       <Name>SIGCOMT.Aspects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Cache\SIGCOMT.Cache\SIGCOMT.Cache.csproj">
+      <Project>{495aede1-810c-49fb-a9d7-3cb472104ef2}</Project>
+      <Name>SIGCOMT.Cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.IoC\SIGCOMT.IoC.csproj">
       <Project>{2b775dd5-1e6c-402c-8596-64499e37fbd0}</Project>
       <Name>SIGCOMT.IoC</Name>

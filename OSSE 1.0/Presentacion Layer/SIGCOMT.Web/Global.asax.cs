@@ -1,16 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using log4net.Config;
+using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Cache;
 using SIGCOMT.Common.Constantes;
+using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
+using SIGCOMT.DTO;
 using SIGCOMT.IoC;
 using SIGCOMT.Persistence;
 using SIGCOMT.Persistence.EntityFramework;
+using StructureMap;
 
 namespace SIGCOMT.Web
 {
@@ -33,6 +40,18 @@ namespace SIGCOMT.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             XmlConfigurator.Configure();
+
+            CargarParametrosAplicacion();
+        }
+
+        private void CargarParametrosAplicacion()
+        {
+            var itemTablaBL = ObjectFactory.GetInstance<IItemTablaBL>();
+            var listaIdiomasDomain = itemTablaBL.FindAll(p => p.TablaId == (int) TipoTabla.Idioma).ToList();
+
+            GlobalParameters.Idiomas = new Dictionary<int, string>();
+
+            listaIdiomasDomain.ForEach(p => GlobalParameters.Idiomas.Add(int.Parse(p.Valor), p.Nombre));
         }
 
         protected void Session_Start(object sender, EventArgs e)

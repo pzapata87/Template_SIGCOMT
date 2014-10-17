@@ -47,8 +47,10 @@
     <Compile Include="DataTable\ColumnModel.cs" />
     <Compile Include="DataTable\DataTableResponse.cs" />
     <Compile Include="DataTable\GridTable.cs" />
+    <Compile Include="DataTable\ColumnInformation.cs" />
     <Compile Include="DataTable\OrderColumn.cs" />
     <Compile Include="DataTable\SearchColumn.cs" />
+    <Compile Include="DataTable\ValorHomologacion.cs" />
     <Compile Include="Enum\TipoEstado.cs" />
     <Compile Include="Enum\TipoOrden.cs" />
     <Compile Include="Enum\TipoPermiso.cs" />

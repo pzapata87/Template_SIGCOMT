@@ -114,7 +114,7 @@ namespace SIGCOMT.Web.Core
                 GridTable grid = configuracionListado.Grid;
 
                 Expression<Func<T, bool>> where =
-                    UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search)
+                    UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search, grid.Homologaciones)
                         .And(configuracionListado.FiltrosAdicionales ?? (q => true));
 
                 var count = configuracionListado.CountMethod(where);

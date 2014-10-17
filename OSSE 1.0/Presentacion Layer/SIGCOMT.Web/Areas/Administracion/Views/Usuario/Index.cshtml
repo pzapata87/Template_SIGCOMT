@@ -1,4 +1,5 @@
 ﻿@using SIGCOMT.Common.Constantes
+@model Dictionary<string, List<SIGCOMT.Common.DataTable.ValorHomologacion>>
 @{
     ViewBag.Title = "Usuario";
     Layout = "~/Views/Shared/_LayoutCRM.cshtml";
@@ -24,7 +25,7 @@
     <thead class="">
         <tr>
             <th style="width:65px;">
-                <a href="@Url.Action("Crear" )" class="btn btn-primary btn-xs">
+                <a href="@Url.Action("Crear", "Usuario", new { area = "Administracion"})" class="btn btn-primary btn-xs">
                     <i class="fa fa-pencil"></i> Agregar
                 </a>
             </th>
@@ -68,11 +69,20 @@
                     { "data": "Nombre", "name": "Nombre" },
                     { "data": "Apellido", "name": "Apellido" },
                     { "data": "Telefono", "name": "Telefono" },
-                    { "data": "Idioma", "name": "Idioma" }
+                    { "data": "Idioma", "name": "IdiomaId" }
                 ],
+                dataAjax: {
+                    homologaciones: [
+                        {
+                            columna: 'IdiomaId',
+                            operador: 'eq',
+                            valores: JSON.parse('@Html.Raw(Json.Encode(Model["IdiomaId"]))')
+                        }
+                    ]
+                },
                 crud: {
                     actualizar: {
-                        urlActualizar: '@Url.Action("Edit", "Usuario", new { area = "Administracion"})/',
+                        urlActualizar: '@Url.Action("Edit", "Usuario", new {area = "Administracion"})/',
                         getKey: function(rowData) {
                             return rowData.Id;
                         }

@@ -28,6 +28,7 @@ namespace SIGCOMT.Converter
             usuarioDomain.Password = Security.Encriptar(usuarioDto.Password);
             usuarioDomain.Telefono = usuarioDto.Telefono;
             usuarioDomain.Email = usuarioDto.Email;
+            usuarioDomain.UserName = usuarioDto.UserName;
         }
     }
 }

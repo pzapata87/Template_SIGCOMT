@@ -199,19 +199,40 @@ namespace SIGCOMT.Common
         }
 
         public static Expression<Func<T, bool>> ConvertToLambda<T>(List<ColumnModel> columnModels,
-            SearchColumn searchColumn) where T : class
+            SearchColumn searchColumn, List<ColumnInformation> homologaciones ) where T : class
         {
             if (columnModels == null || searchColumn == null)
                 return PredicateBuilder.True<T>();
 
-            Filter parametros = ConvertToFilter(columnModels, searchColumn);
+            Filter parametros = ConvertToFilter(columnModels, searchColumn, homologaciones);
 
             Expression<Func<T, bool>> expresionsLambdaSet = MergeRules<T>(parametros);
 
             return expresionsLambdaSet ?? PredicateBuilder.True<T>();
         }
 
-        private static Filter ConvertToFilter(IEnumerable<ColumnModel> columnModels, SearchColumn searchColumn)
+        private static Rule CrearRuleColumna(ColumnModel columna, string valorBusqueda, IEnumerable<ColumnInformation> homologaciones)
+        {
+            var nuevaRule = new Rule
+            {
+                Data = valorBusqueda,
+                Field = columna.Name,
+                Op = "cn"
+            };
+
+            var valoresColumna = homologaciones.FirstOrDefault(p => p.Columna == columna.Name);
+            if (valoresColumna == null) return nuevaRule;
+
+            var valorHomologacion = valoresColumna.Valores.FirstOrDefault(p => p.ValorReal.Contains(valorBusqueda));
+            if (valorHomologacion == null) return nuevaRule;
+
+            nuevaRule.Op = valoresColumna.Operador;
+            nuevaRule.Data = valorHomologacion.ValorHomologado;
+
+            return nuevaRule;
+        }
+
+        private static Filter ConvertToFilter(IEnumerable<ColumnModel> columnModels, SearchColumn searchColumn, IEnumerable<ColumnInformation> homologaciones)
         {
             Filter filtro;
             if (!string.IsNullOrEmpty(searchColumn.Value))
@@ -219,12 +240,8 @@ namespace SIGCOMT.Common
                 filtro = new Filter
                 {
                     GroupOp = "or",
-                    Rules = columnModels.Where(p => p.Searchable).Select(p => new Rule
-                    {
-                        Data = searchColumn.Value,
-                        Field = p.Data,
-                        Op = "cn"
-                    }).ToList()
+                    Rules =
+                        columnModels.Where(p => p.Searchable).Select(p => CrearRuleColumna(p, searchColumn.Value, homologaciones)).ToList()
                 };
             }
             else
@@ -234,12 +251,7 @@ namespace SIGCOMT.Common
                     GroupOp = "and",
                     Rules =
                         columnModels.Where(p => !string.IsNullOrEmpty(p.Search.Value) && p.Searchable)
-                            .Select(p => new Rule
-                            {
-                                Data = p.Search.Value,
-                                Field = p.Data,
-                                Op = "cn"
-                            }).ToList()
+                            .Select(p => CrearRuleColumna(p, p.Search.Value, homologaciones)).ToList()
                 };
             }
 
