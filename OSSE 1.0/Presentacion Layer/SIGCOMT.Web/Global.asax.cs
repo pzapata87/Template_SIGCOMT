@@ -13,7 +13,6 @@ using SIGCOMT.Cache;
 using SIGCOMT.Common.Constantes;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
-using SIGCOMT.DTO;
 using SIGCOMT.IoC;
 using SIGCOMT.Persistence;
 using SIGCOMT.Persistence.EntityFramework;

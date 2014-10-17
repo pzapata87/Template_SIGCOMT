@@ -56,7 +56,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.RepositoryTest", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Web", "Presentacion Layer\SIGCOMT.Web\SIGCOMT.Web.csproj", "{02ED4F00-F91B-4125-A6AE-F96F01BF8EBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Cache", "Transversal Layer\SIGCOMT.Cache\SIGCOMT.Cache\SIGCOMT.Cache.csproj", "{495AEDE1-810C-49FB-A9D7-3CB472104EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Cache", "Transversal Layer\SIGCOMT.Cache\SIGCOMT.Cache.csproj", "{495AEDE1-810C-49FB-A9D7-3CB472104EF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
