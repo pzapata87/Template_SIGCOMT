@@ -60,7 +60,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Cache", "Transversa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{5668272C-D5E9-4D07-96F7-6CD5F86B105F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateArquitectura", "Template\TemplateArquitectura\TemplateArquitectura.csproj", "{99A12242-DFB7-450B-B28B-F17D14F5FD8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGCOMT.Template", "Template\TemplateArquitectura\SIGCOMT.Template.csproj", "{99A12242-DFB7-450B-B28B-F17D14F5FD8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
