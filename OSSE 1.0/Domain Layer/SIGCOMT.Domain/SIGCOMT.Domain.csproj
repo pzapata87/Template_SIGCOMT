@@ -41,7 +41,7 @@
     <Compile Include="Formulario.cs" />
     <Compile Include="ItemTabla.cs" />
     <Compile Include="ItemTablaFormulario.cs" />
-    <Compile Include="PermisoRol.cs" />
+    <Compile Include="PermisoFormularioRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="RolUsuario.cs" />

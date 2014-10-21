@@ -23,11 +23,11 @@ namespace SIGCOMT.Converter
                 }).ToList();
         }
 
-        public static PermisoFormularioDto ObtenerPermisosFormulario(Formulario formulario, IEnumerable<PermisoRol> permisos)
+        public static PermisoFormularioDto ObtenerPermisosFormulario(Formulario formulario, IEnumerable<PermisoFormularioRol> permisos)
         {
             var permisoFormulario = new PermisoFormularioDto();
 
-            foreach (PermisoRol permiso in permisos)
+            foreach (PermisoFormularioRol permiso in permisos)
             {
                 var tipoPermiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso.TipoPermiso.ToString());
                 AsignarPermisoAPropiedad(permisoFormulario, tipoPermiso);
@@ -51,15 +51,6 @@ namespace SIGCOMT.Converter
                     break;
                 case TipoPermiso.Eliminar:
                     permisoFormularioDto.Eliminar = true;
-                    break;
-                case TipoPermiso.Imprimir:
-                    permisoFormularioDto.Imprimir = true;
-                    break;
-                case TipoPermiso.Mover:
-                    permisoFormularioDto.Mover = true;
-                    break;
-                case TipoPermiso.Reportar:
-                    permisoFormularioDto.Reportar = true;
                     break;
             }
         }

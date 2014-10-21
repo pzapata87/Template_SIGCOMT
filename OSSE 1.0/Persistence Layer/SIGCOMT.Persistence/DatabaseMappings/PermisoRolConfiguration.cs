@@ -3,7 +3,7 @@ using SIGCOMT.Domain;
 
 namespace SIGCOMT.Persistence.DatabaseMappings
 {
-    public class PermisoRolConfiguration : EntityTypeConfiguration<PermisoRol>
+    public class PermisoRolConfiguration : EntityTypeConfiguration<PermisoFormularioRol>
     {
         public PermisoRolConfiguration()
         {

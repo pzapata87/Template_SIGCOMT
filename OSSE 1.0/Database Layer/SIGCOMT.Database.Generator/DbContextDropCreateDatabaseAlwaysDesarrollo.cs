@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using SIGCOMT.Common;
 using SIGCOMT.Common.Constantes;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
@@ -26,47 +27,91 @@ namespace SIGCOMT.DataBase.Generator
 
         private List<ItemTabla> AgregarRegistrosTabla(DbContext context)
         {
-            var idiomaEspañol = new ItemTabla {Nombre = "es-PE", Descripcion = "Español", Estado = (int) TipoEstado.Activo, Valor = "1"};
+            var idiomaEspañol = new ItemTabla
+            {
+                Nombre = "es-PE",
+                Descripcion = "Español",
+                Estado = TipoEstado.Activo.GetNumberValue(),
+                Valor = "1"
+            };
+
             var idiomas = new List<ItemTabla> {idiomaEspañol};
+            int activo = TipoEstado.Activo.GetNumberValue();
 
             var listaTablas = new List<Tabla>
             {
                 new Tabla
                 {
-                    Id = (int) TipoTabla.Idioma,
+                    Id = TipoTabla.Idioma.GetNumberValue(),
                     Nombre = "Idioma",
                     Descripcion = string.Empty,
-                    Estado = (int) TipoEstado.Activo,
+                    Estado = activo,
                     ItemTabla = idiomas
                 },
                 new Tabla
                 {
-                    Id = (int) TipoTabla.TipoEstado,
+                    Id = TipoTabla.TipoEstado.GetNumberValue(),
                     Nombre = "Estado",
                     Descripcion = string.Empty,
-                    Estado = (int) TipoEstado.Activo,
+                    Estado = activo,
                     ItemTabla = new List<ItemTabla>
                     {
-                        new ItemTabla {Nombre = "Inactivo", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "0"},
-                        new ItemTabla {Nombre = "Activo", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "1"}
+                        new ItemTabla
+                        {
+                            Nombre = "Inactivo",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoEstado.Inactivo.GetStringValue()
+                        },
+                        new ItemTabla
+                        {
+                            Nombre = "Activo",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoEstado.Activo.GetStringValue()
+                        }
                     }
                 },
                 new Tabla
                 {
-                    Id = (int) TipoTabla.TipoPermiso,
+                    Id = TipoTabla.TipoPermiso.GetNumberValue(),
                     Nombre = "Permiso",
                     Descripcion = string.Empty,
-                    Estado = (int) TipoEstado.Activo,
+                    Estado = activo,
                     ItemTabla = new List<ItemTabla>
                     {
-                        new ItemTabla {Nombre = "Mostrar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "1"},
-                        new ItemTabla {Nombre = "Crear", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "2"},
-                        new ItemTabla {Nombre = "Modificar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "3"},
-                        new ItemTabla {Nombre = "Eliminar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "4"}
+                        new ItemTabla
+                        {
+                            Nombre = "Mostrar",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoPermiso.Mostrar.GetStringValue()
+                        },
+                        new ItemTabla
+                        {
+                            Nombre = "Crear",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoPermiso.Crear.GetStringValue()
+                        },
+                        new ItemTabla
+                        {
+                            Nombre = "Modificar",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoPermiso.Modificar.GetStringValue()
+                        },
+                        new ItemTabla
+                        {
+                            Nombre = "Eliminar",
+                            Descripcion = string.Empty,
+                            Estado = activo,
+                            Valor = TipoPermiso.Eliminar.GetStringValue()
+                        }
                     }
                 }
             };
-
+            
             context.Set<Tabla>().AddRange(listaTablas);
             return idiomas;
         }
@@ -75,7 +120,7 @@ namespace SIGCOMT.DataBase.Generator
         {
             var roles = new List<Rol>
             {
-                new Rol {Nombre = "Administrador", Estado = (int) TipoEstado.Activo}
+                new Rol {Nombre = "Administrador", Estado = TipoEstado.Activo.GetNumberValue()}
             };
 
             context.Set<Rol>().AddRange(roles);
@@ -84,16 +129,18 @@ namespace SIGCOMT.DataBase.Generator
 
         private void AgregarRegistrosUsuario(DbContext context)
         {
+            int activo = TipoEstado.Activo.GetNumberValue();
+
             var usuario = new Usuario
             {
                 UserName = "Admin",
                 Password = "x1z4IYAEC3Q2LZzLIC5f5g==",
                 Email = "admin@sigcomt.com",
-                Estado = (int) TipoEstado.Activo,
+                Estado = activo,
                 IdiomaId = int.Parse(_idiomaEspañol.Valor),
                 RolUsuarioList = new[]
                 {
-                    new RolUsuario {Rol = _rolAdmin, Estado = (int) TipoEstado.Activo}
+                    new RolUsuario {Rol = _rolAdmin, Estado = activo}
                 }
             };
 
@@ -102,9 +149,9 @@ namespace SIGCOMT.DataBase.Generator
 
         private void AgregarRegistrosModulo(DbContext context)
         {
-            #region Titulo/Imagen Módulo
+            int activo = TipoEstado.Activo.GetNumberValue();
 
-            #region Módulo Mantenimientos Generales
+            #region Titulo/Imagen Por Módulo
 
             var moduloSeguridad = new Formulario
             {
@@ -113,62 +160,131 @@ namespace SIGCOMT.DataBase.Generator
                 Orden = 0,
                 Nivel = 0,
                 FormularioParentId = null,
-                Estado = (int) TipoEstado.Activo,
-                PermisoRolList = new List<PermisoRol>
+                Estado = activo,
+                PermisoRolList = new List<PermisoFormularioRol>
                 {
-                    new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
+                    new PermisoFormularioRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = activo},
                 },
                 ItemTablaFormularioList = new List<ItemTablaFormulario>
                 {
                     new ItemTablaFormulario
                     {
                         ItemTabla = _idiomaEspañol,
-                        Estado = (int) TipoEstado.Activo,
+                        Estado = activo,
                         Nombre = "Seguridad"
                     }
                 }
             };
 
-
             context.Set<Formulario>().Add(moduloSeguridad);
 
             #endregion
 
-            #endregion
-
-            #region Mantenedores Módulo
-
             #region Mantenedores Mantenimientos Generales
 
             var grupoVistasModuloSeguridad = new List<Formulario>
-            {
-                new Formulario
-                {
-                    Direccion = "/Administracion/Usuario/Index",
-                    Controlador = "usuarioList",
-                    FormularioParent = moduloSeguridad,
-                    Orden = 1,
-                    Nivel = 1,
-                    Estado = (int) TipoEstado.Activo,
-                    PermisoRolList = new List<PermisoRol>
-                    {
-                        new PermisoRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                        new PermisoRol {TipoPermiso = 2, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                        new PermisoRol {TipoPermiso = 3, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo},
-                        new PermisoRol {TipoPermiso = 4, Rol = _rolAdmin, Estado = (int) TipoEstado.Activo}
-                    },
-                    ItemTablaFormularioList = new List<ItemTablaFormulario>
-                    {
-                        new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = (int) TipoEstado.Activo, Nombre = "Usuario"}
-                    }
-                }
+            {  
+                #region Módulo Seguridad
+
+                MantenedorUsuario(moduloSeguridad),
+                MantenedorFormulario(moduloSeguridad)
+
+                #endregion
             };
 
             context.Set<Formulario>().AddRange(grupoVistasModuloSeguridad);
 
             #endregion
+        }
 
-            #endregion
+        private Formulario MantenedorUsuario(Formulario parent)
+        {
+            int activo = TipoEstado.Activo.GetNumberValue();
+
+            var formulario = new Formulario
+            {
+                Direccion = "/Administracion/Usuario/Index",
+                Controlador = "usuarioList",
+                FormularioParent = parent,
+                Orden = 1,
+                Nivel = 1,
+                Estado = activo,
+                PermisoRolList = new List<PermisoFormularioRol>
+                {
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    },
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Modificar.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    },
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    }
+                },
+                ItemTablaFormularioList = new List<ItemTablaFormulario>
+                {
+                    new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = activo, Nombre = "Usuario"}
+                }
+            };
+
+            return formulario;
+        }
+
+        private Formulario MantenedorFormulario(Formulario parent)
+        {
+            int activo = TipoEstado.Activo.GetNumberValue();
+
+            var formulario = new Formulario
+            {
+                Direccion = "/Administracion/Formulario/Index",
+                Controlador = "Formulario",
+                FormularioParent = parent,
+                Orden = 1,
+                Nivel = 1,
+                Estado = activo,
+                PermisoRolList = new List<PermisoFormularioRol>
+                {
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    },
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Modificar.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    },
+                    new PermisoFormularioRol
+                    {
+                        TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
+                        Rol = _rolAdmin,
+                        Activo = true,
+                        Estado = activo
+                    }
+                },
+                ItemTablaFormularioList = new List<ItemTablaFormulario>
+                {
+                    new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = activo, Nombre = "Formulario"}
+                }
+            };
+
+            return formulario;
         }
     }
 }

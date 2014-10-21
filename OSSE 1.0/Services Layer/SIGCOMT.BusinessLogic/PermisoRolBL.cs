@@ -20,37 +20,37 @@ namespace SIGCOMT.BusinessLogic
             _permisoUsuarioRepository = permisoUsuarioRepository;
         }
 
-        public PermisoRol GetById(long id)
+        public PermisoFormularioRol GetById(long id)
         {
             return _permisoUsuarioRepository.FindOne(p => p.Id == id);
         }
 
-        public PermisoRol Get(Expression<Func<PermisoRol, bool>> where)
+        public PermisoFormularioRol Get(Expression<Func<PermisoFormularioRol, bool>> where)
         {
             return _permisoUsuarioRepository.FindOne(where);
         }
 
-        public IEnumerable<PermisoRol> GetAll()
+        public IEnumerable<PermisoFormularioRol> GetAll()
         {
             return _permisoUsuarioRepository.FindAll();
         }
 
-        public IEnumerable<PermisoRol> GetAll(Expression<Func<PermisoRol, bool>> where)
+        public IEnumerable<PermisoFormularioRol> GetAll(Expression<Func<PermisoFormularioRol, bool>> where)
         {
             return _permisoUsuarioRepository.FindAll(where);
         }
 
-        public void Delete(PermisoRol entity)
+        public void Delete(PermisoFormularioRol entity)
         {
             _permisoUsuarioRepository.Delete(entity);
         }
 
-        public int Count(Expression<Func<PermisoRol, bool>> where)
+        public int Count(Expression<Func<PermisoFormularioRol, bool>> where)
         {
             return _permisoUsuarioRepository.Count(where);
         }
 
-        public IQueryable<PermisoRol> GetAll(FilterParameters<PermisoRol> parameters)
+        public IQueryable<PermisoFormularioRol> GetAll(FilterParameters<PermisoFormularioRol> parameters)
         {
             return _permisoUsuarioRepository.FindAllPaging(parameters);
         }

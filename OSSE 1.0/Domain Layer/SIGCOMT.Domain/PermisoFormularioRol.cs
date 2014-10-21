@@ -2,7 +2,7 @@
 
 namespace SIGCOMT.Domain
 {
-    public class PermisoRol : Entity<int>
+    public class PermisoFormularioRol : Entity<int>
     {
         public int FormularioId { get; set; }
         public int RolId { get; set; }

@@ -191,7 +191,7 @@ namespace SIGCOMT.Web.Core
                 int idFormulario = Convert.ToInt32(id);
 
                 Formulario formulario = _formularioBL.GetById(idFormulario);
-                var aux = new List<PermisoRol>();
+                var aux = new List<PermisoFormularioRol>();
 
                 List<RolUsuario> roles = UsuarioActual.RolUsuarioList.ToList();
                 foreach (RolUsuario rol in roles)
@@ -200,7 +200,7 @@ namespace SIGCOMT.Web.Core
                     aux.AddRange(_permisoRolBL.GetAll(p => p.RolId == rolUsuarioActual.RolId && p.FormularioId == idFormulario));
                 }
 
-                IEnumerable<PermisoRol> permisos = aux.Distinct();
+                IEnumerable<PermisoFormularioRol> permisos = aux.Distinct();
 
                 PermisoFormularioDto permisosFormulario = FormularioConverter.ObtenerPermisosFormulario(formulario, permisos);
                 return PartialView(view, permisosFormulario);

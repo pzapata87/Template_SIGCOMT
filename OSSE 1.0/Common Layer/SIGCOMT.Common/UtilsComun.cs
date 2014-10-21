@@ -477,7 +477,9 @@ namespace SIGCOMT.Common
 
         #endregion
 
-        #region Métodos adicionales y de extensión para fechas
+        #region Métodos adicionales y extensiones
+
+        #region Extensiones fecha
 
         /// <summary>
         ///     Convierte una fecha en una cadena con formato: dd/mm/yyyy.
@@ -547,6 +549,22 @@ namespace SIGCOMT.Common
             return fechaConvertida;
         }
 
-        #endregion Métodos adicionales y de extensión para fechas
+        #endregion
+
+        #region Extensiones enumeración
+
+        public static string GetStringValue(this System.Enum value)
+        {
+            return Convert.ToString(Convert.ChangeType(value, value.GetTypeCode()));
+        }
+
+        public static int GetNumberValue(this System.Enum value)
+        {
+            return Convert.ToInt32(Convert.ChangeType(value, value.GetTypeCode()));
+        }
+
+        #endregion
+
+        #endregion
     }
 }

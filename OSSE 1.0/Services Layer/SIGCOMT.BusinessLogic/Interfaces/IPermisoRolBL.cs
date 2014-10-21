@@ -6,12 +6,12 @@ using SIGCOMT.Domain;
 
 namespace SIGCOMT.BusinessLogic.Interfaces
 {
-    public interface IPermisoRolBL : IPaging<PermisoRol>
+    public interface IPermisoRolBL : IPaging<PermisoFormularioRol>
     {
-        PermisoRol GetById(long id);
-        PermisoRol Get(Expression<Func<PermisoRol, bool>> where);
-        IEnumerable<PermisoRol> GetAll();
-        IEnumerable<PermisoRol> GetAll(Expression<Func<PermisoRol, bool>> where);
-        void Delete(PermisoRol entity);
+        PermisoFormularioRol GetById(long id);
+        PermisoFormularioRol Get(Expression<Func<PermisoFormularioRol, bool>> where);
+        IEnumerable<PermisoFormularioRol> GetAll();
+        IEnumerable<PermisoFormularioRol> GetAll(Expression<Func<PermisoFormularioRol, bool>> where);
+        void Delete(PermisoFormularioRol entity);
     }
 }

@@ -8,9 +8,6 @@ namespace SIGCOMT.Common.Enum
         Mostrar = 1,
         Crear = 2,
         Modificar = 3,
-        Eliminar = 4,
-        Imprimir = 5,
-        Mover = 6,
-        Reportar = 7
+        Eliminar = 4
     }
 }

@@ -13,7 +13,7 @@ namespace SIGCOMT.Domain
 
         public virtual Formulario FormularioParent { get; set; }
 
-        public virtual ICollection<PermisoRol> PermisoRolList { get; set; }
+        public virtual ICollection<PermisoFormularioRol> PermisoRolList { get; set; }
         public virtual ICollection<Formulario> FormulariosHijosList { get; set; }
         public virtual ICollection<ItemTablaFormulario> ItemTablaFormularioList { get; set; }
 
