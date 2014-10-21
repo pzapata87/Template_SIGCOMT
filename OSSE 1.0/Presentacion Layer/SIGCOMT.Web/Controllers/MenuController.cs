@@ -16,7 +16,7 @@ namespace SIGCOMT.Web.Controllers
         // GET: Menu
         public ActionResult Index()
         {
-            List<FormularioDto> formularios = ObtenerFormulariosUsuario();
+            List<ModuloDto> formularios = ObtenerFormulariosUsuario();
             return PartialView(formularios);
         }
     }

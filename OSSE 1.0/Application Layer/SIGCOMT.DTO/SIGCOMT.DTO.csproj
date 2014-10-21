@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\EntityDto.cs" />
-    <Compile Include="FormularioDto.cs" />
+    <Compile Include="ModuloDto.cs" />
     <Compile Include="GlobalResources\Usuario.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

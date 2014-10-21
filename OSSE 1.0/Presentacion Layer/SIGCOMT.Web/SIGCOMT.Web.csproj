@@ -197,7 +197,11 @@
     <Content Include="Content\ViewJs\UsuarioIndex.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\utilsCommon.js" />
+    <Content Include="images\droparrows.png" />
     <Content Include="images\logo-primary.png" />
+    <Content Include="images\select2-spinner.gif" />
+    <Content Include="images\select2.png" />
+    <Content Include="images\select2x2.png" />
     <Content Include="images\sort_asc.png" />
     <Content Include="images\sort_both.png" />
     <Content Include="images\sort_desc.png" />

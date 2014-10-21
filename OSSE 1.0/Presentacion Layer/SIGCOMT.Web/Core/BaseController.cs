@@ -242,7 +242,7 @@ namespace SIGCOMT.Web.Core
 
         #region GenerarTreeView
 
-        public virtual List<FormularioDto> ObtenerFormulariosUsuario()
+        public virtual List<ModuloDto> ObtenerFormulariosUsuario()
         {
             try
             {

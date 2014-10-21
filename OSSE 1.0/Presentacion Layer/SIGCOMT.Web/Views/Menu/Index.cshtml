@@ -1,19 +1,19 @@
 ﻿@using SIGCOMT.DTO
-@model List<FormularioDto>
+@model List<ModuloDto>
 
 <h5 class="leftpanel-title">Navigation</h5>
 <ul class="nav nav-pills nav-stacked">
     
     @if (Model != null)
     {
-        foreach (FormularioDto formulario in Model)
+        foreach (ModuloDto modulo in Model)
         {
-            if (formulario.Operaciones.Count > 0)
+            if (modulo.Operaciones.Any())
             {
                 <li class="parent">
-                    <a href=""><i class="fa fa-suitcase"></i> <span>@formulario.Nombre</span></a>
+                    <a href=""><i class="fa fa-suitcase"></i> <span>@modulo.Nombre</span></a>
                     <ul class="children">
-                        @foreach (OperacionDto operacion in formulario.Operaciones)
+                        @foreach (OperacionDto operacion in modulo.Operaciones)
                         {
                             <li><a href="@operacion.Controlador">@operacion.Nombre</a></li>
                         }

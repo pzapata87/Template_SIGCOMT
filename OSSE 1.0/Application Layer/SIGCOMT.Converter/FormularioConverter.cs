@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
@@ -9,12 +10,12 @@ namespace SIGCOMT.Converter
 {
     public class FormularioConverter
     {
-        public static List<FormularioDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
+        public static List<ModuloDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {
             return (from modulo in formularioDomain
                 where !modulo.FormularioParentId.HasValue
                 let idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList)
-                select new FormularioDto
+                select new ModuloDto
                 {
                     Id = modulo.Id,
                     Icono = modulo.Direccion,
@@ -27,7 +28,7 @@ namespace SIGCOMT.Converter
         {
             var permisoFormulario = new PermisoFormularioDto();
 
-            foreach (PermisoFormularioRol permiso in permisos)
+            foreach (var permiso in permisos)
             {
                 var tipoPermiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso.TipoPermiso.ToString());
                 AsignarPermisoAPropiedad(permisoFormulario, tipoPermiso);
@@ -66,6 +67,7 @@ namespace SIGCOMT.Converter
         private static List<OperacionDto> GenerateChildren(IEnumerable<Formulario> childrenList, int idiomaId)
         {
             return (from children in childrenList
+                where children.Estado == TipoEstado.Activo.GetNumberValue()
                 let idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList)
                 select new OperacionDto
                 {
