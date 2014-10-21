@@ -62,10 +62,7 @@ namespace SIGCOMT.DataBase.Generator
                         new ItemTabla {Nombre = "Mostrar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "1"},
                         new ItemTabla {Nombre = "Crear", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "2"},
                         new ItemTabla {Nombre = "Modificar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "3"},
-                        new ItemTabla {Nombre = "Eliminar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "4"},
-                        new ItemTabla {Nombre = "Imprimir", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "5"},
-                        new ItemTabla {Nombre = "Mover", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "6"},
-                        new ItemTabla {Nombre = "Reportar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "7"}
+                        new ItemTabla {Nombre = "Eliminar", Descripcion = string.Empty, Estado = (int) TipoEstado.Activo, Valor = "4"}
                     }
                 }
             };
