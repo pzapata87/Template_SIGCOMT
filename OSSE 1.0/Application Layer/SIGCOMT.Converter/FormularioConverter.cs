@@ -37,26 +37,23 @@ namespace SIGCOMT.Converter
             return permisoFormulario;
         }
 
-        private static void AsignarPermisoAPropiedad(PermisoFormularioDto permisoFormularioDto, TipoPermiso permiso)
+        public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
         {
-            switch (permiso)
-            {
-                case TipoPermiso.Mostrar:
-                    permisoFormularioDto.Mostrar = true;
-                    break;
-                case TipoPermiso.Crear:
-                    permisoFormularioDto.Crear = true;
-                    break;
-                case TipoPermiso.Modificar:
-                    permisoFormularioDto.Modificar = true;
-                    break;
-                case TipoPermiso.Eliminar:
-                    permisoFormularioDto.Eliminar = true;
-                    break;
-            }
+            var dictionary =
+                formularios.ToDictionary(p => p.Id,
+                    p => p.PermisoRolList.Where(q => q.Estado == TipoEstado.Activo.GetNumberValue())
+                        .Select(
+                            q => new PermisoFormularioDto
+                            {
+                                RolId = q.RolId,
+                                TipoPermiso = q.TipoPermiso,
+                                Activo = q.Activo
+                            }).ToList());
+
+            return dictionary;
         }
 
-        #region Metodos Privados GenerateTreeView
+        #region Métodos Privados
 
         private static ItemTablaFormulario ObtenerIdiomaFormulario(int idiomaId, ICollection<ItemTablaFormulario> itemTablaFormularios)
         {
@@ -76,6 +73,25 @@ namespace SIGCOMT.Converter
                     Id = children.Id,
                     Operaciones = GenerateChildren(children.FormulariosHijosList, idiomaId)
                 }).ToList();
+        }
+
+        private static void AsignarPermisoAPropiedad(PermisoFormularioDto permisoFormularioDto, TipoPermiso permiso)
+        {
+            switch (permiso)
+            {
+                case TipoPermiso.Mostrar:
+                    permisoFormularioDto.Mostrar = true;
+                    break;
+                case TipoPermiso.Crear:
+                    permisoFormularioDto.Crear = true;
+                    break;
+                case TipoPermiso.Modificar:
+                    permisoFormularioDto.Modificar = true;
+                    break;
+                case TipoPermiso.Eliminar:
+                    permisoFormularioDto.Eliminar = true;
+                    break;
+            }
         }
 
         #endregion

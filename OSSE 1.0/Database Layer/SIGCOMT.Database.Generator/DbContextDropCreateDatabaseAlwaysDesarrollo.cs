@@ -163,7 +163,7 @@ namespace SIGCOMT.DataBase.Generator
                 Estado = activo,
                 PermisoRolList = new List<PermisoFormularioRol>
                 {
-                    new PermisoFormularioRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = activo},
+                    new PermisoFormularioRol {TipoPermiso = 1, Rol = _rolAdmin, Activo = true, Estado = activo},
                 },
                 ItemTablaFormularioList = new List<ItemTablaFormulario>
                 {

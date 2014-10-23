@@ -45,9 +45,9 @@ namespace SIGCOMT.BusinessLogic
             return _formularioRepository.FindOne(id);
         }
 
-        public IList<Formulario> FindAll(Expression<Func<Formulario, bool>> where)
+        public IQueryable<Formulario> FindAll(Expression<Func<Formulario, bool>> where)
         {
-            return _formularioRepository.FindAll(where).ToList();
+            return _formularioRepository.FindAll(where);
         }
 
         public int Count(Expression<Func<Formulario, bool>> where)

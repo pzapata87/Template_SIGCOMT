@@ -71,7 +71,8 @@
     <Compile Include="DatabaseMappings\FormularioConfiguration.cs" />
     <Compile Include="DatabaseMappings\ItemTablaConfiguration.cs" />
     <Compile Include="DatabaseMappings\ItemTablaFormularioConfiguration.cs" />
-    <Compile Include="DatabaseMappings\PermisoRolConfiguration.cs" />
+    <Compile Include="DatabaseMappings\PermisoFormularioUsuarioConfiguration.cs" />
+    <Compile Include="DatabaseMappings\PermisoFormularioRolConfiguration.cs" />
     <Compile Include="DatabaseMappings\RolConfiguration.cs" />
     <Compile Include="DatabaseMappings\RolUsuarioConfiguration.cs" />
     <Compile Include="DatabaseMappings\TablaConfiguration.cs" />

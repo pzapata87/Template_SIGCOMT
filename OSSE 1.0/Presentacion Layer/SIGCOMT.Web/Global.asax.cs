@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
@@ -12,6 +11,7 @@ using SIGCOMT.BusinessLogic.Interfaces;
 using SIGCOMT.Cache;
 using SIGCOMT.Common.Constantes;
 using SIGCOMT.Common.Enum;
+using SIGCOMT.Converter;
 using SIGCOMT.Domain;
 using SIGCOMT.IoC;
 using SIGCOMT.Persistence;
@@ -45,12 +45,15 @@ namespace SIGCOMT.Web
 
         private void CargarParametrosAplicacion()
         {
+            // Cargar datos de idiomas.
             var itemTablaBL = ObjectFactory.GetInstance<IItemTablaBL>();
             var listaIdiomasDomain = itemTablaBL.FindAll(p => p.TablaId == (int) TipoTabla.Idioma).ToList();
+            GlobalParameters.Idiomas = listaIdiomasDomain.ToDictionary(p => int.Parse(p.Valor), p => p.Descripcion);
 
-            GlobalParameters.Idiomas = new Dictionary<int, string>();
-
-            listaIdiomasDomain.ForEach(p => GlobalParameters.Idiomas.Add(int.Parse(p.Valor), p.Descripcion));
+            // Cargar datos de permisos para formularios por cada rol.
+            var formularioBL = ObjectFactory.GetInstance<IFormularioBL>();
+            var formularios = formularioBL.FindAll(p => p.Estado == (int)TipoEstado.Activo).Include(p => p.PermisoRolList).ToList();
+            GlobalParameters.PermisoFormularioList = FormularioConverter.DomainToDtoPermiso(formularios);
         }
 
         protected void Session_Start(object sender, EventArgs e)

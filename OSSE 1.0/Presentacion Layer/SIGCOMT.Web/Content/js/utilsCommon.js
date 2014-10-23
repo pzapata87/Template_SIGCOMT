@@ -6,7 +6,7 @@
 
 
 Utils = {
-    Grilla: function (opciones) {
+    Grilla: function(opciones) {
 
         if (opciones.dom == null)
             opciones.dom = '<"left"f><"right"l>trip';
@@ -19,16 +19,16 @@ Utils = {
 
         if (opciones.responsive == null)
             opciones.responsive = true;
-        
+
         if (opciones.processing == null)
             opciones.processing = true;
-        
+
         if (opciones.serverSide == null)
             opciones.serverSide = true;
-        
+
         if (opciones.order == null)
             opciones.order = [[1, "desc"]];
-        
+
         if (opciones.lengthMenu == null)
             opciones.lengthMenu = [[10, 25, 50, -1], [10, 25, 50, opciones.textAll]];
 
@@ -54,7 +54,7 @@ Utils = {
             }
         });
 
-        jQuery('body').on('click', opciones.actualizarClass, function () {
+        jQuery('body').on('click', opciones.actualizarClass, function() {
             var that = this;
 
             eventoActualizar({
@@ -64,7 +64,7 @@ Utils = {
             });
         });
 
-        jQuery('body').on('click', opciones.eliminarClass, function () {
+        jQuery('body').on('click', opciones.eliminarClass, function() {
             var that = this;
 
             eventoEliminar({
@@ -84,7 +84,7 @@ Utils = {
             var aData = opcionesButton.grilla.fnGetData(aPos[0]);
             var rowId = opciones.crud.getKey(aData);
 
-            window.location.href = opcionesButton.urlActualizar + '/' +  rowId;
+            window.location.href = opcionesButton.urlActualizar + '/' + rowId;
         }
 
         function eventoEliminar(opcionesButton) {
@@ -113,7 +113,7 @@ Utils = {
                             opcionesButton.grilla.fnClearTable(0);
                             opcionesButton.grilla.fnDraw();
                         },
-                        error: function (data, error) {
+                        error: function(data, error) {
                             Utils.NotificationMessage({
                                 tipo: 2,
                                 title: opcionesButton.alertEliminar.title,
@@ -127,7 +127,7 @@ Utils = {
         }
     },
 
-    ShowMessage: function (header, body, btnSubmitText, callback) {
+    ShowMessage: function(header, body, btnSubmitText, callback) {
         $msgModal
             .find('.modal-content .alert > h4').text(header).end()
             .find('.modal-content .alert > p').text(body).end()
@@ -138,18 +138,18 @@ Utils = {
                 callback($msgModal);
                 $msgModal.modal('hide');
             });
-        
+
         $msgModal.modal('show');
     },
 
-    GetForm: function (form) {
+    GetForm: function(form) {
         var that = jQuery(form);
         var url = that.attr('action');
         var type = that.attr('method');
         var listUrl = that.attr('datalistUrl');
         var data = {};
 
-        that.find('[name]').each(function (index, value) {
+        that.find('[name]').each(function(index, value) {
             var innerthat = jQuery(this);
             var name = innerthat.attr('name');
             var datavalue = innerthat.val();
@@ -167,7 +167,7 @@ Utils = {
         return obj;
     },
 
-    NotificationMessage: function (parametros) {
+    NotificationMessage: function(parametros) {
 
         var notificationType = '';
         switch (parametros.tipo) {
@@ -188,6 +188,50 @@ Utils = {
             class_name: notificationType,
             sticky: false,
             time: ''
+        });
+    },
+
+    Ajax: function(opciones, successCallback, failureCallback, errorCallback) {
+
+        if (opciones.url == null)
+            opciones.url = "";
+
+        if (opciones.parametros == null)
+            opciones.parametros = {};
+
+        if (opciones.async == null)
+            opciones.async = true;
+
+        if (opciones.datatype == null)
+            opciones.datatype = "json";
+
+        if (opciones.contentType == null)
+            opciones.contentType = "application/json; charset=utf-8";
+
+        if (opciones.type == null)
+            opciones.type = "POST";
+
+        $.ajax({
+            type: opciones.type,
+            url: opciones.url,
+            contentType: opciones.contentType,
+            dataType: opciones.datatype,
+            async: opciones.async,
+            data: opciones.datatype == "json" ? JSON.stringify(opciones.parametros) : opciones.parametros,
+            success: function(response) {
+                if (successCallback != null && typeof(successCallback) == "function")
+                    successCallback(response);
+            },
+            failure: function(msg) {
+                alert(msg);
+                if (failureCallback != null && typeof(failureCallback) == "function")
+                    failureCallback(msg);
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+                if (errorCallback != null && typeof(errorCallback) == "function")
+                    errorCallback(xhr);
+            }
         });
     }
 }

@@ -14,5 +14,6 @@ namespace SIGCOMT.Domain
         public int IdiomaId { get; set; }
 
         public virtual ICollection<RolUsuario> RolUsuarioList { get; set; }
+        public virtual ICollection<PermisoFormularioUsuario> PermisoUsuarioList { get; set; }
     }
 }

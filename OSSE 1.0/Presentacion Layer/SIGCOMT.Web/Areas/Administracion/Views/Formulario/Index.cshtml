@@ -22,33 +22,81 @@
     </div>
 }
 
-<select id="selFormulario" data-placeholder="Choose One" class="width300">
-    <option value="">@Master.Seleccionar</option>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Formulario de Permisos</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Formularios</label>
+            <div class="col-sm-4">
+                <select id="selFormulario" data-placeholder="Choose One" class="width300">
+                    <option value="">@Master.Seleccionar</option>
+                    @if (Model != null)
+                    {
+                        foreach (var modulo in Model)
+                        {
+                            <optgroup label="@modulo.Nombre">
+                                @foreach (var operacion in modulo.Operaciones)
+                                {
+                                    <option value="@operacion.Id">@operacion.Nombre</option>
+                                }
+                            </optgroup>
+                        }
+                    }
 
-    @if (Model != null)
-    {
-        foreach (var modulo in Model)
-        {
-            <optgroup label="@modulo.Nombre">
-                @foreach (var operacion in modulo.Operaciones)
-                {
-                    <option value="@operacion.Id">@operacion.Nombre</option>
-                }
-            </optgroup>
-        }
-    }
-    
-</select>
+                </select>
+                <div class="mb30"></div>
+                <div id="divPermisos" class="ckbox ckbox-success">
+                    <input type="checkbox" id="checkboxSuccess" checked="checked" />
+                    <label for="checkboxSuccess">Checkbox Success</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="col-sm-offset-2">
+            <button class="btn btn-primary mr5">Guardar</button>
+            <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">Regresar</a>
+        </div>
+    </div>
+</div>
 
 @section ScriptContent
 {
     <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
-        
+
         jQuery(document).ready(function() {
             jQuery("#selFormulario").select2();
+
+            jQuery("#selFormulario").on("change", function () {
+                ObtenerPermiso(jQuery(this).val());
+            });
         });
-        
+
+        function ObtenerPermiso(id) {
+            debugger;
+            var opcionesAjax = {
+                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
+                parametros: {
+                    formularioId: 2
+                }
+            };
+            Utils.Ajax(opcionesAjax, function(response) {
+                if (response.success == true) {
+                    var $divPermisos = jQuery('#divPermisos');
+                    $divPermisos.empty();
+                    
+                    for (var i = 0; i < response.Data.length; i++) {
+                        var check = '<input type="checkbox" id="' + response.Data[i].TipoPermiso + '" checked="checked" />' +
+                            '<label for="checkboxSuccess">' + response.Data[i].TipoPermiso + '</label>';
+                        $divPermisos.append(check);
+                    }
+                }
+            });
+        }
+
     </script>
 }

@@ -2,6 +2,11 @@
 {
     public class PermisoFormularioDto
     {
+        public int RolId { get; set; }
+        public int TipoPermiso { get; set; }
+        public bool Activo { get; set; }
+
+        //ToDo: quitar estos atributos
         public bool Mostrar { get; set; }
         public bool Crear { get; set; }
         public bool Modificar { get; set; }
