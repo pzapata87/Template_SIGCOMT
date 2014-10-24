@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
@@ -36,7 +37,7 @@ namespace SIGCOMT.Converter
 
             return permisoFormulario;
         }
-
+        
         public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
         {
             var dictionary =
@@ -51,6 +52,19 @@ namespace SIGCOMT.Converter
                             }).ToList());
 
             return dictionary;
+        }
+
+        public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormularioDto> permisos)
+        {
+            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Usuario", typeof(Usuario).Assembly);
+
+            return permisos.Select(p => new PermisoFormularioDto
+            {
+                RolId = p.RolId,
+                TipoPermiso = p.TipoPermiso,
+                Activo = p.Activo,
+                NombrePermiso = rm.GetString(Enum.GetName(typeof (TipoPermiso), p.TipoPermiso))
+            }).ToList();
         }
 
         #region Métodos Privados

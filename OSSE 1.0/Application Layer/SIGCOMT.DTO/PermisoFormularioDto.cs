@@ -5,6 +5,7 @@
         public int RolId { get; set; }
         public int TipoPermiso { get; set; }
         public bool Activo { get; set; }
+        public string NombrePermiso { get; set; }
 
         //ToDo: quitar estos atributos
         public bool Mostrar { get; set; }

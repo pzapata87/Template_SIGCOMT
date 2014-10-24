@@ -40,9 +40,8 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
         public JsonResult ObtenerPermiso(int formularioId)
         {
             var response = new JsonResponse {Success = true};
-
             var permisos = GlobalParameters.PermisoFormularioList[formularioId];
-            response.Data = permisos;
+            response.Data = FormularioConverter.ObtenerPermisosFormulario(permisos);
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }

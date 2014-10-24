@@ -47,10 +47,7 @@
 
                 </select>
                 <div class="mb30"></div>
-                <div id="divPermisos" class="ckbox ckbox-success">
-                    <input type="checkbox" id="checkboxSuccess" checked="checked" />
-                    <label for="checkboxSuccess">Checkbox Success</label>
-                </div>
+                <div id="divPermisos"></div>
             </div>
         </div>
     </div>
@@ -71,31 +68,35 @@
         jQuery(document).ready(function() {
             jQuery("#selFormulario").select2();
 
-            jQuery("#selFormulario").on("change", function () {
+            jQuery("#selFormulario").on("change", function() {
                 ObtenerPermiso(jQuery(this).val());
             });
         });
 
         function ObtenerPermiso(id) {
-            debugger;
-            var opcionesAjax = {
-                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
-                parametros: {
-                    formularioId: 2
-                }
-            };
-            Utils.Ajax(opcionesAjax, function(response) {
-                if (response.success == true) {
-                    var $divPermisos = jQuery('#divPermisos');
-                    $divPermisos.empty();
-                    
-                    for (var i = 0; i < response.Data.length; i++) {
-                        var check = '<input type="checkbox" id="' + response.Data[i].TipoPermiso + '" checked="checked" />' +
-                            '<label for="checkboxSuccess">' + response.Data[i].TipoPermiso + '</label>';
-                        $divPermisos.append(check);
+            var $divCheck = jQuery('#divPermisos');
+            $divCheck.empty();
+            
+            if (id != '') {
+                var opcionesAjax = {
+                    url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
+                    parametros: {
+                        formularioId: id
                     }
-                }
-            });
+                };
+
+                Utils.Ajax(opcionesAjax, function(response) {
+                    if (response.Success == true) {
+                        for (var i = 0; i < response.Data.length; i++) {
+                            var check = '<div class="ckbox ckbox-success">'
+                                + '<input type="checkbox" id="' + response.Data[i].TipoPermiso + '" checked="checked" />'
+                                + '<label for="' + response.Data[i].TipoPermiso + '">' + response.Data[i].TipoPermiso + '</label>'
+                                + '</div>';
+                            $divCheck.append(check);
+                        }
+                    }
+                });
+            }
         }
 
     </script>

@@ -22,7 +22,7 @@ namespace SIGCOMT.DTO.GlobalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Usuario {
+    public class Usuario {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SIGCOMT.DTO.GlobalResources.Usuario", typeof(Usuario).Assembly);
@@ -51,7 +51,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a El email debe ser válido..
         /// </summary>
-        internal static string EmailFormato {
+        public static string EmailFormato {
             get {
                 return ResourceManager.GetString("EmailFormato", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a El email es requerido..
         /// </summary>
-        internal static string EmailRequerido {
+        public static string EmailRequerido {
             get {
                 return ResourceManager.GetString("EmailRequerido", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a El idioma es requerido..
         /// </summary>
-        internal static string IdiomaRequerido {
+        public static string IdiomaRequerido {
             get {
                 return ResourceManager.GetString("IdiomaRequerido", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a La contraseña debe tener 4 caracteres como mínimo..
         /// </summary>
-        internal static string PasswordLength {
+        public static string PasswordLength {
             get {
                 return ResourceManager.GetString("PasswordLength", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a La contraseña es requerida..
         /// </summary>
-        internal static string PasswordRequerido {
+        public static string PasswordRequerido {
             get {
                 return ResourceManager.GetString("PasswordRequerido", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a El nombre de usuario debe tener 6 caracteres como mínimo..
         /// </summary>
-        internal static string UsernameLength {
+        public static string UsernameLength {
             get {
                 return ResourceManager.GetString("UsernameLength", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace SIGCOMT.DTO.GlobalResources {
         /// <summary>
         ///   Busca una cadena traducida similar a El nombre de usuario es requerido..
         /// </summary>
-        internal static string UsernameRequerido {
+        public static string UsernameRequerido {
             get {
                 return ResourceManager.GetString("UsernameRequerido", resourceCulture);
             }
