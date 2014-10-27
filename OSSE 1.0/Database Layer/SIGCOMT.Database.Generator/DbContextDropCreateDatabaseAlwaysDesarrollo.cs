@@ -96,10 +96,10 @@ namespace SIGCOMT.DataBase.Generator
                         },
                         new ItemTabla
                         {
-                            Nombre = "Modificar",
+                            Nombre = "Editar",
                             Descripcion = string.Empty,
                             Estado = activo,
-                            Valor = TipoPermiso.Modificar.GetStringValue()
+                            Valor = TipoPermiso.Editar.GetStringValue()
                         },
                         new ItemTabla
                         {
@@ -220,7 +220,7 @@ namespace SIGCOMT.DataBase.Generator
                     },
                     new PermisoFormularioRol
                     {
-                        TipoPermiso = TipoPermiso.Modificar.GetNumberValue(),
+                        TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
                         Rol = _rolAdmin,
                         Activo = true,
                         Estado = activo
@@ -265,7 +265,7 @@ namespace SIGCOMT.DataBase.Generator
                     },
                     new PermisoFormularioRol
                     {
-                        TipoPermiso = TipoPermiso.Modificar.GetNumberValue(),
+                        TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
                         Rol = _rolAdmin,
                         Activo = true,
                         Estado = activo

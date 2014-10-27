@@ -36,6 +36,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\EntityDto.cs" />
+    <Compile Include="GlobalResources\Master.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Master.resx</DependentUpon>
+    </Compile>
     <Compile Include="ModuloDto.cs" />
     <Compile Include="GlobalResources\Usuario.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -50,6 +55,10 @@
     <Compile Include="UsuarioDto.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GlobalResources\Master.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Master.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GlobalResources\Usuario.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Usuario.Designer.cs</LastGenOutput>

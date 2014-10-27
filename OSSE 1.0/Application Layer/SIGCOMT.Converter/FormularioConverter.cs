@@ -6,6 +6,7 @@ using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
+using SIGCOMT.DTO.GlobalResources;
 
 namespace SIGCOMT.Converter
 {
@@ -56,7 +57,7 @@ namespace SIGCOMT.Converter
 
         public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormularioDto> permisos)
         {
-            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Usuario", typeof(Usuario).Assembly);
+            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
 
             return permisos.Select(p => new PermisoFormularioDto
             {
@@ -99,7 +100,7 @@ namespace SIGCOMT.Converter
                 case TipoPermiso.Crear:
                     permisoFormularioDto.Crear = true;
                     break;
-                case TipoPermiso.Modificar:
+                case TipoPermiso.Editar:
                     permisoFormularioDto.Modificar = true;
                     break;
                 case TipoPermiso.Eliminar:

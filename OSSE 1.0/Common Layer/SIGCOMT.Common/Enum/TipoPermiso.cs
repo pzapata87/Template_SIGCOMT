@@ -7,7 +7,7 @@ namespace SIGCOMT.Common.Enum
     {
         Mostrar = 1,
         Crear = 2,
-        Modificar = 3,
+        Editar = 3,
         Eliminar = 4
     }
 }

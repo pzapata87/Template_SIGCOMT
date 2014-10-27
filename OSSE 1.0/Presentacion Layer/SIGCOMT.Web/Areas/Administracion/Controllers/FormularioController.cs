@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Resources;
 using System.Web.Mvc;
+using Resources;
 using SIGCOMT.BusinessLogic.Interfaces;
 using SIGCOMT.Cache;
 using SIGCOMT.Common;

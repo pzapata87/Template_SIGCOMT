@@ -55,11 +55,11 @@ namespace SIGCOMT.Web.Core
 
                 ViewData[MasterConstantes.UsuarioSesion] = UsuarioActual;
                 ViewData[MasterConstantes.UsuarioActual] = UsuarioActual.UserName;
-                ViewData[MasterConstantes.Empresa] = "OSSE";
+                ViewData[MasterConstantes.Empresa] = "SIGCOMT";
                 ViewData[MasterConstantes.RUC] = "20508473657";
                 ViewData[MasterConstantes.Direccion] = "San Isidro";
                 ViewData[MasterConstantes.Telefono] = " 01 2641251|2641214";
-                ViewData[MasterConstantes.Email] = "osse@hotmail.com";
+                ViewData[MasterConstantes.Email] = "SIGCOMT@hotmail.com";
                 ViewData[MasterConstantes.IdUsuarioActual] = UsuarioActual.Id;
 
                 ItemTabla idioma =  itemTablaBL.Get(p => p.TablaId == (int) TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);

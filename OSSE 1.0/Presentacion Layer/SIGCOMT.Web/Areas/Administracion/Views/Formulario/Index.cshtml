@@ -1,4 +1,5 @@
 ﻿@using Resources
+@using SIGCOMT.Common.Constantes
 @using SIGCOMT.DTO
 @model List<ModuloDto>
 
@@ -9,6 +10,8 @@
 
 @section StyleContent
 {
+    <link href="@Url.Content("~/Content/css/style.datatables.css")" rel="stylesheet" type="text/css" />
+    <link href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/select2.css")" rel="stylesheet" type="text/css" />
 }
 
@@ -22,16 +25,16 @@
     </div>
 }
 
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">Formulario de Permisos</h4>
     </div>
     <div class="panel-body">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Formularios</label>
-            <div class="col-sm-4">
-                <select id="selFormulario" data-placeholder="Choose One" class="width300">
-                    <option value="">@Master.Seleccionar</option>
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="control-label">Formularios</label>
+                <div class="mb5"></div>
+                <select id="selFormulario" data-placeholder="@Master.Seleccionar" class="width300">
                     @if (Model != null)
                     {
                         foreach (var modulo in Model)
@@ -49,6 +52,16 @@
                 <div class="mb30"></div>
                 <div id="divPermisos"></div>
             </div>
+            <div class="col-md-6">
+                <table id="grillaUsuarioList" class="table table-bordered table-hover table-responsive">
+                    <thead class="">
+                        <tr>
+                            <th style="width: 5%;"></th>
+                            <th style="width: 95%;">User Name</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
     <div class="panel-footer">
@@ -61,22 +74,46 @@
 
 @section ScriptContent
 {
+    <script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
+    <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/725b2a2115b/api/fnFilterOnReturn.js"></script>
     <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
 
         jQuery(document).ready(function() {
-            jQuery("#selFormulario").select2();
+            jQuery("#selFormulario")
+                .select2()
+                .on("change", function() {
+                    ObtenerPermiso(jQuery(this).val());
+                });
 
-            jQuery("#selFormulario").on("change", function() {
-                ObtenerPermiso(jQuery(this).val());
-            });
+            var opciones = {
+                grilla: '#grillaUsuarioList',
+                textAll: '@Master.Todos',
+                languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
+                url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
+                columns: [
+                    {
+                        "data": function(oObj) {
+                            var btnSeleccionar = '<a href="" data-toggle="tooltip" title="Edit" class="tooltips"><i class="fa fa-check-square-o"></i></a>';
+                            return btnSeleccionar;
+                        },
+                        "orderable": false,
+                        "searchable": false
+                    },
+                    { "data": "UserName", "name": "UserName" }
+                ]
+            };
+
+            Utils.Grilla(opciones);
         });
 
         function ObtenerPermiso(id) {
             var $divCheck = jQuery('#divPermisos');
             $divCheck.empty();
-            
+
             if (id != '') {
                 var opcionesAjax = {
                     url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
@@ -88,9 +125,10 @@
                 Utils.Ajax(opcionesAjax, function(response) {
                     if (response.Success == true) {
                         for (var i = 0; i < response.Data.length; i++) {
+                            var data = response.Data[i];
                             var check = '<div class="ckbox ckbox-success">'
-                                + '<input type="checkbox" id="' + response.Data[i].TipoPermiso + '" checked="checked" />'
-                                + '<label for="' + response.Data[i].TipoPermiso + '">' + response.Data[i].TipoPermiso + '</label>'
+                                + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
+                                + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
                                 + '</div>';
                             $divCheck.append(check);
                         }
