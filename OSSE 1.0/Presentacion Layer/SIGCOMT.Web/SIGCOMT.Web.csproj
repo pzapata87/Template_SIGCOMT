@@ -203,8 +203,10 @@
     <Content Include="images\select2.png" />
     <Content Include="images\select2x2.png" />
     <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
     <Content Include="images\sort_both.png" />
     <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

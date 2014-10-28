@@ -10,9 +10,9 @@
 
 @section StyleContent
 {
-    <link href="@Url.Content("~/Content/css/style.datatables.css")" rel="stylesheet" type="text/css" />
-    <link href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/select2.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/style.datatables.css")" rel="stylesheet" type="text/css" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet">
 }
 
 @section pageheader
@@ -32,7 +32,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-6">
-                <label class="control-label">Formularios</label>
+                @*<label class="control-label">Formularios</label>
                 <div class="mb5"></div>
                 <select id="selFormulario" data-placeholder="@Master.Seleccionar" class="width300">
                     @if (Model != null)
@@ -48,12 +48,37 @@
                         }
                     }
 
-                </select>
+                </select>*@
+                <table id="grillaPermisos" class="table table-bordered table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="width: 20%;">Módulo</th>
+                            <th style="width: 80%;">Formulario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var modulo in Model)
+                            {
+                                foreach (var operacion in modulo.Operaciones)
+                                {
+                                    <tr>
+                                        <td class="details-control"></td>
+                                        <td>@modulo.Nombre</td>
+                                        <td>@operacion.Nombre</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
                 <div class="mb30"></div>
                 <div id="divPermisos"></div>
             </div>
-            <div class="col-md-6">
-                <table id="grillaUsuarioList" class="table table-bordered table-hover table-responsive">
+            <div class="col-sm-6">
+                <table id="grillaUsuario" class="table table-bordered table-hover table-responsive">
                     <thead class="">
                         <tr>
                             <th style="width: 5%;"></th>
@@ -76,21 +101,34 @@
 {
     <script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
-    <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
+    <script src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.js"></script>
     <script src="//cdn.datatables.net/plug-ins/725b2a2115b/api/fnFilterOnReturn.js"></script>
     <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
 
         jQuery(document).ready(function() {
-            jQuery("#selFormulario")
-                .select2()
-                .on("change", function() {
-                    ObtenerPermiso(jQuery(this).val());
-                });
+            //jQuery("#selFormulario")
+            //    .select2()
+            //    .on("change", function() {
+            //        ObtenerPermiso(jQuery(this).val());
+            //    });
+
+            var grillaPermisos = jQuery('#grillaPermisos').DataTable({
+                responsive: true,
+                language: {
+                    "url": "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
+                },
+                //columns: [
+                //    {
+                //        orderable: false,
+                //        defaultContent: ''
+                //    }
+                //]
+            });
 
             var opciones = {
-                grilla: '#grillaUsuarioList',
+                grilla: '#grillaUsuario',
                 textAll: '@Master.Todos',
                 languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
                 url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
@@ -108,6 +146,22 @@
             };
 
             Utils.Grilla(opciones);
+
+            // Add event listener for opening and closing details
+            jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = grillaPermisos.row(tr);
+                debugger;
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
         });
 
         function ObtenerPermiso(id) {
@@ -135,6 +189,17 @@
                     }
                 });
             }
+        }
+
+        function format(d) {
+            var check = '';
+            for (var i = 1; i <= 10; i++) {
+                check += '<div class="ckbox ckbox-success col-sm-4">'
+                + '<input type="checkbox" id="' + i + '" checked="checked" />'
+                + '<label for="' + i + '">' + 'Crear' + '</label>'
+                + '</div>';
+            }
+            return check;
         }
 
     </script>

@@ -4,7 +4,6 @@
     keyboard: false
 });
 
-
 Utils = {
     Grilla: function(opciones) {
 
@@ -33,22 +32,22 @@ Utils = {
             opciones.lengthMenu = [[10, 25, 50, -1], [10, 25, 50, opciones.textAll]];
 
         var grilla = jQuery(opciones.grilla).dataTable({
-            "dom": opciones.dom,
-            "responsive": opciones.responsive,
-            "processing": opciones.processing,
-            "serverSide": opciones.serverSide,
-            "language": {
-                "url": opciones.languageUrl
+            dom: opciones.dom,
+            responsive: opciones.responsive,
+            processing: opciones.processing,
+            serverSide: opciones.serverSide,
+            language: {
+                url: opciones.languageUrl
             },
-            "order": opciones.order,
-            "lengthMenu": opciones.lengthMenu,
-            "ajax": {
-                "url": opciones.url,
-                "type": "POST",
-                "data": opciones.dataAjax
+            order: opciones.order,
+            lengthMenu: opciones.lengthMenu,
+            ajax: {
+                url: opciones.url,
+                type: "POST",
+                data: opciones.dataAjax
             },
-            "columns": opciones.columns,
-            "fnInitComplete": function() {
+            columns: opciones.columns,
+            fnInitComplete: function() {
                 // Permite reemplazar el evento de filtro por defecto del "keypress" por "enter"
                 grilla.fnFilterOnReturn();
             }
