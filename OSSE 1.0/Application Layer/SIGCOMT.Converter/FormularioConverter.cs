@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
+using SIGCOMT.Cache;
 using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
@@ -38,7 +39,7 @@ namespace SIGCOMT.Converter
 
             return permisoFormulario;
         }
-        
+
         public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
         {
             var dictionary =
@@ -47,6 +48,7 @@ namespace SIGCOMT.Converter
                         .Select(
                             q => new PermisoFormularioDto
                             {
+                                Id = q.Id,
                                 RolId = q.RolId,
                                 TipoPermiso = q.TipoPermiso,
                                 Activo = q.Activo
@@ -61,11 +63,28 @@ namespace SIGCOMT.Converter
 
             return permisos.Select(p => new PermisoFormularioDto
             {
+                Id = p.Id,
                 RolId = p.RolId,
                 TipoPermiso = p.TipoPermiso,
                 Activo = p.Activo,
                 NombrePermiso = rm.GetString(Enum.GetName(typeof (TipoPermiso), p.TipoPermiso))
             }).ToList();
+        }
+
+        public static List<FormularioDto> DomainToDtoFormulario(List<Formulario> formularios, int idiomaId)
+        {
+            return (from modulo in formularios
+                where !modulo.FormularioParentId.HasValue
+                let nombreModulo = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList).Nombre
+                from formulario in modulo.FormulariosHijosList
+                where formulario.Estado == TipoEstado.Activo.GetNumberValue()
+                select new FormularioDto
+                {
+                    Id = formulario.Id,
+                    Modulo = nombreModulo,
+                    Nombre = ObtenerIdiomaFormulario(idiomaId, formulario.ItemTablaFormularioList).Nombre,
+                    PermisoList = ObtenerPermisosFormulario(GlobalParameters.PermisoFormularioList[formulario.Id])
+                }).ToList();
         }
 
         #region Métodos Privados

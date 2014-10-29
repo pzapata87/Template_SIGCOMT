@@ -78,6 +78,26 @@ Utils = {
             });
         });
 
+        if (opciones.selectable != null && opciones.selectable == true) {
+            $(opciones.grilla + ' tbody').on('click', 'tr', function() {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    
+                    if (opciones.useCheckIcon != null && opciones.useCheckIcon == true)
+                        $(this).find('td i').removeClass('fa-check-square-o').addClass('fa-square-o');
+                    
+                } else {
+                    if (opciones.useCheckIcon != null && opciones.useCheckIcon == true) {
+                        grilla.find('tr.selected td i').removeClass('fa-check-square-o').addClass('fa-square-o');
+                        $(this).find('td i').removeClass('fa-square-o').addClass('fa-check-square-o');
+                    }
+                    
+                    grilla.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        }
+
         function eventoActualizar(opcionesButton) {
             var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
             var aData = opcionesButton.grilla.fnGetData(aPos[0]);

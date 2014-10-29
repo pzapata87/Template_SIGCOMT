@@ -2,6 +2,7 @@
 {
     public class PermisoFormularioDto
     {
+        public int Id { get; set; }
         public int RolId { get; set; }
         public int TipoPermiso { get; set; }
         public bool Activo { get; set; }

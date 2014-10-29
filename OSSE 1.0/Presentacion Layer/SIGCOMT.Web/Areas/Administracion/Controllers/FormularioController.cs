@@ -32,7 +32,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
         {
             var modulos = _formularioBL.FindAll(p => p.Estado == (int) TipoEstado.Activo).ToList();
 
-            var formularios = FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
+            var formularios = FormularioConverter.DomainToDtoFormulario(modulos, UsuarioActual.IdiomaId);
 
             return View(formularios);
         }

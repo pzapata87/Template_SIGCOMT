@@ -17,13 +17,14 @@
         @RenderSection("StyleContent", false)
 
         <style type="text/css">
-            div.dataTables_wrapper div.left {
-                float: left;
-            }
+            /* Styles para el paginado*/
+            div.dataTables_wrapper div.left { float: left; }
+            div.dataTables_wrapper div.right { float: right; }
 
-            div.dataTables_wrapper div.right {
-                float: right;
-            }
+            /* Styles para la selección de fila de la tabla*/
+            table.dataTable tbody tr:hover { background-color: #F9F1E3; }
+            table.dataTable tbody tr.selected { background-color: #F0BE55; }
+            table.dataTable tbody tr:hover.selected { background-color: #F0B944; }
         </style>
 
     </head>

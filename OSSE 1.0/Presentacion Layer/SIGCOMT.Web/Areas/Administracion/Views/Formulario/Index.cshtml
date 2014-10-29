@@ -1,7 +1,7 @@
 ﻿@using Resources
 @using SIGCOMT.Common.Constantes
 @using SIGCOMT.DTO
-@model List<ModuloDto>
+@model List<FormularioDto>
 
 @{
     ViewBag.Title = "Index";
@@ -52,37 +52,21 @@
                 <table id="grillaPermisos" class="table table-bordered table-hover table-responsive">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th style="width: 5%;"></th>
                             <th style="width: 20%;">Módulo</th>
-                            <th style="width: 80%;">Formulario</th>
+                            <th style="width: 75%;">Formulario</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @if (Model != null)
-                        {
-                            foreach (var modulo in Model)
-                            {
-                                foreach (var operacion in modulo.Operaciones)
-                                {
-                                    <tr>
-                                        <td class="details-control"></td>
-                                        <td>@modulo.Nombre</td>
-                                        <td>@operacion.Nombre</td>
-                                    </tr>
-                                }
-                            }
-                        }
-                    </tbody>
                 </table>
                 <div class="mb30"></div>
                 <div id="divPermisos"></div>
             </div>
             <div class="col-sm-6">
-                <table id="grillaUsuario" class="table table-bordered table-hover table-responsive">
+                <table id="grillaUsuario" class="table table-bordered table-responsive">
                     <thead class="">
                         <tr>
-                            <th style="width: 5%;"></th>
-                            <th style="width: 95%;">User Name</th>
+                            <th style="width: 6%;"></th>
+                            <th style="width: 94%;">User Name</th>
                         </tr>
                     </thead>
                 </table>
@@ -107,100 +91,110 @@
 
     <script type="text/javascript">
 
-        jQuery(document).ready(function() {
-            //jQuery("#selFormulario")
-            //    .select2()
-            //    .on("change", function() {
-            //        ObtenerPermiso(jQuery(this).val());
-            //    });
+    jQuery(document).ready(function () {
+        //jQuery("#selFormulario")
+        //    .select2()
+        //    .on("change", function() {
+        //        ObtenerPermiso(jQuery(this).val());
+        //    });
 
-            var grillaPermisos = jQuery('#grillaPermisos').DataTable({
-                responsive: true,
-                language: {
-                    "url": "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
+        var dataSet = JSON.parse('@Html.Raw(Json.Encode(Model))');
+
+        var grillaPermisos = jQuery('#grillaPermisos').DataTable({
+            dom: '<"left"f><"right"l>trip',
+            responsive: true,
+            language: {
+                "url": "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
+            },
+            data: dataSet,
+            columns: [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '',
+                    "searchable": false
                 },
-                //columns: [
-                //    {
-                //        orderable: false,
-                //        defaultContent: ''
-                //    }
-                //]
-            });
-
-            var opciones = {
-                grilla: '#grillaUsuario',
-                textAll: '@Master.Todos',
-                languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
-                url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
-                columns: [
-                    {
-                        "data": function(oObj) {
-                            var btnSeleccionar = '<a href="" data-toggle="tooltip" title="Edit" class="tooltips"><i class="fa fa-check-square-o"></i></a>';
-                            return btnSeleccionar;
-                        },
-                        "orderable": false,
-                        "searchable": false
-                    },
-                    { "data": "UserName", "name": "UserName" }
-                ]
-            };
-
-            Utils.Grilla(opciones);
-
-            // Add event listener for opening and closing details
-            jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
-                var tr = $(this).closest('tr');
-                var row = grillaPermisos.row(tr);
-                debugger;
-                if (row.child.isShown()) {
-                    // This row is already open - close it
-                    row.child.hide();
-                    tr.removeClass('shown');
-                } else {
-                    // Open this row
-                    row.child(format(row.data())).show();
-                    tr.addClass('shown');
-                }
-            });
+                { "data": "Modulo" },
+                { "data": "Nombre" }
+            ],
+            "order": [[1, 'asc']]
         });
 
-        function ObtenerPermiso(id) {
-            var $divCheck = jQuery('#divPermisos');
-            $divCheck.empty();
+        jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function() {
+            var tr = $(this).closest('tr');
+            var row = grillaPermisos.row(tr);
 
-            if (id != '') {
-                var opcionesAjax = {
-                    url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
-                    parametros: {
-                        formularioId: id
-                    }
-                };
-
-                Utils.Ajax(opcionesAjax, function(response) {
-                    if (response.Success == true) {
-                        for (var i = 0; i < response.Data.length; i++) {
-                            var data = response.Data[i];
-                            var check = '<div class="ckbox ckbox-success">'
-                                + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
-                                + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
-                                + '</div>';
-                            $divCheck.append(check);
-                        }
-                    }
-                });
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                row.child(format(row.data())).show();
+                tr.addClass('shown');
             }
-        }
+        });
 
-        function format(d) {
-            var check = '';
-            for (var i = 1; i <= 10; i++) {
-                check += '<div class="ckbox ckbox-success col-sm-4">'
-                + '<input type="checkbox" id="' + i + '" checked="checked" />'
-                + '<label for="' + i + '">' + 'Crear' + '</label>'
+        var opciones = {
+            grilla: '#grillaUsuario',
+            textAll: '@Master.Todos',
+            languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
+            url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
+            selectable: true,
+            useCheckIcon: true,
+            columns: [
+                {
+                    "data": function(oObj) {
+                        return '<span title="Seleccionar" style="color: #428bca;"><i class="fa fa-square-o"></i></span>';
+                    },
+                    "orderable": false,
+                    "searchable": false
+                },
+                { "data": "UserName", "name": "UserName" }
+            ]
+        };
+
+        Utils.Grilla(opciones);
+    });
+
+    @*function ObtenerPermiso(id) {
+        var $divCheck = jQuery('#divPermisos');
+        $divCheck.empty();
+
+        if (id != '') {
+            var opcionesAjax = {
+                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
+                parametros: {
+                    formularioId: id
+                }
+            };
+
+            Utils.Ajax(opcionesAjax, function (response) {
+                if (response.Success == true) {
+                    for (var i = 0; i < response.Data.length; i++) {
+                        var data = response.Data[i];
+                        var check = '<div class="ckbox ckbox-success">'
+                            + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
+                            + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
+                            + '</div>';
+                        $divCheck.append(check);
+                    }
+                }
+            });
+        }
+    }*@
+
+    function format(d) {
+        var check = '';
+        for (var i = 0; i < d.PermisoList.length; i++) {
+            var data = d.PermisoList[i];
+            check += '<div class="ckbox ckbox-success col-sm-4">'
+                + '<input type="checkbox" id="' + data.Id + '" checked="checked" />'
+                + '<label for="' + data.Id + '">' + data.NombrePermiso + '</label>'
                 + '</div>';
-            }
-            return check;
-        }
 
-    </script>
+        }
+        return check;
+    }
+
+</script>
 }
