@@ -153,5 +153,24 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             var jsonResponse = new JsonResponse { Success = true, Message = "Se eliminó satisfactoriamente el usuario" };
             return Json(jsonResponse, JsonRequestBehavior.AllowGet);
         }
+
+        [Controller(TipoVerbo = TipoAccionControlador.Post)]
+        [HttpPost]
+        public JsonResult ObtenerPermisoFormulario(int usuarioId)
+        {
+            var response = new JsonResponse { Success = false };
+            var user = _usuarioBL.GetById(usuarioId);
+
+            if (user != null)
+            {
+                response.Data = UsuarioConverter.PermisosFormulario(user.PermisoUsuarioList, user.RolUsuarioList);
+            }
+            else
+            {
+                response.Message = "Usuario no existe";
+            }
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }

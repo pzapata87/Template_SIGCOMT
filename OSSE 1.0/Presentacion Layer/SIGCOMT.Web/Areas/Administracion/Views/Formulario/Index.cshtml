@@ -49,7 +49,7 @@
                     }
 
                 </select>*@
-                <table id="grillaPermisos" class="table table-bordered table-hover table-responsive">
+                <table id="grillaPermisos" class="table table-bordered table-responsive">
                     <thead>
                         <tr>
                             <th style="width: 5%;"></th>
@@ -86,7 +86,7 @@
     <script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
     <script src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.js"></script>
-    <script src="//cdn.datatables.net/plug-ins/725b2a2115b/api/fnFilterOnReturn.js"></script>
+    <script src="@Url.Content("~/Content/js/fnFilterOnReturn.js")"></script>
     <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
@@ -121,7 +121,7 @@
             "order": [[1, 'asc']]
         });
 
-        jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function() {
+        jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = grillaPermisos.row(tr);
 
@@ -141,9 +141,10 @@
             url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
             selectable: true,
             useCheckIcon: true,
+            onSelectRow: seleccionarUsuario,
             columns: [
                 {
-                    "data": function(oObj) {
+                    "data": function (oObj) {
                         return '<span title="Seleccionar" style="color: #428bca;"><i class="fa fa-square-o"></i></span>';
                     },
                     "orderable": false,
@@ -156,7 +157,7 @@
         Utils.Grilla(opciones);
     });
 
-    @*function ObtenerPermiso(id) {
+            @*function ObtenerPermiso(id) {
         var $divCheck = jQuery('#divPermisos');
         $divCheck.empty();
 
@@ -183,18 +184,42 @@
         }
     }*@
 
-    function format(d) {
-        var check = '';
-        for (var i = 0; i < d.PermisoList.length; i++) {
-            var data = d.PermisoList[i];
-            check += '<div class="ckbox ckbox-success col-sm-4">'
-                + '<input type="checkbox" id="' + data.Id + '" checked="checked" />'
-                + '<label for="' + data.Id + '">' + data.NombrePermiso + '</label>'
-                + '</div>';
+        function format(d) {
+            var check = '';
+            for (var i = 0; i < d.PermisoList.length; i++) {
+                var data = d.PermisoList[i];
+                check += '<div class="ckbox ckbox-success col-sm-4">'
+                    + '<input type="checkbox" id="' + data.Id + '" checked="checked" />'
+                    + '<label for="' + data.Id + '">' + data.NombrePermiso + '</label>'
+                    + '</div>';
 
+            }
+            return check;
         }
-        return check;
-    }
 
-</script>
+        function seleccionarUsuario(row, grilla) {
+            var data = grilla.row(row).data();
+
+            var opcionesAjax = {
+                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
+                parametros: {
+                    formularioId: id
+                }
+            };
+
+            Utils.Ajax(opcionesAjax, function (response) {
+                if (response.Success == true) {
+                    for (var i = 0; i < response.Data.length; i++) {
+                        var data = response.Data[i];
+                        var check = '<div class="ckbox ckbox-success">'
+                            + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
+                            + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
+                            + '</div>';
+                        $divCheck.append(check);
+                    }
+                }
+            });
+        }
+
+    </script>
 }

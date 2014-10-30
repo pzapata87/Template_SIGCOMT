@@ -31,7 +31,7 @@ Utils = {
         if (opciones.lengthMenu == null)
             opciones.lengthMenu = [[10, 25, 50, -1], [10, 25, 50, opciones.textAll]];
 
-        var grilla = jQuery(opciones.grilla).dataTable({
+        var grilla = jQuery(opciones.grilla).DataTable({
             dom: opciones.dom,
             responsive: opciones.responsive,
             processing: opciones.processing,
@@ -47,7 +47,7 @@ Utils = {
                 data: opciones.dataAjax
             },
             columns: opciones.columns,
-            fnInitComplete: function() {
+            fnInitComplete: function () {
                 // Permite reemplazar el evento de filtro por defecto del "keypress" por "enter"
                 grilla.fnFilterOnReturn();
             }
@@ -88,12 +88,16 @@ Utils = {
                     
                 } else {
                     if (opciones.useCheckIcon != null && opciones.useCheckIcon == true) {
-                        grilla.find('tr.selected td i').removeClass('fa-check-square-o').addClass('fa-square-o');
+                        grilla.$('tr.selected').find('td i').removeClass('fa-check-square-o').addClass('fa-square-o');
                         $(this).find('td i').removeClass('fa-square-o').addClass('fa-check-square-o');
                     }
                     
                     grilla.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
+
+                    if (opciones.onSelectRow != null && typeof (opciones.onSelectRow) == 'function') {
+                        opciones.onSelectRow(this, grilla);
+                    }
                 }
             });
         }
@@ -144,6 +148,8 @@ Utils = {
                     });
                 });
         }
+
+        return grilla;
     },
 
     ShowMessage: function(header, body, btnSubmitText, callback) {

@@ -1,10 +1,6 @@
 ﻿using System.Linq;
-using System.Resources;
 using System.Web.Mvc;
-using Resources;
 using SIGCOMT.BusinessLogic.Interfaces;
-using SIGCOMT.Cache;
-using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Converter;
 using SIGCOMT.Web.Core;
@@ -35,17 +31,6 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             var formularios = FormularioConverter.DomainToDtoFormulario(modulos, UsuarioActual.IdiomaId);
 
             return View(formularios);
-        }
-
-        [Controller(TipoVerbo = TipoAccionControlador.Post)]
-        [HttpPost]
-        public JsonResult ObtenerPermiso(int formularioId)
-        {
-            var response = new JsonResponse {Success = true};
-            var permisos = GlobalParameters.PermisoFormularioList[formularioId];
-            response.Data = FormularioConverter.ObtenerPermisosFormulario(permisos);
-
-            return Json(response, JsonRequestBehavior.AllowGet);
         }
     }
 }

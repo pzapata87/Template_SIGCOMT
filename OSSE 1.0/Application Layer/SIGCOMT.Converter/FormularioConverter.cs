@@ -57,20 +57,6 @@ namespace SIGCOMT.Converter
             return dictionary;
         }
 
-        public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormularioDto> permisos)
-        {
-            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
-
-            return permisos.Select(p => new PermisoFormularioDto
-            {
-                Id = p.Id,
-                RolId = p.RolId,
-                TipoPermiso = p.TipoPermiso,
-                Activo = p.Activo,
-                NombrePermiso = rm.GetString(Enum.GetName(typeof (TipoPermiso), p.TipoPermiso))
-            }).ToList();
-        }
-
         public static List<FormularioDto> DomainToDtoFormulario(List<Formulario> formularios, int idiomaId)
         {
             return (from modulo in formularios
@@ -85,6 +71,20 @@ namespace SIGCOMT.Converter
                     Nombre = ObtenerIdiomaFormulario(idiomaId, formulario.ItemTablaFormularioList).Nombre,
                     PermisoList = ObtenerPermisosFormulario(GlobalParameters.PermisoFormularioList[formulario.Id])
                 }).ToList();
+        }
+
+        public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormularioDto> permisos)
+        {
+            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
+
+            return permisos.Select(p => new PermisoFormularioDto
+            {
+                Id = p.Id,
+                RolId = p.RolId,
+                TipoPermiso = p.TipoPermiso,
+                Activo = p.Activo,
+                NombrePermiso = rm.GetString(Enum.GetName(typeof(TipoPermiso), p.TipoPermiso))
+            }).ToList();
         }
 
         #region Métodos Privados

@@ -180,6 +180,7 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\dataTables.bootstrap.js" />
     <Content Include="Areas\Administracion\Views\Usuario\Index.cshtml" />
+    <Content Include="Content\js\fnFilterOnReturn.js" />
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery.cookies.js" />
