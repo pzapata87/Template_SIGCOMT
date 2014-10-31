@@ -7,7 +7,7 @@ namespace SIGCOMT.Persistence.DatabaseMappings
     {
         public PermisoFormularioUsuarioConfiguration()
         {
-            HasRequired(p => p.Formulario).WithMany().HasForeignKey(p => p.FormularioId);
+            HasRequired(p => p.PermisoFormulario).WithMany().HasForeignKey(p => new {p.FormularioId, p.TipoPermiso});
             HasRequired(p => p.Usuario).WithMany(p => p.PermisoUsuarioList).HasForeignKey(p => p.UsuarioId);
         }
     }

@@ -50,10 +50,10 @@ namespace SIGCOMT.Web
             var listaIdiomasDomain = itemTablaBL.FindAll(p => p.TablaId == (int) TipoTabla.Idioma).ToList();
             GlobalParameters.Idiomas = listaIdiomasDomain.ToDictionary(p => int.Parse(p.Valor), p => p.Descripcion);
 
-            // Cargar datos de permisos para formularios por cada rol.
-            var formularioBL = ObjectFactory.GetInstance<IFormularioBL>();
-            var formularios = formularioBL.FindAll(p => p.Estado == (int)TipoEstado.Activo).Include(p => p.PermisoRolList).ToList();
-            GlobalParameters.PermisoFormularioList = FormularioConverter.DomainToDtoPermiso(formularios);
+            // Cargar datos de permisos para formularios.
+            //var formularioBL = ObjectFactory.GetInstance<IFormularioBL>();
+            //var formularios = formularioBL.FindAll(p => p.Estado == (int)TipoEstado.Activo).Include(p => p.PermisoList).ToList();
+            //GlobalParameters.PermisoFormularioList = FormularioConverter.DomainToDtoPermiso(formularios);
         }
 
         protected void Session_Start(object sender, EventArgs e)

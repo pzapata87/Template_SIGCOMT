@@ -249,7 +249,7 @@ namespace SIGCOMT.Web.Core
                 if (UsuarioActual == null)
                     return null;
 
-                List<Formulario> modulos = _formularioBL.Formularios(UsuarioActual);
+                var modulos = _formularioBL.Formularios(UsuarioActual);
                 return FormularioConverter.GenerateTreeView(modulos, UsuarioActual.IdiomaId);
             }
             catch (Exception ex)

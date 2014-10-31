@@ -161,9 +161,9 @@ namespace SIGCOMT.DataBase.Generator
                 Nivel = 0,
                 FormularioParentId = null,
                 Estado = activo,
-                PermisoRolList = new List<PermisoFormularioRol>
+                PermisoList = new List<PermisoFormularioRol>
                 {
-                    new PermisoFormularioRol {TipoPermiso = 1, Rol = _rolAdmin, Activo = true, Estado = activo},
+                    new PermisoFormularioRol {TipoPermiso = 1, Rol = _rolAdmin, Estado = activo},
                 },
                 ItemTablaFormularioList = new List<ItemTablaFormulario>
                 {
@@ -209,7 +209,30 @@ namespace SIGCOMT.DataBase.Generator
                 Orden = 1,
                 Nivel = 1,
                 Estado = activo,
-                PermisoRolList = new List<PermisoFormularioRol>
+                PermisoList = new List<PermisoFormulario>
+                {
+                    new PermisoFormulario
+                    {
+                        TipoPermiso = TipoPermiso.Mostrar.GetNumberValue(),
+                        Estado = activo
+                    },
+                    new PermisoFormulario
+                    {
+                        TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
+                        Estado = activo
+                    },
+                    new PermisoFormulario
+                    {
+                        TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
+                        Estado = activo
+                    },
+                    new PermisoFormulario
+                    {
+                        TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
+                        Estado = activo
+                    }
+                }
+                new List<PermisoFormularioRol>
                 {
                     new PermisoFormularioRol
                     {

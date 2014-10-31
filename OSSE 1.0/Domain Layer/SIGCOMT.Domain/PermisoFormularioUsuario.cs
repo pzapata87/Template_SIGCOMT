@@ -8,7 +8,7 @@ namespace SIGCOMT.Domain
         public int UsuarioId { get; set; }
         public int TipoPermiso { get; set; }
 
-        public Formulario Formulario { get; set; }
-        public Usuario Usuario { get; set; }
+        public virtual PermisoFormulario PermisoFormulario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

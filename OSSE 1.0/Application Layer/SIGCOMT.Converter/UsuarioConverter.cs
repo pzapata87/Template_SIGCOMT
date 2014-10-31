@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SIGCOMT.Cache;
 using SIGCOMT.Common;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
-using Usuario = SIGCOMT.Domain.Usuario;
 
 namespace SIGCOMT.Converter
 {
@@ -39,15 +37,15 @@ namespace SIGCOMT.Converter
 
         public static List<PermisoFormularioDto> PermisosFormulario(IEnumerable<PermisoFormularioUsuario> permisos, IEnumerable<RolUsuario> roles)
         {
-            var list = roles.SelectMany(x => GlobalParameters.PermisoFormularioList.SelectMany(
-                p => p.Value.Where(q => q.RolId == x.RolId).Select(r => new PermisoFormularioDto
+            var list = roles.SelectMany(p => p.Rol.PermisoRolList.Select(q =>
+                new PermisoFormularioDto
                 {
-                    TipoPermiso = r.TipoPermiso,
-                    Id = p.Key
-                }))).Union(permisos.Select(p => new PermisoFormularioDto
+                    TipoPermiso = q.TipoPermiso,
+                    FormularioId = q.FormularioId
+                })).Union(permisos.Select(p => new PermisoFormularioDto
                 {
-                    TipoPermiso = p.TipoPermiso,
-                    Id = p.FormularioId
+                    TipoPermiso = p.FormularioId,
+                    FormularioId = p.FormularioId
                 }));
 
             return list.ToList();

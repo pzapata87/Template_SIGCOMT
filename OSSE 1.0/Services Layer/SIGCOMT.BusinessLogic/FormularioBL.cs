@@ -15,27 +15,24 @@ namespace SIGCOMT.BusinessLogic
     public class FormularioBL : IFormularioBL
     {
         private readonly IFormularioRepository _formularioRepository;
-        private readonly IPermisoRolRepository _permisoRolRepository;
 
-        public FormularioBL(IFormularioRepository formularioRepository, IPermisoRolRepository permisoRolRepository)
+        public FormularioBL(IFormularioRepository formularioRepository)
         {
             _formularioRepository = formularioRepository;
-            _permisoRolRepository = permisoRolRepository;
         }
 
         public List<Formulario> Formularios(Usuario usuario)
         {
-            var formularios = new List<Formulario>();
-            if (usuario != null)
-            {
-                const int estadoActivo = (int) TipoEstado.Activo;
-                const int permisoMostrar = (int) TipoPermiso.Mostrar;
+            const int estadoActivo = (int) TipoEstado.Activo;
+            const int permisoMostrar = (int) TipoPermiso.Mostrar;
 
-                IEnumerable<int> listaRolesUsuario = usuario.RolUsuarioList.Where(p => p.Estado == estadoActivo).Select(p => p.RolId);
-
-                formularios = _permisoRolRepository.FindAll(p => listaRolesUsuario.Any(q => q == p.RolId)
-                                                                 && p.TipoPermiso == permisoMostrar).Select(p => p.Formulario).ToList();
-            }
+            var formularios =
+                usuario.RolUsuarioList.Where(p => p.Estado == estadoActivo)
+                    .SelectMany(
+                        p =>
+                            p.Rol.PermisoRolList.Where(q => q.TipoPermiso == permisoMostrar)
+                                .Select(q => q.PermisoFormulario.Formulario))
+                    .Union(usuario.PermisoUsuarioList.Select(p => p.PermisoFormulario.Formulario));
 
             return formularios.ToList();
         }

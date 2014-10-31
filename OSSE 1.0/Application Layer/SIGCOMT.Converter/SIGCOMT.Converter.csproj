@@ -47,10 +47,6 @@
       <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
       <Name>SIGCOMT.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Cache\SIGCOMT.Cache.csproj">
-      <Project>{495aede1-810c-49fb-a9d7-3cb472104ef2}</Project>
-      <Name>SIGCOMT.Cache</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SIGCOMT.DTO\SIGCOMT.DTO.csproj">
       <Project>{f2dbf062-aa20-4db9-ad01-71ce2a74119d}</Project>
       <Name>SIGCOMT.DTO</Name>

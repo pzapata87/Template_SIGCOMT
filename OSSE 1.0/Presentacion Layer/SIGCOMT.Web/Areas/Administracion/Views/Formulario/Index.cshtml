@@ -91,73 +91,73 @@
 
     <script type="text/javascript">
 
-    jQuery(document).ready(function () {
-        //jQuery("#selFormulario")
-        //    .select2()
-        //    .on("change", function() {
-        //        ObtenerPermiso(jQuery(this).val());
-        //    });
+        jQuery(document).ready(function () {
+            //jQuery("#selFormulario")
+            //    .select2()
+            //    .on("change", function() {
+            //        ObtenerPermiso(jQuery(this).val());
+            //    });
 
-        var dataSet = JSON.parse('@Html.Raw(Json.Encode(Model))');
+            var dataSet = JSON.parse('@Html.Raw(Json.Encode(Model))');
 
-        var grillaPermisos = jQuery('#grillaPermisos').DataTable({
-            dom: '<"left"f><"right"l>trip',
-            responsive: true,
-            language: {
-                "url": "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
-            },
-            data: dataSet,
-            columns: [
-                {
-                    "class": 'details-control',
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": '',
-                    "searchable": false
+            var grillaPermisos = jQuery('#grillaPermisos').DataTable({
+                dom: '<"left"f><"right"l>trip',
+                responsive: true,
+                language: {
+                    "url": "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))"
                 },
-                { "data": "Modulo" },
-                { "data": "Nombre" }
-            ],
-            "order": [[1, 'asc']]
-        });
-
-        jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
-            var tr = $(this).closest('tr');
-            var row = grillaPermisos.row(tr);
-
-            if (row.child.isShown()) {
-                row.child.hide();
-                tr.removeClass('shown');
-            } else {
-                row.child(format(row.data())).show();
-                tr.addClass('shown');
-            }
-        });
-
-        var opciones = {
-            grilla: '#grillaUsuario',
-            textAll: '@Master.Todos',
-            languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
-            url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
-            selectable: true,
-            useCheckIcon: true,
-            onSelectRow: seleccionarUsuario,
-            columns: [
-                {
-                    "data": function (oObj) {
-                        return '<span title="Seleccionar" style="color: #428bca;"><i class="fa fa-square-o"></i></span>';
+                data: dataSet,
+                columns: [
+                    {
+                        "class": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": '',
+                        "searchable": false
                     },
-                    "orderable": false,
-                    "searchable": false
-                },
-                { "data": "UserName", "name": "UserName" }
-            ]
-        };
+                    { "data": "Modulo" },
+                    { "data": "Nombre" }
+                ],
+                "order": [[1, 'asc']]
+            });
 
-        Utils.Grilla(opciones);
-    });
+            jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = grillaPermisos.row(tr);
 
-            @*function ObtenerPermiso(id) {
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+
+            var opciones = {
+                grilla: '#grillaUsuario',
+                textAll: '@Master.Todos',
+                languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
+                url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
+                selectable: true,
+                useCheckIcon: true,
+                onSelectRow: seleccionarUsuario,
+                columns: [
+                    {
+                        "data": function (oObj) {
+                            return '<span title="Seleccionar" style="color: #428bca;"><i class="fa fa-square-o"></i></span>';
+                        },
+                        "orderable": false,
+                        "searchable": false
+                    },
+                    { "data": "UserName", "name": "UserName" }
+                ]
+            };
+
+            Utils.Grilla(opciones);
+        });
+
+                    @*function ObtenerPermiso(id) {
         var $divCheck = jQuery('#divPermisos');
         $divCheck.empty();
 
@@ -184,13 +184,14 @@
         }
     }*@
 
-        function format(d) {
+        function format(rowData) {
+            debugger;
             var check = '';
-            for (var i = 0; i < d.PermisoList.length; i++) {
-                var data = d.PermisoList[i];
+            for (var i = 0; i < rowData.PermisoList.length; i++) {
+                var permiso = rowData.PermisoList[i];
                 check += '<div class="ckbox ckbox-success col-sm-4">'
-                    + '<input type="checkbox" id="' + data.Id + '" checked="checked" />'
-                    + '<label for="' + data.Id + '">' + data.NombrePermiso + '</label>'
+                    + '<input type="checkbox" id="' + permiso.For permiso.Id + '" checked="checked" />'
+                    + '<label for="' + permiso.Id + '">' + permiso.NombrePermiso + '</label>'
                     + '</div>';
 
             }
@@ -198,12 +199,12 @@
         }
 
         function seleccionarUsuario(row, grilla) {
-            var data = grilla.row(row).data();
+            var rowData = grilla.row(row).data();
 
             var opcionesAjax = {
-                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
+                url: '@Url.Action("ObtenerPermisoFormulario", "Usuario", new { area = "Administracion" })',
                 parametros: {
-                    formularioId: id
+                    usuarioId: rowData.Id
                 }
             };
 

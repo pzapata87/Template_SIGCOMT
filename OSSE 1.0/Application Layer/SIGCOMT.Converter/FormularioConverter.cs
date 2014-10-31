@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
-using SIGCOMT.Cache;
 using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
@@ -16,7 +15,7 @@ namespace SIGCOMT.Converter
         public static List<ModuloDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {
             return (from modulo in formularioDomain
-                where !modulo.FormularioParentId.HasValue
+                where !modulo.FormularioParentId.HasValue && modulo.Estado == TipoEstado.Activo.GetNumberValue()
                 let idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList)
                 select new ModuloDto
                 {
@@ -40,22 +39,21 @@ namespace SIGCOMT.Converter
             return permisoFormulario;
         }
 
-        public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
-        {
-            var dictionary =
-                formularios.ToDictionary(p => p.Id,
-                    p => p.PermisoRolList.Where(q => q.Estado == TipoEstado.Activo.GetNumberValue())
-                        .Select(
-                            q => new PermisoFormularioDto
-                            {
-                                Id = q.Id,
-                                RolId = q.RolId,
-                                TipoPermiso = q.TipoPermiso,
-                                Activo = q.Activo
-                            }).ToList());
+        //public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
+        //{
+        //    var dictionary =
+        //        formularios.ToDictionary(p => p.Id,
+        //            p => p.PermisoList.Where(q => q.Estado == TipoEstado.Activo.GetNumberValue())
+        //                .Select(
+        //                    q => new PermisoFormularioDto
+        //                    {
+        //                        RolId = q.RolId,
+        //                        TipoPermiso = q.TipoPermiso,
+        //                        Activo = q.Activo
+        //                    }).ToList());
 
-            return dictionary;
-        }
+        //    return dictionary;
+        //}
 
         public static List<FormularioDto> DomainToDtoFormulario(List<Formulario> formularios, int idiomaId)
         {
@@ -69,20 +67,18 @@ namespace SIGCOMT.Converter
                     Id = formulario.Id,
                     Modulo = nombreModulo,
                     Nombre = ObtenerIdiomaFormulario(idiomaId, formulario.ItemTablaFormularioList).Nombre,
-                    PermisoList = ObtenerPermisosFormulario(GlobalParameters.PermisoFormularioList[formulario.Id])
+                    PermisoList = ObtenerPermisosFormulario(formulario.PermisoList)
                 }).ToList();
         }
 
-        public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormularioDto> permisos)
+        public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormulario> permisos)
         {
             var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
 
             return permisos.Select(p => new PermisoFormularioDto
             {
-                Id = p.Id,
-                RolId = p.RolId,
+                FormularioId = p.FormularioId,
                 TipoPermiso = p.TipoPermiso,
-                Activo = p.Activo,
                 NombrePermiso = rm.GetString(Enum.GetName(typeof(TipoPermiso), p.TipoPermiso))
             }).ToList();
         }
