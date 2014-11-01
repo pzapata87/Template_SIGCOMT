@@ -9,6 +9,6 @@ namespace SIGCOMT.Domain
         public int TipoPermiso { get; set; }
 
         public virtual Formulario Formulario { get; set; }
-        public virtual ICollection<PermisoFormularioRol> PermisoFormularioList { get; set; }
+        public virtual ICollection<PermisoFormularioRol> PermisoFormularioRolList { get; set; }
     }
 }
