@@ -15,8 +15,8 @@ namespace SIGCOMT.DataBase.Generator
 
         protected override void Seed(DbContextBase context)
         {
-            List<ItemTabla> idiomas = AgregarRegistrosTabla(context);
-            List<Rol> roles = AgregarRegistrosRol(context);
+            var idiomas = AgregarRegistrosTabla(context);
+            var roles = AgregarRegistrosRol(context);
 
             _rolAdmin = roles[0];
             _idiomaEspañol = idiomas[0];
@@ -169,7 +169,7 @@ namespace SIGCOMT.DataBase.Generator
                         Estado = activo,
                         PermisoFormularioRolList = new List<PermisoFormularioRol>
                         {
-                            new PermisoFormularioRol {Rol = _rolAdmin}
+                            new PermisoFormularioRol {Rol = _rolAdmin, Estado = activo}
                         }
                     }
                 },
@@ -225,49 +225,37 @@ namespace SIGCOMT.DataBase.Generator
                         Estado = activo,
                         PermisoFormularioRolList = new List<PermisoFormularioRol>
                         {
-                            new PermisoFormularioRol { Rol = _rolAdmin }
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
                         }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     }
                 },
-                //new List<PermisoFormularioRol>
-                //{
-                //    new PermisoFormularioRol
-                //    {
-                //        TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
-                //        Rol = _rolAdmin,
-                //        Activo = true,
-                //        Estado = activo
-                //    },
-                //    new PermisoFormularioRol
-                //    {
-                //        TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
-                //        Rol = _rolAdmin,
-                //        Activo = true,
-                //        Estado = activo
-                //    },
-                //    new PermisoFormularioRol
-                //    {
-                //        TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
-                //        Rol = _rolAdmin,
-                //        Activo = true,
-                //        Estado = activo
-                //    }
-                //},
                 ItemTablaFormularioList = new List<ItemTablaFormulario>
                 {
                     new ItemTablaFormulario {ItemTabla = _idiomaEspañol, Estado = activo, Nombre = "Usuario"}
@@ -297,23 +285,35 @@ namespace SIGCOMT.DataBase.Generator
                         Estado = activo,
                         PermisoFormularioRolList = new List<PermisoFormularioRol>
                         {
-                            new PermisoFormularioRol { Rol = _rolAdmin }
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
                         }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Crear.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Editar.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     },
                     new PermisoFormulario
                     {
                         TipoPermiso = TipoPermiso.Eliminar.GetNumberValue(),
-                        Estado = activo
+                        Estado = activo,
+                        PermisoFormularioRolList = new List<PermisoFormularioRol>
+                        {
+                            new PermisoFormularioRol { Rol = _rolAdmin, Estado = activo }
+                        }
                     }
                 },
                 ItemTablaFormularioList = new List<ItemTablaFormulario>

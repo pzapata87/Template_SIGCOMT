@@ -91,12 +91,9 @@
 
     <script type="text/javascript">
 
-        jQuery(document).ready(function () {
-            //jQuery("#selFormulario")
-            //    .select2()
-            //    .on("change", function() {
-            //        ObtenerPermiso(jQuery(this).val());
-            //    });
+        var checksSelected = [];
+
+        jQuery(document).ready(function() {
 
             var dataSet = JSON.parse('@Html.Raw(Json.Encode(Model))');
 
@@ -121,7 +118,7 @@
                 "order": [[1, 'asc']]
             });
 
-            jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function () {
+            jQuery('#grillaPermisos tbody').on('click', 'td.details-control', function() {
                 var tr = $(this).closest('tr');
                 var row = grillaPermisos.row(tr);
 
@@ -144,7 +141,7 @@
                 onSelectRow: seleccionarUsuario,
                 columns: [
                     {
-                        "data": function (oObj) {
+                        "data": function(oObj) {
                             return '<span title="Seleccionar" style="color: #428bca;"><i class="fa fa-square-o"></i></span>';
                         },
                         "orderable": false,
@@ -155,43 +152,49 @@
             };
 
             Utils.Grilla(opciones);
-        });
 
-                    @*function ObtenerPermiso(id) {
-        var $divCheck = jQuery('#divPermisos');
-        $divCheck.empty();
+            jQuery('#grillaPermisos tbody').on('click', 'input[type=checkbox]', function () {
+                var $check = $(this);
+                var formId = $check.data('form');
+                var tipoPermiso = $check.data('permiso');
 
-        if (id != '') {
-            var opcionesAjax = {
-                url: '@Url.Action("ObtenerPermiso", "Formulario", new {area = "Administracion"})',
-                parametros: {
-                    formularioId: id
-                }
-            };
-
-            Utils.Ajax(opcionesAjax, function (response) {
-                if (response.Success == true) {
-                    for (var i = 0; i < response.Data.length; i++) {
-                        var data = response.Data[i];
-                        var check = '<div class="ckbox ckbox-success">'
-                            + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
-                            + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
-                            + '</div>';
-                        $divCheck.append(check);
+                if ($check.prop("checked")) {
+                    checksSelected.push({ FormularioId: formId, TipoPermiso: tipoPermiso });
+                } else {
+                    for (var i = 0; i < checksSelected.length; i++) {
+                        var item = checksSelected[i];
+                        if (item.FormularioId == formId && item.TipoPermiso == tipoPermiso) {
+                            checksSelected.splice(i, 1);
+                            break;
+                        }
                     }
                 }
             });
-        }
-    }*@
+        });
 
         function format(rowData) {
-            debugger;
-            var check = '';
+            var check = '', permiso, id, index = -1, checked = '';
             for (var i = 0; i < rowData.PermisoList.length; i++) {
-                var permiso = rowData.PermisoList[i];
+                permiso = rowData.PermisoList[i];
+
+                for (var j = 0; j < checksSelected.length; j++) {
+                    index = -1;
+                    var item = checksSelected[j];
+                    if (item.FormularioId == permiso.FormularioId && item.TipoPermiso == permiso.TipoPermiso) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                if (index != -1)
+                    checked = 'checked="checked"';
+                else
+                    checked = '';
+
+                id = ''.concat(permiso.FormularioId, permiso.TipoPermiso);
                 check += '<div class="ckbox ckbox-success col-sm-4">'
-                    + '<input type="checkbox" id="' + permiso.For permiso.Id + '" checked="checked" />'
-                    + '<label for="' + permiso.Id + '">' + permiso.NombrePermiso + '</label>'
+                    + '<input type="checkbox" id="' + id + '" ' + checked + ' data-form="' + permiso.FormularioId + '" data-permiso="' + permiso.TipoPermiso + '"/>'
+                    + '<label for="' + id + '">' + permiso.NombrePermiso + '</label>'
                     + '</div>';
 
             }
@@ -202,21 +205,20 @@
             var rowData = grilla.row(row).data();
 
             var opcionesAjax = {
-                url: '@Url.Action("ObtenerPermisoFormulario", "Usuario", new { area = "Administracion" })',
+                url: '@Url.Action("ObtenerPermisoFormulario", "Usuario", new {area = "Administracion"})',
                 parametros: {
                     usuarioId: rowData.Id
                 }
             };
 
-            Utils.Ajax(opcionesAjax, function (response) {
+            Utils.Ajax(opcionesAjax, function(response) {
                 if (response.Success == true) {
+                    var permiso, id;
+                    checksSelected = response.Data;
                     for (var i = 0; i < response.Data.length; i++) {
-                        var data = response.Data[i];
-                        var check = '<div class="ckbox ckbox-success">'
-                            + '<input type="checkbox" id="' + data.TipoPermiso + '" checked="checked" />'
-                            + '<label for="' + data.TipoPermiso + '">' + data.NombrePermiso + '</label>'
-                            + '</div>';
-                        $divCheck.append(check);
+                        permiso = response.Data[i];
+                        id = ''.concat(permiso.FormularioId, permiso.TipoPermiso);
+                        jQuery('#grillaPermisos input[id=' + id + ']').prop('checked', true);
                     }
                 }
             });

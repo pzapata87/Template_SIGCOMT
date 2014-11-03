@@ -14,7 +14,7 @@ namespace SIGCOMT.Web.Controllers
     {
         private readonly IItemTablaBL _itemTablaBL;
 
-        public LoadController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL) :
+        public LoadController(IFormularioBL formularioBL, IPermisoFormularioRolBL permisoRolBL, IItemTablaBL itemTablaBL) :
             base(formularioBL, permisoRolBL, itemTablaBL)
         {
             _itemTablaBL = itemTablaBL;

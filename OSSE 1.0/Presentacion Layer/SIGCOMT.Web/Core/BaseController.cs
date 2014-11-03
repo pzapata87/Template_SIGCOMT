@@ -29,7 +29,7 @@ namespace SIGCOMT.Web.Core
         protected static readonly ILog Logger = LogManager.GetLogger(string.Empty);
         private readonly IFormularioBL _formularioBL;
         private readonly IItemTablaBL _itemTablaBL;
-        private readonly IPermisoRolBL _permisoRolBL;
+        private readonly IPermisoFormularioRolBL _permisoRolBL;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace SIGCOMT.Web.Core
         {
         }
 
-        public BaseController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL)
+        public BaseController(IFormularioBL formularioBL, IPermisoFormularioRolBL permisoRolBL, IItemTablaBL itemTablaBL)
         {
             _formularioBL = formularioBL;
             _permisoRolBL = permisoRolBL;

@@ -6,7 +6,7 @@ using SIGCOMT.Domain;
 
 namespace SIGCOMT.BusinessLogic.Interfaces
 {
-    public interface IPermisoRolBL : IPaging<PermisoFormularioRol>
+    public interface IPermisoFormularioRolBL : IPaging<PermisoFormularioRol>
     {
         PermisoFormularioRol GetById(long id);
         PermisoFormularioRol Get(Expression<Func<PermisoFormularioRol, bool>> where);

@@ -11,48 +11,48 @@ using SIGCOMT.Repository;
 namespace SIGCOMT.BusinessLogic
 {
     [TryCatch(ExceptionTypeExpected = typeof (Exception), RethrowException = true)]
-    public class PermisoRolBL : IPermisoRolBL
+    public class PermisoFormularioRolBL : IPermisoFormularioRolBL
     {
-        private readonly IPermisoRolRepository _permisoUsuarioRepository;
+        private readonly IPermisoFormularioRolRepository _permisoRolRepository;
 
-        public PermisoRolBL(IPermisoRolRepository permisoUsuarioRepository)
+        public PermisoFormularioRolBL(IPermisoFormularioRolRepository permisoRolRepository)
         {
-            _permisoUsuarioRepository = permisoUsuarioRepository;
+            _permisoRolRepository = permisoRolRepository;
         }
 
         public PermisoFormularioRol GetById(long id)
         {
-            return _permisoUsuarioRepository.FindOne(p => p.Id == id);
+            return _permisoRolRepository.FindOne(p => p.Id == id);
         }
 
         public PermisoFormularioRol Get(Expression<Func<PermisoFormularioRol, bool>> where)
         {
-            return _permisoUsuarioRepository.FindOne(where);
+            return _permisoRolRepository.FindOne(where);
         }
 
         public IEnumerable<PermisoFormularioRol> GetAll()
         {
-            return _permisoUsuarioRepository.FindAll();
+            return _permisoRolRepository.FindAll();
         }
 
         public IEnumerable<PermisoFormularioRol> GetAll(Expression<Func<PermisoFormularioRol, bool>> where)
         {
-            return _permisoUsuarioRepository.FindAll(where);
+            return _permisoRolRepository.FindAll(where);
         }
 
         public void Delete(PermisoFormularioRol entity)
         {
-            _permisoUsuarioRepository.Delete(entity);
+            _permisoRolRepository.Delete(entity);
         }
 
         public int Count(Expression<Func<PermisoFormularioRol, bool>> where)
         {
-            return _permisoUsuarioRepository.Count(where);
+            return _permisoRolRepository.Count(where);
         }
 
         public IQueryable<PermisoFormularioRol> GetAll(FilterParameters<PermisoFormularioRol> parameters)
         {
-            return _permisoUsuarioRepository.FindAllPaging(parameters);
+            return _permisoRolRepository.FindAllPaging(parameters);
         }
     }
 }

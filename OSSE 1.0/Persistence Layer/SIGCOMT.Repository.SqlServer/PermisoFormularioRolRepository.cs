@@ -4,7 +4,7 @@ using SIGCOMT.Persistence.Core;
 
 namespace SIGCOMT.Repository.SqlServer
 {
-    public class PermisoFormularioRolRepository : RepositoryWithTypedId<PermisoFormularioRol, int>, IPermisoRolRepository
+    public class PermisoFormularioRolRepository : RepositoryWithTypedId<PermisoFormularioRol, int>, IPermisoFormularioRolRepository
     {
         public PermisoFormularioRolRepository(DbContext instanceDbContext)
             : base(instanceDbContext)

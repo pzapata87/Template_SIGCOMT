@@ -21,7 +21,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
     {
         private readonly IUsuarioBL _usuarioBL;
 
-        public UsuarioController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL, IUsuarioBL usuarioBL)
+        public UsuarioController(IFormularioBL formularioBL, IPermisoFormularioRolBL permisoRolBL, IItemTablaBL itemTablaBL, IUsuarioBL usuarioBL)
              :base(formularioBL, permisoRolBL, itemTablaBL)
         {
             _usuarioBL = usuarioBL;
@@ -164,6 +164,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             if (user != null)
             {
                 response.Data = UsuarioConverter.PermisosFormulario(user.PermisoUsuarioList, user.RolUsuarioList);
+                response.Success = true;
             }
             else
             {

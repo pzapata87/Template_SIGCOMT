@@ -36,7 +36,7 @@
   <ItemGroup>
     <Compile Include="IFormularioRepository.cs" />
     <Compile Include="IItemTablaRepository.cs" />
-    <Compile Include="IPermisoRolRepository.cs" />
+    <Compile Include="IPermisoFormularioRolRepository.cs" />
     <Compile Include="IRolRepository.cs" />
     <Compile Include="ITablaRepository.cs" />
     <Compile Include="IUsuarioRepository.cs" />

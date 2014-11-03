@@ -8,7 +8,7 @@ namespace SIGCOMT.Web.Controllers
 {
     public class MenuController : BaseController
     {
-        public MenuController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL)
+        public MenuController(IFormularioBL formularioBL, IPermisoFormularioRolBL permisoRolBL, IItemTablaBL itemTablaBL)
             : base(formularioBL, permisoRolBL, itemTablaBL)
         {
         }

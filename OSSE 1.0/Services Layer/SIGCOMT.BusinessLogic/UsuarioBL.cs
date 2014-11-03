@@ -16,10 +16,6 @@ namespace SIGCOMT.BusinessLogic
     {
         private readonly IUsuarioRepository _usuarioRepository;
 
-        public UsuarioBL()
-        {
-        }
-
         public UsuarioBL(IUsuarioRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;

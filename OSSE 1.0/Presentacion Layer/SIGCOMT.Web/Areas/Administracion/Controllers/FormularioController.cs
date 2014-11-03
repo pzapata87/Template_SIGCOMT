@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using SIGCOMT.BusinessLogic.Interfaces;
+using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Converter;
 using SIGCOMT.Web.Core;
@@ -17,7 +18,7 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
 
         #endregion
 
-        public FormularioController(IFormularioBL formularioBL, IPermisoRolBL permisoRolBL, IItemTablaBL itemTablaBL)
+        public FormularioController(IFormularioBL formularioBL, IPermisoFormularioRolBL permisoRolBL, IItemTablaBL itemTablaBL)
              :base(formularioBL, permisoRolBL, itemTablaBL)
         {
             _formularioBL = formularioBL;
@@ -31,6 +32,15 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
             var formularios = FormularioConverter.DomainToDtoFormulario(modulos, UsuarioActual.IdiomaId);
 
             return View(formularios);
+        }
+
+        [Controller(TipoVerbo = TipoAccionControlador.Post)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult AgregarPermisos()
+        {
+            var response = new JsonResponse { Success = false };
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -176,10 +176,10 @@
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\toggles.css" />
     <Content Include="Content\css\weather-icons.min.css" />
+    <Content Include="Areas\Administracion\Views\Usuario\Index.cshtml" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\dataTables.bootstrap.js" />
-    <Content Include="Areas\Administracion\Views\Usuario\Index.cshtml" />
     <Content Include="Content\js\fnFilterOnReturn.js" />
     <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
@@ -189,15 +189,16 @@
     <Content Include="Content\js\jquery.gritter.min.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\js\languages\dataTables.es.json" />
     <Content Include="Content\js\modernizr.min.js" />
     <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\retina.min.js" />
     <Content Include="Content\js\select2.min.js" />
+    <Content Include="Content\js\utilsCommon.js" />
     <Content Include="Content\ViewJs\Login.js" />
     <Content Include="Content\ViewJs\UsuarioEdit.js" />
     <Content Include="Content\ViewJs\UsuarioIndex.js" />
     <Content Include="Global.asax" />
-    <Content Include="Content\js\utilsCommon.js" />
     <Content Include="images\droparrows.png" />
     <Content Include="images\logo-primary.png" />
     <Content Include="images\select2-spinner.gif" />
@@ -283,9 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Menu\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\js\languages\dataTables.es.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Administracion\Views\Usuario\Edit.cshtml" />

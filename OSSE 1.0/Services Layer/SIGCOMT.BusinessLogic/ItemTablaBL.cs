@@ -66,10 +66,5 @@ namespace SIGCOMT.BusinessLogic
         {
             return _itemTablaRepository.FindOne(p => p.Id == id);
         }
-
-        public int Count(Expression<Func<ItemTabla, bool>> where, Expression<Func<ItemTabla, object>> group)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
