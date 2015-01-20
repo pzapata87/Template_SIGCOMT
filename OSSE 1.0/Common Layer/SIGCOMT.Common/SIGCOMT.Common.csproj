@@ -52,8 +52,11 @@
     <Compile Include="DataTable\SearchColumn.cs" />
     <Compile Include="DataTable\ValorHomologacion.cs" />
     <Compile Include="Enum\TipoEstado.cs" />
+    <Compile Include="Enum\TipoModulo.cs" />
+    <Compile Include="Enum\TipoOperacion.cs" />
     <Compile Include="Enum\TipoOrden.cs" />
     <Compile Include="Enum\TipoPermiso.cs" />
+    <Compile Include="Enum\TipoRol.cs" />
     <Compile Include="Enum\TipoTabla.cs" />
     <Compile Include="FilterParameters.cs" />
     <Compile Include="Filter.cs" />

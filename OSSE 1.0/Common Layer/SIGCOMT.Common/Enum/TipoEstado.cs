@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace SIGCOMT.Common.Enum
+﻿namespace SIGCOMT.Common.Enum
 {
-    [Serializable]
     public enum TipoEstado
     {
         Inactivo = 0,
