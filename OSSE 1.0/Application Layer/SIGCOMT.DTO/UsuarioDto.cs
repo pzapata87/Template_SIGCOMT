@@ -6,8 +6,8 @@ namespace SIGCOMT.DTO
 {
     public class UsuarioDto : EntityDto<int>
     {
-        [Required(ErrorMessageResourceName = "UsernameRequerido",  ErrorMessageResourceType = typeof(Usuario) )]
-        [StringLength(20, MinimumLength = 4, ErrorMessageResourceName = "UsernameLength", ErrorMessageResourceType = typeof(Usuario))]
+        [Required]
+        [StringLength(20, MinimumLength = 4)]
         public string UserName { get; set; }
 
         [Required(ErrorMessageResourceName = "PasswordRequerido", ErrorMessageResourceType = typeof(Usuario))]

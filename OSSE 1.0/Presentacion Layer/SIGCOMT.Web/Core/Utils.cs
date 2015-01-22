@@ -117,7 +117,7 @@ namespace SIGCOMT.Web.Core
                 select new Comun
                 {
                     Valor = l.ToString(),
-                    Nombre = UtilsComun.GetEnumDescription((Enum) (object) (T) (object) Convert.ToInt32(l))
+                    Nombre = Helper.GetEnumDescription((Enum) (object) (T) (object) Convert.ToInt32(l))
                 })
                 .OrderBy(p => p.Valor)
                 .ToList();

@@ -57,13 +57,22 @@
     <Compile Include="Enum\TipoTabla.cs" />
     <Compile Include="FilterParameters.cs" />
     <Compile Include="Filter.cs" />
+    <Compile Include="FiltersRules\BaseOperationComparison.cs" />
+    <Compile Include="FiltersRules\BeginWithOperationComparison.cs" />
+    <Compile Include="FiltersRules\ContainsOperationComparison.cs" />
+    <Compile Include="FiltersRules\EndsWithOperationComparison.cs" />
+    <Compile Include="FiltersRules\EqualsOperationComparison.cs" />
+    <Compile Include="FiltersRules\GreatherThanOperationComparison.cs" />
+    <Compile Include="FiltersRules\IOperationComparison.cs" />
+    <Compile Include="FiltersRules\LambdaFilterManager.cs" />
+    <Compile Include="FiltersRules\LowerThanOperationComparison.cs" />
+    <Compile Include="FiltersRules\NotEqualsOperationComparison.cs" />
     <Compile Include="JsonResponse.cs" />
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="Rule.cs" />
-    <Compile Include="UtilsComun.cs" />
+    <Compile Include="Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

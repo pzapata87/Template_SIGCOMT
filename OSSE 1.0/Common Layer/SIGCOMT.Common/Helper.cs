@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace SIGCOMT.Common
 {
@@ -20,7 +19,7 @@ namespace SIGCOMT.Common
         public static dynamic LambdaPropertyOrderBy<T>(string propiedad) where T : class
         {
             string[] listaPropiedades = propiedad.Split('.');
-            Type type = typeof (T);
+            Type type = typeof(T);
             ParameterExpression arg = Expression.Parameter(type, "x");
             Expression expr = arg;
 
@@ -31,317 +30,7 @@ namespace SIGCOMT.Common
                 type = propertyInfo.PropertyType;
             }
 
-            if (type == typeof (string))
-            {
-                return Expression.Lambda<Func<T, string>>(expr, arg);
-            }
-            if (type == typeof (int))
-            {
-                return Expression.Lambda<Func<T, int>>(expr, arg);
-            }
-            if (type == typeof (decimal))
-            {
-                return Expression.Lambda<Func<T, decimal>>(expr, arg);
-            }
-            if (type == typeof (double))
-            {
-                return Expression.Lambda<Func<T, double>>(expr, arg);
-            }
-            if (type == typeof (DateTime))
-            {
-                return Expression.Lambda<Func<T, DateTime>>(expr, arg);
-            }
-            if (type == typeof (DateTime?))
-            {
-                return Expression.Lambda<Func<T, DateTime?>>(expr, arg);
-            }
-            if (type == typeof (float))
-            {
-                return Expression.Lambda<Func<T, float>>(expr, arg);
-            }
-            if (type == typeof (bool))
-            {
-                return Expression.Lambda<Func<T, bool>>(expr, arg);
-            }
-            if (type == typeof (bool?))
-            {
-                return Expression.Lambda<Func<T, bool?>>(expr, arg);
-            }
-            if (type == typeof (int?))
-                return Expression.Lambda<Func<T, int?>>(expr, arg);
-
-            throw new Exception("Se debe agregar el tipo " + type.Name + " al metodo LambdaPropertyOrderBy de la clase UtilsComun");
-        }
-
-        public static Expression GetMemberAccessLambda<T>(ParameterExpression arg, string itemField) where T : class
-        {
-            string[] listaPropiedades = itemField.Split('.');
-            Expression expression = arg;
-
-            Type tipoActual = typeof (T);
-
-            foreach (string propiedad in listaPropiedades)
-            {
-                PropertyInfo propertyInfo = tipoActual.GetProperty(propiedad);
-                expression = Expression.MakeMemberAccess(expression, propertyInfo);
-                tipoActual = propertyInfo.PropertyType;
-            }
-
-            return expression;
-        }
-
-        /// <summary>
-        ///     Permite obtener una expresion lambda
-        /// </summary>
-        /// <typeparam name="T">Clase de la cual se avalua las propiedades usadas para el filtro</typeparam>
-        /// <typeparam name="TQ">Clase que contiene el valor de las propiedades para el filtro</typeparam>
-        /// <param name="data">Representa el valor de las propiedades para el filtro</param>
-        /// <param name="filterRules">
-        ///     Representa la lista de Field-Value, donde "Field" es el nombre de la propiedad de T, y
-        ///     "Value" es el nombre de la propiedad de TQ
-        /// </param>
-        /// <returns></returns>
-        public static Expression<Func<T, bool>> ConvertToLambda<T, TQ>(TQ data, Rule[] filterRules)
-            where T : class
-        {
-            Expression<Func<T, bool>> expresionsLambdaSet = null;
-
-            foreach (Rule item in filterRules)
-            {
-                PropertyInfo propertyKey = null;
-                Type tipoActual = typeof (T);
-
-                if (item.Field.Contains("."))
-                {
-                    #region Seccion para obtener la ultima propiedad de la composicion
-
-                    string[] properties = item.Field.Split('.');
-
-                    foreach (string propiedad in properties)
-                    {
-                        propertyKey = tipoActual.GetProperty(propiedad);
-                        tipoActual = propertyKey.PropertyType;
-                    }
-
-                    #endregion
-                }
-                else
-                {
-                    propertyKey = typeof (T).GetProperty(item.Field);
-                }
-
-                PropertyInfo propertyValue;
-                object value = null;
-
-                if (item.Data.Contains("."))
-                {
-                    #region Seccion para obtener la ultima propiedad de la composicion
-
-                    tipoActual = typeof (TQ);
-                    string[] properties = item.Data.Split('.');
-                    object valueTemp = data;
-
-                    foreach (string propiedad in properties)
-                    {
-                        propertyValue = tipoActual.GetProperty(propiedad);
-                        tipoActual = propertyValue.PropertyType;
-                        value = propertyValue.GetValue(valueTemp);
-                        valueTemp = value;
-                    }
-
-                    #endregion
-                }
-                else
-                {
-                    propertyValue = typeof (TQ).GetProperty(item.Data);
-                    value = propertyValue.GetValue(data);
-                }
-
-                if (propertyKey != null)
-                {
-                    Expression valorEvaluar = value == null
-                        ? (Expression) Expression.Constant(null)
-                        : Expression.Convert(Expression.Constant(Convert.ChangeType(value,
-                            Nullable.GetUnderlyingType(propertyKey.PropertyType) ?? propertyKey.PropertyType)),
-                            propertyKey.PropertyType);
-
-                    ParameterExpression arg = Expression.Parameter(typeof (T), "p");
-                    BinaryExpression comparison = Expression.Equal(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
-
-                    expresionsLambdaSet = expresionsLambdaSet != null
-                        ? expresionsLambdaSet.And(Expression.Lambda<Func<T, bool>>(comparison, arg))
-                        : Expression.Lambda<Func<T, bool>>(comparison, arg);
-                }
-            }
-
-            return expresionsLambdaSet ?? PredicateBuilder.True<T>();
-        }
-
-        public static Expression<Func<T, bool>> ConvertToLambda<T>(Filter parametro) where T : class
-        {
-            Expression<Func<T, bool>> expresionsLambdaSet = MergeRules<T>(parametro);
-
-            return expresionsLambdaSet ?? PredicateBuilder.True<T>();
-        }
-
-        public static Expression<Func<T, bool>> ConvertToLambda<T>(string filters) where T : class
-        {
-            Filter parametros = (string.IsNullOrEmpty(filters)) ? null : JsonConvert.DeserializeObject<Filter>(filters);
-
-            if (parametros == null)
-                return PredicateBuilder.True<T>();
-
-            Expression<Func<T, bool>> expresionsLambdaSet = MergeRules<T>(parametros);
-
-            return expresionsLambdaSet ?? PredicateBuilder.True<T>();
-        }
-
-        private static Expression<Func<T, bool>> MergeRules<T>(Filter parametro) where T : class
-        {
-            Expression<Func<T, bool>> expresionsLambdaSet = null;
-
-            Expression comparison = null;
-
-            foreach (Rule item in parametro.Rules)
-            {
-                ParameterExpression arg = Expression.Parameter(typeof (T), "p");
-                PropertyInfo property;
-
-                if (item.Field.Contains("."))
-                {
-                    #region Seccion para obtener la ultima propiedad de la composicion
-
-                    string[] properties = item.Field.Split('.');
-                    Type tipoActual = typeof (T);
-                    PropertyInfo propertyInfo = null;
-
-                    foreach (string propiedad in properties)
-                    {
-                        propertyInfo = tipoActual.GetProperty(propiedad);
-                        tipoActual = propertyInfo.PropertyType;
-                    }
-
-                    property = propertyInfo;
-
-                    #endregion
-                }
-                else
-                    property = typeof (T).GetProperty(item.Field);
-
-                if (property != null)
-                {
-                    TypeConverter converter =
-                        TypeDescriptor.GetConverter(Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
-
-                    bool isValid;
-
-                    if (property.PropertyType == typeof (DateTime))
-                    {
-                        DateTime fechaCasteada;
-                        isValid = DateTime.TryParse(item.Data, out fechaCasteada);
-                    }
-                    else
-                    {
-                        isValid = converter.IsValid(item.Data);
-                    }
-
-                    if (!isValid)
-                        continue;
-
-                    Expression valorEvaluar = item.Data == null
-                        ? (Expression) Expression.Constant(item.Data)
-                        : Expression.Convert(Expression.Constant(Convert.ChangeType(item.Data,
-                            Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType)),
-                            property.PropertyType);
-
-                    switch (item.Op)
-                    {
-                            #region Lista de Expresiones Comparativas
-
-                        case "bw":
-                            MethodInfo miBeginWith = typeof (string).GetMethod("StartsWith", new[] {typeof (string)});
-                            comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miBeginWith, valorEvaluar);
-                            break;
-                        case "gt":
-                            comparison = Expression.GreaterThanOrEqual(GetMemberAccessLambda<T>(arg, item.Field),
-                                valorEvaluar);
-                            break;
-                        case "lt":
-                            comparison = Expression.LessThanOrEqual(GetMemberAccessLambda<T>(arg, item.Field),
-                                valorEvaluar);
-                            break;
-                        case "eq":
-                            comparison = Expression.Equal(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
-                            break;
-                        case "ne":
-                            comparison = Expression.NotEqual(GetMemberAccessLambda<T>(arg, item.Field), valorEvaluar);
-                            break;
-                        case "ew":
-                            MethodInfo miEndsWith = typeof (string).GetMethod("EndsWith", new[] {typeof (string)});
-                            comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miEndsWith, valorEvaluar);
-                            break;
-                        case "cn":
-                            MethodInfo miContains = typeof (string).GetMethod("Contains", new[] {typeof (string)});
-                            comparison = Expression.Call(GetMemberAccessLambda<T>(arg, item.Field), miContains, valorEvaluar);
-                            break;
-                        case "fe":
-                            break;
-
-                            #endregion
-                    }
-                }
-
-                #region Concatenacion de las Expresiones de los rules actuales
-
-                if (parametro.GroupOp.ToUpper() == "AND")
-                {
-                    expresionsLambdaSet = expresionsLambdaSet != null
-                        ? expresionsLambdaSet.And(Expression.Lambda<Func<T, bool>>(comparison, arg))
-                        : Expression.Lambda<Func<T, bool>>(comparison, arg);
-                }
-                else if (parametro.GroupOp.ToUpper() == "OR")
-                {
-                    expresionsLambdaSet = expresionsLambdaSet != null
-                        ? expresionsLambdaSet.Or(Expression.Lambda<Func<T, bool>>(comparison, arg))
-                        : Expression.Lambda<Func<T, bool>>(comparison, arg);
-                }
-                else
-                    throw new ArgumentException("Argumento GroupOp invalido");
-
-                #endregion
-            }
-
-            if (parametro.Groups == null)
-                return expresionsLambdaSet;
-
-            #region Manejo de Expresiones hijas de esta expresion
-
-            foreach (Filter parametroHijo in parametro.Groups)
-            {
-                Expression<Func<T, bool>> expressionHijo = MergeRules<T>(parametroHijo);
-                if (expressionHijo == null) continue;
-
-                if (expresionsLambdaSet == null)
-                {
-                    expresionsLambdaSet = expressionHijo;
-                    continue;
-                }
-
-                if (parametro.GroupOp.ToUpper() == "AND")
-                {
-                    expresionsLambdaSet = expresionsLambdaSet.And(expressionHijo);
-                }
-                else if (parametro.GroupOp.ToUpper() == "OR")
-                {
-                    expresionsLambdaSet = expresionsLambdaSet.Or(MergeRules<T>(parametroHijo));
-                }
-                else
-                    throw new ArgumentException("Argumento GroupOp invalido");
-            }
-
-            #endregion
-
-            return expresionsLambdaSet;
+            return Expression.Lambda(expr, arg);
         }
 
         public static string GetExceptionMessage(Exception ex)
@@ -358,7 +47,7 @@ namespace SIGCOMT.Common
             FieldInfo fi = value.GetType().GetField(value.ToString());
 
             var attributes =
-                (DescriptionAttribute[]) fi.GetCustomAttributes(typeof (DescriptionAttribute), false);
+                (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
             if (attributes.Length > 0)
                 return attributes[0].Description;
@@ -467,6 +156,20 @@ namespace SIGCOMT.Common
             return fechaConvertida;
         }
 
-        #endregion Métodos adicionales y de extensión para fechas
+        #endregion
+
+        #region Extensiones enumeración
+
+        public static string GetStringValue(this System.Enum value)
+        {
+            return Convert.ToString(Convert.ChangeType(value, value.GetTypeCode()));
+        }
+
+        public static int GetNumberValue(this System.Enum value)
+        {
+            return Convert.ToInt32(Convert.ChangeType(value, value.GetTypeCode()));
+        }
+
+        #endregion
     }
 }

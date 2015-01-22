@@ -14,6 +14,7 @@ using SIGCOMT.Common;
 using SIGCOMT.Common.Constantes;
 using SIGCOMT.Common.DataTable;
 using SIGCOMT.Common.Enum;
+using SIGCOMT.Common.FiltersRules;
 using SIGCOMT.Converter;
 using SIGCOMT.Domain;
 using SIGCOMT.Domain.Core;
@@ -114,7 +115,7 @@ namespace SIGCOMT.Web.Core
                 GridTable grid = configuracionListado.Grid;
 
                 Expression<Func<T, bool>> where =
-                    UtilsComun.ConvertToLambda<T>(grid.Columns, grid.Search, grid.Homologaciones)
+                     LambdaFilterManager.ConvertToLambda<T>(grid.Columns, grid.Search, grid.Homologaciones)
                         .And(configuracionListado.FiltrosAdicionales ?? (q => true));
 
                 var count = configuracionListado.CountMethod(where);
@@ -223,7 +224,7 @@ namespace SIGCOMT.Web.Core
             object actionName = filterContext.RouteData.Values["action"];
 
             Logger.Error(string.Format("Controlador:{0}  Action:{1}  Mensaje:{2}", controllerName, actionName,
-                UtilsComun.GetExceptionMessage(filterContext.Exception)));
+                Helper.GetExceptionMessage(filterContext.Exception)));
             filterContext.Result = View("Error");
         }
 
@@ -338,7 +339,7 @@ namespace SIGCOMT.Web.Core
             Response.ContentType = mimeType;
             Response.AddHeader("content-disposition",
                 string.Format("attachment; filename={0}.{1}",
-                    UtilsComun.GetReporteName(report), fileNameExtension));
+                    Helper.GetReporteName(report), fileNameExtension));
             Response.BinaryWrite(renderedBytes);
             Response.End();
         }
