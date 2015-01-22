@@ -70,7 +70,6 @@
     <Compile Include="Core\RepositoryWithTypedId.cs" />
     <Compile Include="DatabaseMappings\FormularioConfiguration.cs" />
     <Compile Include="DatabaseMappings\ItemTablaConfiguration.cs" />
-    <Compile Include="DatabaseMappings\ItemTablaFormularioConfiguration.cs" />
     <Compile Include="DatabaseMappings\PermisoFormularioConfiguration.cs" />
     <Compile Include="DatabaseMappings\PermisoFormularioUsuarioConfiguration.cs" />
     <Compile Include="DatabaseMappings\PermisoFormularioRolConfiguration.cs" />

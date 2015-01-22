@@ -12,18 +12,19 @@ namespace SIGCOMT.Converter
 {
     public class FormularioConverter
     {
+        private static readonly ResourceManager ResourceManager = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
+
         public static List<ModuloDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {
             return (from modulo in formularioDomain
-                where !modulo.FormularioParentId.HasValue && modulo.Estado == TipoEstado.Activo.GetNumberValue()
-                let idioma = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList)
-                select new ModuloDto
-                {
-                    Id = modulo.Id,
-                    Icono = modulo.Direccion,
-                    Nombre = idioma.Nombre,
-                    Operaciones = GenerateChildren(modulo.FormulariosHijosList, idiomaId)
-                }).ToList();
+                    where !modulo.FormularioParentId.HasValue && modulo.Estado == TipoEstado.Activo.GetNumberValue()
+                    select new ModuloDto
+                    {
+                        Id = modulo.Id,
+                        Icono = modulo.Direccion,
+                        Nombre = ResourceManager.GetString(modulo.ResourceKey),
+                        Operaciones = GenerateChildren(modulo.FormulariosHijosList)
+                    }).ToList();
         }
 
         public static PermisoFormularioDto ObtenerPermisosFormulario(Formulario formulario, IEnumerable<PermisoFormularioRol> permisos)
@@ -32,43 +33,27 @@ namespace SIGCOMT.Converter
 
             foreach (var permiso in permisos)
             {
-                var tipoPermiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso.TipoPermiso.ToString());
+                var tipoPermiso = (TipoPermiso) Enum.Parse(typeof (TipoPermiso), Convert.ToString(permiso.TipoPermiso));
                 AsignarPermisoAPropiedad(permisoFormulario, tipoPermiso);
             }
 
             return permisoFormulario;
         }
 
-        //public static Dictionary<int, List<PermisoFormularioDto>> DomainToDtoPermiso(IEnumerable<Formulario> formularios)
-        //{
-        //    var dictionary =
-        //        formularios.ToDictionary(p => p.Id,
-        //            p => p.PermisoList.Where(q => q.Estado == TipoEstado.Activo.GetNumberValue())
-        //                .Select(
-        //                    q => new PermisoFormularioDto
-        //                    {
-        //                        RolId = q.RolId,
-        //                        TipoPermiso = q.TipoPermiso,
-        //                        Activo = q.Activo
-        //                    }).ToList());
-
-        //    return dictionary;
-        //}
-
         public static List<FormularioDto> DomainToDtoFormulario(List<Formulario> formularios, int idiomaId)
         {
             return (from modulo in formularios
-                where !modulo.FormularioParentId.HasValue
-                let nombreModulo = ObtenerIdiomaFormulario(idiomaId, modulo.ItemTablaFormularioList).Nombre
-                from formulario in modulo.FormulariosHijosList
-                where formulario.Estado == TipoEstado.Activo.GetNumberValue()
-                select new FormularioDto
-                {
-                    Id = formulario.Id,
-                    Modulo = nombreModulo,
-                    Nombre = ObtenerIdiomaFormulario(idiomaId, formulario.ItemTablaFormularioList).Nombre,
-                    PermisoList = ObtenerPermisosFormulario(formulario.PermisoList)
-                }).ToList();
+                    where !modulo.FormularioParentId.HasValue
+                    let nombreModulo = ResourceManager.GetString(modulo.ResourceKey)
+                    from formulario in modulo.FormulariosHijosList
+                    where formulario.Estado == TipoEstado.Activo.GetNumberValue()
+                    select new FormularioDto
+                    {
+                        Id = formulario.Id,
+                        Modulo = ResourceManager.GetString(modulo.ResourceKey),
+                        Nombre = ResourceManager.GetString(formulario.ResourceKey),
+                        PermisoList = ObtenerPermisosFormulario(formulario.PermisoList)
+                    }).ToList();
         }
 
         public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormulario> permisos)
@@ -85,24 +70,17 @@ namespace SIGCOMT.Converter
 
         #region Métodos Privados
 
-        private static ItemTablaFormulario ObtenerIdiomaFormulario(int idiomaId, ICollection<ItemTablaFormulario> itemTablaFormularios)
-        {
-            return itemTablaFormularios.FirstOrDefault(p => p.ItemTablaId == idiomaId) ??
-                   itemTablaFormularios.First();
-        }
-
-        private static List<OperacionDto> GenerateChildren(IEnumerable<Formulario> childrenList, int idiomaId)
+        private static List<OperacionDto> GenerateChildren(IEnumerable<Formulario> childrenList)
         {
             return (from children in childrenList
-                where children.Estado == TipoEstado.Activo.GetNumberValue()
-                let idioma = ObtenerIdiomaFormulario(idiomaId, children.ItemTablaFormularioList)
-                select new OperacionDto
-                {
-                    Controlador = children.Direccion,
-                    Nombre = idioma.Nombre,
-                    Id = children.Id,
-                    Operaciones = GenerateChildren(children.FormulariosHijosList, idiomaId)
-                }).ToList();
+                    where children.Estado == TipoEstado.Activo.GetNumberValue()
+                    select new OperacionDto
+                    {
+                        Controlador = children.Direccion,
+                        Nombre = ResourceManager.GetString(children.ResourceKey),
+                        Id = children.Id,
+                        Operaciones = GenerateChildren(children.FormulariosHijosList)
+                    }).ToList();
         }
 
         private static void AsignarPermisoAPropiedad(PermisoFormularioDto permisoFormularioDto, TipoPermiso permiso)

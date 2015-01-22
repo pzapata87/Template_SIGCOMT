@@ -40,7 +40,6 @@
     <Compile Include="Core\EntityWithTypedId.cs" />
     <Compile Include="Formulario.cs" />
     <Compile Include="ItemTabla.cs" />
-    <Compile Include="ItemTablaFormulario.cs" />
     <Compile Include="PermisoFormulario.cs" />
     <Compile Include="PermisoFormularioRol.cs" />
     <Compile Include="PermisoFormularioUsuario.cs" />

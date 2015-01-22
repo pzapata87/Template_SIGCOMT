@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SIGCOMT.Domain.Core;
+﻿using SIGCOMT.Domain.Core;
 
 namespace SIGCOMT.Domain
 {
@@ -11,6 +10,5 @@ namespace SIGCOMT.Domain
         public virtual int TablaId { get; set; }
 
         public virtual Tabla Tabla { get; set; }
-        public virtual ICollection<ItemTablaFormulario> ItemTablaFormulario { get; set; }
     }
 }
