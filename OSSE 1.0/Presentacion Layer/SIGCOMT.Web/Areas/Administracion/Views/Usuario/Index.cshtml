@@ -16,11 +16,8 @@
 
 @section pageheader
 {
-    <div class="pageicon pull-left">
-        <i class="fa fa-home"></i>
-    </div>
     <div class="media-body">
-        <h4>Usuarios</h4>
+        <h3><i class="fa fa-home mr5"></i>Usuarios</h3>
     </div>
 }
 
@@ -46,58 +43,58 @@
 {
     <script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
-    <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
+    <script src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.js"></script>
     <script src="@Url.Content("~/Content/js/fnFilterOnReturn.js")"></script>
     <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
 
-        jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
-            var opciones = {
-                grilla: '#grillaUsuarioList',
-                textAll: '@Master.Todos',
-                languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
-                url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
-                columns: [
-                    {
-                        "data": function(oObj) {
-                            var btnActualizar = '<a href="javascript:;" data-toggle="tooltip" title="Modificar" class="btn-success btn-xs actualizarReg"><i class="fa fa-edit"></i></a>';
-                            var btnEliminar = '<a href="javascript:;" data-toggle="tooltip" title="Eliminar" class="btn-danger btn-xs eliminarReg"><i class="fa fa-times"></i></a>';
-                            return btnActualizar + '&nbsp;' + btnEliminar;
-                        },
-                        "orderable": false,
-                        "searchable": false
+        var opciones = {
+            grilla: '#grillaUsuarioList',
+            textAll: '@Master.Todos',
+            languageUrl: "@Url.Content(string.Format("~/Content/js/languages/dataTables.{0}.json", ViewData[MasterConstantes.Idioma]))",
+            url: '@Url.Action("Listar", "Usuario", new {area = "Administracion"})',
+            columns: [
+                {
+                    "data": function (oObj) {
+                        var btnActualizar = '<a href="javascript:;" data-toggle="tooltip" title="Modificar" class="btn-success btn-xs actualizarReg"><i class="fa fa-edit"></i></a>';
+                        var btnEliminar = '<a href="javascript:;" data-toggle="tooltip" title="Eliminar" class="btn-danger btn-xs eliminarReg"><i class="fa fa-times"></i></a>';
+                        return btnActualizar + '&nbsp;' + btnEliminar;
                     },
-                    { "data": "UserName", "name": "UserName" },
-                    { "data": "Email", "name": "Email" },
-                    { "data": "Nombre", "name": "Nombre" },
-                    { "data": "Apellido", "name": "Apellido" },
-                    { "data": "Telefono", "name": "Telefono" },
-                    { "data": "Idioma", "name": "IdiomaId", "orderable": false }
-                ],
-                dataAjax: {
-                    homologaciones: [
-                        {
-                            columna: 'IdiomaId',
-                            operador: 'eq',
-                            valores: JSON.parse('@Html.Raw(Json.Encode(Model["IdiomaId"]))')
-                        }
-                    ]
+                    "orderable": false,
+                    "searchable": false
                 },
-                crud: {
-                    getKey: function(rowData) {
-                        return rowData.Id;
-                    },
-                    actualizar: {
-                        urlActualizar: '@Url.Action("Edit", "Usuario", new {area = "Administracion"})'
-                    },
-                    eliminar: {
-                        urlEliminar: '@Url.Action("Eliminar", "Usuario", new { area = "Administracion"})',
+                { "data": "UserName", "name": "UserName" },
+                { "data": "Email", "name": "Email" },
+                { "data": "Nombre", "name": "Nombre" },
+                { "data": "Apellido", "name": "Apellido" },
+                { "data": "Telefono", "name": "Telefono" },
+                { "data": "Idioma", "name": "IdiomaId", "orderable": false }
+            ],
+            dataAjax: {
+                homologaciones: [
+                    {
+                        columna: 'IdiomaId',
+                        operador: 'eq',
+                        valores: JSON.parse('@Html.Raw(Json.Encode(Model["IdiomaId"]))')
+                    }
+                ]
+            },
+            crud: {
+                getKey: function (rowData) {
+                    return rowData.Id;
+                },
+                actualizar: {
+                    urlActualizar: '@Url.Action("Edit", "Usuario", new {area = "Administracion"})'
+                },
+                eliminar: {
+                    urlEliminar: '@Url.Action("Eliminar", "Usuario", new { area = "Administracion"})',
                         alertEliminar: {
                             title: 'Usuario',
                             message: 'Desea eliminar el usuario?',
-                            textButtonCommand: 'Si'
+                            textButtonCommand: '@Master.Si'
                         }
                     }
                 }

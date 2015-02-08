@@ -133,7 +133,7 @@ namespace SIGCOMT.DataBase.Generator
             var usuario = new Usuario
             {
                 UserName = "Admin",
-                Password = "x1z4IYAEC3Q2LZzLIC5f5g==",
+                Password = Encriptador.Encriptar("1234"),
                 Email = "admin@sigcomt.com",
                 Estado = TipoEstado.Activo.GetNumberValue(),
                 IdiomaId = int.Parse(_idiomaDefaul.Valor),

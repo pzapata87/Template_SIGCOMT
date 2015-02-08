@@ -7,12 +7,13 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using log4net.Config;
+using Resources;
 using SIGCOMT.BusinessLogic.Interfaces;
 using SIGCOMT.Cache;
 using SIGCOMT.Common.Constantes;
 using SIGCOMT.Common.Enum;
-using SIGCOMT.Converter;
 using SIGCOMT.Domain;
+using SIGCOMT.DTO.CustomModelMetadata;
 using SIGCOMT.IoC;
 using SIGCOMT.Persistence;
 using SIGCOMT.Persistence.EntityFramework;
@@ -39,6 +40,8 @@ namespace SIGCOMT.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             XmlConfigurator.Configure();
+
+            ModelMetadataProviders.Current = new ConventionalModelMetadataProvider(true, typeof(Master));
 
             CargarParametrosAplicacion();
         }

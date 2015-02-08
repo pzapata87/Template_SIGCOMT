@@ -17,7 +17,7 @@ namespace SIGCOMT.Converter
                 Nombre = usuarioDomain.Nombre,
                 Apellido = usuarioDomain.Apellido,
                 Email = usuarioDomain.Email,
-                Password = Security.Desencriptar(usuarioDomain.Password),
+                Password = Encriptador.Desencriptar(usuarioDomain.Password),
                 IdiomaId = usuarioDomain.IdiomaId,
                 Telefono = usuarioDomain.Telefono,
                 Estado = usuarioDomain.Estado
@@ -28,7 +28,7 @@ namespace SIGCOMT.Converter
         {
             usuarioDomain.Apellido = usuarioDto.Apellido;
             usuarioDomain.Nombre = usuarioDto.Nombre;
-            usuarioDomain.Password = Security.Encriptar(usuarioDto.Password);
+            usuarioDomain.Password = Encriptador.Encriptar(usuarioDto.Password);
             usuarioDomain.Telefono = usuarioDto.Telefono;
             usuarioDomain.Email = usuarioDto.Email;
             usuarioDomain.UserName = usuarioDto.UserName;

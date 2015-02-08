@@ -18,13 +18,26 @@
 
         <style type="text/css">
             /* Styles para el paginado*/
-            div.dataTables_wrapper div.left { float: left; }
-            div.dataTables_wrapper div.right { float: right; }
+            div.dataTables_wrapper div.left {
+                 float: left;
+            }
+
+            div.dataTables_wrapper div.right {
+                 float: right;
+            }
 
             /* Styles para la selección de fila de la tabla*/
-            table.dataTable tbody tr:hover { background-color: #F9F1E3; }
-            table.dataTable tbody tr.selected { background-color: #F0BE55; }
-            table.dataTable tbody tr:hover.selected { background-color: #F0B944; }
+            table.dataTable tbody tr:hover {
+                 background-color: #F9F1E3;
+            }
+
+            table.dataTable tbody tr.selected {
+                 background-color: #F0BE55;
+            }
+
+            table.dataTable tbody tr:hover.selected {
+                 background-color: #F0B944;
+            }
         </style>
 
     </head>
@@ -33,7 +46,7 @@
             <div class="headerwrapper">
                 <div class="header-left">
                     <a href="@Url.Action("Index", "Load", new { area = ""})" class="logo">
-                        <img src="~/images/logo.png" alt="" />
+                        <img src="@Url.Content("~/images/logo-primary.png")" alt="" />
                     </a>
                     <div class="pull-right">
                         <a href="" class="menu-collapse">
@@ -53,11 +66,13 @@
                 <div class="leftpanel">
                     <div class="media profile-left">
                         <a class="pull-left profile-thumb" href="#">
-                            <img class="img-circle" src="images/photos/profile.png" alt="">
+                            <img class="img-circle" src="@Url.Content("~/images/profile.png")" alt="">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">@ViewData[MasterConstantes.UsuarioActual]</h4>
-                            <small class="text-muted">Beach Lover</small>
+                            <small>
+                                <a href="@Url.Action("LogOut", "Account", new { area = "" })"><i class="glyphicon glyphicon-log-out mr5"></i>@Resources.Master.CerrarSesion</a>
+                            </small>
                         </div>
                     </div>
                 
@@ -87,7 +102,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info callback-btn">BUTTONCALBACK</button>
-                        <button type="button" class="btn btn-white" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">@Resources.Master.No</button>
                     </div>
                 </div>
             </div>

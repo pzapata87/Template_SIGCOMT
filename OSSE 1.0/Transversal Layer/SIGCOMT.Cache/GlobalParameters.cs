@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using SIGCOMT.DTO;
 
 namespace SIGCOMT.Cache
 {

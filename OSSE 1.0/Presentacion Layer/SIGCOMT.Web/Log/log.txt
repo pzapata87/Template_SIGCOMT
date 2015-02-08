@@ -273,3 +273,7 @@
    en SIGCOMT.Web.Areas.Administracion.Controllers.FormularioController.<Index>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
    en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
    en SIGCOMT.Web.Core.Aspects.GetControllerMethod.Procesar(MethodInterceptionArgs args, ILog log) en d:\Proyectos\Template 02\OSSE 1.0\Presentacion Layer\SIGCOMT.Web\Core\Aspects\GetControllerMethod.cs:línea 14
+2014-10-31 01:04:46,650 [32] ERROR SIGCOMT.Web.Core.Aspects.ControllerAttribute [(null)] - Mensaje: Referencia a objeto no establecida como instancia de un objeto. Trace:    en SIGCOMT.Web.Areas.Administracion.Controllers.FormularioController.<Index>z__OriginalMethod() en d:\Proyectos\OSSE\Template_OSSE\OSSE 1.0\Presentacion Layer\SIGCOMT.Web\Areas\Administracion\Controllers\FormularioController.cs:línea 31
+   en SIGCOMT.Web.Areas.Administracion.Controllers.FormularioController.<Index>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
+   en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
+   en SIGCOMT.Web.Core.Aspects.GetControllerMethod.Procesar(MethodInterceptionArgs args, ILog log) en d:\Proyectos\OSSE\Template_OSSE\OSSE 1.0\Presentacion Layer\SIGCOMT.Web\Core\Aspects\GetControllerMethod.cs:línea 14

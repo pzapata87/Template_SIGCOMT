@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using Resources;
 using SIGCOMT.Common;
-using SIGCOMT.Common.Constantes;
 
 namespace SIGCOMT.Web.Core
 {
@@ -49,179 +48,43 @@ namespace SIGCOMT.Web.Core
         public static List<SelectListItem> ConvertToListItem<T>(IList<T> list, string value, string text)
         {
             List<SelectListItem> listItems = (from entity in list
-                let propiedad1 = entity.GetType().GetProperty(value)
-                where propiedad1 != null
-                let valor1 = propiedad1.GetValue(entity, null)
-                where valor1 != null
-                let propiedad2 = entity.GetType().GetProperty(text)
-                where propiedad2 != null
-                let valor2 = propiedad2.GetValue(entity, null)
-                where valor2 != null
-                select new SelectListItem
-                {
-                    Value = valor1.ToString(),
-                    Text = valor2.ToString()
-                })
+                                              let propiedad1 = entity.GetType().GetProperty(value)
+                                              where propiedad1 != null
+                                              let valor1 = propiedad1.GetValue(entity, null)
+                                              where valor1 != null
+                                              let propiedad2 = entity.GetType().GetProperty(text)
+                                              where propiedad2 != null
+                                              let valor2 = propiedad2.GetValue(entity, null)
+                                              where valor2 != null
+                                              select new SelectListItem
+                                              {
+                                                  Value = valor1.ToString(),
+                                                  Text = valor2.ToString()
+                                              })
                 .OrderBy(p => p.Text)
                 .ToList();
-            listItems.Insert(0, new SelectListItem {Text = @"-- " + Master.Seleccionar + @" --", Value = "0"});
+            listItems.Insert(0, new SelectListItem { Text = @"-- " + Master.Seleccionar + @" --", Value = "0" });
             return listItems;
         }
 
-        public static List<Comun> EnumToList<T>()
+        public static List<KeyValue> EnumToList<T>()
         {
-            Type enumType = typeof (T);
+            Type enumType = typeof(T);
 
-            if (enumType.BaseType != typeof (Enum))
+            if (enumType.BaseType != typeof(Enum))
                 throw new ArgumentException("T debe ser de tipo System.Enum");
 
             Array enumValArray = Enum.GetValues(enumType);
-            List<Comun> enumValList = (from object l in enumValArray
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = Enum.GetName(enumType, l)
-                })
+            List<KeyValue> enumValList = (from object l in enumValArray
+                                          select new KeyValue
+                                          {
+                                              Valor = (int)l,
+                                              Nombre = Enum.GetName(enumType, l)
+                                          })
                 .OrderBy(p => p.Nombre)
                 .ToList();
+
             return enumValList;
-        }
-
-        public static List<Comun> EnumToListNoOrdered<T>()
-        {
-            Type enumType = typeof (T);
-
-            if (enumType.BaseType != typeof (Enum))
-                throw new ArgumentException("T debe ser de tipo System.Enum");
-
-            Array enumValArray = Enum.GetValues(enumType);
-            List<Comun> enumValList = (from object l in enumValArray
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = Enum.GetName(enumType, l)
-                })
-                .ToList();
-            return enumValList;
-        }
-
-        public static List<Comun> EnumToListDescription<T>(bool allowValue = false)
-        {
-            Type enumType = typeof (T);
-
-            if (enumType.BaseType != typeof (Enum))
-                throw new ArgumentException("T debe ser de tipo System.Enum");
-
-            Array enumValArray = Enum.GetValues(enumType);
-            List<Comun> enumValList = (from object l in enumValArray
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = Helper.GetEnumDescription((Enum) (object) (T) (object) Convert.ToInt32(l))
-                })
-                .OrderBy(p => p.Valor)
-                .ToList();
-            if (allowValue)
-                enumValList.Insert(0, new Comun {Nombre = "-- " + Master.Seleccionar + " --", Valor = "0"});
-            return enumValList;
-        }
-
-        public static int EnumToListGetIntByNombre<T>(string nombre)
-        {
-            Type enumType = typeof (T);
-
-            if (enumType.BaseType != typeof (Enum))
-                throw new ArgumentException("T debe ser de tipo System.Enum");
-
-            Array enumValArray = Enum.GetValues(enumType);
-            IEnumerable<Comun> enumValList = (from object l in enumValArray
-                let name = Enum.GetName(enumType, l)
-                where name != null
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = name.Replace("_", " ")
-                });
-            Comun id = enumValList.FirstOrDefault(p => p.Nombre == nombre);
-            return Int32.Parse(id.Valor);
-        }
-
-        public static string EnumToListGetNombre<T>(string id)
-        {
-            Type enumType = typeof (T);
-
-            if (enumType.BaseType != typeof (Enum))
-                throw new ArgumentException("T debe ser de tipo System.Enum");
-
-            Array enumValArray = Enum.GetValues(enumType);
-            IEnumerable<Comun> enumValList = (from object l in enumValArray
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = Enum.GetName(enumType, l).Replace("_", " ")
-                });
-            Comun tipo = enumValList.FirstOrDefault(p => p.Valor == id);
-            return tipo.Nombre.Replace("_", " ");
-        }
-
-        public static List<Comun> EnumToListOrderById<T>(bool allowValue)
-        {
-            Type enumType = typeof (T);
-
-            if (enumType.BaseType != typeof (Enum))
-                throw new ArgumentException("T debe ser de tipo System.Enum");
-
-            Array enumValArray = Enum.GetValues(enumType);
-            List<Comun> enumValList = (from object l in enumValArray
-                select new Comun
-                {
-                    Valor = l.ToString(),
-                    Nombre = Enum.GetName(enumType, l)
-                })
-                .OrderBy(p => p.Valor)
-                .ToList();
-            if (allowValue)
-                enumValList.Insert(0, new Comun {Nombre = "-- " + Master.Seleccionar + " --", Valor = "0"});
-            return enumValList;
-        }
-
-        public static List<Comun> ConvertToComunList<T>(IList<T> list, string value, string text, bool allowValue,
-            int val = MasterConstantes.SeleccionarId)
-        {
-            List<Comun> listItems = (from entity in list
-                let propiedad1 = entity.GetType().GetProperty(value)
-                where propiedad1 != null
-                let valor1 = propiedad1.GetValue(entity, null)
-                where valor1 != null
-                let propiedad2 = entity.GetType().GetProperty(text)
-                where propiedad2 != null
-                let valor2 = propiedad2.GetValue(entity, null)
-                where valor2 != null
-                select new Comun
-                {
-                    Valor = valor1.ToString(),
-                    Nombre = valor2.ToString()
-                })
-                .OrderBy(p => p.Valor)
-                .ToList();
-
-            if (allowValue)
-            {
-                switch (val)
-                {
-                    case MasterConstantes.SeleccionarId:
-                        listItems.Insert(0, new Comun {Nombre = "-- " + Master.Seleccionar + " --", Valor = ""});
-                        break;
-                    case MasterConstantes.NingunoId:
-                        listItems.Insert(0, new Comun {Nombre = "-- " + Master.Ninguno + " --", Valor = ""});
-                        break;
-                    case MasterConstantes.TodosId:
-                        listItems.Insert(0, new Comun {Nombre = "-- " + Master.Todos + " --", Valor = ""});
-                        break;
-                }
-            }
-
-            return listItems;
         }
 
         #endregion Manejo de datos

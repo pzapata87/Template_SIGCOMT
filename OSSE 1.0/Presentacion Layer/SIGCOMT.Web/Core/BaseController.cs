@@ -7,7 +7,6 @@ using System.Net;
 using System.Threading;
 using System.Web.Mvc;
 using log4net;
-using Microsoft.Reporting.WebForms;
 using SIGCOMT.BusinessLogic.Core;
 using SIGCOMT.BusinessLogic.Interfaces;
 using SIGCOMT.Common;
@@ -50,37 +49,16 @@ namespace SIGCOMT.Web.Core
             {
                 if (UsuarioActual.UserName == MasterConstantes.NoUsuario)
                 {
-                    RedirectToAction("LogOff", "Account", new {area = ""});
+                    RedirectToAction("LogOut", "Account", new { area = "" });
                     return;
                 }
 
                 ViewData[MasterConstantes.UsuarioSesion] = UsuarioActual;
                 ViewData[MasterConstantes.UsuarioActual] = UsuarioActual.UserName;
                 ViewData[MasterConstantes.Empresa] = "SIGCOMT";
-                ViewData[MasterConstantes.RUC] = "20508473657";
-                ViewData[MasterConstantes.Direccion] = "San Isidro";
-                ViewData[MasterConstantes.Telefono] = " 01 2641251|2641214";
-                ViewData[MasterConstantes.Email] = "SIGCOMT@hotmail.com";
                 ViewData[MasterConstantes.IdUsuarioActual] = UsuarioActual.Id;
-
-                ItemTabla idioma =  itemTablaBL.Get(p => p.TablaId == (int) TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
-
-                if (idioma != null)
-                {
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(idioma.Nombre);
-                    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(idioma.Nombre);
-                    Idioma = Thread.CurrentThread.CurrentUICulture.ToString().Split('-')[0];
-
-                    ViewData[MasterConstantes.Idioma] = Idioma;
-                }
+                
             }
-
-            var formulariosEnSession = (List<Formulario>) System.Web.HttpContext.Current.Session[MasterConstantes.Formularios];
-            if (formulariosEnSession != null)
-                System.Web.HttpContext.Current.Session.Remove(MasterConstantes.Formularios);
-
-            List<Formulario> nuevosFormularios = formularioBL.FindAll(p => p.Estado == (int) TipoEstado.Activo).ToList();
-            System.Web.HttpContext.Current.Session.Add(MasterConstantes.Formularios, nuevosFormularios);
         }
 
         #endregion
@@ -104,6 +82,30 @@ namespace SIGCOMT.Web.Core
         #endregion
 
         #region Métodos
+
+        #region Cultura
+
+        protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
+        {
+            if (UsuarioActual == null || _itemTablaBL == null)
+                return base.BeginExecuteCore(callback, state);
+
+
+            var idioma = _itemTablaBL.Get(p => p.TablaId == (int)TipoTabla.Idioma && p.Id == UsuarioActual.IdiomaId);
+
+            if (idioma != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(idioma.Nombre);
+                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+                Idioma = idioma.Nombre.Split('-')[0];
+
+                ViewData[MasterConstantes.Idioma] = Idioma;
+            }
+
+            return base.BeginExecuteCore(callback, state);
+        }
+
+        #endregion
 
         #region Paginacion
 
@@ -263,19 +265,6 @@ namespace SIGCOMT.Web.Core
 
         #endregion
 
-        #region Listado ItemTabla
-
-        /// <summary>
-        ///     Obtiene un listado de ItemTabla dado el idTipoTabla
-        /// </summary>
-        /// <returns></returns>
-        public List<ItemTabla> ItemTablaList(int idTipoTabla)
-        {
-            return _itemTablaBL.FindAll(p => p.TablaId == idTipoTabla).ToList();
-        }
-
-        #endregion
-
         public new RedirectToRouteResult RedirectToAction(string action, string controller, object routeValues)
         {
             return base.RedirectToAction(action, controller, routeValues);
@@ -285,66 +274,6 @@ namespace SIGCOMT.Web.Core
         {
             return base.Json(data, behavior);
         }
-
-        #region Reportes
-
-        /// <summary>
-        ///     Renderiza un reporte con sus datos
-        /// </summary>
-        /// <param name="report">Nombre del reporte</param>
-        /// <param name="ds">Conjunto de Datos</param>
-        /// <param name="data">Datos</param>
-        /// <param name="formato">Formato PDF o Excel</param>
-        /// <param name="parametros"></param>
-        public void RenderReport(string report, string ds, object data, string formato, ReportParameter[] parametros = null)
-        {
-            string reportPath = Server.MapPath(string.Format("~/Reports/{0}.rdlc", report));
-            var localReport = new LocalReport {ReportPath = reportPath};
-            var reportDataSource = new ReportDataSource(ds, data);
-
-            localReport.DataSources.Add(reportDataSource);
-            if (parametros != null)
-                localReport.SetParameters(parametros);
-
-            string reportType;
-            string deviceInfo = string.Empty;
-
-            switch (formato)
-            {
-                case "PDF":
-                    reportType = "PDF";
-                    deviceInfo =
-                        string.Format(
-                            "<DeviceInfo><OutputFormat>{0}</OutputFormat><PageWidth>8.9in</PageWidth><PageHeight>11in</PageHeight><MarginTop>0.2in</MarginTop><MarginLeft>0.2in</MarginLeft><MarginRight>0.2in</MarginRight><MarginBottom>0.2in</MarginBottom></DeviceInfo>",
-                            reportType);
-                    break;
-                case "EXCEL":
-                    reportType = "Excel";
-
-                    break;
-                default:
-                    return;
-            }
-
-            string mimeType;
-            string encoding;
-            string fileNameExtension;
-            Warning[] warnings;
-            string[] streams;
-
-            byte[] renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding,
-                out fileNameExtension, out streams, out warnings);
-
-            Response.Clear();
-            Response.ContentType = mimeType;
-            Response.AddHeader("content-disposition",
-                string.Format("attachment; filename={0}.{1}",
-                    Helper.GetReporteName(report), fileNameExtension));
-            Response.BinaryWrite(renderedBytes);
-            Response.End();
-        }
-
-        #endregion
 
         #endregion
     }

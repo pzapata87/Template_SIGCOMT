@@ -3,7 +3,7 @@
 
 <h5 class="leftpanel-title">Navigation</h5>
 <ul class="nav nav-pills nav-stacked">
-    
+
     @if (Model != null)
     {
         foreach (ModuloDto modulo in Model)
@@ -11,11 +11,11 @@
             if (modulo.Operaciones.Any())
             {
                 <li class="parent">
-                    <a href=""><i class="fa fa-suitcase"></i> <span>@modulo.Nombre</span></a>
+                    <a href=""><i class="fa @modulo.Icono"></i> <span>@modulo.Nombre</span></a>
                     <ul class="children">
                         @foreach (OperacionDto operacion in modulo.Operaciones)
                         {
-                            <li><a href="@operacion.Controlador">@operacion.Nombre</a></li>
+                            <li><a href="@Url.Content(operacion.Controlador)">@operacion.Nombre</a></li>
                         }
                     </ul>
                 </li>

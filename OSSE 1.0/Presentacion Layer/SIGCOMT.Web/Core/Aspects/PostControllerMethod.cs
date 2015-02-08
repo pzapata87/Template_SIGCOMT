@@ -39,7 +39,7 @@ namespace SIGCOMT.Web.Core.Aspects
             }
             else
             {
-                string message = string.Join("; ",
+                string message = string.Join("<br>",
                     controller.ModelState.Values.SelectMany(p => p.Errors).Select(p => p.ErrorMessage));
 
                 var jsonResponse = new JsonResponse { Success = false, Message = message };

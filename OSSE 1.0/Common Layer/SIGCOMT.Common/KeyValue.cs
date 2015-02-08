@@ -1,8 +1,8 @@
 ﻿namespace SIGCOMT.Common
 {
-    public class Comun
+    public class KeyValue
     {
         public string Nombre { get; set; }
-        public string Valor { get; set; }
+        public int Valor { get; set; }
     }
 }

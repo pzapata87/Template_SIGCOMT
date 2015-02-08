@@ -126,7 +126,16 @@
   <data name="Eliminar" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="FormularioOperation" xml:space="preserve">
+    <value>Formulario</value>
+  </data>
   <data name="Mostrar" xml:space="preserve">
     <value>Mostrar</value>
+  </data>
+  <data name="SeguridadModulo" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="UsuarioOperation" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

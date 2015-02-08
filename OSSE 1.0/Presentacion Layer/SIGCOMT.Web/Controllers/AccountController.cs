@@ -76,11 +76,11 @@ namespace SIGCOMT.Web.Controllers
             }
         }
 
-        public ActionResult LogOff()
+        public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Load");
         }
 
         #endregion
@@ -101,7 +101,7 @@ namespace SIGCOMT.Web.Controllers
             FormsAuthentication.SetAuthCookie(usuario.UserName, createPersistentCookie);
 
             var ticket = new FormsAuthenticationTicket(1, usuario.UserName, DateTime.Now, DateTime.Now.AddMinutes(30),
-                createPersistentCookie, usuario.Id.ToString());
+                createPersistentCookie, Convert.ToString(usuario.Id));
 
             string encTicket = FormsAuthentication.Encrypt(ticket);
             var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);

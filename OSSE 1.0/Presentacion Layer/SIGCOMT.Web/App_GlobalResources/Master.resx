@@ -120,32 +120,11 @@
   <data name="Aceptar" xml:space="preserve">
     <value>Aceptar</value>
   </data>
-  <data name="Actualizar" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
   <data name="Agregar" xml:space="preserve">
     <value>Agregar</value>
   </data>
-  <data name="AgregarDetalle" xml:space="preserve">
-    <value>Agregar Detalle</value>
-  </data>
-  <data name="Alertas" xml:space="preserve">
-    <value>Alertas</value>
-  </data>
-  <data name="Buscar" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="CambiarClave" xml:space="preserve">
-    <value>Cambiar contraseña</value>
-  </data>
-  <data name="CambiarPassword" xml:space="preserve">
-    <value>Cambiar Contraseña</value>
-  </data>
   <data name="Cancelar" xml:space="preserve">
     <value>Cancelar</value>
-  </data>
-  <data name="CancelarVersion" xml:space="preserve">
-    <value>Cancelar Versión</value>
   </data>
   <data name="Cerrar" xml:space="preserve">
     <value>Cerrar</value>
@@ -153,8 +132,8 @@
   <data name="CerrarSesion" xml:space="preserve">
     <value>Cerrar Sesión</value>
   </data>
-  <data name="ClaveRecuperada" xml:space="preserve">
-    <value>CLAVE RECUPERADA</value>
+  <data name="ColumnaOpcion_Grilla" xml:space="preserve">
+    <value>Opción</value>
   </data>
   <data name="Confirmacion" xml:space="preserve">
     <value>¿Está seguro de realizar esta operación?</value>
@@ -165,9 +144,6 @@
   <data name="Editar" xml:space="preserve">
     <value>Editar</value>
   </data>
-  <data name="EditarPanel" xml:space="preserve">
-    <value>Editar Panel</value>
-  </data>
   <data name="Eliminar" xml:space="preserve">
     <value>Eliminar</value>
   </data>
@@ -177,50 +153,14 @@
   <data name="Estado" xml:space="preserve">
     <value>Estado</value>
   </data>
-  <data name="EstadoActivo" xml:space="preserve">
-    <value>Activo</value>
-  </data>
-  <data name="EstadoInactivo" xml:space="preserve">
-    <value>Inactivo</value>
-  </data>
-  <data name="Exito" xml:space="preserve">
-    <value>Éxito</value>
-  </data>
-  <data name="FechaSistema" xml:space="preserve">
-    <value>Fecha del Sistema</value>
-  </data>
   <data name="Guardar" xml:space="preserve">
     <value>Guardar</value>
   </data>
-  <data name="Limpiar" xml:space="preserve">
-    <value>Limpiar</value>
+  <data name="Imprimir" xml:space="preserve">
+    <value>Imprimir</value>
   </data>
-  <data name="ListaErrores" xml:space="preserve">
-    <value>Errores Encontrados</value>
-  </data>
-  <data name="ListaVacia" xml:space="preserve">
-    <value>Lista Vacia</value>
-  </data>
-  <data name="MensajeEliminarFalla" xml:space="preserve">
-    <value>Este registro no se puede eliminar, se encuentra asociado a otro registro.</value>
-  </data>
-  <data name="MensajeError" xml:space="preserve">
-    <value>Por favor ingrese de nuevo los datos y intente grabar o para mas seguridad informe a Soporte.</value>
-  </data>
-  <data name="MensajeErrorPanel" xml:space="preserve">
-    <value>No se pudo mostrar el Panel</value>
-  </data>
-  <data name="MensajeExito" xml:space="preserve">
-    <value>Se Procesó con éxito el registro </value>
-  </data>
-  <data name="MensajeExportar" xml:space="preserve">
-    <value>Puede descargarlo de la siguiente dirección</value>
-  </data>
-  <data name="MensajeFalla" xml:space="preserve">
-    <value>Ocurrió un error, por favor intente de nuevo o mas tarde.</value>
-  </data>
-  <data name="MensajeProcesando" xml:space="preserve">
-    <value>Por favor espere, procesando solicitud...</value>
+  <data name="IniciarSesion" xml:space="preserve">
+    <value>Iniciar Sesión</value>
   </data>
   <data name="MensajeReintentar" xml:space="preserve">
     <value>Por favor ingrese los datos de forma correcta o ingrese todos los campos requeridos.</value>
@@ -231,14 +171,8 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="NotAuthorized" xml:space="preserve">
-    <value>Usted no tiene permiso para ver esta pantalla</value>
-  </data>
   <data name="Nuevo" xml:space="preserve">
     <value>Nuevo</value>
-  </data>
-  <data name="PanelControl" xml:space="preserve">
-    <value>Panel de Control</value>
   </data>
   <data name="Quitar" xml:space="preserve">
     <value>Quitar</value>
@@ -249,40 +183,13 @@
   <data name="SalirSistema" xml:space="preserve">
     <value>¿ Está seguro de Salir del Sistema?</value>
   </data>
-  <data name="SeguroEliminar" xml:space="preserve">
-    <value>¿Está seguro que desea eliminar este item?</value>
-  </data>
   <data name="Seleccionar" xml:space="preserve">
-    <value>Seleccionar</value>
-  </data>
-  <data name="SeleccioneRegistro" xml:space="preserve">
-    <value>Seleccione un Registro</value>
+    <value>--Seleccionar--</value>
   </data>
   <data name="Si" xml:space="preserve">
     <value>Si</value>
   </data>
-  <data name="SinRegistro" xml:space="preserve">
-    <value>Sin Registro</value>
-  </data>
-  <data name="SinRegistroMostrar" xml:space="preserve">
-    <value>Sin registros que mostrar</value>
-  </data>
-  <data name="TipoCambio" xml:space="preserve">
-    <value>Tipo de Cambio</value>
-  </data>
-  <data name="TituloAlerta" xml:space="preserve">
-    <value>Alerta</value>
-  </data>
   <data name="Todos" xml:space="preserve">
     <value>Todos</value>
-  </data>
-  <data name="Usuario" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
-  <data name="VerDetalle" xml:space="preserve">
-    <value>Ver Detalle</value>
-  </data>
-  <data name="VistaPrevia" xml:space="preserve">
-    <value>Vista Previa</value>
   </data>
 </root>

@@ -41,7 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comun.cs" />
+    <Compile Include="KeyValue.cs" />
     <Compile Include="Constantes\IconosSvgConstantes.cs" />
     <Compile Include="Constantes\MasterConstantes.cs" />
     <Compile Include="DataTable\ColumnModel.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="JsonResponse.cs" />
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security.cs" />
+    <Compile Include="Encriptador.cs" />
     <Compile Include="Rule.cs" />
     <Compile Include="Helper.cs" />
   </ItemGroup>

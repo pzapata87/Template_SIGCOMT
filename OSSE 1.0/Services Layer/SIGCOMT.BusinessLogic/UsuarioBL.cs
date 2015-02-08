@@ -126,7 +126,7 @@ namespace SIGCOMT.BusinessLogic
                 return null;
             }
 
-            string enc = Security.Encriptar(password);
+            string enc = Encriptador.Encriptar(password);
 
             return enc == user.Password ? user : null;
         }
