@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SIGCOMT.DTO.CustomModelMetadata.Extensions
+namespace SIGCOMT.Resources.CustomModelMetadata.Extensions
 {
     public static class ReflectionExtensions
     {

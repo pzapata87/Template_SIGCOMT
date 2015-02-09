@@ -73,10 +73,6 @@
     <Compile Include="UrlOperationManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
-      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
-      <Name>SIGCOMT.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Domain Layer\SIGCOMT.Domain\SIGCOMT.Domain.csproj">
       <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
       <Name>SIGCOMT.Domain</Name>
@@ -84,6 +80,10 @@
     <ProjectReference Include="..\..\Persistence Layer\SIGCOMT.Persistence\SIGCOMT.Persistence.csproj">
       <Project>{1e63dbb3-65e5-49ff-b733-1a2cf7f4d83c}</Project>
       <Name>SIGCOMT.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>SIGCOMT.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

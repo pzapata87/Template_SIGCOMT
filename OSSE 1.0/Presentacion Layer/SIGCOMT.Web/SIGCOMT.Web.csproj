@@ -133,11 +133,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\Master.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Master.resx</DependentUpon>
-    </Compile>
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\FormularioController.cs" />
     <Compile Include="Areas\Administracion\Controllers\UsuarioController.cs" />
@@ -209,7 +204,9 @@
     <Content Include="images\sort_both.png" />
     <Content Include="images\sort_desc.png" />
     <Content Include="images\sort_desc_disabled.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -240,14 +237,6 @@
       <Project>{f2dbf062-aa20-4db9-ad01-71ce2a74119d}</Project>
       <Name>SIGCOMT.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
-      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
-      <Name>SIGCOMT.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Email\SIGCOMT.Email.csproj">
-      <Project>{3ee524c4-c512-468b-930c-848740897c68}</Project>
-      <Name>SIGCOMT.Email</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Domain Layer\SIGCOMT.Domain\SIGCOMT.Domain.csproj">
       <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
       <Name>SIGCOMT.Domain</Name>
@@ -268,9 +257,17 @@
       <Project>{495aede1-810c-49fb-a9d7-3cb472104ef2}</Project>
       <Name>SIGCOMT.Cache</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>SIGCOMT.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.IoC\SIGCOMT.IoC.csproj">
       <Project>{2b775dd5-1e6c-402c-8596-64499e37fbd0}</Project>
       <Name>SIGCOMT.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Resources\SIGCOMT.Resources.csproj">
+      <Project>{7c829be7-0af2-432a-bfd3-6f4a697af4b7}</Project>
+      <Name>SIGCOMT.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -287,12 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Administracion\Views\Usuario\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Master.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Master.Designer.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Error\Error.cshtml" />

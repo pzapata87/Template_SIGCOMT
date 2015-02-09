@@ -1,4 +1,6 @@
 ﻿@using SIGCOMT.Common.Constantes
+@using SIGCOMT.Resources
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -39,7 +41,6 @@
                  background-color: #F0B944;
             }
         </style>
-
     </head>
     <body>
         <header>
@@ -71,7 +72,7 @@
                         <div class="media-body">
                             <h4 class="media-heading">@ViewData[MasterConstantes.UsuarioActual]</h4>
                             <small>
-                                <a href="@Url.Action("LogOut", "Account", new { area = "" })"><i class="glyphicon glyphicon-log-out mr5"></i>@Resources.Master.CerrarSesion</a>
+                                <a href="@Url.Action("LogOut", "Account", new { area = "" })"><i class="glyphicon glyphicon-log-out mr5"></i>@Master.CerrarSesion</a>
                             </small>
                         </div>
                     </div>
@@ -102,7 +103,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info callback-btn">BUTTONCALBACK</button>
-                        <button type="button" class="btn btn-white" data-dismiss="modal">@Resources.Master.No</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">@Master.No</button>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SIGCOMT.DTO.CustomModelMetadata
+namespace SIGCOMT.Resources.CustomModelMetadata
 {
     public class MetadataConventionsAttribute : Attribute
     {

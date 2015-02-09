@@ -52,13 +52,13 @@
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
-      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
-      <Name>SIGCOMT.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Domain Layer\SIGCOMT.Domain\SIGCOMT.Domain.csproj">
       <Project>{F24F1B4D-0A22-49BE-A252-450D3F42C517}</Project>
       <Name>SIGCOMT.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>SIGCOMT.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SIGCOMT.Persistence\SIGCOMT.Persistence.csproj">
       <Project>{1e63dbb3-65e5-49ff-b733-1a2cf7f4d83c}</Project>

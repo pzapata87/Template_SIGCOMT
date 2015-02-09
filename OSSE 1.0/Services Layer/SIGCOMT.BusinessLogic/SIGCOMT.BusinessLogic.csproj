@@ -58,10 +58,6 @@
     <Compile Include="UsuarioBL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
-      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
-      <Name>SIGCOMT.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Domain Layer\SIGCOMT.Domain\SIGCOMT.Domain.csproj">
       <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
       <Name>SIGCOMT.Domain</Name>
@@ -77,6 +73,10 @@
     <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Aspects\SIGCOMT.Aspects.csproj">
       <Project>{07c6face-af04-4e42-a202-ca600280ee34}</Project>
       <Name>SIGCOMT.Aspects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>SIGCOMT.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿@model SIGCOMT.DTO.LogInDto
+﻿@using SIGCOMT.Resources
+@model SIGCOMT.DTO.LogInDto
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,36 +8,26 @@
 <div class="panel panel-signin">
     <div class="panel-body">
         <div class="logo text-center">
-            <img src="~/images/logo-primary.png" alt="Chain Logo">
+            <img src="@Url.Content("~/images/logo-primary.png")" alt="Chain Logo">
         </div>
         <br />
-        <h4 class="text-center mb5">Ya es un miembro?</h4>
-        <p class="text-center">Inicie sesion con su cuenta</p>
-
         <div class="mb30"></div>
 
-        @using (Html.BeginForm("Login", "Account", new {area = ""}, FormMethod.Post, new {id = "frmLogin"}))
+        @using (Html.BeginForm("Login", "Account", new { area = "" }, FormMethod.Post, new { id = "frmLogin" }))
         {
             @Html.AntiForgeryToken()
 
             <div class="input-group mb15">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                @Html.TextBoxFor(model => model.UserName, new {@placeholder = "Usuario", @class = "form-control"})
+                @Html.TextBoxFor(model => model.UserName, new { @placeholder = Usuario.UserName_Display, @class = "form-control" })
             </div>
             <div class="input-group mb15">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                @Html.PasswordFor(model => model.Password, new {@placeholder = "Contraseña", @class = "form-control"})
+                @Html.PasswordFor(model => model.Password, new { @placeholder = Usuario.Password_Display, @class = "form-control" })
             </div>
-
             <div class="clearfix">
-                <div class="pull-left">
-                    <div class="ckbox ckbox-primary mt10">
-                        @Html.CheckBoxFor(model => model.RememberMe, new {@id = "rememberMe", @value = 1})
-                        <label for="rememberMe">Recordar contraseña</label>
-                    </div>
-                </div>
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-success" id="btnLogOn">Iniciar Sesion <i class="fa fa-angle-right ml5"></i></button>
+                    <button type="submit" class="btn btn-success" id="btnLogOn">@Master.IniciarSesion <i class="fa fa-angle-right ml5"></i></button>
                 </div>
             </div>
         }

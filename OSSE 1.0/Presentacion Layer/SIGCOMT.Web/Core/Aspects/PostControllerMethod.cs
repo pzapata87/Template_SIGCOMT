@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using log4net;
 using PostSharp.Aspects;
-using Resources;
 using SIGCOMT.Common;
+using SIGCOMT.Resources;
 
 namespace SIGCOMT.Web.Core.Aspects
 {

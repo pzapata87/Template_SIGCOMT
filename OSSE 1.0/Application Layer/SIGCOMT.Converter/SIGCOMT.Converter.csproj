@@ -39,13 +39,17 @@
     <Compile Include="UsuarioConverter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
-      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
-      <Name>SIGCOMT.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Domain Layer\SIGCOMT.Domain\SIGCOMT.Domain.csproj">
       <Project>{f24f1b4d-0a22-49be-a252-450d3f42c517}</Project>
       <Name>SIGCOMT.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
+      <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
+      <Name>SIGCOMT.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Resources\SIGCOMT.Resources.csproj">
+      <Project>{7c829be7-0af2-432a-bfd3-6f4a697af4b7}</Project>
+      <Name>SIGCOMT.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\SIGCOMT.DTO\SIGCOMT.DTO.csproj">
       <Project>{f2dbf062-aa20-4db9-ad01-71ce2a74119d}</Project>

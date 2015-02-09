@@ -117,79 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Aceptar" xml:space="preserve">
-    <value>Aceptar</value>
+  <data name="Apellido_Display" xml:space="preserve">
+    <value>Apellido</value>
   </data>
-  <data name="Agregar" xml:space="preserve">
+  <data name="Apellido_StringLength" xml:space="preserve">
+    <value>El apellido puede tener un máximo de 50 caracteres.</value>
+  </data>
+  <data name="BotonAgregarUsuario" xml:space="preserve">
     <value>Agregar</value>
   </data>
-  <data name="Cancelar" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="CrearUsuario" xml:space="preserve">
+    <value>Crear Usuario</value>
   </data>
-  <data name="Cerrar" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="EditarUsuario" xml:space="preserve">
+    <value>Editar Usuario</value>
   </data>
-  <data name="CerrarSesion" xml:space="preserve">
-    <value>Cerrar Sesión</value>
+  <data name="Email_Display" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="ColumnaOpcion_Grilla" xml:space="preserve">
-    <value>Opción</value>
+  <data name="Email_EmailAddress" xml:space="preserve">
+    <value>El email ingresado es incorrecto.</value>
   </data>
-  <data name="Confirmacion" xml:space="preserve">
-    <value>¿Está seguro de realizar esta operación?</value>
+  <data name="Email_Required" xml:space="preserve">
+    <value>El email es requerido.</value>
   </data>
-  <data name="Crear" xml:space="preserve">
-    <value>Crear</value>
+  <data name="IdiomaId_Display" xml:space="preserve">
+    <value>Idioma</value>
   </data>
-  <data name="Editar" xml:space="preserve">
-    <value>Editar</value>
+  <data name="MensajeEliminacion" xml:space="preserve">
+    <value>Desea eliminar el usuario?</value>
   </data>
-  <data name="Eliminar" xml:space="preserve">
-    <value>Eliminar</value>
+  <data name="Nombre_Display" xml:space="preserve">
+    <value>Nombre</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
+  <data name="Nombre_StringLength" xml:space="preserve">
+    <value>El nombre puede tener un máximo de 30 caracteres.</value>
   </data>
-  <data name="Estado" xml:space="preserve">
-    <value>Estado</value>
+  <data name="Password_Display" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
-  <data name="Guardar" xml:space="preserve">
-    <value>Guardar</value>
+  <data name="Password_Required" xml:space="preserve">
+    <value>La contraseña es requerida.</value>
   </data>
-  <data name="Imprimir" xml:space="preserve">
-    <value>Imprimir</value>
+  <data name="Password_StringLength" xml:space="preserve">
+    <value>La contraseña debe tener 4 caracteres como mínimo.</value>
   </data>
-  <data name="IniciarSesion" xml:space="preserve">
-    <value>Iniciar Sesión</value>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Recordar mi cuenta?</value>
   </data>
-  <data name="MensajeReintentar" xml:space="preserve">
-    <value>Por favor ingrese los datos de forma correcta o ingrese todos los campos requeridos.</value>
+  <data name="Telefono_Display" xml:space="preserve">
+    <value>Telefono</value>
   </data>
-  <data name="Ninguno" xml:space="preserve">
-    <value>Ninguno</value>
+  <data name="Telefono_StringLength" xml:space="preserve">
+    <value>El teléfono puede tener un máximo de 15 caracteres.</value>
   </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
+  <data name="TituloAlertaMantenimientos" xml:space="preserve">
+    <value>Usuario</value>
   </data>
-  <data name="Nuevo" xml:space="preserve">
-    <value>Nuevo</value>
+  <data name="TituloListado" xml:space="preserve">
+    <value>Usuarios</value>
   </data>
-  <data name="Quitar" xml:space="preserve">
-    <value>Quitar</value>
+  <data name="TituloNotificacion_submit" xml:space="preserve">
+    <value>Usuario</value>
   </data>
-  <data name="Regresar" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="TituloPanelEdicion" xml:space="preserve">
+    <value>Formulario de información del usuario</value>
   </data>
-  <data name="SalirSistema" xml:space="preserve">
-    <value>¿ Está seguro de Salir del Sistema?</value>
+  <data name="UserName_Display" xml:space="preserve">
+    <value>Username</value>
   </data>
-  <data name="Seleccionar" xml:space="preserve">
-    <value>--Seleccionar--</value>
+  <data name="UserName_Required" xml:space="preserve">
+    <value>El nombre de usuario es requerido.</value>
   </data>
-  <data name="Si" xml:space="preserve">
-    <value>Si</value>
-  </data>
-  <data name="Todos" xml:space="preserve">
-    <value>Todos</value>
+  <data name="UserName_StringLength" xml:space="preserve">
+    <value>El nombre de usuario debe tener 6 caracteres como mínimo.</value>
   </data>
 </root>

@@ -6,13 +6,13 @@ using SIGCOMT.Common;
 using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
-using SIGCOMT.DTO.GlobalResources;
+using SIGCOMT.Resources;
 
 namespace SIGCOMT.Converter
 {
     public class FormularioConverter
     {
-        private static readonly ResourceManager ResourceManager = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
+        private static readonly ResourceManager ResourceManager = new ResourceManager("SIGCOMT.Resources.Master", typeof(Master).Assembly);
 
         public static List<ModuloDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {
@@ -58,13 +58,11 @@ namespace SIGCOMT.Converter
 
         public static List<PermisoFormularioDto> ObtenerPermisosFormulario(IEnumerable<PermisoFormulario> permisos)
         {
-            var rm = new ResourceManager("SIGCOMT.DTO.GlobalResources.Master", typeof(Master).Assembly);
-
             return permisos.Select(p => new PermisoFormularioDto
             {
                 FormularioId = p.FormularioId,
                 TipoPermiso = p.TipoPermiso,
-                NombrePermiso = rm.GetString(Enum.GetName(typeof(TipoPermiso), p.TipoPermiso))
+                NombrePermiso = ResourceManager.GetString(Enum.GetName(typeof(TipoPermiso), p.TipoPermiso))
             }).ToList();
         }
 

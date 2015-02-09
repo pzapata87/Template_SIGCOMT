@@ -117,25 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailFormato" xml:space="preserve">
-    <value>El email debe ser válido.</value>
+  <data name="Aceptar" xml:space="preserve">
+    <value>Aceptar</value>
   </data>
-  <data name="EmailRequerido" xml:space="preserve">
-    <value>El email es requerido.</value>
+  <data name="Agregar" xml:space="preserve">
+    <value>Agregar</value>
   </data>
-  <data name="IdiomaRequerido" xml:space="preserve">
-    <value>El idioma es requerido.</value>
+  <data name="Cancelar" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="PasswordLength" xml:space="preserve">
-    <value>La contraseña debe tener 4 caracteres como mínimo.</value>
+  <data name="Cerrar" xml:space="preserve">
+    <value>Cerrar</value>
   </data>
-  <data name="PasswordRequerido" xml:space="preserve">
-    <value>La contraseña es requerida.</value>
+  <data name="CerrarSesion" xml:space="preserve">
+    <value>Cerrar Sesión</value>
   </data>
-  <data name="UsernameLength" xml:space="preserve">
-    <value>El nombre de usuario debe tener 6 caracteres como mínimo.</value>
+  <data name="ColumnaOpcion_Grilla" xml:space="preserve">
+    <value>Opción</value>
   </data>
-  <data name="UsernameRequerido" xml:space="preserve">
-    <value>El nombre de usuario es requerido.</value>
+  <data name="Confirmacion" xml:space="preserve">
+    <value>¿Está seguro de realizar esta operación?</value>
+  </data>
+  <data name="Crear" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Editar" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Eliminar" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Estado" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="FormularioOperation" xml:space="preserve">
+    <value>Formulario</value>
+  </data>
+  <data name="Guardar" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Imprimir" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="IniciarSesion" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="MensajeReintentar" xml:space="preserve">
+    <value>Por favor ingrese los datos de forma correcta o ingrese todos los campos requeridos.</value>
+  </data>
+  <data name="Mostrar" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="Ninguno" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Nuevo" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="Quitar" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="Regresar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="SalirSistema" xml:space="preserve">
+    <value>¿ Está seguro de Salir del Sistema?</value>
+  </data>
+  <data name="SeguridadModulo" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="Seleccionar" xml:space="preserve">
+    <value>--Seleccionar--</value>
+  </data>
+  <data name="Si" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="Todos" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="UsuarioOperation" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

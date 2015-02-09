@@ -1,11 +1,11 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-﻿using System.Web.Mvc;
-using SIGCOMT.DTO.CustomModelMetadata.Extensions;
+using System.Web.Mvc;
+using SIGCOMT.Resources.CustomModelMetadata.Extensions;
 
-namespace SIGCOMT.DTO.CustomModelMetadata
+namespace SIGCOMT.Resources.CustomModelMetadata
 {
     public class ConventionalModelMetadataProvider : DataAnnotationsModelMetadataProvider
     {

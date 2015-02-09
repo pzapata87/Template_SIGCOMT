@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Resources;
 using SIGCOMT.Common;
+using SIGCOMT.Resources;
 
 namespace SIGCOMT.Web.Core
 {

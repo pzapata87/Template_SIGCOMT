@@ -1,22 +1,19 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SIGCOMT.Resources;
+using SIGCOMT.Resources.CustomModelMetadata;
 
 namespace SIGCOMT.DTO
 {
+    [MetadataConventions(ResourceType = typeof(Usuario))]
     public class LogInDto
     {
-        [Required(ErrorMessage = "El nombre de usuario es requerido.")]
-        [DisplayName("Usuario")]
+        [Required]
+        [Display]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "La contraseña es requerida.")]
+        [Required]
         [DataType(DataType.Password)]
-        [DisplayName("Contraseña")]
+        [Display]
         public string Password { get; set; }
-
-        [DisplayName("Recordar mi cuenta?")]
-        public bool RememberMe { get; set; }
-
-        public string ConexionLocal { get; set; }
     }
 }

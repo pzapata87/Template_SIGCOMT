@@ -5,6 +5,6 @@ namespace SIGCOMT.Repository
 {
     public interface IFormularioRepository : IRepositoryWithTypedId<Formulario, int>
     {
-        //List<Formulario> Formularios(int idRol);
+
     }
 }
