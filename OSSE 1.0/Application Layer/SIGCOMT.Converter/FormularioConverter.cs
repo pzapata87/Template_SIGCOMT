@@ -12,7 +12,7 @@ namespace SIGCOMT.Converter
 {
     public class FormularioConverter
     {
-        private static readonly ResourceManager ResourceManager = new ResourceManager("SIGCOMT.Resources.Master", typeof(Master).Assembly);
+        private static readonly ResourceManager ResourceManager = new ResourceManager(typeof(Master));
 
         public static List<ModuloDto> GenerateTreeView(List<Formulario> formularioDomain, int idiomaId)
         {

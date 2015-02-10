@@ -17,44 +17,24 @@
 
 @section pageheader
 {
-    <div class="pageicon pull-left">
-        <i class="fa fa-home"></i>
-    </div>
     <div class="media-body">
-        <h4>Formulario</h4>
+        <h3><i class="fa fa-home mr5"></i>@Formulario.TituloListado</h3>
     </div>
 }
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h4 class="panel-title">Formulario de Permisos</h4>
+        <h4 class="panel-title">@Formulario.TituloPanelEdicion</h4>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-6">
-                @*<label class="control-label">Formularios</label>
-                <div class="mb5"></div>
-                <select id="selFormulario" data-placeholder="@Master.Seleccionar" class="width300">
-                    @if (Model != null)
-                    {
-                        foreach (var modulo in Model)
-                        {
-                            <optgroup label="@modulo.Nombre">
-                                @foreach (var operacion in modulo.Operaciones)
-                                {
-                                    <option value="@operacion.Id">@operacion.Nombre</option>
-                                }
-                            </optgroup>
-                        }
-                    }
-
-                </select>*@
                 <table id="grillaPermisos" class="table table-bordered table-responsive">
                     <thead>
                         <tr>
                             <th style="width: 5%;"></th>
-                            <th style="width: 20%;">Módulo</th>
-                            <th style="width: 75%;">Formulario</th>
+                            <th style="width: 20%;">@Formulario.Modulo</th>
+                            <th style="width: 75%;">@Formulario.Formulario</th>
                         </tr>
                     </thead>
                 </table>
@@ -66,7 +46,7 @@
                     <thead class="">
                         <tr>
                             <th style="width: 6%;"></th>
-                            <th style="width: 94%;">User Name</th>
+                            <th style="width: 94%;">@Formulario.Usuario</th>
                         </tr>
                     </thead>
                 </table>
@@ -75,8 +55,8 @@
     </div>
     <div class="panel-footer">
         <div class="col-sm-offset-2">
-            <button class="btn btn-primary mr5">Guardar</button>
-            <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">Regresar</a>
+            <button class="btn btn-primary mr5">@Master.Guardar</button>
+            <a href="@Url.Action("Index", "Usuario", new { area = "Administracion"})" class="btn btn-default">@Master.Regresar</a>
         </div>
     </div>
 </div>
@@ -87,7 +67,6 @@
     <script src="@Url.Content("~/Content/js/dataTables.bootstrap.js")"></script>
     <script src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js"></script>
     <script src="@Url.Content("~/Content/js/fnFilterOnReturn.js")"></script>
-    <script src="@Url.Content("~/Content/js/select2.min.js")"></script>
 
     <script type="text/javascript">
 

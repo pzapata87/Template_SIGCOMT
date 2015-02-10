@@ -48,6 +48,11 @@
     <Compile Include="CustomModelMetadata\Extensions\ReflectionExtensions.cs" />
     <Compile Include="CustomModelMetadata\Extensions\StringExtensions.cs" />
     <Compile Include="CustomModelMetadata\MetadataConventionsAttribute.cs" />
+    <Compile Include="Formulario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Formulario.resx</DependentUpon>
+    </Compile>
     <Compile Include="Master.Designer.cs">
       <DependentUpon>Master.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -61,6 +66,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formulario.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Formulario.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Master.Designer.cs</LastGenOutput>
