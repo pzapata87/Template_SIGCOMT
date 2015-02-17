@@ -63,9 +63,9 @@ namespace SIGCOMT.Resources {
         /// <summary>
         ///   Busca una cadena traducida similar a Formulario.
         /// </summary>
-        public static string Formulario {
+        public static string Formulario_Display {
             get {
-                return ResourceManager.GetString("Formulario", resourceCulture);
+                return ResourceManager.GetString("Formulario_Display", resourceCulture);
             }
         }
         

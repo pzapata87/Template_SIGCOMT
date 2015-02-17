@@ -7,6 +7,7 @@ using SIGCOMT.Common.Enum;
 using SIGCOMT.Domain;
 using SIGCOMT.DTO;
 using SIGCOMT.Resources;
+using Formulario = SIGCOMT.Domain.Formulario;
 
 namespace SIGCOMT.Converter
 {

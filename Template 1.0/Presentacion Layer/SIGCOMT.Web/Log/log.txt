@@ -277,3 +277,19 @@
    en SIGCOMT.Web.Areas.Administracion.Controllers.FormularioController.<Index>c__Binding.Invoke(Object& instance, Arguments arguments, Object aspectArgs) en :línea 0
    en PostSharp.Aspects.Internals.MethodInterceptionArgsImpl`1.Proceed()
    en SIGCOMT.Web.Core.Aspects.GetControllerMethod.Procesar(MethodInterceptionArgs args, ILog log) en d:\Proyectos\OSSE\Template_OSSE\OSSE 1.0\Presentacion Layer\SIGCOMT.Web\Core\Aspects\GetControllerMethod.cs:línea 14
+2015-02-08 18:28:04,407 [6] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:28:51,460 [6] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:29:09,665 [6] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:30:06,471 [17] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:31:36,634 [5] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:39:41,474 [5] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 18:46:46,987 [5] ERROR  [(null)] - Controlador:Account  Action:Login  Mensaje:El valor no puede ser nulo.
+Nombre del parámetro: value
+2015-02-08 19:06:56,136 [6] ERROR  [(null)] - Controlador:Usuario  Action:Edit  Mensaje:El diccionario de parámetros contiene una entrada NULL para el parámetro 'id' del tipo que no acepta valores NULL 'System.Int32' del método 'System.Web.Mvc.ActionResult Edit(Int32)' en 'SIGCOMT.Web.Areas.Administracion.Controllers.UsuarioController'. Un parámetro opcional debe ser un tipo de referencia, un tipo que acepte valores NULL o debe declararse como parámetro opcional.
+Nombre del parámetro: parameters
