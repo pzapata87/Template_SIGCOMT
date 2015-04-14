@@ -146,6 +146,7 @@
     <Compile Include="Core\Aspects\PostControllerMethod.cs" />
     <Compile Include="Core\Aspects\TipoAccionControlador.cs" />
     <Compile Include="Core\BaseController.cs" />
+    <Compile Include="Core\DefaultModelBinderWithHtmlValidation.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

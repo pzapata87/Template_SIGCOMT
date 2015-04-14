@@ -79,25 +79,13 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
         {
             var response = new JsonResponse {Success = false};
 
-            var entityTemp =
-                        _usuarioBL.Get(
-                            p => p.UserName == usuarioDto.UserName && p.Id != usuarioDto.Id && p.Estado == (int)TipoEstado.Activo);
+            var usuarioDomain = _usuarioBL.GetById(usuarioDto.Id);
+            UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
 
-            if (entityTemp == null)
-            {
-                var usuarioDomain = _usuarioBL.GetById(usuarioDto.Id);
-                UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
+            _usuarioBL.Update(usuarioDomain);
 
-                _usuarioBL.Update(usuarioDomain);
-
-                response.Message = "Se actualizó el usuario correctamente";
-                response.Success = true;
-            }
-            else
-            {
-                response.Message = "Ya existe el nombre de usuario";
-                response.Success = false;
-            }
+            response.Message = "Se actualizó el usuario correctamente";
+            response.Success = true;
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }
@@ -117,27 +105,15 @@ namespace SIGCOMT.Web.Areas.Administracion.Controllers
         public JsonResult Crear(UsuarioDto usuarioDto)
         {
             var response = new JsonResponse { Success = false };
+            var usuarioDomain = new Usuario {Estado = (int) TipoEstado.Activo};
 
-            var entityTemp =
-                        _usuarioBL.Get(
-                            p => p.UserName == usuarioDto.UserName && p.Estado == (int)TipoEstado.Activo);
+            UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
 
-            if (entityTemp == null)
-            {
-                var usuarioDomain = new Usuario { Estado = (int)TipoEstado.Activo };
+            _usuarioBL.Add(usuarioDomain);
 
-                UsuarioConverter.DtoToDomain(usuarioDomain, usuarioDto);
+            response.Message = "Se registró el usuario correctamente";
+            response.Success = true;
 
-                _usuarioBL.Add(usuarioDomain);
-
-                response.Message = "Se registró el usuario correctamente";
-                response.Success = true;
-            }
-            else
-            {
-                response.Message = "Ya existe el nombre de usuario";
-                response.Success = false;
-            }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 

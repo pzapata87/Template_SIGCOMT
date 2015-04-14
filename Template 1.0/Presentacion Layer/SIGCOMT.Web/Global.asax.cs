@@ -16,6 +16,7 @@ using SIGCOMT.Persistence;
 using SIGCOMT.Persistence.EntityFramework;
 using SIGCOMT.Resources;
 using SIGCOMT.Resources.CustomModelMetadata;
+using SIGCOMT.Web.Core;
 using StructureMap;
 using Usuario = SIGCOMT.Domain.Usuario;
 
@@ -42,6 +43,8 @@ namespace SIGCOMT.Web
             XmlConfigurator.Configure();
 
             ModelMetadataProviders.Current = new ConventionalModelMetadataProvider(true, typeof(Master));
+
+            ModelBinders.Binders.DefaultBinder = new DefaultModelBinderWithHtmlValidation();
 
             CargarParametrosAplicacion();
         }

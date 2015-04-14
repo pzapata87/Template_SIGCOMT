@@ -183,6 +183,9 @@
   <data name="TituloPanelEdicion" xml:space="preserve">
     <value>Formulario de información del usuario</value>
   </data>
+  <data name="UserNameDuplicado" xml:space="preserve">
+    <value>Nombre de usuario duplicado</value>
+  </data>
   <data name="UserName_Display" xml:space="preserve">
     <value>Username</value>
   </data>

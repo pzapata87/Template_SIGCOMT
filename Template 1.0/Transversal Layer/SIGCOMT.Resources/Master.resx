@@ -126,6 +126,9 @@
   <data name="Cancelar" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="CaracteresInvalidosValidation" xml:space="preserve">
+    <value>Se encontraron carácteres inválidos en el campo {0}</value>
+  </data>
   <data name="Cerrar" xml:space="preserve">
     <value>Cerrar</value>
   </data>

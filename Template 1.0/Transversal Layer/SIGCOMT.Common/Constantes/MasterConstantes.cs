@@ -29,5 +29,6 @@
         #endregion KeysString      
 
         public const string TimeOutSession = "TimeOutSession";
+        public const string CaracteresInvalidosValidation = "CaracteresInvalidosValidation";
     }
 }

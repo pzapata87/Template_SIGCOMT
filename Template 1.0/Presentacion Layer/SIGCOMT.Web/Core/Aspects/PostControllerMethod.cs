@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using log4net;
 using PostSharp.Aspects;
 using SIGCOMT.Common;
-using SIGCOMT.Resources;
 
 namespace SIGCOMT.Web.Core.Aspects
 {
@@ -33,7 +32,7 @@ namespace SIGCOMT.Web.Core.Aspects
                 {
                     log.Error(string.Format("Mensaje: {0} Trace: {1}", ex.Message, ex.StackTrace));
 
-                    var jsonResponse = new JsonResponse { Success = false, Message = Master.MensajeReintentar };
+                    var jsonResponse = new JsonResponse { Success = false, Message = ex.Message };
                     args.ReturnValue = controller.Json(jsonResponse, JsonRequestBehavior.AllowGet);
                 }
             }

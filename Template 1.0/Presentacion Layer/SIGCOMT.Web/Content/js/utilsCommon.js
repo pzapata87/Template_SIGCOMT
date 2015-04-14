@@ -103,22 +103,20 @@ Utils = {
         }
 
         function eventoActualizar(opcionesButton) {
-            var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
-            var aData = opcionesButton.grilla.fnGetData(aPos[0]);
+            var aData = opcionesButton.grilla.row(opcionesButton.button.parentNode.parentNode).data();
             var rowId = opciones.crud.getKey(aData);
 
             window.location.href = opcionesButton.urlActualizar + '/' + rowId;
         }
 
         function eventoEliminar(opcionesButton) {
-            var aPos = opcionesButton.grilla.fnGetPosition(opcionesButton.button.parentNode);
-            var aData = opcionesButton.grilla.fnGetData(aPos[0]);
+            var aData = opcionesButton.grilla.row(opcionesButton.button.parentNode.parentNode).data();
             var rowId = opciones.crud.getKey(aData);
 
             Utils.ShowMessage(opcionesButton.alertEliminar.title,
                 opcionesButton.alertEliminar.message,
                 opcionesButton.alertEliminar.textButtonCommand,
-                function(evt) {
+                function (evt) {
                     $.ajax({
                         type: 'POST',
                         url: opcionesButton.urlEliminar + '/' + rowId,
@@ -126,17 +124,17 @@ Utils = {
                         contentType: 'application/json; charset=utf-8',
                         async: false,
                         cache: false,
-                        success: function(response) {
+                        success: function (response) {
                             Utils.NotificationMessage({
                                 tipo: response.Success ? 1 : 2,
                                 title: opcionesButton.alertEliminar.title,
                                 message: response.Message
                             });
 
-                            opcionesButton.grilla.fnClearTable(0);
-                            opcionesButton.grilla.fnDraw();
+                            opcionesButton.grilla.clear();
+                            opcionesButton.grilla.draw();
                         },
-                        error: function(data, error) {
+                        error: function (data, error) {
                             Utils.NotificationMessage({
                                 tipo: 2,
                                 title: opcionesButton.alertEliminar.title,
