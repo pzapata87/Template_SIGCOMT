@@ -1,4 +1,4 @@
-Template_OSSE
+Template_SIGCOMT
 =============
 
-Template OSSE
+Template SIGCOMT
