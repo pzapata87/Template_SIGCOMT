@@ -254,10 +254,6 @@
       <Project>{07c6face-af04-4e42-a202-ca600280ee34}</Project>
       <Name>SIGCOMT.Aspects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Cache\SIGCOMT.Cache.csproj">
-      <Project>{495aede1-810c-49fb-a9d7-3cb472104ef2}</Project>
-      <Name>SIGCOMT.Cache</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Transversal Layer\SIGCOMT.Common\SIGCOMT.Common.csproj">
       <Project>{e2803c4f-dcab-4145-8b7e-22ebff36dd0d}</Project>
       <Name>SIGCOMT.Common</Name>
